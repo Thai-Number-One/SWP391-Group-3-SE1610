@@ -21,7 +21,7 @@ public class BaseDAO {
     }   
     
     private final String serverName = "localhost";
-    private final String dbName = "TECHWORD";
+    private final String dbName = "Password_SWP_Test";
     private final String portNumber = "1433";
     private final String instance="";
     private final String userID = "sa";
