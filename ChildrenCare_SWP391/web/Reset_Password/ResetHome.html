@@ -13,44 +13,44 @@
 
 	</head>
 	<body>
-	<section class="ftco-section">
-		<div class="container">
-			<div class="row justify-content-center">
-				<div class="col-md-6 text-center mb-5">
-					<h2 class="heading-section">Reset Password</h2>
-				</div>
-			</div>
-                   
-			<div class="s2">
-				<div class="" style=";margin-left: 350px;">
-					<div class=" ">
-						<div class="text-wrap p-4 p-lg-5 text-center d-flex  order-md-last">
-							<div class="text w-100">
-								<h2>Fogot Your Password?</h2>
-								<p>Please enter your email to change your password</p>
-								
-							</div>
-			      </div>
-						<div class="login-wrap p-4 p-lg-5">
-			      	
-							<form action="#" class="signin-form">
-			      		<div class="form-group mb-3">
-			      			<label class="label" for="name">Email</label>
-			      			<input type="text" class="form-control" placeholder="Email" required>
-			      		</div>
-		           
-		            <div class="form-group">
-		            	<button type="submit" class="form-control btn btn-primary submit px-3">Reset my Password</button>
-		            </div>
-		            
-		          </form>
-		        </div>
-		      </div>
-				</div>
-			</div>
+            <section class="ftco-section">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-6 text-center mb-5">
+                            <h2 class="heading-section">Reset Password</h2>
+                        </div>
                     </div>
-		
-	</section>
+
+                    <div class="s2">
+                        <div class="" style=";margin-left: 350px;">
+                            <div class=" ">
+                                <div class="text-wrap p-4 p-lg-5 text-center d-flex  order-md-last">
+                                    <div class="text w-100">
+                                        <h2>Fogot Your Password?</h2>
+                                        <p>Please enter your email to change your password</p>
+
+                                    </div>
+                                </div>
+                                <div class="login-wrap p-4 p-lg-5">
+
+                                    <form action="ResetPassServlet" method="post">
+                                        <div class="form-group mb-3">
+                                            <label class="label" for="name">Email</label>
+                                            <input type="text" class="form-control" name="email" placeholder="Email" required>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <button type="submit" class="form-control btn btn-primary submit px-3">Reset my Password</button>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
 
 	<script src="js/jquery.min.js"></script>
   <script src="js/popper.js"></script>
