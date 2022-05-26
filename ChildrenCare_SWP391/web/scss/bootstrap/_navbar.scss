@@ -137,14 +137,7 @@
     $next: breakpoint-next($breakpoint, $grid-breakpoints);
     $infix: breakpoint-infix($next, $grid-breakpoints);
 
-    &#{$infix} {
-      @include media-breakpoint-down($breakpoint) {
-        > .container,
-        > .container-fluid {
-          padding-right: 0;
-          padding-left: 0;
-        }
-      }
+    
 
       @include media-breakpoint-up($next) {
         flex-flow: row nowrap;
@@ -182,7 +175,7 @@
       }
     }
   }
-}
+
 
 
 // Navbar themes

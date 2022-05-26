@@ -9,6 +9,7 @@ import DAO.UserDAO;
 import Entity.User;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,8 +20,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author s
  */
-@WebServlet(name = "ResetPassServlet", urlPatterns = {"/ResetPassServlet"})
-public class ResetPassServlet extends HttpServlet {
+@WebServlet(name = "TakeEmailServlet", urlPatterns = {"/TakeEmail"})
+public class TakeEmailServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,7 +35,22 @@ public class ResetPassServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+        try {
+            String email = request.getParameter("email");
+            
+            UserDAO dao = new UserDAO();
+            List<User> list = dao.checkemailexit(email);
+            
+            if(list == null && email != null){
+                request.getRequestDispatcher("TakeEmail.jsp").forward(request, response);
+            }else{
+                request.setAttribute("UserD", list);
+                request.getRequestDispatcher("ConfirmEmail.jsp").forward(request, response);
+            }
+   
+            
+        } catch (Exception e) {
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -63,20 +79,7 @@ public class ResetPassServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            String email = request.getParameter("email");
-            
-            UserDAO dao = new UserDAO();
-            User u = dao.checkemailexit(email);
-            
-            if(u == null){
-                request.getRequestDispatcher("ResetHome.html").forward(request, response);
-            }else{
-                
-            }
-            
-        } catch (Exception e) {
-        }
+        processRequest(request, response);
     }
 
     /**

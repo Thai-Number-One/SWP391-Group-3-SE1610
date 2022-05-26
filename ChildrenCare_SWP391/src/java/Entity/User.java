@@ -15,19 +15,19 @@ public class User {
     private int User_ID;
     private String FullName;
     private String Address;
-    private String Phone;
+    private int Phone;
     private String Email;
     private Date Date;
     private String User_Name;
     private String Password;
     private String Avatar;
-    private String Gender;
+    private int Gender;
     private int Role_ID;
 
     public User() {
     }
 
-    public User(int User_ID, String FullName, String Address, String Phone, String Email, Date Date, String User_Name, String Password, String Avatar, String Gender, int Role_ID) {
+    public User(int User_ID, String FullName, String Address, int Phone, String Email, Date Date, String User_Name, String Password, String Avatar, int Gender, int Role_ID) {
         this.User_ID = User_ID;
         this.FullName = FullName;
         this.Address = Address;
@@ -65,11 +65,11 @@ public class User {
         this.Address = Address;
     }
 
-    public String getPhone() {
+    public int getPhone() {
         return Phone;
     }
 
-    public void setPhone(String Phone) {
+    public void setPhone(int Phone) {
         this.Phone = Phone;
     }
 
@@ -113,11 +113,11 @@ public class User {
         this.Avatar = Avatar;
     }
 
-    public String getGender() {
+    public int getGender() {
         return Gender;
     }
 
-    public void setGender(String Gender) {
+    public void setGender(int Gender) {
         this.Gender = Gender;
     }
 
