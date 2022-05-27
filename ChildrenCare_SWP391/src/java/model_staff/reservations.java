@@ -12,39 +12,39 @@ import java.sql.Date;
  * @author dathp
  */
 public class reservations {
-    private int Reservation_ID;
-    private int User_ID;
+    private int ReservationID;
+    private int UserID;
     private Date Date;
     private String Status;
-    private Date Begin_Time;
-    private float Total_cost;
+    private Date BeginTime;
+    private float Totalcost;
 
     public reservations() {
     }
 
-    public reservations(int Reservation_ID, int User_ID, Date Date, String Status, Date Begin_Time, float Total_cost) {
-        this.Reservation_ID = Reservation_ID;
-        this.User_ID = User_ID;
+    public reservations(int ReservationID, int UserID, Date Date, String Status, Date BeginTime, float Totalcost) {
+        this.ReservationID = ReservationID;
+        this.UserID = UserID;
         this.Date = Date;
         this.Status = Status;
-        this.Begin_Time = Begin_Time;
-        this.Total_cost = Total_cost;
+        this.BeginTime = BeginTime;
+        this.Totalcost = Totalcost;
     }
 
-    public int getReservation_ID() {
-        return Reservation_ID;
+    public int getReservationID() {
+        return ReservationID;
     }
 
-    public void setReservation_ID(int Reservation_ID) {
-        this.Reservation_ID = Reservation_ID;
+    public void setReservationID(int ReservationID) {
+        this.ReservationID = ReservationID;
     }
 
-    public int getUser_ID() {
-        return User_ID;
+    public int getUserID() {
+        return UserID;
     }
 
-    public void setUser_ID(int User_ID) {
-        this.User_ID = User_ID;
+    public void setUserID(int UserID) {
+        this.UserID = UserID;
     }
 
     public Date getDate() {
@@ -63,21 +63,22 @@ public class reservations {
         this.Status = Status;
     }
 
-    public Date getBegin_Time() {
-        return Begin_Time;
+    public Date getBeginTime() {
+        return BeginTime;
     }
 
-    public void setBegin_Time(Date Begin_Time) {
-        this.Begin_Time = Begin_Time;
+    public void setBeginTime(Date BeginTime) {
+        this.BeginTime = BeginTime;
     }
 
-    public float getTotal_cost() {
-        return Total_cost;
+    public float getTotalcost() {
+        return Totalcost;
     }
 
-    public void setTotal_cost(float Total_cost) {
-        this.Total_cost = Total_cost;
+    public void setTotalcost(float Totalcost) {
+        this.Totalcost = Totalcost;
     }
+
     
     
 }

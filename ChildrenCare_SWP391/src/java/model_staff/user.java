@@ -12,122 +12,123 @@ import java.sql.Date;
  * @author dathp
  */
 public class user {
-    private int User_ID;
-    private String FullName;
-    private String Address;
-    private String Phone;
-    private String Email;
-    private Date Date;
-    private String User_Name;
-    private String Password;
-    private String Avatar;
-    private String Gender;
-    private int Role_ID;
+    private int userid;
+    private String fullname;
+    private String address;
+    private String phone;
+    private String email;
+    private Date date;
+    private String username;
+    private String password;
+    private String avatar;
+    private String gender;
+    private int roleid;
 
     public user() {
     }
 
-    public user(int User_ID, String FullName, String Address, String Phone, String Email, Date Date, String User_Name, String Password, String Avatar, String Gender, int Role_ID) {
-        this.User_ID = User_ID;
-        this.FullName = FullName;
-        this.Address = Address;
-        this.Phone = Phone;
-        this.Email = Email;
-        this.Date = Date;
-        this.User_Name = User_Name;
-        this.Password = Password;
-        this.Avatar = Avatar;
-        this.Gender = Gender;
-        this.Role_ID = Role_ID;
+    public user(int userid, String fullname, String address, String phone, String email, Date date, String username, String password, String avatar, String gender, int roleid) {
+        this.userid = userid;
+        this.fullname = fullname;
+        this.address = address;
+        this.phone = phone;
+        this.email = email;
+        this.date = date;
+        this.username = username;
+        this.password = password;
+        this.avatar = avatar;
+        this.gender = gender;
+        this.roleid = roleid;
     }
 
-    public int getUser_ID() {
-        return User_ID;
+    public int getUserid() {
+        return userid;
     }
 
-    public void setUser_ID(int User_ID) {
-        this.User_ID = User_ID;
+    public void setUserid(int userid) {
+        this.userid = userid;
     }
 
-    public String getFullName() {
-        return FullName;
+    public String getFullname() {
+        return fullname;
     }
 
-    public void setFullName(String FullName) {
-        this.FullName = FullName;
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
     }
 
     public String getAddress() {
-        return Address;
+        return address;
     }
 
-    public void setAddress(String Address) {
-        this.Address = Address;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getPhone() {
-        return Phone;
+        return phone;
     }
 
-    public void setPhone(String Phone) {
-        this.Phone = Phone;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
-    public void setEmail(String Email) {
-        this.Email = Email;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Date getDate() {
-        return Date;
+        return date;
     }
 
-    public void setDate(Date Date) {
-        this.Date = Date;
+    public void setDate(Date date) {
+        this.date = date;
     }
 
-    public String getUser_Name() {
-        return User_Name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUser_Name(String User_Name) {
-        this.User_Name = User_Name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
-        return Password;
+        return password;
     }
 
-    public void setPassword(String Password) {
-        this.Password = Password;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getAvatar() {
-        return Avatar;
+        return avatar;
     }
 
-    public void setAvatar(String Avatar) {
-        this.Avatar = Avatar;
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
     public String getGender() {
-        return Gender;
+        return gender;
     }
 
-    public void setGender(String Gender) {
-        this.Gender = Gender;
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
-    public int getRole_ID() {
-        return Role_ID;
+    public int getRoleid() {
+        return roleid;
     }
 
-    public void setRole_ID(int Role_ID) {
-        this.Role_ID = Role_ID;
+    public void setRoleid(int roleid) {
+        this.roleid = roleid;
     }
+
     
    
 }

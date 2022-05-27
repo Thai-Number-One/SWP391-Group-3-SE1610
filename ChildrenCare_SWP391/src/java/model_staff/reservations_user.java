@@ -13,73 +13,72 @@ import java.sql.Date;
  */
 public class reservations_user {
     
-    private int Reservation_ID;
-    private int User_ID;
-    private Date Date;
-    private String Status;
-    private Date Begin_Time;
-    private float Total_cost;
+    private int reservationid;
+    private int userid;
+    private Date date,ordertime;
+    private String status;
+    private float totalcost;
     private user user;
 
     public reservations_user() {
     }
 
-    public reservations_user(int Reservation_ID, int User_ID, Date Date, String Status, Date Begin_Time, float Total_cost, user user) {
-        this.Reservation_ID = Reservation_ID;
-        this.User_ID = User_ID;
-        this.Date = Date;
-        this.Status = Status;
-        this.Begin_Time = Begin_Time;
-        this.Total_cost = Total_cost;
+    public reservations_user(int reservationid, int userid, Date date, Date ordertime, String status, float totalcost, user user) {
+        this.reservationid = reservationid;
+        this.userid = userid;
+        this.date = date;
+        this.ordertime = ordertime;
+        this.status = status;
+        this.totalcost = totalcost;
         this.user = user;
     }
 
-    public int getReservation_ID() {
-        return Reservation_ID;
+    public int getReservationid() {
+        return reservationid;
     }
 
-    public void setReservation_ID(int Reservation_ID) {
-        this.Reservation_ID = Reservation_ID;
+    public void setReservationid(int reservationid) {
+        this.reservationid = reservationid;
     }
 
-    public int getUser_ID() {
-        return User_ID;
+    public int getUserid() {
+        return userid;
     }
 
-    public void setUser_ID(int User_ID) {
-        this.User_ID = User_ID;
+    public void setUserid(int userid) {
+        this.userid = userid;
     }
 
     public Date getDate() {
-        return Date;
+        return date;
     }
 
-    public void setDate(Date Date) {
-        this.Date = Date;
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public Date getOrdertime() {
+        return ordertime;
+    }
+
+    public void setOrdertime(Date ordertime) {
+        this.ordertime = ordertime;
     }
 
     public String getStatus() {
-        return Status;
+        return status;
     }
 
-    public void setStatus(String Status) {
-        this.Status = Status;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
-    public Date getBegin_Time() {
-        return Begin_Time;
+    public float getTotalcost() {
+        return totalcost;
     }
 
-    public void setBegin_Time(Date Begin_Time) {
-        this.Begin_Time = Begin_Time;
-    }
-
-    public float getTotal_cost() {
-        return Total_cost;
-    }
-
-    public void setTotal_cost(float Total_cost) {
-        this.Total_cost = Total_cost;
+    public void setTotalcost(float totalcost) {
+        this.totalcost = totalcost;
     }
 
     public user getUser() {
@@ -89,6 +88,11 @@ public class reservations_user {
     public void setUser(user user) {
         this.user = user;
     }
+
+   
+    
+
+  
     
     
 

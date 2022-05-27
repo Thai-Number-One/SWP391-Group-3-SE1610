@@ -35,12 +35,12 @@ public class reservatonsDAO extends BaseDAO{
             ResultSet rs = st.executeQuery();
             while(rs.next()){
                 reservations s = new reservations();     
-                s.setReservation_ID(rs.getInt("Reservation_ID"));
-                s.setUser_ID(rs.getInt("User_ID"));
+                s.setReservationID(rs.getInt("Reservation_ID"));
+                s.setUserID(rs.getInt("User_ID"));
                 s.setDate(rs.getDate("Date"));
                 s.setStatus(rs.getString("Status"));
-                s.setBegin_Time(rs.getDate("Begin_Time"));
-                s.setTotal_cost(rs.getFloat("Total_cost"));                     
+                s.setBeginTime(rs.getDate("Begin_Time"));
+                s.setTotalcost(rs.getFloat("Total_cost"));                     
                 list.add(s);
             }
         }catch(SQLException e){
@@ -59,17 +59,17 @@ public class reservatonsDAO extends BaseDAO{
             ResultSet rs = st.executeQuery();
             while(rs.next()){
                 user u =new user();
-                u.setUser_ID(rs.getInt("User_ID"));
-                u.setFullName(rs.getString("FullName"));
+                u.setUserid(rs.getInt("User_ID"));
+                u.setFullname(rs.getString("FullName"));
                 u.setAddress(rs.getString("Address"));
                 u.setPhone(rs.getString("Phone"));
                 u.setEmail(rs.getString("Email"));
                 u.setDate(rs.getDate("Date"));
-                u.setUser_Name(rs.getString("User_Name"));
+                u.setUsername(rs.getString("User_Name"));
                 u.setPassword(rs.getString("Password"));
                 u.setAvatar(rs.getString("Avatar"));
                 u.setGender(rs.getString("Gender"));
-                u.setRole_ID(rs.getInt("Role_ID"));                
+                u.setRoleid(rs.getInt("Role_ID"));                
                 list.add(u);
             }
         }catch(SQLException e){
@@ -91,24 +91,24 @@ public class reservatonsDAO extends BaseDAO{
             while(rs.next()){
                 reservations_user s = new reservations_user();
                 user u =new user();
-                u.setUser_ID(rs.getInt("User_ID"));
-                u.setFullName(rs.getString("FullName"));
+                u.setUserid(rs.getInt("User_ID"));
+                u.setFullname(rs.getString("FullName"));
                 u.setAddress(rs.getString("Address"));
                 u.setPhone(rs.getString("Phone"));
                 u.setEmail(rs.getString("Email"));
                 u.setDate(rs.getDate("Date"));
-                u.setUser_Name(rs.getString("User_Name"));
+                u.setUsername(rs.getString("User_Name"));
                 u.setPassword(rs.getString("Password"));
                 u.setAvatar(rs.getString("Avatar"));
                 u.setGender(rs.getString("Gender"));
-                u.setRole_ID(rs.getInt("Role_ID"));
+                u.setRoleid(rs.getInt("Role_ID"));
         //////////////////////////////////////////////////////////////                           
-                s.setReservation_ID(rs.getInt("Reservation_ID"));
-                s.setUser_ID(rs.getInt("User_ID"));
+                s.setReservationid(rs.getInt("Reservation_ID"));
+                s.setUserid(rs.getInt("User_ID"));
                 s.setDate(rs.getDate("Date"));
                 s.setStatus(rs.getString("Status"));
-                s.setBegin_Time(rs.getDate("Begin_Time"));
-                s.setTotal_cost(rs.getFloat("Total_cost"));    
+                s.setOrdertime(rs.getDate("Begin_Time"));
+                s.setTotalcost(rs.getFloat("Total_cost"));    
                 s.setUser(u);
                 list.add(s);
             }
@@ -128,7 +128,7 @@ public class reservatonsDAO extends BaseDAO{
                 System.out.println(list1.get(i).getDate());
             }
             for (int i = 0; i < list.size(); i++) {
-                System.out.println(list.get(i).getUser().getAddress());
+                System.out.println(list.get(i).getOrdertime());
             }
              for (int i = 0; i < list2.size(); i++) {
                 System.out.println(list2.get(i).getPhone());

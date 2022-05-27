@@ -4,6 +4,8 @@
     Author     : dathp
 --%>
 
+<%@page import="model_staff.reservations_user"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -14,11 +16,21 @@
     </head>
     <body>
         <h1>chao Lfar</h1>
+
+
+
         <c:forEach items="${requestScope.all}" var="a">
-            <h1>${a.Begin_Time}</h1>
-            <h1>${a.user.FullName}</h1>
-            <h1>${a.Total_cost}</h1>
-            <h1>${a.Status}</h1>
+
+            
+            <h1>${a.user.fullname}</h1>
+            <h1>${a.totalcost}</h1>
+            <h1>${a.status}</h1>
+            <h1>${a.reservationid}</h1>
+            <h1>${a.date}</h1>
+
+
         </c:forEach>
+
+        
     </body>
 </html>
