@@ -1,6 +1,6 @@
 <%-- 
     Document   : reservation
-    Created on : May 27, 2022, 2:56:01 PM
+    Created on : May 27, 2022, 3:06:03 PM
     Author     : dathp
 --%>
 
@@ -12,6 +12,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        
     </body>
 </html>
