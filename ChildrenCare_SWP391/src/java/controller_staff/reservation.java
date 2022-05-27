@@ -8,6 +8,8 @@ package controller_staff;
 import dal_staff.reservatonsDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -61,8 +63,10 @@ public class reservation extends HttpServlet {
             throws ServletException, IOException {
         try {
             reservatonsDAO d = new reservatonsDAO();
+            
+              
             request.setAttribute("all", d.reservations_user());   
-            request.setAttribute("user", d.Alluser());   
+              
             request.getRequestDispatcher("reservations/reservation.jsp").forward(request, response);
         } catch (Exception ex) {
          
