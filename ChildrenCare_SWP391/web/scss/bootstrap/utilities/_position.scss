@@ -23,10 +23,3 @@
   z-index: $zindex-fixed;
 }
 
-.sticky-top {
-  @supports (position: sticky) {
-    position: sticky;
-    top: 0;
-    z-index: $zindex-sticky;
-  }
-}
