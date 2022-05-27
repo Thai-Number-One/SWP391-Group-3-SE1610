@@ -8,21 +8,18 @@ package controller_staff;
 import dal_staff.reservatonsDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model_staff.reservations;
-import model_staff.reservations_user;
 
 /**
  *
  * @author dathp
  */
-public class all_reaservation extends HttpServlet {
+public class reservation extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,10 +38,10 @@ public class all_reaservation extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet All_reaservation</title>");            
+            out.println("<title>Servlet reservation</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet All_reaservation at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet reservation at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -62,16 +59,12 @@ public class all_reaservation extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        
         try {
-            reservatonsDAO d = new  reservatonsDAO();
-            List<reservations_user> list = d.reservations_user();                   
-            request.setAttribute("all", list);
-            request.setAttribute("a", "asd");
-            request.getRequestDispatcher("reservation.jsp").forward(request, response);
+            reservatonsDAO d = new reservatonsDAO();
+            request.setAttribute("all", d.reservations_user());
+            request.getRequestDispatcher("reservations/reservation.jsp").forward(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(all_reaservation.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(reservation.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -86,14 +79,7 @@ public class all_reaservation extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        reservatonsDAO d = new  reservatonsDAO();
-        try {
-            List<reservations> list = d.Allreservations();
-            request.setAttribute("all_reservation", list);
-            
-        } catch (Exception ex) {
-            Logger.getLogger(all_reaservation.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**
