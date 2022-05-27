@@ -22,7 +22,7 @@ import model_staff.reservations_user;
  *
  * @author dathp
  */
-public class All_reaservation extends HttpServlet {
+public class all_reaservation extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -71,7 +71,7 @@ public class All_reaservation extends HttpServlet {
             request.setAttribute("a", "asd");
             request.getRequestDispatcher("reservation.jsp").forward(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(All_reaservation.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(all_reaservation.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -90,8 +90,9 @@ public class All_reaservation extends HttpServlet {
         try {
             List<reservations> list = d.Allreservations();
             request.setAttribute("all_reservation", list);
+            
         } catch (Exception ex) {
-            Logger.getLogger(All_reaservation.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(all_reaservation.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
