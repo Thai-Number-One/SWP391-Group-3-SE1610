@@ -24,17 +24,17 @@ public class insert_reservationDAO extends BaseDAO{
 "values (?,?,?,?,?,?,?,?,?,?,?)";
                 Connection conn = new BaseDAO().BaseDao();
                   PreparedStatement st = conn.prepareStatement(sql);  
-                  st.setInt(1, u.getUser_ID());
-                  st.setString(2, u.getFullName());
+                  st.setInt(1, u.getUserid());
+                  st.setString(2, u.getFullname());
                   st.setString(3, u.getAddress());
-                  st.setString(4, u.getPhone());
+                  st.setInt(4, u.getPhone());
                   st.setString(5, u.getEmail());
                   st.setDate(6, u.getDate());
-                  st.setString(7, u.getUser_Name());
+                  st.setString(7, u.getUsername());
                   st.setString(8, u.getPassword());
                   st.setString(9, u.getAvatar());
-                  st.setString(10, u.getGender());
-                  st.setInt(11, u.getRole_ID());              
+                  st.setInt(10, u.getGender());
+                  st.setInt(11, u.getUserid());              
                   st.executeUpdate();              
           } catch (SQLException ex) {
               System.out.println(ex);
@@ -47,11 +47,11 @@ public class insert_reservationDAO extends BaseDAO{
 "values(?,?,?,?,?,?)";
                 Connection conn = new BaseDAO().BaseDao();
                   PreparedStatement st = conn.prepareStatement(sql);  
-                  st.setInt(1, u.getReservation_ID());
-                  st.setInt(2, u.getUser_ID());
+                  st.setInt(1, u.getReservationID());
+                  st.setInt(2, u.getUserID());
                   st.setDate(3, u.getDate());
                   st.setString(4, u.getStatus());
-                  st.setFloat(5, u.getTotal_cost());
+                  st.setFloat(5, u.getTotalcost());
                   st.executeUpdate();              
           } catch (SQLException ex) {
               System.out.println(ex);

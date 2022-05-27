@@ -62,13 +62,13 @@ public class reservatonsDAO extends BaseDAO{
                 u.setUserid(rs.getInt("User_ID"));
                 u.setFullname(rs.getString("FullName"));
                 u.setAddress(rs.getString("Address"));
-                u.setPhone(rs.getString("Phone"));
+                u.setPhone(rs.getInt("Phone"));
                 u.setEmail(rs.getString("Email"));
                 u.setDate(rs.getDate("Date"));
                 u.setUsername(rs.getString("User_Name"));
                 u.setPassword(rs.getString("Password"));
                 u.setAvatar(rs.getString("Avatar"));
-                u.setGender(rs.getString("Gender"));
+                u.setGender(rs.getInt("Gender"));
                 u.setRoleid(rs.getInt("Role_ID"));                
                 list.add(u);
             }
@@ -94,13 +94,13 @@ public class reservatonsDAO extends BaseDAO{
                 u.setUserid(rs.getInt("User_ID"));
                 u.setFullname(rs.getString("FullName"));
                 u.setAddress(rs.getString("Address"));
-                u.setPhone(rs.getString("Phone"));
+                u.setPhone(rs.getInt("Phone"));
                 u.setEmail(rs.getString("Email"));
                 u.setDate(rs.getDate("Date"));
                 u.setUsername(rs.getString("User_Name"));
                 u.setPassword(rs.getString("Password"));
                 u.setAvatar(rs.getString("Avatar"));
-                u.setGender(rs.getString("Gender"));
+                u.setGender(rs.getInt("Gender"));
                 u.setRoleid(rs.getInt("Role_ID"));
         //////////////////////////////////////////////////////////////                           
                 s.setReservationid(rs.getInt("Reservation_ID"));
