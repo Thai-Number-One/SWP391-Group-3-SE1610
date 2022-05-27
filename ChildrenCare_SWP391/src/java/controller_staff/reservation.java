@@ -62,7 +62,7 @@ public class reservation extends HttpServlet {
         try {
             reservatonsDAO d = new reservatonsDAO();
             request.setAttribute("all", d.reservations_user());
-            request.getRequestDispatcher("reservation.jsp").forward(request, response);
+            request.getRequestDispatcher("reservations/reservation.jsp").forward(request, response);
         } catch (Exception ex) {
             Logger.getLogger(reservation.class.getName()).log(Level.SEVERE, null, ex);
         }
