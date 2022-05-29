@@ -8,6 +8,7 @@ package controller_staff;
 import dal_staff.reservatonsDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -16,6 +17,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model_staff.reservations;
+import model_staff.user;
 
 /**
  *
@@ -63,10 +66,17 @@ public class reservation extends HttpServlet {
             throws ServletException, IOException {
         try {
             reservatonsDAO d = new reservatonsDAO();
+            List l = new ArrayList();
+            for (int i = 0; i < d.Alluser().size(); i++) 
+                if(d.Alluser().get(i).getRoleid()==2) l.add(d.Alluser().get(i));
             
-              
-            request.setAttribute("all", d.reservations_user());   
-              
+            List l1 = new ArrayList();
+            for (int i = 0; i <d.reservations_user().size(); i++) {
+                if(d.reservations_user().get(i).getUser().getRoleid() == 2) l1.add(d.reservations_user().get(i));
+            }
+            
+            request.setAttribute("all", l1);   
+            request.setAttribute("staff", l);  
             request.getRequestDispatcher("reservations/reservation.jsp").forward(request, response);
         } catch (Exception ex) {
          
@@ -84,7 +94,43 @@ public class reservation extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            reservatonsDAO d = new reservatonsDAO();
+            
+            String datefrom =request.getParameter("datefrom");
+            String dateto = request.getParameter("dateto");
+            String status = request.getParameter("status");
+            String staff = request.getParameter("staff");
+            List l1 = new ArrayList();
+            int i_staff = Integer.parseInt(staff);
+            Date d_dateto = Date.valueOf(dateto);
+            Date d_dateform = Date.valueOf(datefrom);
+            for (int i = 0; i < d.reservations_user().size(); i++) {
+                if(d_dateform != null && d_dateto==null && status.equals("all") && i_staff == 0)
+                    if(d.reservations_user().get(i).getOrdertime().after(d_dateform))
+                        l1.add(d.reservations_user().get(i));
+                if(d_dateform != null && d_dateto!=null && status.equals("all") && i_staff == 0)
+                    if(d.reservations_user().get(i).getOrdertime().after(d_dateform) && d.reservations_user().get(i).getOrdertime().before(d_dateto))
+                        l1.add(d.reservations_user().get(i));   
+                if(d_dateform != null && d_dateto!=null && status.equals(status) && i_staff == 0)
+                    if(d.reservations_user().get(i).getOrdertime().after(d_dateform) && d.reservations_user().get(i).getOrdertime().before(d_dateto))
+                        l1.add(d.reservations_user().get(i));   
+                if(d_dateform != null && d_dateto!=null && status.equals(d.reservations_user().get(i).getStatus()) && i_staff == d.reservations_user().get(i).getUserid() )
+                    if(d.reservations_user().get(i).getOrdertime().after(d_dateform) && d.reservations_user().get(i).getOrdertime().before(d_dateto))
+                        l1.add(d.reservations_user().get(i)); 
+                
+            }
+            
+            
+            List l = new ArrayList(); 
+            for (int i = 0; i < d.Alluser().size(); i++)
+                if(d.Alluser().get(i).getRoleid()==2) l.add(d.Alluser().get(i));
+            request.setAttribute("all", l1);
+            request.setAttribute("staff", l);  
+            request.getRequestDispatcher("reservations/reservation.jsp").forward(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(reservation.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

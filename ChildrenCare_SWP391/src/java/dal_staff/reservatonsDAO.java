@@ -124,15 +124,11 @@ public class reservatonsDAO extends BaseDAO{
             List<reservations_user> list =d.reservations_user();
             List<reservations> list1 =d.Allreservations();
             List<user> list2 =d.Alluser();
-            for (int i = 0; i < list1.size(); i++) {
-                System.out.println(list1.get(i).getDate());
-            }
+            
             for (int i = 0; i < list.size(); i++) {
-                System.out.println(list.get(i).getOrdertime());
+                System.out.println(list.get(i).getUser().getRoleid());
             }
-             for (int i = 0; i < list2.size(); i++) {
-                System.out.println(list2.get(i).getPhone());
-            }
+             
         } catch (Exception ex) {
             Logger.getLogger(reservatonsDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
