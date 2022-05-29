@@ -9,14 +9,14 @@ package model_staff;
  *
  * @author dathp
  */
-public class reservation_detail {
+public class reservationdetail {
     private int reservationid,serviceid,userid;
     private String namesale;
 
-    public reservation_detail() {
+    public reservationdetail() {
     }
 
-    public reservation_detail(int reservationid, int serviceid, int userid, String namesale) {
+    public reservationdetail(int reservationid, int serviceid, int userid, String namesale) {
         this.reservationid = reservationid;
         this.serviceid = serviceid;
         this.userid = userid;

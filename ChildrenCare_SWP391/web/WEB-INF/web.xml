@@ -12,6 +12,10 @@
         <servlet-name>searchreservation</servlet-name>
         <servlet-class>controller_staff.searchreservation</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>reservatindetails</servlet-name>
+        <servlet-class>controller_staff.reservatindetails</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>reservation</servlet-name>
         <url-pattern>/reservation</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>searchreservation</servlet-name>
         <url-pattern>/searchreservation</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>reservatindetails</servlet-name>
+        <url-pattern>/reservatindetails</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

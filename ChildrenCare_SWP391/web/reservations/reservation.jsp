@@ -13,7 +13,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <title>JSP Page</title>
+        <title>RESERVATIONS</title>
         <script>
             $(document).ready(function () {
                 $("button").click(function () {
@@ -60,7 +60,7 @@
         </style>
     </head>
     <body>
-        <h1>chao Lfar</h1>
+     
 
         <div class="alltable">
             <div>
@@ -104,10 +104,10 @@
                 <table class="table_r">
                     <tr>
                         <th></th>
-                        <th class="show">Reservation id</th>
+                        <th class="show" style="display: none;">Reservation id</th>
                         <th>Reservation date</th>
                         <th>Customer name</th>
-                        <th class="show">Service name</th>
+                        <th class="show" style="display: none;">Service name</th>
                         <th>Total cost</th>
                         <th>Status</th>
                     </tr>
@@ -117,10 +117,10 @@
                         <tr>                 
 
                             <td>${count}</td> 
-                            <td class="show" style="text-align:center;">${a.reservationid}</td>
+                            <td class="show" style="text-align:center; display: none;">${a.reservationid}</td>
                             <td>${a.ordertime}</td>
                             <td>${a.user.fullname}</td>
-                            <td class="show">${a.service.servicename}</td>
+                            <td class="show" style="display: none;">${a.service.servicename}</td>
                             <td>${a.totalcost}</td>
                             <td>${a.status}</td>
                         <h1 hidden>${count=count +1}</h1>

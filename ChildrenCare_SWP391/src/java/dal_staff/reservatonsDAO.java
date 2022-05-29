@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import model_staff.reservation_detail;
+import model_staff.reservationdetail;
 import model_staff.reservations;
 import model_staff.reservations_user;
 import model_staff.service;
@@ -107,7 +107,7 @@ public class reservatonsDAO extends BaseDAO {
                 se.setRate(rs.getFloat("Rate"));
                 se.setStatus(rs.getString("Status"));
                 /////////////////////////////////////////////////////////////
-                reservation_detail rd = new reservation_detail();
+                reservationdetail rd = new reservationdetail();
                 rd.setReservationid(rs.getInt("Reservation_ID"));
                 rd.setServiceid(rs.getInt("Service_ID"));
                 rd.setUserid(rs.getInt("User_ID"));
@@ -157,7 +157,7 @@ public class reservatonsDAO extends BaseDAO {
             sql += " AND a.Staff_ID = " + staffid;
         }
         if (status != null && !status.equals("")) {
-            sql += " AND Status like '%" + status + "%'";
+            sql += " AND a.Status like '%" + status + "%'";
         }
 
         if (from != null) {
@@ -186,7 +186,7 @@ public class reservatonsDAO extends BaseDAO {
                 se.setRate(rs.getFloat("Rate"));
                 se.setStatus(rs.getString("Status"));
                 /////////////////////////////////////////////////////////////
-                reservation_detail rd = new reservation_detail();
+                reservationdetail rd = new reservationdetail();
                 rd.setReservationid(rs.getInt("Reservation_ID"));
                 rd.setServiceid(rs.getInt("Service_ID"));
                 rd.setUserid(rs.getInt("User_ID"));
@@ -258,7 +258,7 @@ public class reservatonsDAO extends BaseDAO {
                 se.setRate(rs.getFloat("Rate"));
                 se.setStatus(rs.getString("Status"));
                 /////////////////////////////////////////////////////////////
-                reservation_detail rd = new reservation_detail();
+                reservationdetail rd = new reservationdetail();
                 rd.setReservationid(rs.getInt("Reservation_ID"));
                 rd.setServiceid(rs.getInt("Service_ID"));
                 rd.setUserid(rs.getInt("User_ID"));
