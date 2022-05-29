@@ -8,18 +8,20 @@ package controller_staff;
 import dal_staff.reservatonsDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model_staff.reservations_user;
 
 /**
  *
  * @author dathp
  */
-public class reservation extends HttpServlet {
+public class searchreservation extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,10 +40,10 @@ public class reservation extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet reservation</title>");            
+            out.println("<title>Servlet filterreservation</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet reservation at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet filterreservation at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -61,15 +63,24 @@ public class reservation extends HttpServlet {
             throws ServletException, IOException {
         try {
             reservatonsDAO d = new reservatonsDAO();
-            List l = new ArrayList();
-            for (int i = 0; i < d.Alluser().size(); i++) 
+            
+
+            String name = request.getParameter("name");
+            String rid = request.getParameter("rid");
+           
+            Integer id = (rid  == null || rid .equals(""))
+                    ? null : Integer.parseInt(rid );
+        
+            List l = new ArrayList(); 
+            for (int i = 0; i < d.Alluser().size(); i++)
                 if(d.Alluser().get(i).getRoleid()==2) l.add(d.Alluser().get(i));
             
-            request.setAttribute("all", d.reservations_user());   
+            request.setAttribute("all", d.search(id, name));
             request.setAttribute("staff", l);  
+            
             request.getRequestDispatcher("reservations/reservation.jsp").forward(request, response);
         } catch (Exception ex) {
-         
+            System.out.println(ex);
         }
     }
 
@@ -84,8 +95,7 @@ public class reservation extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-    
-
+        processRequest(request, response);
     }
 
     /**

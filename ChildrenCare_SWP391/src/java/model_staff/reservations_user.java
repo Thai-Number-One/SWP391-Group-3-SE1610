@@ -15,22 +15,28 @@ public class reservations_user {
     
     private int reservationid;
     private int userid;
+    private int staffid;
     private Date date,ordertime;
     private String status;
     private float totalcost;
     private user user;
+    private reservation_detail redetail;
+    private service service;
 
     public reservations_user() {
     }
 
-    public reservations_user(int reservationid, int userid, Date date, Date ordertime, String status, float totalcost, user user) {
+    public reservations_user(int reservationid, int userid, int staffid, Date date, Date ordertime, String status, float totalcost, user user, reservation_detail redetail, service service) {
         this.reservationid = reservationid;
         this.userid = userid;
+        this.staffid = staffid;
         this.date = date;
         this.ordertime = ordertime;
         this.status = status;
         this.totalcost = totalcost;
         this.user = user;
+        this.redetail = redetail;
+        this.service = service;
     }
 
     public int getReservationid() {
@@ -47,6 +53,14 @@ public class reservations_user {
 
     public void setUserid(int userid) {
         this.userid = userid;
+    }
+
+    public int getStaffid() {
+        return staffid;
+    }
+
+    public void setStaffid(int staffid) {
+        this.staffid = staffid;
     }
 
     public Date getDate() {
@@ -89,6 +103,25 @@ public class reservations_user {
         this.user = user;
     }
 
+    public reservation_detail getRedetail() {
+        return redetail;
+    }
+
+    public void setRedetail(reservation_detail redetail) {
+        this.redetail = redetail;
+    }
+
+    public service getService() {
+        return service;
+    }
+
+    public void setService(service service) {
+        this.service = service;
+    }
+
+    
+
+    
    
     
 

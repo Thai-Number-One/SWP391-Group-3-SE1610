@@ -12,12 +12,21 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <title>JSP Page</title>
+        <script>
+            $(document).ready(function () {
+                $("button").click(function () {
+                    $(".show").toggle();
+                });
+            });
+
+        </script>
         <style>
             body {
                 height: 100%;
             }
-           
+
 
             .table_r {
 
@@ -55,25 +64,36 @@
 
         <div class="alltable">
             <div>
-                <form method="post" action="reservation">
+                <form method="get" action="searchreservation">
                     <table>
                         <tr>
-                            <th><input type="date" name="datefrom" placeholder="From"></th>
-                            <th><input type="date" name="dateto" placeholder="To"></th>
+                            <th><input type="text" name="rid"  placeholder="enter reservation id"></th>
+                            <th><input type="text" name="name" placeholder="enter customer name"></th>
+                            <th><button type="submit">search</button></th>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            <div>
+                <form method="get" action="filterreservation">
+                    <table>
+                        <tr>
+                            <th><input type="date" name="datefrom" ></th>
+                            <th><input type="date" name="dateto" ></th>
                             <th><select name="status">
-                                    <option value="all">all</option>
+                                    <option value="">all status</option>
                                     <option value="wait">wait</option>
                                     <option value="being">being</option>
                                 </select></th>
                             <th>
                                 <select name="staff">
-                                    <option value="0">all</option>
+                                    <option value="">all staff</option>
                                     <c:forEach items="${requestScope.staff}" var="s">
                                         <option value="${s.userid}">${s.fullname}</option>
                                     </c:forEach>
                                 </select>
                             </th>
-                            <th><input type="submit" value="filter"></th>
+                            <th><button type="submit">filter</button></th>
                         </tr>
                     </table>
                 </form>
@@ -84,8 +104,10 @@
                 <table class="table_r">
                     <tr>
                         <th></th>
+                        <th class="show">Reservation id</th>
                         <th>Reservation date</th>
                         <th>Customer name</th>
+                        <th class="show">Service name</th>
                         <th>Total cost</th>
                         <th>Status</th>
                     </tr>
@@ -93,15 +115,22 @@
                     <c:forEach items="${requestScope.all}" var="a">
 
                         <tr>                 
+
                             <td>${count}</td> 
+                            <td class="show" style="text-align:center;">${a.reservationid}</td>
                             <td>${a.ordertime}</td>
                             <td>${a.user.fullname}</td>
+                            <td class="show">${a.service.servicename}</td>
                             <td>${a.totalcost}</td>
                             <td>${a.status}</td>
                         <h1 hidden>${count=count +1}</h1>
+                        
                         </tr>
                     </c:forEach>
                 </table>
+            </div>
+            <div>
+                <button onclick="myFunction()" >show full list</button>
             </div>
 
         </div>
