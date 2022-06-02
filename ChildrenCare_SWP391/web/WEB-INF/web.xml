@@ -13,8 +13,24 @@
         <servlet-class>controller_staff.searchreservation</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>reservatindetails</servlet-name>
-        <servlet-class>controller_staff.reservatindetails</servlet-class>
+        <servlet-name>reservationdetails</servlet-name>
+        <servlet-class>controller_staff.reservationdetails</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>medical</servlet-name>
+        <servlet-class>controller_staff.medical</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>filtermedical</servlet-name>
+        <servlet-class>controller_staff.filtermedical</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>prescription</servlet-name>
+        <servlet-class>controller_staff.prescription</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>checkprescription</servlet-name>
+        <servlet-class>controller_staff.checkprescription</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>reservation</servlet-name>
@@ -29,8 +45,24 @@
         <url-pattern>/searchreservation</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>reservatindetails</servlet-name>
-        <url-pattern>/reservatindetails</url-pattern>
+        <servlet-name>reservationdetails</servlet-name>
+        <url-pattern>/reservationdetails</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>medical</servlet-name>
+        <url-pattern>/medical</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>filtermedical</servlet-name>
+        <url-pattern>/filtermedical</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>prescription</servlet-name>
+        <url-pattern>/prescription</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>checkprescription</servlet-name>
+        <url-pattern>/checkprescription</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

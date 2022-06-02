@@ -6,10 +6,10 @@
 package dal_staff;
 
 import Context.BaseDAO;
-import controller_staff.reservation;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import model_staff.Prescription;
 import model_staff.reservations;
 import model_staff.user;
 
@@ -18,6 +18,39 @@ import model_staff.user;
  * @author dathp
  */
 public class insert_reservationDAO extends BaseDAO{
+    
+    public void updateStatus(int id,String s) throws Exception{
+        try {
+            
+              String sql="update Reservation set Status = ?  where User_ID = ?";
+                 Connection conn = new BaseDAO().BaseDao();
+                  PreparedStatement st = conn.prepareStatement(sql);  
+                  st.setString(1, s);
+                  st.setInt(2, id); 
+    
+                  st.executeUpdate();
+          } catch (SQLException ex) {
+              System.out.println(ex);
+          }
+    }
+    
+    public void insertPrescription(Prescription p) throws SQLException, Exception{
+          try {
+              String sql="insert into Prescription(Prescription_ID,User_ID,Medicine_ID,Amount,Note)\n" +
+"values(?,?,?,?,?)";
+                Connection conn = new BaseDAO().BaseDao();
+                  PreparedStatement st = conn.prepareStatement(sql);  
+                  st.setInt(1, p.getPrescriptionid());
+                  st.setInt(2, p.getUserid());
+                  st.setInt(3, p.getMedicineid());
+                  st.setInt(4, p.getAmount());
+                  st.setString(5, p.getNote());
+                  st.executeUpdate();              
+          } catch (SQLException ex) {
+              System.out.println(ex);
+          }
+    }
+    
     public void insertUser(user u) throws SQLException, Exception{
           try {
               String sql="insert into [User]([User_ID],FullName,Address,Phone,Email,Date,User_Name,Password,Avatar,Gender,Role_ID)\n" +
@@ -57,4 +90,5 @@ public class insert_reservationDAO extends BaseDAO{
               System.out.println(ex);
           }
     }
+    
 }

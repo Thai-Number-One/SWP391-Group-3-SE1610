@@ -5,23 +5,25 @@
  */
 package controller_staff;
 
+import dal_staff.insert_reservationDAO;
 import dal_staff.reservatonsDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model_staff.reservations_user;
+import model_staff.Prescription;
 
 /**
  *
  * @author dathp
  */
-public class searchreservation extends HttpServlet {
+public class checkprescription extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,10 +42,10 @@ public class searchreservation extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet filterreservation</title>");            
+            out.println("<title>Servlet add_prescription</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet filterreservation at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet add_prescription at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -62,25 +64,20 @@ public class searchreservation extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
+            int id = Integer.parseInt(request.getParameter("id"));
+            
             reservatonsDAO d = new reservatonsDAO();
-            
-
-            String name = request.getParameter("name");
-            String rid = request.getParameter("rid");
-           
-            Integer id = (rid  == null || rid .equals(""))
-                    ? null : Integer.parseInt(rid );
-        
-            List l = new ArrayList(); 
-            for (int i = 0; i < d.Alluser().size(); i++)
-                if(d.Alluser().get(i).getRoleid()==2) l.add(d.Alluser().get(i));
-            
-            request.setAttribute("all", d.search(id, name));
-            request.setAttribute("staff", l);  
-            
-            request.getRequestDispatcher("staff/reservation.jsp").forward(request, response);
+            List l =new ArrayList();
+            for (int i = 0; i < d.allstaff().size(); i++) {
+                if(d.allstaff().get(i).getPrescription().getPrescriptionid()==id){
+                    l.add(d.allstaff().get(i));
+                }
+            }
+            request.setAttribute("me", d.allmedicine());
+            request.setAttribute("add", l);
+            request.getRequestDispatcher("staff/addmedicine.jsp").forward(request, response);
         } catch (Exception ex) {
-            System.out.println(ex);
+            Logger.getLogger(checkprescription.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -95,7 +92,19 @@ public class searchreservation extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            insert_reservationDAO d = new insert_reservationDAO();
+            int pid = Integer.parseInt(request.getParameter("pid"));
+            int uid = Integer.parseInt(request.getParameter("uid"));
+            int mid = Integer.parseInt(request.getParameter("mid"));
+            int amount = Integer.parseInt(request.getParameter("amount"));
+            String note = request.getParameter("note");
+            
+            d.insertPrescription(new Prescription(pid, uid, mid, amount, note));
+            response.sendRedirect("prescription");
+        } catch (Exception ex) {
+            Logger.getLogger(checkprescription.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

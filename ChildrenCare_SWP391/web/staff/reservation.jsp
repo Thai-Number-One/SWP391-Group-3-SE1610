@@ -48,7 +48,7 @@
                 color: #fff;
                 background-color: #5a5a5a;
             }
-            .alltable{
+            .all{
                 position: absolute;
                 top: 30%;
                 left: 50%;
@@ -62,7 +62,7 @@
     <body>
      
 
-        <div class="alltable">
+        <div class="all">
             <div>
                 <form method="get" action="searchreservation">
                     <table>
@@ -117,9 +117,9 @@
                         <tr>                 
 
                             <td>${count}</td> 
-                            <td class="show" style="text-align:center; display: none;">${a.reservationid}</td>
+                            <td class="show" style="text-align:center; display: none;"><a href="reservationdetails?id=${a.user.userid}">${a.reservationid}</a></td>
                             <td>${a.ordertime}</td>
-                            <td>${a.user.fullname}</td>
+                            <td><a href="reservationdetails?id=${a.user.userid}">${a.user.fullname}</a></td>
                             <td class="show" style="display: none;">${a.service.servicename}</td>
                             <td>${a.totalcost}</td>
                             <td>${a.status}</td>

@@ -10,17 +10,26 @@ package model_staff;
  * @author dathp
  */
 public class reservationdetail {
-    private int reservationid,serviceid,userid;
+    private int Prescription_ID,reservationid,serviceid,userid;
     private String namesale;
 
     public reservationdetail() {
     }
 
-    public reservationdetail(int reservationid, int serviceid, int userid, String namesale) {
+    public reservationdetail(int Prescription_ID, int reservationid, int serviceid, int userid, String namesale) {
+        this.Prescription_ID = Prescription_ID;
         this.reservationid = reservationid;
         this.serviceid = serviceid;
         this.userid = userid;
         this.namesale = namesale;
+    }
+
+    public int getPrescription_ID() {
+        return Prescription_ID;
+    }
+
+    public void setPrescription_ID(int Prescription_ID) {
+        this.Prescription_ID = Prescription_ID;
     }
 
     public int getReservationid() {
@@ -54,6 +63,6 @@ public class reservationdetail {
     public void setNamesale(String namesale) {
         this.namesale = namesale;
     }
-    
-    
+
+  
 }

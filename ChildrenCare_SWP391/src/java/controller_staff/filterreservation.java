@@ -82,7 +82,7 @@ public class filterreservation extends HttpServlet {
             request.setAttribute("all", d.filter(id, status, from, to));
             request.setAttribute("staff", l);  
             
-            request.getRequestDispatcher("reservations/reservation.jsp").forward(request, response);
+            request.getRequestDispatcher("staff/reservation.jsp").forward(request, response);
         } catch (Exception ex) {
             System.out.println(ex);
         }
