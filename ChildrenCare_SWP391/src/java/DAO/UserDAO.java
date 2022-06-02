@@ -51,9 +51,28 @@ public class UserDAO {
         return null;
     }
     
+    public void updateaccount(String id, String pass){
+ 
+        try {
+            String sql="update [User]\n" +
+                       "set [Password] = ?\n" +
+                        "where [User_ID] = ? ";
+            
+            conn = new BaseDAO().BaseDao();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, pass);
+            ps.setString(2, id);
+            ps.executeUpdate();
+            
+        } catch (Exception e) {
+        }
+    } 
+    
+    
+    
     public static void main(String[] args) {
         UserDAO dao = new UserDAO();
-        List<User> list = dao.checkemailexit("nguyencuong@gmail.com");
+        List<User> list = dao.checkemailexit("nguyenvancuong@gmail.com");
         for(User u : list){
             System.out.println(u);
         }

@@ -12,9 +12,11 @@ import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -38,14 +40,32 @@ public class TakeEmailServlet extends HttpServlet {
         try {
             String email = request.getParameter("email");
             
+            
+            
             UserDAO dao = new UserDAO();
             List<User> list = dao.checkemailexit(email);
             
-            if(list == null && email != null){
+            String  User_ID ;
+ 
+                User_ID = String.valueOf(list.get(0).getUser_ID());
+            
+     
+            
+            if(list.size()==0 || email == null){
                 request.getRequestDispatcher("TakeEmail.jsp").forward(request, response);
             }else{
-                request.setAttribute("UserD", list);
+
+                HttpSession session = request.getSession();
+                session.setAttribute("acc", list);
+                
+                Cookie e = new Cookie("emaild",email);
+                Cookie u = new Cookie("user_id",User_ID);
+                u.setMaxAge(360*360);
+                response.addCookie(u);
+                
+                request.setAttribute("userd", list);
                 request.getRequestDispatcher("ConfirmEmail.jsp").forward(request, response);
+                
             }
    
             
@@ -65,7 +85,8 @@ public class TakeEmailServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        //processRequest(request, response);
+        
     }
 
     /**

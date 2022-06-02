@@ -72,20 +72,20 @@
                             
                             <tr>
                                 <td bgcolor="#ffffff" align="left" style="padding: 20px 30px 40px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 30px; font-weight: 400; line-height: 25px;">
-                                    <c:forEach items="${UserD}" var ="o">
+                                    <c:forEach items="${userd}" var ="o">
 
                                         <table>
                                             <tr>
-                                            <p style="margin: 0;">${o.user_name}</p>
-                                            <p style="margin: 0;">${o.fullname}</p>
-                                            <p style="margin: 0;">${o.email}</p>
+                                            <p style="margin: 0; font-size: 20px; color: #111111;" >Username: ${o.fullName}</p>
+                                            <p style="margin: 0; font-size: 20px; color: #111111;" >Phone: ${o.phone}</p>
+                                            <p style="margin: 0; font-size: 20px; color: #111111; " >Email: ${o.email}</p>
                                         </tr>
                                         </table>          
                                     </c:forEach>
                                                              
                                 </td>
                             </tr>
-                            
+                            <form action="SendEmail" method="get">
                             <tr>
                                 <td bgcolor="#ffffff" align="left">
                                     <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -93,15 +93,15 @@
                                             <td bgcolor="#ffffff" align="center" style="padding: 20px 30px 60px 30px;">
                                                 <table border="0" cellspacing="0" cellpadding="0">
                                                     <tr>
-                                                        <td align="center" style="border-radius: 3px;" bgcolor="#F45677"><a href="#" target="_blank" style="font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #FFA73B; display: inline-block;">Send Email to change Password</a></td>
+                                                        <td align="center" style="border-radius: 3px;" bgcolor="#F45677"><a href="SendEmail" target="_blank" style="font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #FFA73B; display: inline-block; "><button type="submit" style="background-color: #F45677; color: #ffffff; border: 0px;">Send Email to change Password</button></a></td>
                                                     </tr>
                                                 </table>
                                             </td>
                                         </tr>
                                     </table>
                                 </td>
-                            </tr> <!-- COPY -->
-                            
+                            </tr> 
+                            </form>
                             <tr>
                                 <td bgcolor="#ffffff" align="left" style="padding: 0px 30px 20px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;">
                                     <p style="margin: 0;">If you have any questions, just reply to this email—we're always happy to help out.</p>
