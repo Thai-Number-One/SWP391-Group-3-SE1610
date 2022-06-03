@@ -68,7 +68,7 @@ public class reservatonsDAO extends BaseDAO {
                 u.setUserid(rs.getInt("User_ID"));
                 u.setFullname(rs.getString("FullName"));
                 u.setAddress(rs.getString("Address"));
-                u.setPhone(rs.getInt("Phone"));
+                u.setPhone(rs.getString("Phone"));
                 u.setEmail(rs.getString("Email"));
                 u.setDate(rs.getDate("Date"));
                 u.setUsername(rs.getString("User_Name"));
@@ -168,7 +168,7 @@ public class reservatonsDAO extends BaseDAO {
                 u.setUserid(rs.getInt("User_ID"));
                 u.setFullname(rs.getString("FullName"));
                 u.setAddress(rs.getString("Address"));
-                u.setPhone(rs.getInt("Phone"));
+                u.setPhone(rs.getString("Phone"));
                 u.setEmail(rs.getString("Email"));
                 u.setDate(rs.getDate("Date"));
                 u.setUsername(rs.getString("User_Name"));
@@ -306,7 +306,7 @@ public class reservatonsDAO extends BaseDAO {
                 u.setUserid(rs.getInt("User_ID"));
                 u.setFullname(rs.getString("FullName"));
                 u.setAddress(rs.getString("Address"));
-                u.setPhone(rs.getInt("Phone"));
+                u.setPhone(rs.getString("Phone"));
                 u.setEmail(rs.getString("Email"));
                 u.setDate(rs.getDate("Date"));
                 u.setUsername(rs.getString("User_Name"));
@@ -359,7 +359,7 @@ public class reservatonsDAO extends BaseDAO {
                 u.setUserid(rs.getInt("User_ID"));
                 u.setFullname(rs.getString("FullName"));
                 u.setAddress(rs.getString("Address"));
-                u.setPhone(rs.getInt("Phone"));
+                u.setPhone(rs.getString("Phone"));
                 u.setEmail(rs.getString("Email"));
                 u.setDate(rs.getDate("Date"));
                 u.setUsername(rs.getString("User_Name"));
@@ -439,7 +439,7 @@ public class reservatonsDAO extends BaseDAO {
                 u.setUserid(rs.getInt("User_ID"));
                 u.setFullname(rs.getString("FullName"));
                 u.setAddress(rs.getString("Address"));
-                u.setPhone(rs.getInt("Phone"));
+                u.setPhone(rs.getString("Phone"));
                 u.setEmail(rs.getString("Email"));
                 u.setDate(rs.getDate("Date"));
                 u.setUsername(rs.getString("User_Name"));
@@ -512,7 +512,7 @@ public class reservatonsDAO extends BaseDAO {
                 u.setUserid(rs.getInt("User_ID"));
                 u.setFullname(rs.getString("FullName"));
                 u.setAddress(rs.getString("Address"));
-                u.setPhone(rs.getInt("Phone"));
+                u.setPhone(rs.getString("Phone"));
                 u.setEmail(rs.getString("Email"));
                 u.setDate(rs.getDate("Date"));
                 u.setUsername(rs.getString("User_Name"));

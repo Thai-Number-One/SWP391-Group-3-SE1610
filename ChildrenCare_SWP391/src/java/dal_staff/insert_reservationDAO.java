@@ -60,7 +60,7 @@ public class insert_reservationDAO extends BaseDAO{
                   st.setInt(1, u.getUserid());
                   st.setString(2, u.getFullname());
                   st.setString(3, u.getAddress());
-                  st.setInt(4, u.getPhone());
+                  st.setString(4, u.getPhone());
                   st.setString(5, u.getEmail());
                   st.setDate(6, u.getDate());
                   st.setString(7, u.getUsername());

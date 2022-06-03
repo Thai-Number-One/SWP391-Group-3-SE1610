@@ -64,8 +64,13 @@ public class checkprescription extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            int id = Integer.parseInt(request.getParameter("id"));
+            String rid = request.getParameter("id");
             
+            Integer id = (rid == null || rid.equals(""))
+                    ? null : Integer.parseInt(rid);
+            if(id==null){
+                response.sendRedirect("prescription");
+            }
             reservatonsDAO d = new reservatonsDAO();
             List l =new ArrayList();
             for (int i = 0; i < d.allstaff().size(); i++) {

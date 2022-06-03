@@ -15,7 +15,7 @@ public class user {
     private int userid;
     private String fullname;
     private String address;
-    private int phone;
+    private String phone;
     private String email;
     private Date date;
     private String username;
@@ -27,7 +27,7 @@ public class user {
     public user() {
     }
 
-    public user(int userid, String fullname, String address, int phone, String email, Date date, String username, String password, String avatar, int gender, int roleid) {
+    public user(int userid, String fullname, String address, String phone, String email, Date date, String username, String password, String avatar, int gender, int roleid) {
         this.userid = userid;
         this.fullname = fullname;
         this.address = address;
@@ -65,11 +65,11 @@ public class user {
         this.address = address;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
@@ -129,6 +129,7 @@ public class user {
         this.roleid = roleid;
     }
 
+   
   
 
     
