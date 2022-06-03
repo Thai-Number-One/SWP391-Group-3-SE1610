@@ -8,6 +8,7 @@ package controller_staff;
 import dal_staff.reservatonsDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -19,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author dathp
  */
-public class reservatindetails extends HttpServlet {
+public class filtermedical extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,10 +39,10 @@ public class reservatindetails extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet reservatindetails</title>");            
+            out.println("<title>Servlet filtermedical</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet reservatindetails at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet filtermedical at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -61,10 +62,24 @@ public class reservatindetails extends HttpServlet {
             throws ServletException, IOException {
         try {
             reservatonsDAO d = new reservatonsDAO();
-            request.setAttribute("all", d.reservations_user());
-            request.getRequestDispatcher("reservations/reservationdetails.jsp").forward(request, response);
+
+            String names = request.getParameter("service");
+            String namem = request.getParameter("medical");
+            String datefrom = request.getParameter("from");
+            String dateto = request.getParameter("to");
+
+            Date from = (datefrom == null || datefrom.equals(""))
+                    ? null : Date.valueOf(datefrom);
+            Date to = (dateto == null || dateto.equals(""))
+                    ? null : Date.valueOf(dateto);
+            
+            request.setAttribute("re", d.Allreservations());
+            request.setAttribute("me", d.allmedicine());
+            request.setAttribute("se", d.allservice());
+            request.setAttribute("all", d.filterallstaff(names, from, to, namem));
+            request.getRequestDispatcher("staff/medical_examination.jsp").forward(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(reservatindetails.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(filtermedical.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
