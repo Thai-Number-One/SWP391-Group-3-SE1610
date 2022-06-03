@@ -10,6 +10,7 @@ import Entity.Mail;
 import Entity.User;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.regex.Pattern;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -40,10 +41,9 @@ public class ChangePasswordServlet extends HttpServlet {
         try {
             String newpass = request.getParameter("newpass");
             String retypepass = request.getParameter("retypepass");
-            PrintWriter out = response.getWriter();
-            if (newpass != null && newpass.equals(retypepass)) {
-
-                
+            Pattern p = Pattern.compile("^.*(?=.{8,})(?=..*[0-9])(?=.*[a-z])(?=.*[A-Z]).*$");
+            if (p.matcher(newpass).find() && newpass != null && newpass.equals(retypepass)) {
+            
                 Cookie arr[] = request.getCookies();
                 if (arr != null) {
                     for (Cookie o : arr) {
@@ -56,13 +56,26 @@ public class ChangePasswordServlet extends HttpServlet {
                         }
                     }
                 }
-                out.println("Change password successfully");
+                String mess = "Change password successfully";
+                request.setAttribute("mess", mess);
+                request.getRequestDispatcher("ChangePassword.jsp").forward(request, response);
 
                 
             }
-            else{
-                 out.println("Failed to change password");
-            }    
+            else if(!newpass.equals(retypepass)){
+                 
+                String mess2 = "Failed to change password"; 
+                String mess3 = "Retype password not same New Password";
+                request.setAttribute("mess", mess2);
+                request.setAttribute("mess1", mess3);
+                request.getRequestDispatcher("ChangePassword.jsp").forward(request, response);
+            }else{
+                String mess2 = "Failed to change password"; 
+                String mess3 = "Please enter a new password with 8 characters and no special characters";
+                request.setAttribute("mess", mess2);
+                request.setAttribute("mess1", mess3);
+                request.getRequestDispatcher("ChangePassword.jsp").forward(request, response);
+            }
         } catch (Exception e) {
         }
     }

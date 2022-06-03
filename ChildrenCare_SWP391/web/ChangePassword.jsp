@@ -56,7 +56,8 @@
                                         <div class="form-group">
                                             <button type="submit" class="form-control btn btn-primary submit px-3">Change Password</button>
                                         </div>
-
+                                        <p class="text-danger">${mess}</p>
+                                        <p class="text-danger">${mess1}</p>
                                     </form>
                                 </div>
                             </div>

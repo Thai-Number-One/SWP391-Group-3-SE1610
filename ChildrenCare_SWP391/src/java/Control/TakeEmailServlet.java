@@ -41,19 +41,18 @@ public class TakeEmailServlet extends HttpServlet {
             String email = request.getParameter("email");
             
             
-            
             UserDAO dao = new UserDAO();
             List<User> list = dao.checkemailexit(email);
             
-            String  User_ID ;
- 
-                User_ID = String.valueOf(list.get(0).getUser_ID());
-            
-     
-            
-            if(list.size()==0 || email == null){
+
+            if(email == null || list.size() == 0){
+                request.setAttribute("mess", "Your email does not have an account");
                 request.getRequestDispatcher("TakeEmail.jsp").forward(request, response);
-            }else{
+            }else {
+                
+                String User_ID;
+                    
+                User_ID = String.valueOf(list.get(0).getUser_ID());
 
                 HttpSession session = request.getSession();
                 session.setAttribute("acc", list);
@@ -62,6 +61,8 @@ public class TakeEmailServlet extends HttpServlet {
                 Cookie u = new Cookie("user_id",User_ID);
                 u.setMaxAge(360*360);
                 response.addCookie(u);
+                e.setMaxAge(360*360);
+                response.addCookie(e);
                 
                 request.setAttribute("userd", list);
                 request.getRequestDispatcher("ConfirmEmail.jsp").forward(request, response);
@@ -70,6 +71,7 @@ public class TakeEmailServlet extends HttpServlet {
    
             
         } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

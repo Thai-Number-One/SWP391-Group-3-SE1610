@@ -1,6 +1,6 @@
 <%-- 
-    Document   : ResetHome1
-    Created on : May 26, 2022, 8:36:11 PM
+    Document   : EnterCode
+    Created on : Jun 2, 2022, 10:12:46 PM
     Author     : s
 --%>
 
@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <<head>
-        <title>Reset Password</title>
+        <title>Enter Verification Code </title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -24,7 +24,6 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-md-6 text-center mb-5">
-                        <h2 class="heading-section">Reset Password</h2>
                     </div>
                 </div>
 
@@ -33,23 +32,22 @@
                         <div class=" ">
                             <div class="text-wrap p-4 p-lg-5 text-center d-flex  order-md-last">
                                 <div class="text w-100">
-                                    <h2>Fogot Your Password?</h2>
-                                    <p>Please enter your email to change your password</p>
+                                    <h2>Verification Code</h2>
+                                    <p>Please enter your verification code to change your password</p>
 
                                 </div>
                             </div>
                             <div class="login-wrap p-4 p-lg-5">
                                 <p class="text-danger">${mess}</p>
-                                <form action="TakeEmail" method="post">
+                                <form action="Verity" method="post">
                                     <div class="form-group mb-3">
-                                        <label class="label" for="name">Email</label>
-                                        <input type="text" class="form-control" id ="email" name="email" placeholder="Email" required>
+                                        <label class="label" for="name">Verification Code</label>
+                                        <input type="text" class="form-control" id ="email" name="authcode" placeholder="Verification Code" required>
                                     </div>
 
                                     <div class="form-group">
-                                        <button type="submit" class="form-control btn btn-primary submit px-3">Reset my Password</button>
+                                        <button type="submit" class="form-control btn btn-primary submit px-3">Change my Password</button>
                                     </div>
-
                                 </form>
                             </div>
                         </div>

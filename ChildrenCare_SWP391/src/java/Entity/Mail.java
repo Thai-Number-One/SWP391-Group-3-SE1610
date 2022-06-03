@@ -12,6 +12,8 @@ import java.util.Random;
 import javax.mail.Session;
 import javax.mail.Authenticator;
 import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.mail.Transport;
@@ -77,8 +79,8 @@ public class Mail {
         boolean test = false;
 
         String toEmail = user.getEmail();
-        String fromEmail = "jonh012349@gmail.com";
-        String password = "05050301";
+        String fromEmail = "leemuld10@gmail.com";
+        String password = "levu050721";
 
         try {
 

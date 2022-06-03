@@ -35,16 +35,20 @@ public class VerityServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try {
-            PrintWriter out = response.getWriter();
+            
             HttpSession session = request.getSession();
             User user = (User) session.getAttribute("authcode");
             
             String code = request.getParameter("authcode");
             
             if(code.equals(user.getUser_Name())){
-                out.println("Verification Done");
+                String mess = "Verification Done";
+                request.setAttribute("mess", mess);
+                request.getRequestDispatcher("EnterCode.jsp").forward(request, response);
             }else{
-                out.println("Incorrect verification code");
+                String mess = "Incorrect verification code - Please enter code again";
+                request.setAttribute("mess", mess);
+                request.getRequestDispatcher("EnterCode.jsp").forward(request, response);
             }
             
         } catch (Exception e) {

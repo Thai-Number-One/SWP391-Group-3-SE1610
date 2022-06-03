@@ -6,6 +6,8 @@
 package Control;
 
 import Entity.Mail;
+import Entity.TestMail;
+import static Entity.TestMail.sendEmail;
 import Entity.User;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -44,16 +46,17 @@ public class SendEmailServlet extends HttpServlet {
                     if (o.getName().equals("emaild")) {
                         String email = o.getValue();
                         
+                        //TestMail m = new TestMail();
                         Mail m = new Mail();
                         String code = m.getRamdom();
                         
                         User user = new User(0, null, null, 0, email, null, code, null, null, 0, 0);
                         
-                        boolean test = m.sendEmail(user);
+                        boolean test = sendEmail(user);
                         if(test){
                             HttpSession session = request.getSession();
                             session.setAttribute("authcode", user);
-                            response.sendRedirect("Verity.jsp");
+                            response.sendRedirect("EnterCode.jsp");
                         }else{
                             out.println("Failed to send verification email");
                         }
