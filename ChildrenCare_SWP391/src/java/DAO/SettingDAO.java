@@ -136,19 +136,6 @@ public class SettingDAO {
         }
         return null;
     }
-
-    public void ChangeStatus(int status, int setting_ID) {
-        String query = "Update Setting set Status = ? where Setting_ID = ?";
-        try {
-            con = new BaseDAO().BaseDao();
-            ps = con.prepareStatement(query);
-            ps.setInt(1, status);
-            ps.setInt(2, setting_ID);
-            ps.executeUpdate();
-        } catch (Exception e) {
-        }
-    }
-
     public Setting GetSetting(int id) {
         String query = "select * from Setting where Setting_ID = ?";
         try {
