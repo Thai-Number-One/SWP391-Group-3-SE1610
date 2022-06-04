@@ -21,7 +21,7 @@ public class BaseDAO {
     }   
     
     private final String serverName = "localhost";
-    private final String dbName = "TestProject4";
+    private final String dbName = "TestProject4";  //ChildrenCare
     private final String portNumber = "1433";
     private final String instance="";
     private final String userID = "sa";
