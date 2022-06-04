@@ -9,9 +9,10 @@ import java.sql.Date;
 
 /**
  *
- * @author thaic
+ * @author s
  */
 public class UserT {
+    
     private int id;
     private String fullName;
     private String address;
@@ -27,7 +28,6 @@ public class UserT {
 
     public UserT() {
     }
-
 
     public UserT(int id, String fullName, String address, String phone, String email, Date date, String userName, String password, String avatar, int gender, int role, int status) {
         this.id = id;
@@ -142,11 +142,8 @@ public class UserT {
 
     @Override
     public String toString() {
-        return "user{" + "id=" + id + ", fullName=" + fullName + ", address=" + address + ", phone=" + phone + ", email=" + email + ", date=" + date + ", userName=" + userName + ", password=" + password + ", avatar=" + avatar + ", gender=" + gender + ", role=" + role + ", status=" + status + '}';
+        return "UserT{" + "id=" + id + ", fullName=" + fullName + ", address=" + address + ", phone=" + phone + ", email=" + email + ", date=" + date + ", userName=" + userName + ", password=" + password + ", avatar=" + avatar + ", gender=" + gender + ", role=" + role + ", status=" + status + '}';
     }
-
-   
     
-            
-  
+    
 }
