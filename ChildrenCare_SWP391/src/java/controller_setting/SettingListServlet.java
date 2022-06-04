@@ -7,7 +7,6 @@ package controller_setting;
 
 import DAO.SettingDAO;
 import Entity.Setting;
-import Entity.Type;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -21,8 +20,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author HP
  */
-@WebServlet(name = "PageServlet", urlPatterns = {"/settinglist"})
-public class PageServlet extends HttpServlet {
+@WebServlet(name = "SettingListServlet", urlPatterns = {"/settinglist"})
+public class SettingListServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>

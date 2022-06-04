@@ -75,7 +75,7 @@ public class AddNewSettingServlet extends HttpServlet {
         int id = list.get(list.size() - 1).getSetting_ID() + 1;
         Setting s = new Setting(id, type, value, description, true);
         dao.AddNewSetting(s);
-        response.sendRedirect("paging");
+        response.sendRedirect("settinglist");
         
     }
 
