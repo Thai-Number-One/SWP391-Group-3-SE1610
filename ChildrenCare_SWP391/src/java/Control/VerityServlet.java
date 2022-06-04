@@ -42,9 +42,8 @@ public class VerityServlet extends HttpServlet {
             String code = request.getParameter("authcode");
             
             if(code.equals(user.getUser_Name())){
-                String mess = "Verification Done";
-                request.setAttribute("mess", mess);
-                request.getRequestDispatcher("EnterCode.jsp").forward(request, response);
+                
+                response.sendRedirect("ChangePassword.jsp");
             }else{
                 String mess = "Incorrect verification code - Please enter code again";
                 request.setAttribute("mess", mess);
