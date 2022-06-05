@@ -38,11 +38,13 @@ public class UserDAO {
                                   rs.getInt(4),
                                   rs.getString(5),
                                   rs.getDate(6),
-                                  rs.getString(7),
+                                  rs.getDate(7),
                                   rs.getString(8),
                                   rs.getString(9),
-                                  rs.getInt(10),
-                                  rs.getInt(11));
+                                  rs.getString(10),
+                                  rs.getInt(11),
+                                  rs.getInt(12),
+                                  rs.getInt(13));
                 list.add(u);
             }
             return list;
@@ -72,7 +74,7 @@ public class UserDAO {
     
     public static void main(String[] args) {
         UserDAO dao = new UserDAO();
-        List<User> list = dao.checkemailexit("nguyenvancuong@gmail.com");
+        List<User> list = dao.checkemailexit("mdchannelvn@gmail.com");
         for(User u : list){
             System.out.println(u);
         }

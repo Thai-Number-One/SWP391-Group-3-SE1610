@@ -6,6 +6,7 @@
 package Control;
 
 import Entity.Mail;
+import Entity.MailB;
 import Entity.TestMail;
 import static Entity.TestMail.sendEmail;
 import Entity.User;
@@ -18,6 +19,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import newpackage.UserV;
 
 /**
  *
@@ -47,15 +49,18 @@ public class SendEmailServlet extends HttpServlet {
                         String email = o.getValue();
                         
                         //TestMail m = new TestMail();
-                        Mail m = new Mail();
+                        MailB m = new MailB();
                         String code = m.getRamdom();
                         
-                        User user = new User(0, null, null, 0, email, null, code, null, null, 0, 0);
                         
-                        boolean test = sendEmail(user);
+                        
+                        //User user = new User(0, "A", "A", 0, email, 2001/05/03, 2001/05/03, code, "123", null, 0, 0, 0);
+                        UserV userv = new UserV("A", email, code);
+                        
+                        boolean test = m.sendEmail2(userv);
                         if(test){
                             HttpSession session = request.getSession();
-                            session.setAttribute("authcode", user);
+                            session.setAttribute("authcode", userv);
                             response.sendRedirect("EnterCode.jsp");
                         }else{
                             out.println("Failed to send verification email");
@@ -101,5 +106,7 @@ public class SendEmailServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    
 
 }

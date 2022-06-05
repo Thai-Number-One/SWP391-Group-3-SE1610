@@ -33,8 +33,8 @@
                                 <div class="text-wrap p-4 p-lg-5 text-center d-flex align-items-center order-md-last">
                                     <div class="text w-100">
                                         <h2>Welcome to ChildrenCare</h2>
-                                        <p>Don't have an account?</p>
-                                        <a href="#" class="btn btn-white btn-outline-white">Sign Up</a>
+                                        <p>After Change Password, Please login again!!!</p>
+                                        <a href="#" class="btn btn-white btn-outline-white">Sign In</a>
                                     </div>
                                 </div>
                                 <div class="login-wrap p-4 p-lg-5">
