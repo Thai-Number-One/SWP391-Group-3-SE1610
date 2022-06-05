@@ -99,7 +99,7 @@ public class SettingDetailsServlet extends HttpServlet {
         Setting s = new Setting(id, type, value, description, index);
         SettingDAO dao = new SettingDAO();
         dao.UpdateSetting(s);
-        response.sendRedirect("paging");
+        response.sendRedirect("settinglist");
     }
 
     /**
