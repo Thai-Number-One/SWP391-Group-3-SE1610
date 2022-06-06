@@ -17,28 +17,33 @@ public class User {
     private String Address;
     private int Phone;
     private String Email;
-    private Date Date;
+    private Date Date; 
+    private Date Date_New;
     private String User_Name;
     private String Password;
     private String Avatar;
     private int Gender;
     private int Role_ID;
+    private int Status;
+    
 
     public User() {
     }
 
-    public User(int User_ID, String FullName, String Address, int Phone, String Email, Date Date, String User_Name, String Password, String Avatar, int Gender, int Role_ID) {
+    public User(int User_ID, String FullName, String Address, int Phone, String Email, Date Date, Date Date_New, String User_Name, String Password, String Avatar, int Gender, int Role_ID, int Status) {
         this.User_ID = User_ID;
         this.FullName = FullName;
         this.Address = Address;
         this.Phone = Phone;
         this.Email = Email;
         this.Date = Date;
+        this.Date_New = Date_New;
         this.User_Name = User_Name;
         this.Password = Password;
         this.Avatar = Avatar;
         this.Gender = Gender;
         this.Role_ID = Role_ID;
+        this.Status = Status;
     }
 
     public int getUser_ID() {
@@ -89,6 +94,14 @@ public class User {
         this.Date = Date;
     }
 
+    public Date getDate_New() {
+        return Date_New;
+    }
+
+    public void setDate_New(Date Date_New) {
+        this.Date_New = Date_New;
+    }
+
     public String getUser_Name() {
         return User_Name;
     }
@@ -129,11 +142,18 @@ public class User {
         this.Role_ID = Role_ID;
     }
 
+    public int getStatus() {
+        return Status;
+    }
+
+    public void setStatus(int Status) {
+        this.Status = Status;
+    }
+
     @Override
     public String toString() {
-        return "User{" + "User_ID=" + User_ID + ", FullName=" + FullName + ", Address=" + Address + ", Phone=" + Phone + ", Email=" + Email + ", Date=" + Date + ", User_Name=" + User_Name + ", Password=" + Password + ", Avatar=" + Avatar + ", Gender=" + Gender + ", Role_ID=" + Role_ID + '}';
+        return "User{" + "User_ID=" + User_ID + ", FullName=" + FullName + ", Address=" + Address + ", Phone=" + Phone + ", Email=" + Email + ", Date=" + Date + ", Date_New=" + Date_New + ", User_Name=" + User_Name + ", Password=" + Password + ", Avatar=" + Avatar + ", Gender=" + Gender + ", Role_ID=" + Role_ID + ", Status=" + Status + '}';
     }
-    
-    
 
+    
 }

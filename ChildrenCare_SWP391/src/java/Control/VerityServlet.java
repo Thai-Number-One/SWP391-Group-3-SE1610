@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import newpackage.UserV;
 
 /**
  *
@@ -37,11 +38,12 @@ public class VerityServlet extends HttpServlet {
         try {
             
             HttpSession session = request.getSession();
-            User user = (User) session.getAttribute("authcode");
+            //User user = (User) session.getAttribute("authcode");
+            UserV userv = (UserV) session.getAttribute("authcode");
             
             String code = request.getParameter("authcode");
             
-            if(code.equals(user.getUser_Name())){
+            if(code.equals(userv.getCode())){
                 
                 response.sendRedirect("ChangePassword.jsp");
             }else{

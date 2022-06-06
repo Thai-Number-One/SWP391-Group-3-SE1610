@@ -17,6 +17,7 @@ import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.mail.Transport;
+import newpackage.UserV;
 
 
 
@@ -75,10 +76,11 @@ public class Mail {
         return test;
     }
     */
-    public boolean sendEmail(User user) {
+    public boolean sendEmail(UserV userv){
+    
         boolean test = false;
 
-        String toEmail = user.getEmail();
+        String toEmail = userv.getEmail();
         String fromEmail = "leemuld10@gmail.com";
         String password = "levu050721";
 
@@ -113,7 +115,7 @@ public class Mail {
             mess.setSubject("User Email Verification");
             
     		//set message text
-            mess.setText("Registered successfully.Please verify your account using this code: " + user.getUser_Name());
+            mess.setText("Registered successfully.Please verify your account using this code: " + userv.getCode());
             //send the message
             Transport.send(mess);
             
@@ -124,5 +126,5 @@ public class Mail {
         }
 
         return test;
-    }
+    }    
 }
