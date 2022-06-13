@@ -542,12 +542,12 @@ public class reservatonsDAO extends BaseDAO {
     public static void main(String[] args) {
         try {
             reservatonsDAO d = new reservatonsDAO();
-            List<allstaff> list = d.allstaff();
+            List<reservations_user> list = d.reservations_user();
             List<reservations> list1 = d.Allreservations();
             List<user> list2 = d.Alluser();
 
             for (int i = 0; i < list.size(); i++) {
-                System.out.println(list.get(i).getPrescription().getNote());
+                System.out.println(list.get(i).getOrdertime());
             }
 
         } catch (Exception ex) {

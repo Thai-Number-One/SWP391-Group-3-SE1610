@@ -17,28 +17,30 @@ public class user {
     private String address;
     private String phone;
     private String email;
-    private Date date;
+    private Date date,datenew;
     private String username;
     private String password;
     private String avatar;
     private int gender;
-    private int roleid;
+    private int roleid,status;
 
     public user() {
     }
 
-    public user(int userid, String fullname, String address, String phone, String email, Date date, String username, String password, String avatar, int gender, int roleid) {
+    public user(int userid, String fullname, String address, String phone, String email, Date date, Date datenew, String username, String password, String avatar, int gender, int roleid, int status) {
         this.userid = userid;
         this.fullname = fullname;
         this.address = address;
         this.phone = phone;
         this.email = email;
         this.date = date;
+        this.datenew = datenew;
         this.username = username;
         this.password = password;
         this.avatar = avatar;
         this.gender = gender;
         this.roleid = roleid;
+        this.status = status;
     }
 
     public int getUserid() {
@@ -89,6 +91,14 @@ public class user {
         this.date = date;
     }
 
+    public Date getDatenew() {
+        return datenew;
+    }
+
+    public void setDatenew(Date datenew) {
+        this.datenew = datenew;
+    }
+
     public String getUsername() {
         return username;
     }
@@ -129,7 +139,15 @@ public class user {
         this.roleid = roleid;
     }
 
-   
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    
   
 
     
