@@ -43,11 +43,12 @@ public class PostDetailDAO {
     
     public List<Posts> getTop5(){
         
-        try {
-            List<Posts> list = new ArrayList<>();
+        List<Posts> list = new ArrayList<>();
             String sql = "select top 5 * from Post\n" +
                          "Where Post_ID not in(select MAX(Post_ID) from Post)\n" +
                          "order by Post_ID desc";
+        try {
+            
             conn = new BaseDAO().BaseDao();
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
@@ -55,25 +56,41 @@ public class PostDetailDAO {
                 Posts p = new Posts (rs.getInt(1),rs.getString(2),rs.getString(3),rs.getInt(4),rs.getString(5),rs.getInt(6),rs.getDate(7),rs.getInt(8),rs.getString(9));
                        list.add(p);
             }
-            return list;
+            
 
         } catch (Exception e) {
         }
         
-        return null;
+        return list;
     }
+    public List<Posts> getCategory(){
+        List<Posts> list = new ArrayList<>();
+        String sql = "select Category from Post";
+        try {
+            conn = new BaseDAO().BaseDao();
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                list.add(new Posts (rs.getInt(1),rs.getString(2),rs.getString(3),rs.getInt(4),rs.getString(5),rs.getInt(6),rs.getDate(7),rs.getInt(8),rs.getString(9)));
+                       
+            }
+
+        } catch (Exception e) {
+        }
+        
+        return list;
+    } 
     
     
     public static void main(String[] args) {
         PostDetailDAO dao = new PostDetailDAO();
-        List<Posts> list = dao.getTop5();
-        
-        for (Posts posts : list) {
-            System.out.println(posts);
-        }
-        
 
+        List<Posts> list = dao.getCategory();
         
+        for (Posts o : list) {
+            System.out.println(o);
+        }
+
     }
     
 }

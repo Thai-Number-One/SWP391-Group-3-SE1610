@@ -1,6 +1,6 @@
 <%-- 
-    Document   : PostDetail
-    Created on : Jun 12, 2022, 10:14:47 PM
+    Document   : EditPost
+    Created on : Jun 14, 2022, 10:04:50 PM
     Author     : s
 --%>
 
@@ -53,6 +53,31 @@
             .row{
                 width: 1000px;
             }
+            .blog-thumb{
+                margin-bottom: 40px;
+            .h2{
+                color: rgb(254,93,55);
+            }
+            }.sidebar-h{
+                width: 400px;
+                height: 40px;
+                margin-left: 15px;
+            }
+            
+            .sidebar-h h5{
+                line-height: 10px;
+                color: rgb(254,93,55);
+            }.sidebar-item{
+                width: 1000px;
+            }
+            .contact-us .contact-form input{
+                text-transform: none;
+                font-size: 16px;
+            }
+            .contact-us .contact-form textarea{
+                text-transform: none;
+                font-size: 16px;
+            }
     </style>
 <!--
 
@@ -104,117 +129,68 @@ https://templatemo.com/tm-551-stand-blog
   
 
 
-    <section class="blog-posts grid-system">
-        <div class="container">
-            <div class="row">
+     <section class="contact-us">
+      <div class="container">
+        <div class="row">
+        
+          <div class="col-lg-12">
+            <div class="down-contact">
+              <div class="row">
                 <div class="col-lg-8">
-                    <div class="all-blog-posts">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="blog-post">
-                                    <div class="blog-thumb">
+                    <div class="blog-thumb">
                                         <img src="${Detail.image}" alt="">
-                                    </div>
-                                    <div class="down-content">
-                                        <span>${Detail.service_ID}</span>
-                                        <a href="post-details.html"><h4>${Detail.tilte}</h4></a>
-                                        <ul class="post-info">
-                                            <li><a href="#">${Detail.user_ID}</a></li>
-                                            <li><a href="#"></a>${Detail.date}</li>
-                                        </ul>
-                                        <p>${Detail.content}</p> 
-
-                                        <div class="post-options">
-                                            <div class="row">
-                                                <div class="col-6">
-                                                    <ul class="post-tags">
-                                                        <li><i class="fa fa-tags"></i></li>
-                                                        <li><a href="#">${Detail.category}</a>,</li>
-                                                    </ul>
-                                                </div>
-                                                <div class="col-6">
-                                                    <ul class="post-share">
-                                                        <li><i class="fa fa-share-alt"></i></li>
-                                                        <li><a href="#">Facebook</a>,</li>
-                                                        <li><a href="#"> Twitter</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div style="display: flex;">
-                                <div class="col-lg-12">
-                                    <div class="sidebar-item submit-comment">
-
-                                        <div class="content">
-
-
-                                            <div class="col-lg-12">
-                                                <fieldset>
-                                                    <a href="EditPost?Pid=${Detail.post_ID}">
-                                                        <button type="submit" id="form-submit" class="main-button">Edit Post</button>
-                                                    </a>
-                                                </fieldset>
-                                            </div>
-
-
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>  
                     </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="sidebar">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="sidebar-item recent-posts">
-                                <div class="sidebar-heading">
-                                    <h2>Recent Posts</h2>
-                                </div>
-                                <div class="content">
-                                    <ul>
-                                        <c:forEach items="${re}" var="o"> 
-                                            <li><a href="post-details.html">
-                                                    <h5>${o.tilte}</h5>
-                                                    <span>${o.date}</span>
-                                                </a>
-                                            </li>
-
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-12">
-                <div class="sidebar-item categories">
+                  <div class="sidebar-item contact-form">
                     <div class="sidebar-heading">
-                        <h2>Categories</h2>
+                      <h2>Edit Post</h2>
                     </div>
                     <div class="content">
-                        <ul>
-                            <c:forEach items="${ce}" var="c"> 
-
-                                <li><a href="#">${c.category}</a></li>
-
-
-                            </c:forEach>
-                        </ul>
+                      <form id="contact" action="" method="post">
+                        
+                              <div class="sidebar-h">
+                      <h5 clas="edi">Image link</h5>
                     </div>
+                              <div class="col-md-6 col-sm-12">
+                                  <fieldset>
+                                      <input class="imageli" name="name" type="text" id="name" required="" value="${Detail.image}">
+                                  </fieldset>
+                              </div>
+                                  <div class="sidebar-h">
+                      <h5 clas="edi">Title </h5>
+                    </div>
+                              <div class="col-md-12 col-sm-12">
+                                  <fieldset>
+                                      <input name="subject" type="text" id="subject" value="${Detail.tilte}">
+                                  </fieldset>
+                              </div>
+                                  <div class="sidebar-h">
+                      <h5 clas="edi">Content </h5>
+                    </div>
+                              <div class="col-lg-12">
+                                  <fieldset>
+                                      <textarea name="message" rows="6" id="message"  required="">${Detail.content}</textarea>
+                                  </fieldset>
+                              </div>
+                              <div class="col-lg-12">
+                                  <fieldset>
+                                      <button type="submit" id="form-submit" class="main-button">Update Post</button>
+                                  </fieldset>
+                              </div>
+                         
+                      </form>
+                    </div>
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
+          
+         
+          
         </div>
-    </div>
-  </section>
-
+      </div>
+    </section>
+    
     
     <!-- Footer Start -->
         <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">

@@ -9,7 +9,6 @@ import DAO.PostDetailDAO;
 import Entity.Posts;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,8 +19,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author s
  */
-@WebServlet(name = "LoadPostD", urlPatterns = {"/LoadPostD"})
-public class LoadPostD extends HttpServlet {
+@WebServlet(name = "EditPost", urlPatterns = {"/EditPost"})
+public class EditPost extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,24 +34,17 @@ public class LoadPostD extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
         try {
-            
-            int id = 3;
-            
+            String id = request.getParameter("Pid");
+            int idd = Integer.parseInt(id);
             PostDetailDAO dao = new PostDetailDAO();
-            Posts d = dao.getDetail(id);
-            
-            List<Posts> list = dao.getTop5();
-            List<Posts> listCate = dao.getCategory();
+            Posts d = dao.getDetail(idd);
  
-            request.setAttribute("re", list);
             request.setAttribute("Detail", d);
-            request.setAttribute("ce", listCate);
-            request.getRequestDispatcher("PostDetail.jsp").forward(request, response);
+            request.getRequestDispatcher("EditPost.jsp").forward(request, response);
+            
         } catch (Exception e) {
         }
-        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
