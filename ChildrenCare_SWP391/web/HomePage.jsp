@@ -1,20 +1,19 @@
-<%-- 
-    Document   : medical_examination
-    Created on : Jun 1, 2022, 5:57:56 PM
-    Author     : dathp
---%>
 
+
+<%@page import="model_staff.reservations_user"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html>
+
+<html >
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="" name="keywords">
         <meta content="" name="description">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <title>View Medical Examination</title>
+        <title>RESERVATIONS</title>
         <link href="img/favicon.ico" rel="icon">
 
         <!-- Google Web Fonts -->
@@ -35,6 +34,14 @@
 
         <!-- Template Stylesheet -->
         <link href="css/style.css" rel="stylesheet">
+        <script>
+            $(document).ready(function () {
+                $("button").click(function () {
+                    $(".show").toggle();
+                });
+            });
+
+        </script>
         <style>
             body {
                 margin: 0;
@@ -59,37 +66,19 @@
                 font-weight: 500;
                 outline: none;
             }
-            .all{
-                padding: 30px;
-                margin: auto;
-                width: 70%;
 
 
-            }
-            .table_m {
-                width: 100%;
-                border-collapse: collapse;
-                overflow: hidden;
-                box-shadow: 0 0 20px rgba(0,0,0,0.1);
-                text-align: center;
-            }
 
 
-            .table_m td {
-                padding: 15px;
-                background-color: rgba(255,255,255,0.2);
-                color: #000;
-            }
 
-            .table_m th {
-                font-size: 20px;
-                padding: 15px;
-                color: #fff;
-                background-color: #FE5D37;
-            }
+
+
+
         </style>
     </head>
     <body>
+
+
 
         <!-- Navbar Start -->
         <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0">
@@ -102,88 +91,28 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav mx-auto">
                     <a href="HomePage.jsp" class="nav-item nav-link ">Home</a>
-                    <a href="about.html" class="nav-item nav-link">About Us</a>
-                    <a href="classes.html" class="nav-item nav-link">Classes</a>
+                    <a href="#" class="nav-item nav-link">About Us</a>
+                    <a href="#" class="nav-item nav-link">Classes</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                         <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0">
                             <a href="reservation" class="dropdown-item">Reservations List</a>
                             <a href="medical" class="dropdown-item">Medical list</a>
                             <a href="prescription" class="dropdown-item">Prescription For Staff</a>
-                            <a href="appointment.html" class="dropdown-item">Make Appointment</a>
-                            <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                            <a href="404.html" class="dropdown-item">404 Error</a>
+                            <a href="#" class="dropdown-item">Make Appointment</a>
+                            <a href="#" class="dropdown-item">Testimonial</a>
+                            <a href="#" class="dropdown-item">404 Error</a>
                         </div>
                     </div>
-                    <a href="contact.html" class="nav-item nav-link">Contact Us</a>
+                    <a href="#" class="nav-item nav-link">Contact Us</a>
+             
                 </div>
-
+                <a href="#" class="btn rounded-pill px-3 d-none d-lg-block" style="background: #FE5D37;color: #FFF5F3;">sign in<i class="fa fa-arrow-right ms-3"></i></a>
             </div>
         </nav>
         <!-- Navbar End -->
 
-        <div>
-            <div class="all">
-                <form action="filtermedical" method="get" >
-                    <table>
-                        <tr>
-                            <th> <select  name="service" class="form-control">
-                                    <option value="">All</option>
-                                    <c:forEach items="${requestScope.se}" var="s">
-                                        <option>${s.servicename}</option>
-                                    </c:forEach>
-                                </select></th>
-                            <th><input type="date" name="from" class="form-control"></th>
-                            <th><input type="date" name="to" class="form-control"></th>
-                            <th><select  name="medical" class="form-control">
-                                    <option value="">All</option>
-                                    <c:forEach items="${requestScope.me}" var="m">
-                                        <option>${m.medicinename}</option>
-                                    </c:forEach>
-                                </select></th>
-                            <th><input type="submit" value="filter" class="btn btn-secondary"></th>
-                        </tr>
-                    </table>
 
-
-
-
-
-                </form>
-                <table class="table_m">
-
-                    <tr>
-                        <th colspan="10">the history of examination</th>
-                    </tr>
-                    <tr>
-                        <th>date</th>
-                        <th>used services</th>
-                        <th>Medicine_name</th>
-                        <th>Amount</th>
-                        <th>Price</th>
-                        <th>country</th>
-                        <th>Expiry date</th>
-                        <th>Detail</th>
-                        <th>Image</th>
-                        <th>Note</th>
-                    </tr>
-                    <c:forEach items="${requestScope.all}" var="a">
-                        <tr>
-                            <td>${a.reservations.date}</td>
-                            <td>${a.service.servicename}</td>
-                            <td>${a.medicine.medicinename}</td>
-                            <td>${a.prescription.amount}</td>
-                            <td>${a.medicine.price}</td>
-                            <td>${a.medicine.country}</td>
-                            <td>${a.medicine.expirydate}</td>
-                            <td>${a.medicine.detail}</td>
-                            <td>${a.medicine.image}</td>
-                            <td>${a.prescription.note}</td>
-                        </tr>
-                    </c:forEach>
-                </table>
-            </div>
-        </div>
 
         <!-- Footer Start -->
         <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
@@ -249,6 +178,6 @@
         <script src="lib/owlcarousel/owl.carousel.min.js"></script>
 
         <!-- Template Javascript -->
-        <script src="js/main.js"></script>        
+        <script src="js/main.js"></script>                
     </body>
 </html>
