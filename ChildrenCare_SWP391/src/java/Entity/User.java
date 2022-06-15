@@ -15,7 +15,7 @@ public class User {
     private int User_ID;
     private String FullName;
     private String Address;
-    private int Phone;
+    private String Phone;
     private String Email;
     private Date Date; 
     private Date Date_New;
@@ -30,7 +30,7 @@ public class User {
     public User() {
     }
 
-    public User(int User_ID, String FullName, String Address, int Phone, String Email, Date Date, Date Date_New, String User_Name, String Password, String Avatar, int Gender, int Role_ID, int Status) {
+    public User(int User_ID, String FullName, String Address, String Phone, String Email, Date Date, Date Date_New, String User_Name, String Password, String Avatar, int Gender, int Role_ID, int Status) {
         this.User_ID = User_ID;
         this.FullName = FullName;
         this.Address = Address;
@@ -70,11 +70,11 @@ public class User {
         this.Address = Address;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return Phone;
     }
 
-    public void setPhone(int Phone) {
+    public void setPhone(String Phone) {
         this.Phone = Phone;
     }
 
@@ -154,6 +154,8 @@ public class User {
     public String toString() {
         return "User{" + "User_ID=" + User_ID + ", FullName=" + FullName + ", Address=" + Address + ", Phone=" + Phone + ", Email=" + Email + ", Date=" + Date + ", Date_New=" + Date_New + ", User_Name=" + User_Name + ", Password=" + Password + ", Avatar=" + Avatar + ", Gender=" + Gender + ", Role_ID=" + Role_ID + ", Status=" + Status + '}';
     }
+
+    
 
     
 }
