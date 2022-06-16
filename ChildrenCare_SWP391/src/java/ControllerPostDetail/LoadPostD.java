@@ -7,6 +7,8 @@ package ControllerPostDetail;
 
 import DAO.PostDetailDAO;
 import Entity.Posts;
+import Entity.Service;
+import Entity.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -59,13 +61,13 @@ public class LoadPostD extends HttpServlet {
             
             PostDetailDAO dao = new PostDetailDAO();
             Posts d = dao.getDetail(id);
+            User userName = dao.getDetailUser(id);
+            Service serviceName = dao.getDetailService(id);
             
-            List<Posts> list = dao.getTop5();
-            List<Posts> listCate = dao.getCategory();
- 
-            request.setAttribute("re", dao.getTop5());
+            request.setAttribute("userName", userName);
+            request.setAttribute("serviceName", serviceName);
             request.setAttribute("Detail", d);
-            request.setAttribute("ce", listCate);
+            
             request.getRequestDispatcher("PostDetail.jsp").forward(request, response);
         } catch (Exception e) {
         }

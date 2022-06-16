@@ -1,37 +1,24 @@
 <%-- 
-    Document   : PostDetail
-    Created on : Jun 12, 2022, 10:14:47 PM
+    Document   : PostsD
+    Created on : Jun 16, 2022, 5:10:26 PM
     Author     : s
 --%>
 
+
+
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html lang="en">
 
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap" rel="stylesheet">
-
-    
-
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-
-    <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="assets/css/fontawesome.css">
-    <link rel="stylesheet" href="assets/css/templatemo-stand-blog.css">
-    <link rel="stylesheet" href="assets/css/owl.css">
-<!--
+<html >
+    <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="" name="keywords">
         <meta content="" name="description">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <title>Post Detail</title>
+        <title>RESERVATIONS</title>
         <link href="img/favicon.ico" rel="icon">
 
         <!-- Google Web Fonts -->
@@ -52,8 +39,16 @@
 
         <!-- Template Stylesheet -->
         <link href="css/style.css" rel="stylesheet">
-    <style>
-          body {
+        <script>
+            $(document).ready(function () {
+                $("button").click(function () {
+                    $(".show").toggle();
+                });
+            });
+
+        </script>
+        <style>
+            body {
                 margin: 0;
                 font-family: "Heebo",sans-serif;
                 font-size: 1rem;
@@ -76,52 +71,21 @@
                 font-weight: 500;
                 outline: none;
             }
-            .row{
-                width: 1000px;
-            }.content{
-                display: flex;
-            }
-            .col-lg{
-                width: 10px;
-                margin-left: 180px;
-            }
-            .blog-posts .down-content h4{
-                font-size: 30px;
-            }.blog-posts .down-content p{
-                font-size: 17px;
-                color: #393f54;
-            }
-            .blog-posts .down-content{
-                margin-left: 160px;
-            }
-            .blog-posts .blog-thumb img{
-                margin-left: 160px;
-                
-            }.post-tags{
-                padding-left: 10px;
-                
-            }
-            
-            
-           
-            
-            
-    </style>
-<!--
 
-TemplateMo 551 Stand Blog
 
-https://templatemo.com/tm-551-stand-blog
 
--->
-  </head>
 
-  <body>
 
-    
 
-    <!-- Header -->
-    <!-- Navbar Start -->
+
+
+        </style>
+    </head>
+    <body>
+
+
+
+        <!-- Navbar Start -->
         <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0">
             <a href="index.html" class="navbar-brand">
                 <h1 class="m-0 text-primary"><i class=""></i>ChildrenCare</h1>
@@ -151,29 +115,25 @@ https://templatemo.com/tm-551-stand-blog
 
             </div>
         </nav>
-
-    <!-- Page Content -->
-    
-
-  
+        <!-- Navbar End -->
 
 
-    <section class="blog-posts grid-system">
+       <section class="blog-posts grid-system">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
                     <div class="all-blog-posts">
                         <div class="row">
-                            <div class="col-lg-post">
+                            <div class="col-lg-12">
                                 <div class="blog-post">
                                     <div class="blog-thumb">
                                         <img src="${Detail.image}" alt="">
                                     </div>
                                     <div class="down-content">
-                                        <span>${serviceName.service_name}</span>
+                                        <span>${Detail.service_ID}</span>
                                         <a href="post-details.html"><h4>${Detail.tilte}</h4></a>
                                         <ul class="post-info">
-                                            <li><a href="#">${userName.fullname}</a></li>
+                                            <li><a href="#">${Detail.user_ID}</a></li>
                                             <li><a href="#"></a>${Detail.date}</li>
                                         </ul>
                                         <p>${Detail.content}</p> 
@@ -191,34 +151,83 @@ https://templatemo.com/tm-551-stand-blog
                                     </div>
                                 </div>
                             </div>
-                                <div class="col-lg-edit">
+                            <div style="display: flex;">
+                                <div class="col-lg-12">
                                     <div class="sidebar-item submit-comment">
 
                                         <div class="content">
 
 
-                                            <div class="col-lg">
+                                            <div class="col-lg-12">
                                                 <fieldset>
                                                     <a href="EditPost?Pid=${Detail.post_ID}">
                                                         <button type="submit" id="form-submit" class="main-button">Edit Post</button>
                                                     </a>
                                                 </fieldset>
                                             </div>
-                                                        
-                                            
+
+
 
                                         </div>
                                     </div>
                                 </div>
+                            </div>
                         </div>  
                     </div>
                 </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="sidebar">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="sidebar-item recent-posts">
+                                <div class="sidebar-heading">
+                                    <h2>Recent Posts</h2>
+                                </div>
+                                <div class="content">
+                                    <ul>
+                                        
+                                        <c:forEach items="${requestScope.re}" var="o"> 
+
+                                            <li><a href="post-details.html">
+                                                    <h5>${o.tilte}</h5>
+                                                                          
+                                                </a>
+                                            </li>
+
+
+                                        </c:forEach>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="sidebar-item categories">
+                    <div class="sidebar-heading">
+                        <h2>Categories</h2>
+                    </div>
+                    <div class="content">
+                        <ul>
+                            <c:forEach items="${re}" var="c"> 
+
+                                <li><a href="#">${c.category}</a></li>
+
+
+                            </c:forEach>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
   </section>
 
-    
-    <!-- Footer Start -->
+
+        <!-- Footer Start -->
         <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
             <div class="container py-5">
                 <div class="row g-5">
@@ -282,34 +291,7 @@ https://templatemo.com/tm-551-stand-blog
         <script src="lib/owlcarousel/owl.carousel.min.js"></script>
 
         <!-- Template Javascript -->
-        <script src="js/main.js"></script>  
-
-
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-
-    <!-- Additional Scripts -->
-    <script src="assets/js/custom.js"></script>
-    <script src="assets/js/owl.js"></script>
-    <script src="assets/js/slick.js"></script>
-    <script src="assets/js/isotope.js"></script>
-    <script src="assets/js/accordions.js"></script>
-
-
-    <script language = "text/Javascript"> 
-      cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
-      function clearField(t){                   //declaring the array outside of the
-      if(! cleared[t.id]){                      // function makes it static and global
-          cleared[t.id] = 1;  // you could use true and false, but that's more typing
-          t.value='';         // with more chance of typos
-          t.style.color='#fff';
-          }
-      }
-    </script>
-
-
-  </body>
-
+        <script src="js/main.js"></script>                
+    </body>
 </html>
+
