@@ -6,10 +6,8 @@
 package ControllerPostDetail;
 
 import DAO.PostDetailDAO;
-import Entity.Posts;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,8 +18,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author s
  */
-@WebServlet(name = "LoadPostD", urlPatterns = {"/LoadPostD"})
-public class LoadPostD extends HttpServlet {
+@WebServlet(name = "UpdatePost", urlPatterns = {"/UpdatePost"})
+public class UpdatePost extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,7 +34,24 @@ public class LoadPostD extends HttpServlet {
             throws ServletException, IOException {
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=UTF-8");
-       
+        
+        try {
+            String image = request.getParameter("image");
+            String title = request.getParameter("title");
+            String category = "Family";
+            String content = request.getParameter("content");
+            String Post_id = request.getParameter("post_id");
+            String User_id = request.getParameter("user_id");
+            
+            int Pid = Integer.parseInt(Post_id);
+            int Uid = Integer.parseInt(User_id);
+
+            PostDetailDAO dao = new PostDetailDAO();
+            dao.updatenews(title, content, Uid, image, category, Pid);
+
+            response.sendRedirect("LoadPostD");
+        } catch (Exception e) {
+        }
         
     }
 
@@ -52,23 +67,7 @@ public class LoadPostD extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         
-        try {
-            
-            int id = 3;
-            
-            PostDetailDAO dao = new PostDetailDAO();
-            Posts d = dao.getDetail(id);
-            
-            List<Posts> list = dao.getTop5();
-            List<Posts> listCate = dao.getCategory();
- 
-            request.setAttribute("re", dao.getTop5());
-            request.setAttribute("Detail", d);
-            request.setAttribute("ce", listCate);
-            request.getRequestDispatcher("PostDetail.jsp").forward(request, response);
-        } catch (Exception e) {
-        }
+        processRequest(request, response);
     }
 
     /**

@@ -3,13 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ControllerPostDetail;
+package Control;
 
-import DAO.PostDetailDAO;
-import Entity.Posts;
+import DAO.FeedbacksDAO;
+import DAO.UserDAO;
+import Entity.Feedbacks;
+import Entity.User;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,10 +21,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author s
+ * @author HP
  */
-@WebServlet(name = "LoadPostD", urlPatterns = {"/LoadPostD"})
-public class LoadPostD extends HttpServlet {
+@WebServlet(name = "FeedbackDetailsServlet", urlPatterns = {"/feedbackdetails"})
+public class FeedbackDetailsServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,10 +37,10 @@ public class LoadPostD extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=UTF-8");
-       
-        
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -52,23 +55,14 @@ public class LoadPostD extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         
-        try {
-            
-            int id = 3;
-            
-            PostDetailDAO dao = new PostDetailDAO();
-            Posts d = dao.getDetail(id);
-            
-            List<Posts> list = dao.getTop5();
-            List<Posts> listCate = dao.getCategory();
- 
-            request.setAttribute("re", dao.getTop5());
-            request.setAttribute("Detail", d);
-            request.setAttribute("ce", listCate);
-            request.getRequestDispatcher("PostDetail.jsp").forward(request, response);
-        } catch (Exception e) {
-        }
+        FeedbacksDAO Fdao = new FeedbacksDAO();
+        UserDAO Udao = new UserDAO();
+        int feedback_ID = Integer.parseInt(request.getParameter("idfeedback"));
+        Feedbacks f = Fdao.GetFeedbackByID(feedback_ID);
+        User u = Udao.GetUserByID(f.getUserid());
+        request.setAttribute("feedbackdetails", f);
+        request.setAttribute("feedbackuser", u);
+        request.getRequestDispatcher("feedbackdetails.jsp").forward(request, response);
     }
 
     /**
