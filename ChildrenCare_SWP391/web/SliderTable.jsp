@@ -3,7 +3,7 @@
 <html lang="en">
     <%@page contentType="text/html" pageEncoding="UTF-8"%>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    
+
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -39,7 +39,8 @@
 
 
     </head>
-<body class="g-sidenav-show   bg-gray-100">
+
+    <body class="g-sidenav-show   bg-gray-100">
         <div class="min-height-300 bg-primary position-absolute w-100"></div>
         <main class="main-content position-relative border-radius-lg ">
             <!-- Navbar -->
@@ -64,11 +65,11 @@
                             <div  class="card-header pb-0">
                                 <div  class="row">
                                     <div class="col-md-4">
-                                        <h6>User Information</h6>
+                                        <h6>Post List Information</h6>
                                     </div>
 
                                     <div class="col-md-4">
-                                        <form action="Fillter" method="get">
+                                        <form action="filterPost" method="get">
                                             <select name="gender">
                                                 <option value="">all</option>
                                                 <option value="1">Male</option>
@@ -96,11 +97,11 @@
 
                                             <input type="submit" value="fillter">
                                         </form>
-                                        
+
                                     </div>
 
                                     <div class="col-md-4">
-                                        <a href="AddUser.jsp" class="text-success text-secondary font-weight-bold text-sm" >Add new</a>
+                                        <a href="AddPost.jsp" class="text-success text-secondary font-weight-bold text-sm" >Add new</a>
                                     </div>
                                 </div>
                             </div>
@@ -110,12 +111,12 @@
                                     <table id="example" class="table table-striped" style="width:100%; margin-bottom: 50px ">
                                         <thead>
                                             <tr>
-                                                <th>User</th>
-                                                <th>User ID</th>
-                                                <th>Name</th>
-                                                <th>Gender</th>
-                                                <th>Phone Number</th>
-                                                <th>Role</th>
+                                                <th></th>
+                                                <th>Post ID</th>
+                                                <th>Title</th>
+                                                <th>Category</th>
+                                                <th>Author</th>
+                                                <th>Featured</th>
                                                 <th>Status</th>
                                                 <th>Edit</th>
                                                 <th>Delete</th>
@@ -129,41 +130,29 @@
                                                     <td>
                                                         <div class="d-flex px-2 py-1">
                                                             <div>
-                                                                <img src="img/${o.avatar}" class="avatar avatar-sm me-3" alt="user1">
+                                                                <img src="img/abc.jpg" class="avatar avatar-sm me-3" alt="user1">
                                                             </div>
-                                                            <div class="d-flex flex-column justify-content-center">
-                                                                <h6 class="mb-0 text-sm">${o.user_Name}</h6>
-                                                                <p class="text-xs text-secondary mb-0">${o.email}</p>
-                                                            </div>
+
                                                         </div>
+                                                    </td>
+
+                                                    <td class="align-middle text-center">
+                                                        <span class="text-secondary text-xs font-weight-bold">${o.post_ID}</span>
+                                                    </td>
+
+                                                    <td class="align-middle text-center">
+                                                        <span class="text-secondary text-xs font-weight-bold">${o.tilte}</span>
+
+                                                    <td class="align-middle text-center">
+                                                        <span class="text-secondary text-xs font-weight-bold">${o.category}</span>
                                                     </td>
 
                                                     <td class="align-middle text-center">
                                                         <span class="text-secondary text-xs font-weight-bold">${o.user_ID}</span>
                                                     </td>
-
                                                     <td class="align-middle text-center">
-                                                        <span class="text-secondary text-xs font-weight-bold">${o.fullName}</span>
+                                                        <span class="text-secondary text-xs font-weight-bold">feature</span>
                                                     </td>
-                                                    <td class="align-middle text-center">
-                                                        <span class="text-secondary text-xs font-weight-bold">
-                                                            <c:if test = "${o.gender == 1}">Male</c:if>
-                                                            <c:if test = "${o.gender == 0}">Female</c:if>
-                                                            </span>
-
-                                                        </td>
-                                                        <td class="align-middle text-center">
-                                                            <span class="text-secondary text-xs font-weight-bold">${o.phone}</span>
-                                                    </td>
-                                                    <td class="align-middle text-center">
-                                                        <span class="text-secondary text-xs font-weight-bold">
-                                                            <c:if test = "${o.role_ID == 1}">Admin</c:if>
-                                                            <c:if test = "${o.role_ID == 2}">Manager</c:if>
-                                                            <c:if test = "${o.role_ID == 4}">Staff</c:if>
-                                                            <c:if test = "${o.role_ID == 5}">Customer</c:if>
-                                                        </span>
-                                                    </td>
-
                                                     <td class="align-middle text-center text-sm">
 
                                                         <c:if test = "${o.status == 1}">
@@ -174,17 +163,18 @@
 
                                                         </td>
 
-                                                        <td class="align-middle">
-                                                            <a href="LoadControl?pid=${o.user_ID}" class="text-success text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>
+
+                                                    <td class="align-middle">
+                                                        <a href="LoadControl?pid=${o.post_ID}" class="text-success text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>
                                                             Edit
                                                         </a>
                                                     </td>
                                                     <td class="align-middle">
-                                                        <a href="delete?pid=${o.user_ID}" class="text-danger text-secondary font-weight-bold text-xs" data-toggle="tooltip" onclick="return confirm('Are you sure you want to delete this item?');"><i class="far fa-trash-alt me-2"></i>Delete</a>
+                                                        <a href="DeletePost?pid=${o.post_ID}" class="text-danger text-secondary font-weight-bold text-xs" data-toggle="tooltip" onclick="return confirm('Are you sure you want to delete this item?');"><i class="far fa-trash-alt me-2"></i>Delete</a>
 
                                                     </td>
                                                     <td class="align-middle">
-                                                        <a href="DetailControl?pid=${o.user_ID}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                                                        <a href="DetailControl?pid=${o.post_ID}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                                                             Detail
                                                         </a>
                                                     </td>
@@ -201,8 +191,6 @@
             </div>
         </div>
     </main>
-   
-  
 
     <div id="addEmployeeModal" class="modal fade">
         <div class="modal-dialog">
