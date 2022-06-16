@@ -1,14 +1,12 @@
 <%-- 
-    Document   : PostDetail
-    Created on : Jun 12, 2022, 10:14:47 PM
+    Document   : SliderDetail
+    Created on : Jun 16, 2022, 10:27:35 PM
     Author     : s
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
-
-  <head>
+<html>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -53,7 +51,7 @@
         <!-- Template Stylesheet -->
         <link href="css/style.css" rel="stylesheet">
     <style>
-           body {
+          body {
                 margin: 0;
                 font-family: "Heebo",sans-serif;
                 font-size: 1rem;
@@ -126,7 +124,6 @@
                 background-color: #babec2;
             }.contact-us .contact-form button{
                 margin-top: 50px;
-             
                 
             }.sidebar-h-a h5{
                 margin-top: 30px;
@@ -134,17 +131,17 @@
                 line-height: 10px;
                 color: rgb(254,93,55);
                 margin-left: 12px;
+            }.blog-thumb{
+                width: 1000px;
+                height: 600px;
             }
-            .blog-posts .submit-comment button{
-                width: 130px;
+            .blog-thumb img{
+                width: auto;
+                height: 100%;
             }
                 
-            
-            
-           
-            
-            
     </style>
+
 <!--
 
 TemplateMo 551 Stand Blog
@@ -153,13 +150,7 @@ https://templatemo.com/tm-551-stand-blog
 
 -->
   </head>
-
-  <body>
-
-    
-
-    <!-- Header -->
-    <!-- Navbar Start -->
+    <body>
         <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0">
             <a href="HomeP.jsp" class="navbar-brand">
                 <h1 class="m-0 text-primary"><i class=""></i>ChildrenCare</h1>
@@ -184,79 +175,90 @@ https://templatemo.com/tm-551-stand-blog
                         </div>
                     </div>
                     <a href="#" class="nav-item nav-link">Contact Us</a>
-                    <a href="login.jsp" class="nav-item nav-link" >Login</a>
+                    <a href="login.jsp" class="nav-item nav-link" > Login</a>
                 </div>
 
             </div>
         </nav>
-
-    <!-- Page Content -->
-    
-
-  
-
-
-    <section class="blog-posts grid-system">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="all-blog-posts">
-                        <div class="row">
-                            <div class="col-lg-post">
-                                <div class="blog-post">
-                                    <div class="blog-thumb">
-                                        <img src="${Detail.image}" alt="">
-                                    </div>
-                                    <div class="down-content">
-                                        <span>${serviceName.service_name}</span>
-                                        <a href="post-details.html"><h4>${Detail.tilte}</h4></a>
-                                        <ul class="post-info">
-                                            <li><a href="#">${userName.fullname}</a></li>
-                                            <li><a href="#"></a>${Detail.date}</li>
-                                        </ul>
-                                        <p>${Detail.content}</p> 
-
-                                        <div class="post-options">
-                                            <div class="row">
-                                                <div class="col-6">
-                                                    <ul class="post-tags">
-                                                        <li><i class="fa fa-tags"></i></li>
-                                                        <li><a href="#">${Detail.category}</a>,</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                                <div class="col-lg-edit">
-                                    <div class="sidebar-item submit-comment">
-
-                                        <div class="content">
+        
+        <section class="contact-us">
+      <div class="container">
+          <div class="row">
+             
+                  <div class="col-lg-12">
+                      <div class="down-contact">
+                          <div class="row">
+                              <div class="col-lg-8">
+                                  <form action="" method="post">
+                                  <div class="blog-thumb">
+                                      <img src="${SliderD.image}" alt="">
+                                  </div>
+                                  <div class="sidebar-item contact-form">
+                                      <div class="sidebar-heading">
+                                          <h2>Slider Detail</h2>
+                                      </div>
+                                      <div class="content">
+                                          
+                                              
+                                              <div class="sidebar-h">
+                                                    <h5 clas="edi">Slider_ID: </h5>
+                                              </div>
+                                              <div class="col-md-6 col-sm-12-1">
+                                                  <fieldset>
+                                                      <input class="dddd" name="post_id" type="text" readonly id="name" required="" value="${SliderD.slider_ID}">
+                                                  </fieldset>
+                                              </div>
+                                                  
+                                              <div class="sidebar-h">
+                                                    <h5 clas="edi">Author: </h5>
+                                              </div>
+                                              <div class="col-md-6 col-sm-12-1">
+                                                  <fieldset>
+                                                      <input class="dddd" name="user_id" type="text" readonly id="name" required="" value="${SliderD.user_ID}">
+                                                  </fieldset>
+                                              </div>
 
 
-                                            <div class="col-lg">
-                                                <fieldset>
-                                                    <a href="EditPost?Pid=${Detail.post_ID}">
-                                                        <button type="submit" id="form-submit" class="main-button">Edit Post</button>
-                                                    </a>
-                                                </fieldset>
-                                            </div>
-                                                        
-                                            
+                                              <div class="sidebar-h">
+                                                  <h5 clas="edi">Image link</h5>
+                                              </div>
+                                              <div class="col-md-6 col-sm-12">
+                                                  <fieldset>
+                                                      <input class="imageli" name="image" type="text" id="name" required="" value="${SliderD.image}">
+                                                  </fieldset>
+                                              </div>
+                                              <div class="sidebar-h">
+                                                  <h5 clas="edi">Title </h5>
+                                              </div>
+                                              <div class="col-md-12 col-sm-12">
+                                                  <fieldset>
+                                                      <input name="title" type="text" id="subject" value="${SliderD.title}">
+                                                  </fieldset>
+                                              </div>
+                                              <div class="sidebar-h">
+                                                  <h5 clas="edi">Blacklink </h5>
+                                              </div>
+                                              <div class="col-lg-12">
+                                                  <fieldset>
+                                                      <textarea name="content" rows="6" id="message"  required="">${SliderD.blacklink}</textarea>
+                                                  </fieldset>
+                                              </div>
+     
+                                      </div>
+                                  </div>
+                                  </form>                
+                              </div>
+                          </div>
+                      </div>
+                  </div>
 
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>  
-                    </div>
-                </div>
-        </div>
-    </div>
-  </section>
 
-    
-    <!-- Footer Start -->
+              
+          </div>
+      </div>
+    </section>
+        
+     <!-- Footer Start -->
         <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
             <div class="container py-5">
                 <div class="row g-5">
@@ -345,9 +347,7 @@ https://templatemo.com/tm-551-stand-blog
           t.style.color='#fff';
           }
       }
-    </script>
-
-
-  </body>
-
+    </script>                                             
+                                                  
+    </body>
 </html>
