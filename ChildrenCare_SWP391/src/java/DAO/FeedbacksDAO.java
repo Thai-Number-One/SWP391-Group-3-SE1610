@@ -68,6 +68,27 @@ public class FeedbacksDAO extends BaseDAO{
         }
         return list;
     }
+     public Feedbacks GetFeedbackByID(int id){
+         String  query = "Select * from Feedback where  Feedback_ID = ?";
+         try {
+             Connection conn = new BaseDAO().BaseDao();
+             PreparedStatement ps = conn.prepareStatement(query);
+             ps.setInt(1, id);
+             ResultSet rs = ps.executeQuery();
+             while(rs.next()){
+                 Feedbacks f = new Feedbacks(rs.getInt(1),
+                         rs.getInt(2),
+                         rs.getInt(3),
+                         rs.getInt(4),
+                         rs.getString(5),
+                         rs.getString(6),
+                         rs.getDate(7));
+                 return f;
+             }
+         } catch (Exception e) {
+         }
+         return null;
+     }
      
      public List<allfeedbacks> allfeedbacks() throws Exception {
         List<allfeedbacks> list = new ArrayList<>();

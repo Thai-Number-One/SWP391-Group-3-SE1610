@@ -108,4 +108,31 @@ public class UserDAO {
         
         return null;
     }
+    public User GetUserByID(int id){
+        String query = "select * from [User] where User_ID = ?";
+        try {
+            conn = new BaseDAO().BaseDao();
+            ps = conn.prepareStatement(query);
+            ps.setInt(1, id);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                return new User(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getDate(6),
+                        rs.getDate(7),
+                        rs.getString(8),
+                        rs.getString(9),
+                        rs.getString(10),
+                        rs.getInt(11),
+                        rs.getInt(12),
+                        rs.getInt(13));
+            }
+        } catch (Exception e) {
+        }
+        
+        return null;
+    }
 }
