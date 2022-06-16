@@ -153,11 +153,11 @@
 
                             <c:forEach items="${requestScope.allfeedbacks}" var="a">
                                 <div class="d-flex flex-start" style="padding-bottom: 20px;padding-top: 20px;">
-                                    <img class="rounded-circle shadow-1-strong me-3"
+                                    <a href="feedbackdetails?idfeedback=${a.feedbacks.feedbackid}"><img class="rounded-circle shadow-1-strong me-3"
                                          src="feedbackF/img/${a.user.avatar}" alt="avatar" width="60"
-                                         height="60" />
+                                         height="60" /></a>
                                     <div>
-                                        <h6 class="fw-bold mb-1">${a.user.fullname} - ${a.service.servicename}</h6>
+                                        <h6 class="fw-bold mb-1"><a href="feedbackdetails?idfeedback=${a.feedbacks.feedbackid}">${a.user.fullname} - ${a.service.servicename}</a></h6>
                                         <div class="d-flex align-items-center mb-3">
                                             <p class="mb-0">
                                                 ${a.feedbacks.date}

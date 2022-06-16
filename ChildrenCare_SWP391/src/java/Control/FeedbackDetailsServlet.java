@@ -57,7 +57,7 @@ public class FeedbackDetailsServlet extends HttpServlet {
             throws ServletException, IOException {
         FeedbacksDAO Fdao = new FeedbacksDAO();
         UserDAO Udao = new UserDAO();
-        int feedback_ID = 1;
+        int feedback_ID = Integer.parseInt(request.getParameter("idfeedback"));
         Feedbacks f = Fdao.GetFeedbackByID(feedback_ID);
         User u = Udao.GetUserByID(f.getUserid());
         request.setAttribute("feedbackdetails", f);
