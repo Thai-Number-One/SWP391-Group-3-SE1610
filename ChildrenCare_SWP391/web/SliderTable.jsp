@@ -48,10 +48,10 @@
                 <div class="container-fluid py-1 px-3">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-                            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="dashboard">Pages</a></li>
+                            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="dashboard">Slider</a></li>
                             <li class="breadcrumb-item text-sm text-white active" aria-current="page">Tables</li>
                         </ol>
-                        <h6 class="font-weight-bolder text-white mb-0">Tables</h6>
+                        <h6 class="font-weight-bolder text-white mb-0">Tables Slider</h6>
                     </nav>
 
                 </div>
@@ -69,22 +69,8 @@
                                     </div>
 
                                     <div class="col-md-4">
-                                        <form action="filterPost" method="get">
-                                            <select name="gender">
-                                                <option value="">all</option>
-                                                <option value="1">Male</option>
-                                                <option value="0">Female</option>
-                                            </select>
-
-
-
-                                            <select name="role">
-                                                <option value="">all</option>
-                                                <option value="1">Admin</option>
-                                                <option value="2">Manager</option>
-                                                <option value="4">Staff</option>
-                                                <option value="5">Customer</option>
-                                            </select>
+                                        <form action="FilterSlider" method="get">
+                                           
 
 
 
@@ -101,7 +87,7 @@
                                     </div>
 
                                     <div class="col-md-4">
-                                        <a href="AddPost.jsp" class="text-success text-secondary font-weight-bold text-sm" >Add new</a>
+                                        <a href="addSilder.jsp" class="text-success text-secondary font-weight-bold text-sm" >Add new</a>
                                     </div>
                                 </div>
                             </div>
@@ -111,12 +97,10 @@
                                     <table id="example" class="table table-striped" style="width:100%; margin-bottom: 50px ">
                                         <thead>
                                             <tr>
-                                                <th></th>
-                                                <th>Post ID</th>
+                                                <th>Imager</th>
+                                                <th>ID Silder</th>
                                                 <th>Title</th>
-                                                <th>Category</th>
-                                                <th>Author</th>
-                                                <th>Featured</th>
+                                                <th>Backlink</th>
                                                 <th>Status</th>
                                                 <th>Edit</th>
                                                 <th>Delete</th>
@@ -126,33 +110,21 @@
                                         <tbody>
                                             <c:forEach items="${list}" var="o">
                                                 <tr>
-
-                                                    <td>
-                                                        <div class="d-flex px-2 py-1">
-                                                            <div>
-                                                                <img src="img/abc.jpg" class="avatar avatar-sm me-3" alt="user1">
-                                                            </div>
-
-                                                        </div>
+                                                    <td class="align-middle text-center">
+                                                        
+                                                         <img src="img/abc.jpg" class="avatar avatar-sm me-3" alt="user1">
+                                                    </td>
+                                                    <td class="align-middle text-center">
+                                                        <span class="text-secondary text-xs font-weight-bold">${o.slider_ID}</span>
                                                     </td>
 
                                                     <td class="align-middle text-center">
-                                                        <span class="text-secondary text-xs font-weight-bold">${o.post_ID}</span>
-                                                    </td>
+                                                        <span class="text-secondary text-xs font-weight-bold">${o.title}</span>
 
                                                     <td class="align-middle text-center">
-                                                        <span class="text-secondary text-xs font-weight-bold">${o.tilte}</span>
-
-                                                    <td class="align-middle text-center">
-                                                        <span class="text-secondary text-xs font-weight-bold">${o.category}</span>
+                                                        <span class="text-secondary text-xs font-weight-bold">${o.backLink}</span>
                                                     </td>
 
-                                                    <td class="align-middle text-center">
-                                                        <span class="text-secondary text-xs font-weight-bold">${o.user_ID}</span>
-                                                    </td>
-                                                    <td class="align-middle text-center">
-                                                        <span class="text-secondary text-xs font-weight-bold">feature</span>
-                                                    </td>
                                                     <td class="align-middle text-center text-sm">
 
                                                         <c:if test = "${o.status == 1}">
@@ -165,16 +137,16 @@
 
 
                                                     <td class="align-middle">
-                                                        <a href="LoadControl?pid=${o.post_ID}" class="text-success text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>
+                                                        <a href="LoadControl?pid=${o.slider_ID}" class="text-success text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>
                                                             Edit
                                                         </a>
                                                     </td>
                                                     <td class="align-middle">
-                                                        <a href="DeletePost?pid=${o.post_ID}" class="text-danger text-secondary font-weight-bold text-xs" data-toggle="tooltip" onclick="return confirm('Are you sure you want to delete this item?');"><i class="far fa-trash-alt me-2"></i>Delete</a>
+                                                        <a href="DeleteSlider?pid=${o.slider_ID}" class="text-danger text-secondary font-weight-bold text-xs" data-toggle="tooltip" onclick="return confirm('Are you sure you want to delete this item?');"><i class="far fa-trash-alt me-2"></i>Delete</a>
 
                                                     </td>
                                                     <td class="align-middle">
-                                                        <a href="DetailControl?pid=${o.post_ID}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                                                        <a href="DetailControl?pid=${o.slider_ID}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                                                             Detail
                                                         </a>
                                                     </td>

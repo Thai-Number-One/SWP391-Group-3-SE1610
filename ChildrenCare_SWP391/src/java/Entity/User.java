@@ -27,7 +27,9 @@ public class User {
     private int Status;
     
 
-    public User() {
+    public User(int id, String name) {
+        this.User_ID = id;
+        this.FullName = name;
     }
 
     public User(int User_ID, String FullName, String Address, String Phone, String Email, Date Date, Date Date_New, String User_Name, String Password, String Avatar, int Gender, int Role_ID, int Status) {

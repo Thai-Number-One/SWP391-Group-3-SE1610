@@ -48,8 +48,8 @@
                 <div class="container-fluid py-1 px-3">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-                            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="dashboard">Pages</a></li>
-                            <li class="breadcrumb-item text-sm text-white active" aria-current="page">Tables</li>
+                            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="dashboard">Post</a></li>
+                            <li class="breadcrumb-item text-sm text-white active" aria-current="page">Tables Slider</li>
                         </ol>
                         <h6 class="font-weight-bolder text-white mb-0">Tables</h6>
                     </nav>
@@ -69,24 +69,19 @@
                                     </div>
 
                                     <div class="col-md-4">
-                                        <form action="filterPost" method="get">
-                                            <select name="gender">
+                                        <form action="FilterPost" method="get">
+                                            <select name="category">
                                                 <option value="">all</option>
-                                                <option value="1">Male</option>
-                                                <option value="0">Female</option>
+                                                <option value="1">Suc Khoe</option>
+                                                <option value="2">Y te cong cong</option>
                                             </select>
 
-
-
-                                            <select name="role">
+                                            <select name="author" >
                                                 <option value="">all</option>
-                                                <option value="1">Admin</option>
-                                                <option value="2">Manager</option>
-                                                <option value="4">Staff</option>
-                                                <option value="5">Customer</option>
+                                                <c:forEach items="${listU}" var="o">
+                                                    <option value="${o.user_ID}">${o.fullName}</option>
+                                                </c:forEach>
                                             </select>
-
-
 
                                             <select name="status">
                                                 <option value="">all</option>
@@ -101,7 +96,7 @@
                                     </div>
 
                                     <div class="col-md-4">
-                                        <a href="AddPost.jsp" class="text-success text-secondary font-weight-bold text-sm" >Add new</a>
+                                        <a href="LoadCategory" class="text-success text-secondary font-weight-bold text-sm" >Add new</a>
                                     </div>
                                 </div>
                             </div>
@@ -144,14 +139,22 @@
                                                         <span class="text-secondary text-xs font-weight-bold">${o.tilte}</span>
 
                                                     <td class="align-middle text-center">
-                                                        <span class="text-secondary text-xs font-weight-bold">${o.category}</span>
-                                                    </td>
+                                                        <span class="text-secondary text-xs font-weight-bold">
+                                                            <c:if test = "${o.category == 1}">Suc Khoe</c:if>
+                                                            <c:if test = "${o.category == 2}">Y te cong cong</c:if>
 
-                                                    <td class="align-middle text-center">
-                                                        <span class="text-secondary text-xs font-weight-bold">${o.user_ID}</span>
+                                                            </span>
+                                                        </td>
+
+                                                        <td class="align-middle text-center">
+                                                        <c:forEach items="${listU}" var="u">
+                                                            <c:if test = "${o.user_ID == u.user_ID}">
+                                                                <span class="text-secondary text-xs font-weight-bold">${u.fullName}</span>
+                                                            </c:if> 
+                                                        </c:forEach>
                                                     </td>
                                                     <td class="align-middle text-center">
-                                                        <span class="text-secondary text-xs font-weight-bold">feature</span>
+                                                        <span class="text-secondary text-xs font-weight-bold">Manager</span>
                                                     </td>
                                                     <td class="align-middle text-center text-sm">
 
@@ -164,8 +167,8 @@
                                                         </td>
 
 
-                                                    <td class="align-middle">
-                                                        <a href="LoadControl?pid=${o.post_ID}" class="text-success text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>
+                                                        <td class="align-middle">
+                                                            <a href="LoadControl?pid=${o.post_ID}" class="text-success text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>
                                                             Edit
                                                         </a>
                                                     </td>

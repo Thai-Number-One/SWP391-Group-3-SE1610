@@ -20,12 +20,12 @@ public class Posts {
     private int Service_ID;
     private Date Date;
     private int Status;
-    private String Category;
+    private int Category;
 
     public Posts() {
     }
 
-    public Posts(int Post_ID, String Tilte, String Content, int User_ID, String Image, int Service_ID, Date Date, int Status, String Category) {
+    public Posts(int Post_ID, String Tilte, String Content, int User_ID, String Image, int Service_ID, Date Date, int Status, int Category) {
         this.Post_ID = Post_ID;
         this.Tilte = Tilte;
         this.Content = Content;
@@ -101,11 +101,11 @@ public class Posts {
         this.Status = Status;
     }
 
-    public String getCategory() {
+    public int getCategory() {
         return Category;
     }
 
-    public void setCategory(String Category) {
+    public void setCategory(int Category) {
         this.Category = Category;
     }
 

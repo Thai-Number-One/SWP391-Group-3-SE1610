@@ -25,7 +25,7 @@ public class BaseDAO {
     private final String portNumber = "1433";
     private final String instance="";
     private final String userID = "sa";
-    private final String password = "123";
+    private final String password = "123456";
     public static void main(String[] args) {
         try {
             System.out.println(new BaseDAO().BaseDao());

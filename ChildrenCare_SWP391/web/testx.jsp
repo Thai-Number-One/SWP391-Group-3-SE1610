@@ -4,7 +4,8 @@
     Author     : thaic
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+ <%@page contentType="text/html" pageEncoding="UTF-8"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,8 +14,8 @@
     </head>
     <body>
         <select name="role">
-            <c:forEach items="${detail}" var="o">
-                <option value="${o.id}">${o.name}</option>
+            <c:forEach items="${list}" var="o">
+                <option value="${o.user_ID}">${o.fullName} abc</option>
             </c:forEach>
         </select>
     </body>
