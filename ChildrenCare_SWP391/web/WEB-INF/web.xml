@@ -40,6 +40,10 @@
         <servlet-name>FeedbacksFilter</servlet-name>
         <servlet-class>Control.FeedbacksFilter</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>BlogsServlet</servlet-name>
+        <servlet-class>Control.BlogsServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>reservation</servlet-name>
         <url-pattern>/reservation</url-pattern>
@@ -79,6 +83,10 @@
     <servlet-mapping>
         <servlet-name>FeedbacksFilter</servlet-name>
         <url-pattern>/feedbacksfilter</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BlogsServlet</servlet-name>
+        <url-pattern>/blogs</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

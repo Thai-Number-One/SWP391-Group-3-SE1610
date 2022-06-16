@@ -13,7 +13,7 @@
         <meta content="" name="keywords">
         <meta content="" name="description">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <title>RESERVATIONS</title>
+        <title>FEEDBACKS</title>
         <link href="img/favicon.ico" rel="icon">
 
         <!-- Google Web Fonts -->

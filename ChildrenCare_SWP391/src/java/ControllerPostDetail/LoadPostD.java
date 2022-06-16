@@ -57,12 +57,13 @@ public class LoadPostD extends HttpServlet {
          
         try {
             
-            int id = 3;
+            String id = request.getParameter("Did");
+            int idd = Integer.parseInt(id);
             
             PostDetailDAO dao = new PostDetailDAO();
-            Posts d = dao.getDetail(id);
-            User userName = dao.getDetailUser(id);
-            Service serviceName = dao.getDetailService(id);
+            Posts d = dao.getDetail(idd);
+            User userName = dao.getDetailUser(idd);
+            Service serviceName = dao.getDetailService(idd);
             
             request.setAttribute("userName", userName);
             request.setAttribute("serviceName", serviceName);

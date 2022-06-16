@@ -1,15 +1,12 @@
 <%-- 
-    Document   : EditPost
-    Created on : Jun 14, 2022, 10:04:50 PM
+    Document   : SliderDetail
+    Created on : Jun 16, 2022, 10:27:35 PM
     Author     : s
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
-
-  <head>
-
+<html>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -134,9 +131,17 @@
                 line-height: 10px;
                 color: rgb(254,93,55);
                 margin-left: 12px;
+            }.blog-thumb{
+                width: 1000px;
+                height: 600px;
+            }
+            .blog-thumb img{
+                width: auto;
+                height: 100%;
             }
                 
     </style>
+
 <!--
 
 TemplateMo 551 Stand Blog
@@ -145,13 +150,7 @@ https://templatemo.com/tm-551-stand-blog
 
 -->
   </head>
-
-  <body>
-
-    
-
-    <!-- Header -->
-    <!-- Navbar Start -->
+    <body>
         <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0">
             <a href="HomeP.jsp" class="navbar-brand">
                 <h1 class="m-0 text-primary"><i class=""></i>ChildrenCare</h1>
@@ -181,14 +180,8 @@ https://templatemo.com/tm-551-stand-blog
 
             </div>
         </nav>
-
-    <!-- Page Content -->
-    
-
-  
-
-
-     <section class="contact-us">
+        
+        <section class="contact-us">
       <div class="container">
           <div class="row">
              
@@ -196,23 +189,23 @@ https://templatemo.com/tm-551-stand-blog
                       <div class="down-contact">
                           <div class="row">
                               <div class="col-lg-8">
-                                  <form action="UpdatePost" method="post">
+                                  <form action="" method="post">
                                   <div class="blog-thumb">
-                                      <img src="${Detail.image}" alt="">
+                                      <img src="${SliderD.image}" alt="">
                                   </div>
                                   <div class="sidebar-item contact-form">
                                       <div class="sidebar-heading">
-                                          <h2>Edit Post</h2>
+                                          <h2>Slider Detail</h2>
                                       </div>
                                       <div class="content">
-                                          <form id="contact" action="" method="post">
+                                          
                                               
                                               <div class="sidebar-h">
-                                                    <h5 clas="edi">Post_ID: </h5>
+                                                    <h5 clas="edi">Slider_ID: </h5>
                                               </div>
                                               <div class="col-md-6 col-sm-12-1">
                                                   <fieldset>
-                                                      <input class="dddd" name="post_id" type="text" readonly id="name" required="" value="${Detail.post_ID}">
+                                                      <input class="dddd" name="post_id" type="text" readonly id="name" required="" value="${SliderD.slider_ID}">
                                                   </fieldset>
                                               </div>
                                                   
@@ -221,7 +214,7 @@ https://templatemo.com/tm-551-stand-blog
                                               </div>
                                               <div class="col-md-6 col-sm-12-1">
                                                   <fieldset>
-                                                      <input class="dddd" name="user_id" type="text" readonly id="name" required="" value="${Detail.user_ID}">
+                                                      <input class="dddd" name="user_id" type="text" readonly id="name" required="" value="${SliderD.user_ID}">
                                                   </fieldset>
                                               </div>
 
@@ -231,7 +224,7 @@ https://templatemo.com/tm-551-stand-blog
                                               </div>
                                               <div class="col-md-6 col-sm-12">
                                                   <fieldset>
-                                                      <input class="imageli" name="image" type="text" id="name" required="" value="${Detail.image}">
+                                                      <input class="imageli" name="image" type="text" id="name" required="" value="${SliderD.image}">
                                                   </fieldset>
                                               </div>
                                               <div class="sidebar-h">
@@ -239,50 +232,18 @@ https://templatemo.com/tm-551-stand-blog
                                               </div>
                                               <div class="col-md-12 col-sm-12">
                                                   <fieldset>
-                                                      <input name="title" type="text" id="subject" value="${Detail.tilte}">
+                                                      <input name="title" type="text" id="subject" value="${SliderD.title}">
                                                   </fieldset>
                                               </div>
                                               <div class="sidebar-h">
-                                                  <h5 clas="edi">Content </h5>
+                                                  <h5 clas="edi">Blacklink </h5>
                                               </div>
                                               <div class="col-lg-12">
                                                   <fieldset>
-                                                      <textarea name="content" rows="6" id="message"  required="">${Detail.content}</textarea>
+                                                      <textarea name="content" rows="6" id="message"  required="">${SliderD.blacklink}</textarea>
                                                   </fieldset>
                                               </div>
-                                                  
-                                              <div class="sidebar-h">
-                                                  <h5 clas="edi">Category: </h5>
-                                              </div> 
-                                                  
-                                              <div class="col-lg-12">
-                                                          <select class="choincate" name="choincate">
-                                                              <option>Family</option>
-                                                              <option>Health</option>
-                                                              <option>Education</option>
-                                                          </select>
-                                              </div> 
-                                                  
-                                              <div class="sidebar-h-a">
-                                                  <h5 clas="edi">Status: </h5>
-                                              </div> 
-                                                  
-                                              <div class="col-lg-12">
-                                                          <select class="choincate" name="choicestatus">
-                                                              <option>Show</option>
-                                                              <option>Hide</option>
-                                                          </select>
-                                              </div>     
-                                                     
-                                                  
-                                                  
-                                              <div class="col-lg-12">
-                                                  <fieldset>
-                                                      <button type="submit" id="form-submit" class="main-button" >Update Post</button>
-                                                  </fieldset>
-                                              </div>
-
-                                          </form>
+     
                                       </div>
                                   </div>
                                   </form>                
@@ -296,9 +257,8 @@ https://templatemo.com/tm-551-stand-blog
           </div>
       </div>
     </section>
-    
-    
-    <!-- Footer Start -->
+        
+     <!-- Footer Start -->
         <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
             <div class="container py-5">
                 <div class="row g-5">
@@ -387,9 +347,7 @@ https://templatemo.com/tm-551-stand-blog
           t.style.color='#fff';
           }
       }
-    </script>
-
-
-  </body>
-
+    </script>                                             
+                                                  
+    </body>
 </html>

@@ -1,3 +1,5 @@
+<%@page import="Entity.User"%>
+<%@page import="Entity.Feedbacks"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -72,33 +74,36 @@
         </style>
     </head>
     <body>
+        <% Feedbacks f = (Feedbacks) request.getAttribute("feedbackdetails"); %>
+        <% User u = (User) request.getAttribute("feedbackuser"); %>
         <!-- Navbar Start -->
         <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0">
-            <a href="HomePage.jsp" class="navbar-brand">
-                <h1 class="m-0 text-primary"><i class="fa fa-book-reader me-3"></i>ChildrenCare</h1>
+            <a href="HomeP.jsp" class="navbar-brand">
+                <h1 class="m-0 text-primary"><i class=""></i>ChildrenCare</h1>
             </a>
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav mx-auto">
-                    <a href="HomePage.jsp" class="nav-item nav-link">Home</a>
-                    <a href="about.html" class="nav-item nav-link active">About Us</a>
+                    <a href="HomeP.jsp" class="nav-item nav-link ">Home</a>
+                    <a href="about.html" class="nav-item nav-link">About Us</a>
                     <a href="classes.html" class="nav-item nav-link">Classes</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                         <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0">
                             <a href="facility.html" class="dropdown-item">School Facilities</a>
                             <a href="team.html" class="dropdown-item">Popular Teachers</a>
-                            <a href="call-to-action.html" class="dropdown-item">Become A Teachers</a>
-                            <a href="appointment.html" class="dropdown-item">Make Appointment</a>
+                            <a href="dashboard" class="dropdown-item">Admin</a>
+                            <a href="appointment.html" class="dropdown-item">Manager</a>
                             <a href="testimonial.html" class="dropdown-item">Testimonial</a>
                             <a href="404.html" class="dropdown-item">404 Error</a>
                         </div>
                     </div>
+
                     <a href="contact.html" class="nav-item nav-link">Contact Us</a>
                 </div>
-                <a href="" class="btn btn-primary rounded-pill px-3 d-none d-lg-block">Join Us<i class="fa fa-arrow-right ms-3"></i></a>
+
             </div>
         </nav>
         <!-- Navbar End -->
@@ -108,8 +113,8 @@
                 <h1 class="display-2 text-white animated slideInDown mb-4">Feedback</h1>
                 <nav aria-label="breadcrumb animated slideInDown">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item"><a href="#">Feedback</a></li>
+                        <li class="breadcrumb-item"><a href="HomePage.jsp">Home</a></li>
+                        <li class="breadcrumb-item"><a href="feedbackslist">Feedback</a></li>
                         <li class="breadcrumb-item text-white active" aria-current="page">Details</li>
                     </ol>
                 </nav>
@@ -135,60 +140,62 @@
                                                     <tr>
                                                         <th class="text-uppercase text-secondary text-xx font-weight-bolder opacity-50 ps-2">Full Name</th>
                                                         <td>
-                                                            <input type="text" value="${feedbackuser.FullName}" class="form-control" name="FullName" readonly required>
+                                                            <input type="text" value="<%= u.getFullName()%>" class="form-control" name="FullName" readonly required>
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <th class="text-uppercase text-secondary text-xx font-weight-bolder opacity-50 ps-2 ">Email</th>
                                                         <td>
-                                                            <input type="text" value="${feedbackuser.Email}" class="form-control" name="Email" readonly required>
+                                                            <input type="text" value="<%= u.getEmail()%>" class="form-control" name="Email" readonly required>
                                                         </td>
                                                 <span class="glyphicon glyphicon-eye-open"></span>                                            
                                                 </tr>
                                                 <tr>
                                                     <th class="text-uppercase text-secondary text-xx font-weight-bolder opacity-50 ps-2">Mobile</th>
                                                     <td>
-                                                        <input type="text" value="${feedbackuser.Phone}" class="form-control" name="Mobile" readonly required>
+                                                        <input type="text" value="<%= u.getPhone()%>" class="form-control" name="Mobile" readonly required>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <th class="text-uppercase text-secondary text-xx font-weight-bolder opacity-50 ps-2">Service</th>
                                                     <td class="align-middle text-sm mb-0">
-                                                        <input type="text" value="Kham rang" class="form-control" name="Service" readonly required>
+                                                        <c:forEach items="${requestScope.test}" var="a">
+                                                        <input type="text" value="${a.service.servicename}" class="form-control" name="Service" readonly required>
+                                                        </c:forEach>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <th class="text-uppercase text-secondary text-xx font-weight-bolder opacity-50 ps-2">Rate star</th>
                                                     <td>
-                                                        <c:if test="${feedbackdetails.star == 1}">
+                                                        <c:if test="${requestScope.feedbackdetails.star == 1}">
                                                             <span class="fas fa-star" style="color: orange;"></span>
                                                             <span class="far fa-star" style="color: orange;"></span>
                                                             <span class="far fa-star" style="color: orange;"></span>
                                                             <span class="far fa-star" style="color: orange;"></span>
                                                             <span class="far fa-star" style="color: orange;"></span>
                                                         </c:if>
-                                                        <c:if test="${feedbackdetails.star == 2}">
+                                                        <c:if test="${requestScope.feedbackdetails.star == 2}">
                                                             <span class="fas fa-star" style="color: orange;"></span>
                                                             <span class="fas fa-star" style="color: orange;"></span>
                                                             <span class="far fa-star" style="color: orange;"></span>
                                                             <span class="far fa-star" style="color: orange;"></span>
                                                             <span class="far fa-star" style="color: orange;"></span>
                                                         </c:if>
-                                                        <c:if test="${feedbackdetails.star == 3}">
+                                                        <c:if test="${requestScope.feedbackdetails.star == 3}">
                                                             <span class="fas fa-star" style="color: orange;"></span>
                                                             <span class="fas fa-star" style="color: orange;"></span>
                                                             <span class="fas fa-star" style="color: orange;"></span>
                                                             <span class="far fa-star" style="color: orange;"></span>
                                                             <span class="far fa-star" style="color: orange;"></span>
                                                         </c:if>
-                                                        <c:if test="${feedbackdetails.star == 4}">
+                                                        <c:if test="${requestScope.feedbackdetails.star == 4}">
                                                             <span class="fas fa-star" style="color: orange;"></span>
                                                             <span class="fas fa-star" style="color: orange;"></span>
                                                             <span class="fas fa-star" style="color: orange;"></span>
                                                             <span class="fas fa-star" style="color: orange;"></span>
                                                             <span class="far fa-star" style="color: orange;"></span>
                                                         </c:if>
-                                                        <c:if test="${feedbackdetails.star == 5}">
+                                                        <c:if test="${requestScope.feedbackdetails.star == 5}">
                                                             <span class="fas fa-star" style="color: orange;"></span>
                                                             <span class="fas fa-star" style="color: orange;"></span>
                                                             <span class="fas fa-star" style="color: orange;"></span>
@@ -200,16 +207,16 @@
                                                 <tr>
                                                     <th class="text-uppercase text-secondary text-xx font-weight-bolder opacity-50 ps-2">Feedback</th>
                                                     <td>
-                                                        <textarea class="form-control" name="details" readonly required>Qua đây mình mong bài viết sẽ giúp các bạn nắm được component Form và Input Group trong Bootstrap 4 và nếu có thắc mắc gì cứ gửi email mình sẽ phản hồi sớm nhất có thể. Rất mong bạn tiếp tục ủng hộ trang web để mình có thể viết nhiều bài hay hơn nữa nhé. Chúc bạn có một ngày vui vẻ!</textarea>
+                                                        <textarea class="form-control" name="details" readonly required>${requestScope.feedbackdetails.detail}</textarea>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <th class="text-uppercase text-secondary text-xx font-weight-bolder opacity-50 ps-2">Status</th>
                                                     <td>
-                                                        <c:if test="${feedbackdetails.status == 'view'}">
+                                                        <c:if test="${requestScope.feedbackdetails.status == 'view'}">
                                                         <a class="fas fa-eye" style="font-size: 30px; color: black;" href="feedbackstatus?status=view&feedback_id=${feedbackdetails.feedbackid}"></a>
                                                         </c:if>
-                                                        <c:if test="${feedbackdetails.status == 'hide'}">
+                                                        <c:if test="${requestScope.feedbackdetails.status == 'hide'}">
                                                         <a class="fas fa-eye-slash" style="font-size: 30px; color: black;" href="feedbackstatus?status=hide&feedback_id=${feedbackdetails.feedbackid}"></a>
                                                         </c:if>
                                                         </td>
@@ -218,7 +225,7 @@
                                             </table>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" onclick='window.history.go(-1);'>Return</button>
+                                            <a type="button" class="btn btn-secondary" href="feedbackslist" >Return</a>
                                         </div>
                                     </div>
                                 </div>

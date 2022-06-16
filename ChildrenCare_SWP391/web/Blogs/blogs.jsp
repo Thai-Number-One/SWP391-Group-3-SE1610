@@ -1,12 +1,7 @@
-<%-- 
-    Document   : PostsD
-    Created on : Jun 16, 2022, 5:10:26 PM
-    Author     : s
---%>
 
 
-
-
+<%@page import="model_staff.reservations_user"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -18,7 +13,7 @@
         <meta content="" name="keywords">
         <meta content="" name="description">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <title>RESERVATIONS</title>
+        <title>BlOGS</title>
         <link href="img/favicon.ico" rel="icon">
 
         <!-- Google Web Fonts -->
@@ -117,115 +112,140 @@
         </nav>
         <!-- Navbar End -->
 
-
-       <section class="blog-posts grid-system">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="all-blog-posts">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="blog-post">
-                                    <div class="blog-thumb">
-                                        <img src="${Detail.image}" alt="">
-                                    </div>
-                                    <div class="down-content">
-                                        <span>${Detail.service_ID}</span>
-                                        <a href="post-details.html"><h4>${Detail.tilte}</h4></a>
-                                        <ul class="post-info">
-                                            <li><a href="#">${Detail.user_ID}</a></li>
-                                            <li><a href="#"></a>${Detail.date}</li>
-                                        </ul>
-                                        <p>${Detail.content}</p> 
-
-                                        <div class="post-options">
-                                            <div class="row">
-                                                <div class="col-6">
-                                                    <ul class="post-tags">
-                                                        <li><i class="fa fa-tags"></i></li>
-                                                        <li><a href="#">${Detail.category}</a>,</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div style="display: flex;">
-                                <div class="col-lg-12">
-                                    <div class="sidebar-item submit-comment">
-
-                                        <div class="content">
-
-
-                                            <div class="col-lg-12">
-                                                <fieldset>
-                                                    <a href="EditPost?Pid=${Detail.post_ID}">
-                                                        <button type="submit" id="form-submit" class="main-button">Edit Post</button>
-                                                    </a>
-                                                </fieldset>
-                                            </div>
-
-
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>  
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="sidebar">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="sidebar-item recent-posts">
-                                <div class="sidebar-heading">
-                                    <h2>Recent Posts</h2>
-                                </div>
-                                <div class="content">
-                                    <ul>
-                                        
-                                        <c:forEach items="${requestScope.re}" var="o"> 
-
-                                            <li><a href="post-details.html">
-                                                    <h5>${o.tilte}</h5>
-                                                                          
-                                                </a>
-                                            </li>
-
-
-                                        </c:forEach>
-                                    </ul>
-                                </div>
-                            </div>
+        <div class="container my-5 py-1">
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-12 col-lg-3">
+                    <div class="card text-dark">
+                        <div class="card-body p-4">
+                            <h4 class="mb-0" style="text-align: center;">Recent Blogs</h4>
                         </div>
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-12">
-                <div class="sidebar-item categories">
-                    <div class="sidebar-heading">
-                        <h2>Categories</h2>
-                    </div>
-                    <div class="content">
-                        <ul>
-                            <c:forEach items="${re}" var="c"> 
-
-                                <li><a href="#">${c.category}</a></li>
-
-
-                            </c:forEach>
-                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-  </section>
 
+        <c:forEach items="${requestScope.allblogs}" var="a">
+            <div class="container my-4 py-1">
+
+                <div class="row d-flex justify-content-center">
+                    <div class="col-md-12 col-lg-10">
+                        <div class="card text-dark">
+                            <div class="card-body p-4">
+
+                                <div class="d-flex flex-start" style="padding-bottom: 20px;padding-top: 20px;">
+                                    <a href="#"><img class="rounded-circle shadow-1-strong me-3"
+                                                     src="feedbackF/img/${a.posts.image}" alt="avatar" width="60"
+                                                     height="60" /></a>
+                                    <div>
+                                        <h6 class="fw-bold mb-1"><a href="#">${a.user.fullname} - ${a.service.servicename}</a></h6>
+                                        <div class="d-flex align-items-center mb-3">
+                                            <p class="mb-0">
+                                                ${a.posts.date} / 
+                                                ${a.posts.category}
+                                            </p>
+                                        </div>
+                                        <p class="mb-0">
+                                            ${a.posts.content}
+                                        </p>                               
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </c:forEach>
+        <!-- feedback page start -->
+        <c:if test="${requestScope.checkpage!=1}">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item ">
+                        <a class="page-link" href="blogs?page=${1}"><<</a>
+                    </li>
+                    <c:if test="${page ==1}">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="blogs?page=${page-1}">Previous</a>
+                        </li>
+                    </c:if>
+                    <c:if test="${page !=1}">
+                        <li class="page-item ">
+                            <a class="page-link" href="blogs?page=${page-1}">Previous</a>
+                        </li>
+                    </c:if>
+                    <!-- /////////////////////////////////////////////////////////////////-->
+                    <c:set var="page" value="${requestScope.page}"/>
+                    <c:set var="max" value="${0}"/>
+                    <c:forEach begin="${1}" end="${requestScope.num}" var="i">                
+                        <c:if test="${i==page-2||i==page-1||i==page+2||i==page+1||i==page}">
+                            <li class=" ${i==page?"active":""} page-item"><a class="page-link" href="blogs?page=${i}">${i}</a></li>
+
+                        </c:if>
+                        <h1 style="display: none;">${max=max+1}</h1>
+                    </c:forEach>
+                    <!-- /////////////////////////////////////////////////////////////////-->
+                    <c:if test="${page ==max}">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="blogs?page=${page+1}">Next</a>
+                        </li>
+                    </c:if>
+                    <c:if test="${page !=max}">
+                        <li class="page-item ">
+                            <a class="page-link" href="blogs?page=${page+1}">Next</a>
+                        </li>
+                    </c:if>
+                    <li class="page-item ">
+                        <a class="page-link" href="blogs?page=${max}">>></a>
+                    </li>
+                </ul>
+            </nav>
+        </c:if>
+        <!-- feedback page end -->
+
+        <!-- filter page start -->
+        <c:if test="${requestScope.checkpage==1}">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item ">
+                        <a class="page-link" href="feedbacksfilter?page=${1}&status=${requestScope.status}&sevice=${requestScope.sevice}&star=${requestScope.star}&name=${requestScope.name}"><<</a>
+                    </li>
+                    <c:if test="${page ==1}">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="feedbacksfilter?page=${page-1}&status=${requestScope.status}&sevice=${requestScope.sevice}&star=${requestScope.star}&name=${requestScope.name}">Previous</a>
+                        </li>
+                    </c:if>
+                    <c:if test="${page !=1}">
+                        <li class="page-item ">
+                            <a class="page-link" href="feedbacksfilter?page=${page-1}&status=${requestScope.status}&sevice=${requestScope.sevice}&star=${requestScope.star}&name=${requestScope.name}">Previous</a>
+                        </li>
+                    </c:if>
+                    <!-- /////////////////////////////////////////////////////////////////-->
+                    <c:set var="page" value="${requestScope.page}"/>
+                    <c:set var="max" value="${0}"/>
+                    <c:forEach begin="${1}" end="${requestScope.num}" var="i">                
+                        <c:if test="${i==page-2||i==page-1||i==page+2||i==page+1||i==page}">
+                            <li class=" ${i==page?"active":""} page-item"><a class="page-link" href="feedbacksfilter?page=${i}&status=${requestScope.status}&sevice=${requestScope.sevice}&star=${requestScope.star}&name=${requestScope.name}">${i}</a></li>
+
+                        </c:if>
+                        <h1 style="display: none;">${max=max+1}</h1>
+                    </c:forEach>
+                    <!-- /////////////////////////////////////////////////////////////////-->
+                    <c:if test="${page ==max}">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="feedbacksfilter?page=${page+1}&status=${requestScope.status}&sevice=${requestScope.sevice}&star=${requestScope.star}&name=${requestScope.name}">Next</a>
+                        </li>
+                    </c:if>
+                    <c:if test="${page !=max}">
+                        <li class="page-item ">
+                            <a class="page-link" href="feedbacksfilter?page=${page+1}&status=${requestScope.status}&sevice=${requestScope.sevice}&star=${requestScope.star}&name=${requestScope.name}">Next</a>
+                        </li>
+                    </c:if>
+                    <li class="page-item ">
+                        <a class="page-link" href="feedbacksfilter?page=${max}&status=${requestScope.status}&sevice=${requestScope.sevice}&star=${requestScope.star}&name=${requestScope.name}">>></a>
+                    </li>
+                </ul>
+            </nav>
+        </c:if>
+        <!-- filter page end -->
 
         <!-- Footer Start -->
         <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
@@ -276,6 +296,8 @@
                 </div>
             </div>
         </div>
+
+
         <!-- Footer End -->
 
 
@@ -294,4 +316,3 @@
         <script src="js/main.js"></script>                
     </body>
 </html>
-
