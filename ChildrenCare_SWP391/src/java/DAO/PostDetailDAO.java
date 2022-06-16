@@ -80,15 +80,35 @@ public class PostDetailDAO {
         
         return list;
     } 
-    
+    public void updatenews(String title, String content, int user_id, String image, String category, int post_id){
+ 
+        try {
+            String sql="update Post\n" +
+                        "set Title = ?, Content = ?, [User_ID] = ?, [Image] = ?, Category = ?\n" +
+                        "where Post_ID = ?";
+  
+            conn = new BaseDAO().BaseDao();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, title);
+            ps.setString(2, content);
+            ps.setInt(3, user_id);
+            ps.setString(4, image);
+            ps.setString(5, category);
+            ps.setInt(6, post_id);
+            ps.executeUpdate();
+            
+        } catch (Exception e) {
+        }
+    }
+
     
     public static void main(String[] args) {
         PostDetailDAO dao = new PostDetailDAO();
 
-        List<Posts> list = dao.getCategory();
+        List<Posts> list = dao.getTop5();
         
         for (Posts o : list) {
-            System.out.println(o);
+            System.out.println(o.getCategory());
         }
 
     }
