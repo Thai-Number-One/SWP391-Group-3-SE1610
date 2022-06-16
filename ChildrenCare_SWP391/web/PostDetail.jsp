@@ -137,6 +137,8 @@
             }
             .blog-posts .submit-comment button{
                 width: 130px;
+            }.blog-posts .down-content h4{
+                font-size: 30px;
             }
                 
             
@@ -169,24 +171,23 @@ https://templatemo.com/tm-551-stand-blog
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav mx-auto">
-                    <a href="HomeP.jsp" class="nav-item nav-link ">Home</a>
-                    <a href="#" class="nav-item nav-link">About Us</a>
-                    <a href="#" class="nav-item nav-link">Classes</a>
+                    <a href="HomeP.jsp" class="nav-item nav-link active">Home</a>
+                    <a href="HomeP.jsp" class="nav-item nav-link">About Us</a>
+                    <a href="HomeP.jsp" class="nav-item nav-link">Classes</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                         <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0">
-                            <a href="reservation" class="dropdown-item">Reservations List</a>
-                            <a href="medical" class="dropdown-item">Medical list</a>
-                            <a href="prescription" class="dropdown-item">Prescription For Staff</a>
-                            <a href="#" class="dropdown-item">Make Appointment</a>
-                            <a href="#" class="dropdown-item">Testimonial</a>
-                            <a href="#" class="dropdown-item">404 Error</a>
+                            <a href="facility.html" class="dropdown-item">School Facilities</a>
+                            <a href="team.html" class="dropdown-item">Popular Teachers</a>
+                            <a href="dashboard" class="dropdown-item">Admin</a>
+                            <a href="appointment.html" class="dropdown-item">Manager</a>
+                            <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                            <a href="404.html" class="dropdown-item">404 Error</a>
                         </div>
                     </div>
-                    <a href="#" class="nav-item nav-link">Contact Us</a>
-                    <a href="login.jsp" class="nav-item nav-link" >Login</a>
+                    <a href="contact.html" class="nav-item nav-link">Contact Us</a>
                 </div>
-
+                <a href="login.jsp" class="btn btn-primary rounded-pill px-3 d-none d-lg-block">Login<i class="fa fa-arrow-right ms-3"></i></a>
             </div>
         </nav>
 

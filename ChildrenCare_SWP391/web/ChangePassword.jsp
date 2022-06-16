@@ -34,7 +34,7 @@
                                     <div class="text w-100">
                                         <h2>Welcome to ChildrenCare</h2>
                                         <p>After Change Password, Please login again!!!</p>
-                                        <a href="#" class="btn btn-white btn-outline-white">Sign In</a>
+                                        <a href="HomeP.jsp" class="btn btn-white btn-outline-white">Sign In</a>
                                     </div>
                                 </div>
                                 <div class="login-wrap p-4 p-lg-5">
