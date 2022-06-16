@@ -74,8 +74,8 @@ public class UpdatePost extends HttpServlet {
 
             PostDetailDAO dao = new PostDetailDAO();
             dao.updatenews(title, content, Uid, image, status, category, Pid);
-
-            response.sendRedirect("LoadPostD");
+            
+            request.getRequestDispatcher("HomeP.jsp").forward(request, response);
         } catch (Exception e) {
         }
         
