@@ -23,7 +23,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author dathp
  */
-public class feedbackslist extends HttpServlet {
+public class FeedbacksFilter extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,10 +42,10 @@ public class feedbackslist extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet feedbackslist</title>");
+            out.println("<title>Servlet FeedbacksFilter</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet feedbackslist at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet FeedbacksFilter at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -63,13 +63,21 @@ public class feedbackslist extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
+          try {
+             String status = request.getParameter("status");
+             String sevice = request.getParameter("sevice");
+             String xstar = request.getParameter("star");
+             String name = request.getParameter("name");
+              
+              Integer star = (xstar == null || xstar.equals(""))
+                    ? null : Integer.parseInt(xstar);
+             
             FeedbacksDAO d = new FeedbacksDAO();
             reservatonsDAO r = new reservatonsDAO();
             String xpage = request.getParameter("page");
             int page, size;
             
-            size = d.allfeedbacks().size();
+            size = d.filterallstaff(status, sevice, star, name).size();
             int num=(size%10==0?(size/10):((size/10)+1));
             
             if (xpage == null) {
@@ -83,13 +91,19 @@ public class feedbackslist extends HttpServlet {
             end = Math.min(page * 10, size)
                     ;
             List<allfeedbacks> list = new ArrayList<>();
-            list = d.feedbackspage(d.allfeedbacks(), begin, end);
+            list = d.feedbackspage(d.filterallstaff(status, sevice, star, name), begin, end);
+            
             
             
             request.setAttribute("page", page);
             request.setAttribute("num", num);
             request.setAttribute("sevices", r.allservice());
             request.setAttribute("allfeedbacks", list);
+            request.setAttribute("checkpage", 1);
+            request.setAttribute("status", status);
+            request.setAttribute("sevice", sevice);
+            request.setAttribute("star", star);
+            request.setAttribute("name", name);
             request.getRequestDispatcher("feedbackF/feedbacks.jsp").forward(request, response);
         } catch (Exception ex) {
             Logger.getLogger(feedbackslist.class.getName()).log(Level.SEVERE, null, ex);
@@ -107,15 +121,7 @@ public class feedbackslist extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            int id = Integer.parseInt(request.getParameter("id"));
-            String status = request.getParameter("status");
-            FeedbacksDAO d = new FeedbacksDAO();
-            d.updateStatusFeedback(id, status);
-            response.sendRedirect("feedbackslist");
-        } catch (Exception ex) {
-            Logger.getLogger(feedbackslist.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**

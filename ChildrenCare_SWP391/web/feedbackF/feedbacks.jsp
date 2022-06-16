@@ -113,7 +113,37 @@
         <!-- Navbar End -->
 
 
+
+
+
         <div class="container my-5 py-5">
+            <div class="d-flex justify-content-center btn-group-sm" >
+                <form action="feedbacksfilter" method="get">
+                    <select style="margin-left: 5px; color: #FFF5F3;" class="btn bg-primary" name="status">
+                        <option value="">all</option>
+                        <option value="view">view</option>
+                        <option value="hide">hide</option>
+                    </select>
+                    <select style="margin-left: 5px;  color: #FFF5F3;" class="btn bg-primary" name="sevice">
+                        <option value="">all</option>
+                        <c:forEach items="${requestScope.sevices}" var="s">
+                            <option>${s.servicename}</option>
+                        </c:forEach>
+                    </select>
+                    <select style="margin-left: 5px;  color: #FFF5F3;" class="btn bg-primary" name="star">
+                        <option value="">all</option>
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                    <input style="margin-left: 5px;  color: #FFF5F3;" class="btn bg-primary" type="text" name="name" placeholder="Name">
+                    <button style="margin-left: 5px;  color: #FFF5F3;" class="badge btn-primary" type="submit" >Filter</button>
+                </form>
+
+            </div>
             <div class="row d-flex justify-content-center">
                 <div class="col-md-12 col-lg-10">
                     <div class="card text-dark">
@@ -142,7 +172,7 @@
                                                         <option>view</option>
                                                     </c:if>
                                                 </select>
-                                                    <button type="submit" class="badge btn-primary" ><i class="fas fa-genderless"></i></button>
+                                                <button type="submit" class="badge btn-primary" ><i class="fas fa-genderless"></i></button>
 
                                             </form>
 
@@ -168,8 +198,97 @@
                 </div>
             </div>
         </div>
+        <!-- feedback page start -->
+        <c:if test="${requestScope.checkpage!=1}">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item ">
+                        <a class="page-link" href="feedbackslist?page=${1}"><<</a>
+                    </li>
+                    <c:if test="${page ==1}">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="feedbackslist?page=${page-1}">Previous</a>
+                        </li>
+                    </c:if>
+                    <c:if test="${page !=1}">
+                        <li class="page-item ">
+                            <a class="page-link" href="feedbackslist?page=${page-1}">Previous</a>
+                        </li>
+                    </c:if>
+                    <!-- /////////////////////////////////////////////////////////////////-->
+                    <c:set var="page" value="${requestScope.page}"/>
+                    <c:set var="max" value="${0}"/>
+                    <c:forEach begin="${1}" end="${requestScope.num}" var="i">                
+                        <c:if test="${i==page-2||i==page-1||i==page+2||i==page+1||i==page}">
+                            <li class=" ${i==page?"active":""} page-item"><a class="page-link" href="feedbackslist?page=${i}">${i}</a></li>
 
+                        </c:if>
+                        <h1 style="display: none;">${max=max+1}</h1>
+                    </c:forEach>
+                    <!-- /////////////////////////////////////////////////////////////////-->
+                    <c:if test="${page ==max}">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="feedbackslist?page=${page+1}">Next</a>
+                        </li>
+                    </c:if>
+                    <c:if test="${page !=max}">
+                        <li class="page-item ">
+                            <a class="page-link" href="feedbackslist?page=${page+1}">Next</a>
+                        </li>
+                    </c:if>
+                    <li class="page-item ">
+                        <a class="page-link" href="feedbackslist?page=${max}">>></a>
+                    </li>
+                </ul>
+            </nav>
+        </c:if>
+        <!-- feedback page end -->
+        
+        <!-- filter page start -->
+         <c:if test="${requestScope.checkpage==1}">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item ">
+                        <a class="page-link" href="feedbacksfilter?page=${1}&status=${requestScope.status}&sevice=${requestScope.sevice}&star=${requestScope.star}&name=${requestScope.name}"><<</a>
+                    </li>
+                    <c:if test="${page ==1}">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="feedbacksfilter?page=${page-1}&status=${requestScope.status}&sevice=${requestScope.sevice}&star=${requestScope.star}&name=${requestScope.name}">Previous</a>
+                        </li>
+                    </c:if>
+                    <c:if test="${page !=1}">
+                        <li class="page-item ">
+                            <a class="page-link" href="feedbacksfilter?page=${page-1}&status=${requestScope.status}&sevice=${requestScope.sevice}&star=${requestScope.star}&name=${requestScope.name}">Previous</a>
+                        </li>
+                    </c:if>
+                    <!-- /////////////////////////////////////////////////////////////////-->
+                    <c:set var="page" value="${requestScope.page}"/>
+                    <c:set var="max" value="${0}"/>
+                    <c:forEach begin="${1}" end="${requestScope.num}" var="i">                
+                        <c:if test="${i==page-2||i==page-1||i==page+2||i==page+1||i==page}">
+                            <li class=" ${i==page?"active":""} page-item"><a class="page-link" href="feedbacksfilter?page=${i}&status=${requestScope.status}&sevice=${requestScope.sevice}&star=${requestScope.star}&name=${requestScope.name}">${i}</a></li>
 
+                        </c:if>
+                        <h1 style="display: none;">${max=max+1}</h1>
+                    </c:forEach>
+                    <!-- /////////////////////////////////////////////////////////////////-->
+                    <c:if test="${page ==max}">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="feedbacksfilter?page=${page+1}&status=${requestScope.status}&sevice=${requestScope.sevice}&star=${requestScope.star}&name=${requestScope.name}">Next</a>
+                        </li>
+                    </c:if>
+                    <c:if test="${page !=max}">
+                        <li class="page-item ">
+                            <a class="page-link" href="feedbacksfilter?page=${page+1}&status=${requestScope.status}&sevice=${requestScope.sevice}&star=${requestScope.star}&name=${requestScope.name}">Next</a>
+                        </li>
+                    </c:if>
+                    <li class="page-item ">
+                        <a class="page-link" href="feedbacksfilter?page=${max}&status=${requestScope.status}&sevice=${requestScope.sevice}&star=${requestScope.star}&name=${requestScope.name}">>></a>
+                    </li>
+                </ul>
+            </nav>
+        </c:if>
+        <!-- filter page end -->
 
         <!-- Footer Start -->
         <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
@@ -220,6 +339,8 @@
                 </div>
             </div>
         </div>
+
+
         <!-- Footer End -->
 
 
