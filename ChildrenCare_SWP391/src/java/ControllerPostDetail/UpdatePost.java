@@ -38,16 +38,42 @@ public class UpdatePost extends HttpServlet {
         try {
             String image = request.getParameter("image");
             String title = request.getParameter("title");
-            String category = "Family";
+            String choice = request.getParameter("choincate");
             String content = request.getParameter("content");
             String Post_id = request.getParameter("post_id");
             String User_id = request.getParameter("user_id");
             
             int Pid = Integer.parseInt(Post_id);
             int Uid = Integer.parseInt(User_id);
+            
+            
+            String category = "";
+            
+            
+            if(choice.equals("Family")){
+                category = "Family";
+            }else if(choice.equals("Health")){
+                category = "Health";
+            }else if(choice.equals("Education")){
+                category = "Education";
+            }else{
+                category = "Family";
+            }
+           
+            String choicestatus = request.getParameter("choicestatus");
+            int status = 1;
+            
+            if(choicestatus.equals("Show")){
+                status = 1;
+            }else if(choice.equals("Hide")){
+                status = 0;
+            }else{
+                status = 1;
+            }
+            
 
             PostDetailDAO dao = new PostDetailDAO();
-            dao.updatenews(title, content, Uid, image, category, Pid);
+            dao.updatenews(title, content, Uid, image, status, category, Pid);
 
             response.sendRedirect("LoadPostD");
         } catch (Exception e) {

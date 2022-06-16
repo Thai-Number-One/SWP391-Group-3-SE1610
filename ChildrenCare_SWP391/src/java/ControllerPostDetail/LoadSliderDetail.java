@@ -3,9 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Control;
+package ControllerPostDetail;
 
-import DAO.UserDAO;
+import DAO.PostDetailDAO;
+import DAO.SliderDetailDAO;
+import Entity.Posts;
+import Entity.Service;
+import Entity.Slider;
 import Entity.User;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -17,10 +21,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author win
+ * @author s
  */
-@WebServlet(name = "LoginControl", urlPatterns = {"/login"})
-public class LoginControl extends HttpServlet {
+@WebServlet(name = "LoadSliderDetail", urlPatterns = {"/LoadSliderDetail"})
+public class LoadSliderDetail extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,17 +38,6 @@ public class LoginControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        UserDAO Udao = new UserDAO();
-        User u = Udao.login(username, password);
-        if(u == null){
-            request.setAttribute("mess", "Wrong UserName or Password !");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-        }else{
-            request.getRequestDispatcher("HomeP.jsp").forward(request, response);
-        }
-        
         
     }
 
@@ -60,7 +53,20 @@ public class LoginControl extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        //processRequest(request, response);
+        try {
+            String id = request.getParameter("Sid");
+            int idd = Integer.parseInt(id);
+            
+            SliderDetailDAO dao = new SliderDetailDAO();
+            
+            Slider d = dao.getDetailSilder(idd);
+
+            request.setAttribute("SliderD", d);
+            
+            request.getRequestDispatcher("SliderDetail.jsp").forward(request, response);
+        } catch (Exception e) {
+        }
     }
 
     /**

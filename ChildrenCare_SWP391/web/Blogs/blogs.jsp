@@ -13,7 +13,7 @@
         <meta content="" name="keywords">
         <meta content="" name="description">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <title>FEEDBACKS</title>
+        <title>BlOGS</title>
         <link href="img/favicon.ico" rel="icon">
 
         <!-- Google Web Fonts -->
@@ -112,107 +112,71 @@
         </nav>
         <!-- Navbar End -->
 
-
-
-
-
-        <div class="container my-5 py-5">
-            <div class="d-flex justify-content-center btn-group-sm" >
-                <form action="feedbacksfilter" method="get">
-                    <select style="margin-left: 5px; color: #FFF5F3;" class="btn bg-primary" name="status">
-                        <option value="">all</option>
-                        <option value="view">view</option>
-                        <option value="hide">hide</option>
-                    </select>
-                    <select style="margin-left: 5px;  color: #FFF5F3;" class="btn bg-primary" name="sevice">
-                        <option value="">all</option>
-                        <c:forEach items="${requestScope.sevices}" var="s">
-                            <option>${s.servicename}</option>
-                        </c:forEach>
-                    </select>
-                    <select style="margin-left: 5px;  color: #FFF5F3;" class="btn bg-primary" name="star">
-                        <option value="">all</option>
-                        <option value="0">0</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </select>
-                    <input style="margin-left: 5px;  color: #FFF5F3;" class="btn bg-primary" type="text" name="name" placeholder="Name">
-                    <button style="margin-left: 5px;  color: #FFF5F3;" class="badge btn-primary" type="submit" >Filter</button>
-                </form>
-
-            </div>
+        <div class="container my-5 py-1">
             <div class="row d-flex justify-content-center">
-                <div class="col-md-12 col-lg-10">
+                <div class="col-md-12 col-lg-3">
                     <div class="card text-dark">
                         <div class="card-body p-4">
-                            <h4 class="mb-0">Recent Feedback</h4>
-
-
-                            <c:forEach items="${requestScope.allfeedbacks}" var="a">
-                                <div class="d-flex flex-start" style="padding-bottom: 20px;padding-top: 20px;">
-                                    <a href="feedbackdetails?idfeedback=${a.feedbacks.feedbackid}"><img class="rounded-circle shadow-1-strong me-3"
-                                         src="feedbackF/img/${a.user.avatar}" alt="avatar" width="60"
-                                         height="60" /></a>
-                                    <div>
-                                        <h6 class="fw-bold mb-1"><a href="feedbackdetails?idfeedback=${a.feedbacks.feedbackid}">${a.user.fullname} - ${a.service.servicename}</a></h6>
-                                        <div class="d-flex align-items-center mb-3">
-                                            <p class="mb-0">
-                                                ${a.feedbacks.date}
-                                            <form action="feedbackslist" method="post">
-                                                <input type="text" value="${a.feedbacks.feedbackid}" name="id" style="display: none;">
-                                                <select  class="badge bg-primary" style="margin-left: 5px;" name="status">
-                                                    <option>${a.feedbacks.status}</option>
-                                                    <c:if test="${a.feedbacks.status == 'view'}">
-                                                        <option>hide</option>
-                                                    </c:if>
-                                                    <c:if test="${a.feedbacks.status == 'hide'}">
-                                                        <option>view</option>
-                                                    </c:if>
-                                                </select>
-                                                <button type="submit" class="badge btn-primary" ><i class="fas fa-genderless"></i></button>
-
-                                            </form>
-
-                                            </p>
-
-                                            <a href="#!" class="link-muted"><i class="fas fa-star ms-2">${a.feedbacks.star}</i></a>
-                                        </div>
-                                        <p class="mb-0">
-                                            ${a.feedbacks.detail}
-                                        </p>                               
-                                    </div>
-                                </div>
-
-                                <hr class="my-0" style="margin: 20px;" />
-                            </c:forEach>
+                            <h4 class="mb-0" style="text-align: center;">Recent Blogs</h4>
                         </div>
-
-
-
-
-
                     </div>
                 </div>
             </div>
         </div>
+
+        <c:forEach items="${requestScope.allblogs}" var="a">
+            <div class="container my-4 py-1">
+
+                <div class="row d-flex justify-content-center">
+                    <div class="col-md-12 col-lg-10">
+                        <div class="card text-dark">
+                            <div class="card-body p-4">
+
+                                <div class="d-flex flex-start" style="padding-bottom: 20px;padding-top: 20px;">
+                                    <a href="#"><img class="rounded-circle shadow-1-strong me-3"
+                                                     src="feedbackF/img/${a.posts.image}" alt="avatar" width="60"
+                                                     height="60" /></a>
+                                    <div>
+                                        <h6 class="fw-bold mb-1"><a href="#">${a.user.fullname} - ${a.service.servicename}</a></h6>
+                                        <div class="d-flex align-items-center mb-3">
+                                            <p class="mb-0">
+                                                ${a.posts.date} / 
+                                                ${a.posts.category}
+                                            </p>
+
+                                        </div>
+                                        <p class="mb-0">
+                                            ${a.posts.content}
+                                        </p>                               
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </c:forEach>
         <!-- feedback page start -->
         <c:if test="${requestScope.checkpage!=1}">
             <nav aria-label="Page navigation example">
                 <ul class="pagination justify-content-center">
                     <li class="page-item ">
-                        <a class="page-link" href="feedbackslist?page=${1}"><<</a>
+                        <a class="page-link" href="blogs?page=${1}"><<</a>
                     </li>
                     <c:if test="${page ==1}">
                         <li class="page-item disabled">
-                            <a class="page-link" href="feedbackslist?page=${page-1}">Previous</a>
+                            <a class="page-link" href="blogs?page=${page-1}">Previous</a>
                         </li>
                     </c:if>
                     <c:if test="${page !=1}">
                         <li class="page-item ">
-                            <a class="page-link" href="feedbackslist?page=${page-1}">Previous</a>
+                            <a class="page-link" href="blogs?page=${page-1}">Previous</a>
                         </li>
                     </c:if>
                     <!-- /////////////////////////////////////////////////////////////////-->
@@ -220,7 +184,7 @@
                     <c:set var="max" value="${0}"/>
                     <c:forEach begin="${1}" end="${requestScope.num}" var="i">                
                         <c:if test="${i==page-2||i==page-1||i==page+2||i==page+1||i==page}">
-                            <li class=" ${i==page?"active":""} page-item"><a class="page-link" href="feedbackslist?page=${i}">${i}</a></li>
+                            <li class=" ${i==page?"active":""} page-item"><a class="page-link" href="blogs?page=${i}">${i}</a></li>
 
                         </c:if>
                         <h1 style="display: none;">${max=max+1}</h1>
@@ -228,24 +192,24 @@
                     <!-- /////////////////////////////////////////////////////////////////-->
                     <c:if test="${page ==max}">
                         <li class="page-item disabled">
-                            <a class="page-link" href="feedbackslist?page=${page+1}">Next</a>
+                            <a class="page-link" href="blogs?page=${page+1}">Next</a>
                         </li>
                     </c:if>
                     <c:if test="${page !=max}">
                         <li class="page-item ">
-                            <a class="page-link" href="feedbackslist?page=${page+1}">Next</a>
+                            <a class="page-link" href="blogs?page=${page+1}">Next</a>
                         </li>
                     </c:if>
                     <li class="page-item ">
-                        <a class="page-link" href="feedbackslist?page=${max}">>></a>
+                        <a class="page-link" href="blogs?page=${max}">>></a>
                     </li>
                 </ul>
             </nav>
         </c:if>
         <!-- feedback page end -->
-        
+
         <!-- filter page start -->
-         <c:if test="${requestScope.checkpage==1}">
+        <c:if test="${requestScope.checkpage==1}">
             <nav aria-label="Page navigation example">
                 <ul class="pagination justify-content-center">
                     <li class="page-item ">

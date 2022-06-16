@@ -5,22 +5,25 @@
  */
 package Control;
 
-import DAO.UserDAO;
-import Entity.User;
+import DAO.BlogDAO;
+import Entity.Bloglist;
+import dal_staff.reservatonsDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author win
+ * @author dathp
  */
-@WebServlet(name = "LoginControl", urlPatterns = {"/login"})
-public class LoginControl extends HttpServlet {
+public class BlogsServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,18 +37,18 @@ public class LoginControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        UserDAO Udao = new UserDAO();
-        User u = Udao.login(username, password);
-        if(u == null){
-            request.setAttribute("mess", "Wrong UserName or Password !");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-        }else{
-            request.getRequestDispatcher("HomeP.jsp").forward(request, response);
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet BlogsServlet</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet BlogsServlet at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
-        
-        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -60,7 +63,37 @@ public class LoginControl extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+       try {
+            BlogDAO d = new BlogDAO();
+            reservatonsDAO r = new reservatonsDAO();
+            String xpage = request.getParameter("page");
+            int page, size;
+            
+            size = d.Blogs().size();
+            int num=(size%10==0?(size/10):((size/10)+1));
+            
+            if (xpage == null) {
+                page = 1;
+            } else {
+                page = Integer.parseInt(xpage);
+            }
+
+            int begin, end;
+            begin = (page - 1) * 10;
+            end = Math.min(page * 10, size)
+                    ;
+            List<Bloglist> list = new ArrayList<>();
+            list = d.Blogspage(d.Blogs(), begin, end);
+            
+            
+            request.setAttribute("page", page);
+            request.setAttribute("num", num);
+            request.setAttribute("sevices", r.allservice());
+            request.setAttribute("allblogs", list);
+            request.getRequestDispatcher("Blogs/blogs.jsp").forward(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(feedbackslist.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
