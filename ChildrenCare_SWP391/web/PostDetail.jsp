@@ -179,13 +179,17 @@ https://templatemo.com/tm-551-stand-blog
                                 </div>
                                 <div class="content">
                                     <ul>
-                                        <c:forEach items="${re}" var="o"> 
+                                        <h1>ASDASDASDASDASDASDAS</h1>
+                                        <c:forEach items="${requestScope.re}" var="o"> 
+
                                             <li><a href="post-details.html">
                                                     <h5>${o.tilte}</h5>
-                                                    <span>${o.date}</span>
+                                                                          
                                                 </a>
                                             </li>
 
+
+                                        </c:forEach>
                                     </ul>
                                 </div>
                             </div>
@@ -201,7 +205,7 @@ https://templatemo.com/tm-551-stand-blog
                     </div>
                     <div class="content">
                         <ul>
-                            <c:forEach items="${ce}" var="c"> 
+                            <c:forEach items="${re}" var="c"> 
 
                                 <li><a href="#">${c.category}</a></li>
 
