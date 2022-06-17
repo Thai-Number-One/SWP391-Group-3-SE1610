@@ -78,9 +78,7 @@
 
                                             <select name="author" >
                                                 <option value="">all</option>
-                                                <c:forEach items="${listU}" var="o">
-                                                    <option value="${o.user_ID}">${o.fullName}</option>
-                                                </c:forEach>
+                                                <option value="">${o.user.fullname}</option>
                                             </select>
 
                                             <select name="status">
@@ -119,7 +117,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <c:forEach items="${list}" var="o">
+                                            <c:forEach items="${requestScope.list}" var="o">
                                                 <tr>
 
                                                     <td>
@@ -132,53 +130,46 @@
                                                     </td>
 
                                                     <td class="align-middle text-center">
-                                                        <span class="text-secondary text-xs font-weight-bold">${o.post_ID}</span>
+                                                        <span class="text-secondary text-xs font-weight-bold">${o.posts.post_ID}</span>
                                                     </td>
 
                                                     <td class="align-middle text-center">
-                                                        <span class="text-secondary text-xs font-weight-bold">${o.tilte}</span>
+                                                        <span class="text-secondary text-xs font-weight-bold">${o.posts.tilte}</span>
 
                                                     <td class="align-middle text-center">
                                                         <span class="text-secondary text-xs font-weight-bold">
-                                                            <c:if test = "${o.category == 1}">Family</c:if>
-                                                            <c:if test = "${o.category == 2}">Health</c:if>
-                                                            <c:if test = "${o.category == 3}">Education</c:if>
-
+                                                            ${o.posts.category}
                                                             </span>
                                                         </td>
 
-                                                        <td class="align-middle text-center">
-                                                        <c:forEach items="${listU}" var="u">
-                                                            <c:if test = "${o.user_ID == u.user_ID}">
-                                                                <span class="text-secondary text-xs font-weight-bold">${u.fullName}</span>
-                                                            </c:if> 
-                                                        </c:forEach>
+                                                        <td class="align-middle text-center">                                                      
+                                                                <span class="text-secondary text-xs font-weight-bold">${o.user.fullname}</span>
                                                     </td>
                                                     <td class="align-middle text-center">
                                                         <span class="text-secondary text-xs font-weight-bold">Manager</span>
                                                     </td>
                                                     <td class="align-middle text-center text-sm">
 
-                                                        <c:if test = "${o.status == 1}">
+                                                        <c:if test = "${o.posts.status == 1}">
                                                             <span class="badge badge-sm bg-gradient-success">Active</span></c:if> 
 
 
-                                                        <c:if test = "${o.status == 0}"> <span class="badge badge-sm bg-gradient-danger">Deactive</span></c:if> 
+                                                        <c:if test = "${o.posts.status == 0}"> <span class="badge badge-sm bg-gradient-danger">Deactive</span></c:if> 
 
                                                         </td>
 
 
                                                         <td class="align-middle">
-                                                            <a href="EditPost?Pid=${o.post_ID}" class="text-success text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>
+                                                            <a href="EditPost?Pid=${o.posts.post_ID}" class="text-success text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>
                                                             Edit
                                                         </a>
                                                     </td>
                                                     <td class="align-middle">
-                                                        <a href="DeletePost?pid=${o.post_ID}" class="text-danger text-secondary font-weight-bold text-xs" data-toggle="tooltip" onclick="return confirm('Are you sure you want to delete this item?');"><i class="far fa-trash-alt me-2"></i>Delete</a>
+                                                        <a href="DeletePost?pid=${o.posts.post_ID}" class="text-danger text-secondary font-weight-bold text-xs" data-toggle="tooltip" onclick="return confirm('Are you sure you want to delete this item?');"><i class="far fa-trash-alt me-2"></i>Delete</a>
 
                                                     </td>
                                                     <td class="align-middle">
-                                                        <a href="LoadPostD?Did=${o.post_ID}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                                                        <a href="LoadPostD?Did=${o.posts.post_ID}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                                                             Detail
                                                         </a>
                                                     </td>
