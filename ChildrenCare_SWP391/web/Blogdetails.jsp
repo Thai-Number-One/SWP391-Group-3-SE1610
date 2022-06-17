@@ -5,9 +5,7 @@
 <html charset="utf-8">
     <head>
         <meta>
-        <c:forEach items="${requestScope.blogdetails}" var="a">
-            <title>${a.posts.tilte}</title>
-        </c:forEach>
+        <title>Blog Detail</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="" name="keywords">
         <meta content="" name="description">
@@ -155,9 +153,9 @@
                         </div>
                         <div class="text-muted font-italic p-3">
                             <ul>
-                                <c:forEach items="${contactlink}" var="l">
+                                <c:forEach begin="1" end="3"  items="${contactlink}" var="l">
                                     <li>
-                                        <a href="#" style="text-decoration: none;">${l.posts.tilte}</a>
+                                        <a href="blogdetails?postid=${l.posts.post_ID}" style="text-decoration: none;">${l.posts.tilte}</a>
                                     </li>
                                 </c:forEach>
                             </ul>
