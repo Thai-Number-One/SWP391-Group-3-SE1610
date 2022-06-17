@@ -11,7 +11,7 @@
         <link rel="apple-touch-icon" sizes="76x76" href="img/apple-icon.png">
         <link rel="icon" type="image/png" href="img/favicon.png">
         <title>
-            Argon Dashboard 2 by Creative Tim
+            Post List
         </title>
         <!--     Fonts and icons     -->
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
@@ -168,7 +168,7 @@
 
 
                                                         <td class="align-middle">
-                                                            <a href="LoadControl?pid=${o.post_ID}" class="text-success text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>
+                                                            <a href="EditPost?Pid=${o.post_ID}" class="text-success text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>
                                                             Edit
                                                         </a>
                                                     </td>
@@ -177,7 +177,7 @@
 
                                                     </td>
                                                     <td class="align-middle">
-                                                        <a href="DetailControl?pid=${o.post_ID}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                                                        <a href="LoadPostD?Did=${o.post_ID}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                                                             Detail
                                                         </a>
                                                     </td>

@@ -166,8 +166,9 @@ public class PostDetailDAO {
     public static void main(String[] args) {
         PostDetailDAO dao = new PostDetailDAO();
         
-        Service d = dao.getDetailService(3);
-        System.out.println(d);
+        Posts d = dao.getDetail(1);
+        Service s = dao.getDetailService(1);
+        System.out.println(s);
 
     }
     
