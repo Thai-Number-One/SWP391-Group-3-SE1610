@@ -49,7 +49,7 @@ GO
 CREATE TABLE [dbo].[Post](
 	[Post_ID] [int] identity(1,1) NOT NULL,
 	[Title] [nvarchar](255) NOT NULL,
-	[Content] [nvarchar](255) NOT NULL,
+	[Content] [nvarchar](MAX) NOT NULL,
 	[User_ID] [int] NULL,
 	[Image] [nvarchar](255) NOT NULL,
 	[Service_ID] [int] NULL,
