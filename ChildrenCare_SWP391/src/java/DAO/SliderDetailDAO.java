@@ -31,7 +31,7 @@ public class SliderDetailDAO {
             ps.setInt(1, id);
             rs = ps.executeQuery();
             while(rs.next()){
-                Slider p = new Slider (rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getString(4),rs.getString(5));
+                Slider p = new Slider (rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getInt(6));
                         return p;
             }
 

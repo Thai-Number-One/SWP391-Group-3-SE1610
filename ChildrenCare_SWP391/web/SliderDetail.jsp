@@ -217,7 +217,15 @@ https://templatemo.com/tm-551-stand-blog
                                                       <input class="dddd" name="user_id" type="text" readonly id="name" required="" value="${SliderD.user_ID}">
                                                   </fieldset>
                                               </div>
-
+                                              
+                                             <div class="sidebar-h">
+                                                    <h5 clas="edi">Status: </h5>
+                                              </div>
+                                              <div class="col-md-6 col-sm-12-1">
+                                                  <fieldset>
+                                                      <input name="title" type="text" id="subject" value="${SliderD.status}">
+                                                  </fieldset>
+                                              </div>      
 
                                               <div class="sidebar-h">
                                                   <h5 clas="edi">Image link</h5>
@@ -240,10 +248,11 @@ https://templatemo.com/tm-551-stand-blog
                                               </div>
                                               <div class="col-lg-12">
                                                   <fieldset>
-                                                      <textarea name="content" rows="6" id="message"  required="">${SliderD.blacklink}</textarea>
+                                                      <textarea name="content" rows="6" id="message"  required="">${SliderD.backLink}</textarea>
                                                   </fieldset>
                                               </div>
      
+                                                
                                       </div>
                                   </div>
                                   </form>                
