@@ -164,20 +164,13 @@
                                                 ${a.posts.date} / 
                                                 ${a.posts.category}
                                             </p>
-
                                         </div>
                                         <p class="mb-0">
                                             ${a.posts.content}
                                         </p>                               
                                     </div>
                                 </div>
-
                             </div>
-
-
-
-
-
                         </div>
                     </div>
                 </div>

@@ -11,6 +11,8 @@ import Entity.Feedbacks;
 import Entity.User;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -40,6 +42,25 @@ public class FeedbackDetailsServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+        FeedbacksDAO Fdao = new FeedbacksDAO();
+        UserDAO Udao = new UserDAO();
+        int feedback_ID = Integer.parseInt(request.getParameter("idfeedback"));
+        Feedbacks f = Fdao.GetFeedbackByID(feedback_ID);
+        List lst = new ArrayList();
+            try {
+                for (int i = 0; i < Fdao.allfeedbacks().size(); i++) {
+                    if(Fdao.allfeedbacks().get(i).getFeedbacks().getFeedbackid()==feedback_ID){
+                        lst.add(Fdao.allfeedbacks().get(i));
+                    }
+                }
+            } catch (Exception ex) {
+                Logger.getLogger(FeedbackDetailsServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        User u = Udao.GetUserByID(f.getUserid());
+        request.setAttribute("test", lst);
+        request.setAttribute("feedbackdetails", f);
+        request.setAttribute("feedbackuser", u);
+        request.getRequestDispatcher("feedbackdetails.jsp").forward(request, response);
         }
     }
 
@@ -55,14 +76,7 @@ public class FeedbackDetailsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        FeedbacksDAO Fdao = new FeedbacksDAO();
-        UserDAO Udao = new UserDAO();
-        int feedback_ID = Integer.parseInt(request.getParameter("idfeedback"));
-        Feedbacks f = Fdao.GetFeedbackByID(feedback_ID);
-        User u = Udao.GetUserByID(f.getUserid());
-        request.setAttribute("feedbackdetails", f);
-        request.setAttribute("feedbackuser", u);
-        request.getRequestDispatcher("feedbackdetails.jsp").forward(request, response);
+                processRequest(request, response);
     }
 
     /**

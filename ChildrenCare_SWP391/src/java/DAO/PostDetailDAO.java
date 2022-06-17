@@ -6,14 +6,18 @@
 package DAO;
 
 import Context.BaseDAO;
+import Entity.Bloglist;
 import Entity.Posts;
 import Entity.Service;
 import Entity.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import model_staff.service;
+import model_staff.user;
 
 /**
  *
@@ -33,7 +37,7 @@ public class PostDetailDAO {
             ps.setInt(1, id);
             rs = ps.executeQuery();
             while(rs.next()){
-                Posts p = new Posts (rs.getInt(1),rs.getString(2),rs.getString(3),rs.getInt(4),rs.getString(5),rs.getInt(6),rs.getDate(7),rs.getInt(8),rs.getString(9));
+                Posts p = new Posts (rs.getInt(1),rs.getString(2),rs.getString(3),rs.getInt(4),rs.getString(5),rs.getInt(6),rs.getDate(7),rs.getInt(8),rs.getInt(9));
                         return p;
             }
 
@@ -55,7 +59,7 @@ public class PostDetailDAO {
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
             while(rs.next()){
-                Posts p = new Posts (rs.getInt(1),rs.getString(2),rs.getString(3),rs.getInt(4),rs.getString(5),rs.getInt(6),rs.getDate(7),rs.getInt(8),rs.getString(9));
+                Posts p = new Posts (rs.getInt(1),rs.getString(2),rs.getString(3),rs.getInt(4),rs.getString(5),rs.getInt(6),rs.getDate(7),rs.getInt(8),rs.getInt(9));
                        list.add(p);
             }
             
@@ -73,7 +77,7 @@ public class PostDetailDAO {
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
             while(rs.next()){
-                list.add(new Posts (rs.getInt(1),rs.getString(2),rs.getString(3),rs.getInt(4),rs.getString(5),rs.getInt(6),rs.getDate(7),rs.getInt(8),rs.getString(9)));
+                list.add(new Posts (rs.getInt(1),rs.getString(2),rs.getString(3),rs.getInt(4),rs.getString(5),rs.getInt(6),rs.getDate(7),rs.getInt(8),rs.getInt(9)));
                        
             }
 
@@ -82,7 +86,7 @@ public class PostDetailDAO {
         
         return list;
     } 
-    public void updatenews(String title, String content, int user_id, String image, int status, String category, int post_id){
+    public void updatenews(String title, String content, int user_id, String image, int status, int category, int post_id){
  
         try {
             String sql="update Post\n" +
@@ -96,7 +100,7 @@ public class PostDetailDAO {
             ps.setInt(3, user_id);
             ps.setString(4, image);
             ps.setInt(5, status);
-            ps.setString(6, category);
+            ps.setInt(6, category);
             ps.setInt(7, post_id);
             ps.executeUpdate();
             
@@ -163,11 +167,13 @@ public class PostDetailDAO {
     } 
     
     
+    
     public static void main(String[] args) {
         PostDetailDAO dao = new PostDetailDAO();
         
-        Service d = dao.getDetailService(3);
-        System.out.println(d);
+        Posts d = dao.getDetail(1);
+        Service s = dao.getDetailService(1);
+        System.out.println(s);
 
     }
     

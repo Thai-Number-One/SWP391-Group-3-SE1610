@@ -46,7 +46,7 @@ public class BlogDAO extends BaseDAO{
                 s.setImage(rs.getString("Image"));
                 s.setService_ID(rs.getInt("Service_ID"));     
                 s.setDate(rs.getDate("Date"));
-                s.setCategory(rs.getString("Category"));
+                s.setCategory(rs.getInt("Category"));
                 list.add(s);
             }
         } catch (SQLException e) {
@@ -101,7 +101,7 @@ public class BlogDAO extends BaseDAO{
                 p.setImage(rs.getString("Image"));
                 p.setService_ID(rs.getInt("Service_ID"));     
                 p.setDate(rs.getDate("Date"));
-                p.setCategory(rs.getString("Category"));
+                p.setCategory(rs.getInt("Category"));
                 //////////////////////////////////////////////////////////////
 
                 s.setService(se);

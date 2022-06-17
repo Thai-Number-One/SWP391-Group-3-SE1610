@@ -132,14 +132,14 @@
                                                                 <img src="img/${o.avatar}" class="avatar avatar-sm me-3" alt="user1">
                                                             </div>
                                                             <div class="d-flex flex-column justify-content-center">
-                                                                <h6 class="mb-0 text-sm">${o.user_Name}</h6>
+                                                                <h6 class="mb-0 text-sm">${o.userName}</h6>
                                                                 <p class="text-xs text-secondary mb-0">${o.email}</p>
                                                             </div>
                                                         </div>
                                                     </td>
 
                                                     <td class="align-middle text-center">
-                                                        <span class="text-secondary text-xs font-weight-bold">${o.user_ID}</span>
+                                                        <span class="text-secondary text-xs font-weight-bold">${o.id}</span>
                                                     </td>
 
                                                     <td class="align-middle text-center">
@@ -157,10 +157,10 @@
                                                     </td>
                                                     <td class="align-middle text-center">
                                                         <span class="text-secondary text-xs font-weight-bold">
-                                                            <c:if test = "${o.role_ID == 1}">Admin</c:if>
-                                                            <c:if test = "${o.role_ID == 2}">Manager</c:if>
-                                                            <c:if test = "${o.role_ID == 4}">Staff</c:if>
-                                                            <c:if test = "${o.role_ID == 5}">Customer</c:if>
+                                                            <c:if test = "${o.role == 1}">Admin</c:if>
+                                                            <c:if test = "${o.role == 2}">Manager</c:if>
+                                                            <c:if test = "${o.role == 4}">Staff</c:if>
+                                                            <c:if test = "${o.role == 5}">Customer</c:if>
                                                         </span>
                                                     </td>
 
@@ -175,16 +175,16 @@
                                                         </td>
 
                                                         <td class="align-middle">
-                                                            <a href="LoadControl?pid=${o.user_ID}" class="text-success text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>
+                                                            <a href="LoadControl?pid=${o.id}" class="text-success text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>
                                                             Edit
                                                         </a>
                                                     </td>
                                                     <td class="align-middle">
-                                                        <a href="delete?pid=${o.user_ID}" class="text-danger text-secondary font-weight-bold text-xs" data-toggle="tooltip" onclick="return confirm('Are you sure you want to delete this item?');"><i class="far fa-trash-alt me-2"></i>Delete</a>
+                                                        <a href="delete?pid=${o.id}" class="text-danger text-secondary font-weight-bold text-xs" data-toggle="tooltip" onclick="return confirm('Are you sure you want to delete this item?');"><i class="far fa-trash-alt me-2"></i>Delete</a>
 
                                                     </td>
                                                     <td class="align-middle">
-                                                        <a href="DetailControl?pid=${o.user_ID}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                                                        <a href="DetailControl?pid=${o.id}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                                                             Detail
                                                         </a>
                                                     </td>

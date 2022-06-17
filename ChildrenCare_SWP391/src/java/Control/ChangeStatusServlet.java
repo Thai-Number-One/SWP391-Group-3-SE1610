@@ -73,7 +73,7 @@ public class ChangeStatusServlet extends HttpServlet {
         } catch (Exception ex) {
             Logger.getLogger(FeedbackDetailsServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-        response.sendRedirect("feedbackdetails?details=" + feedback_ID);
+        response.sendRedirect("feedbackdetails?idfeedback=" + feedback_ID);
     }
 
     /**
