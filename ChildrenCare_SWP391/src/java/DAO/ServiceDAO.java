@@ -6,6 +6,7 @@
 package DAO;
 
 import Context.BaseDAO;
+import Entity.Posts;
 import model.Service;
 import java.sql.Connection;
 import java.sql.Date;
@@ -51,11 +52,7 @@ public class ServiceDAO {
         return list;
     }
 
-    public static void main(String[] args) {
-        ServiceDAO dao = new ServiceDAO();
-
-        System.out.println(dao.getAllServices());
-    }
+    
 
     public void insertService(int Service_ID,
             String Service_Name, String Detail, String Type,
@@ -114,4 +111,13 @@ public class ServiceDAO {
         } catch (Exception e) {
         }
     }
+    public static void main(String[] args) {
+        
+        ServiceDAO dao = new ServiceDAO();
+        List<Service> list = dao.getAllServices();
+        for (Service service : list) {
+            System.out.println(service);
+        }
+    }
+   
 }

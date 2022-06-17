@@ -5,7 +5,7 @@
  */
 package Control;
 
-import DAO.DAO;
+import DAO.ServiceDetailDAO;
 import Entity.Service;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -51,9 +51,9 @@ public class ServiceDetailControl extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-            DAO dao = new DAO();
-            //int id = Integer.parseInt(request.getParameter("id"));
-            Service s = dao.GetServiceByID(1);
+            ServiceDetailDAO dao = new ServiceDetailDAO();
+            int id = Integer.parseInt(request.getParameter("id"));
+            Service s = dao.GetServiceByID(id);
             request.setAttribute("servicedetail", s);
             request.getRequestDispatcher("ServiceDetail.jsp").forward(request, response);
         } catch (Exception e) {
@@ -72,7 +72,7 @@ public class ServiceDetailControl extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            DAO dao = new DAO();
+            ServiceDetailDAO dao = new ServiceDetailDAO();
             String name = request.getParameter("ServiceName");
             String type = request.getParameter("Type");
             String title = request.getParameter("Title");
@@ -80,6 +80,7 @@ public class ServiceDetailControl extends HttpServlet {
             int discount = Integer.parseInt(request.getParameter("Discount"));
             String description = request.getParameter("Description");
             String status = request.getParameter("Status");
+            int Status = Integer.parseInt(status);
 
             if (discount >= 100) {
                 Service s = dao.GetServiceByID(1);
@@ -87,7 +88,7 @@ public class ServiceDetailControl extends HttpServlet {
                 request.setAttribute("servicedetail", s);
                 request.getRequestDispatcher("ServiceDetail.jsp").forward(request, response);
             } else {
-                dao.UpdateServiceByID(1, name, type, title, price, discount, description, status);
+                dao.UpdateServiceByID(1, name, type, title, price, discount, description, Status);
                 Service s = dao.GetServiceByID(1);
                 request.setAttribute("mess2", "Edit success !");
                 request.setAttribute("servicedetail", s);

@@ -151,7 +151,7 @@
 
                                                     </td>
                                                     <td class="align-middle">
-                                                        <a href="DetailControl?pid=${o.serviceid}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                                                        <a href="service_detail?id=${o.serviceid}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                                                             Detail
                                                         </a>
                                                     </td>

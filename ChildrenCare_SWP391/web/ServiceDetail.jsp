@@ -82,7 +82,7 @@
                                 <th class="text-uppercase text-secondary text-xx font-weight-bolder opacity-50 ps-2">Status</th>
                                 <td>
                                     <select class="form-control m-b-10" name="Status" >
-                                        <% if (s.getStatus().equals("Active")) { %>
+                                        <% if (s.getStatus()== 1) { %>
                                         <option selected value="Active">Active</option>
                                         <option value="Non-active">Non-active</option>
                                         <%} else {%>

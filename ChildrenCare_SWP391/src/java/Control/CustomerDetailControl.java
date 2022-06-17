@@ -5,7 +5,7 @@
  */
 package Control;
 
-import DAO.DAO;
+import DAO.ServiceDetailDAO;
 import Entity.User;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -51,7 +51,7 @@ public class CustomerDetailControl extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-            DAO dao = new DAO();
+            ServiceDetailDAO dao = new ServiceDetailDAO();
             //int id = Integer.parseInt(request.getParameter("id"));
             User u = dao.GetCustomerByID(1);
             request.setAttribute("customerdetail", u);
@@ -74,7 +74,7 @@ public class CustomerDetailControl extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            DAO dao = new DAO();
+            ServiceDetailDAO dao = new ServiceDetailDAO();
             String fullname = request.getParameter("fullname");
             String phone = request.getParameter("phone");
             String email = request.getParameter("email");

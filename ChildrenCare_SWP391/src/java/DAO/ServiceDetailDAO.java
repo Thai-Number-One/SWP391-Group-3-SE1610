@@ -16,7 +16,7 @@ import java.sql.ResultSet;
  *
  * @author win
  */
-public class DAO {
+public class ServiceDetailDAO {
 
     Connection conn = null;
     PreparedStatement ps = null;
@@ -39,7 +39,7 @@ public class DAO {
                         rs.getFloat(7),
                         rs.getInt(8),
                         rs.getFloat(9),
-                        rs.getString(10));
+                        rs.getInt(10));
             }
         } catch (Exception e) {
         }
@@ -47,7 +47,7 @@ public class DAO {
     }
 
 
-    public void UpdateServiceByID(int ID, String name, String type, String title, float price, int discount, String description, String status) {
+    public void UpdateServiceByID(int ID, String name, String type, String title, float price, int discount, String description, int status) {
 
         String query = " update Service set Service_Name = ?,Detail = ?,Type = ?,Title = ?,Price = ?,Discount = ?, Status = ? Where Service_ID = ?";
         try {
@@ -60,7 +60,7 @@ public class DAO {
             ps.setString(4, title);
             ps.setFloat(5, price);
             ps.setInt(6, discount);
-            ps.setString(7, status);
+            ps.setInt(7, status);
 
             rs = ps.executeQuery();
         } catch (Exception e) {
