@@ -47,7 +47,7 @@ public class BlogDetailsServlet extends HttpServlet {
                 FeedbacksDAO FDao = new FeedbacksDAO();
                 List lst = new ArrayList();
                 List lst2 = new ArrayList();
-                List<allfeedbacks> lst3 = new ArrayList<allfeedbacks>();
+                List<allfeedbacks> lst3 = new ArrayList<>();
 
                 int index = 0;
                 for (int i = 0; i < BDao.Blogs().size(); i++) {
