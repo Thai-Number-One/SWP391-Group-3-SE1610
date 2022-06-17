@@ -222,7 +222,11 @@ https://templatemo.com/tm-551-stand-blog
                                                 <div class="col-6">
                                                     <ul class="post-tags">
                                                         <li><i class="fa fa-tags"></i></li>
-                                                        <li><a href="#">${Detail.category}</a>,</li>
+                                                        <li><a href="#">
+                                                            <c:if test = "${Detail.category == 1}">Family</c:if>
+                                                            <c:if test = "${Detail.category == 2}">Health</c:if>
+                                                            <c:if test = "${Detail.category == 3}">Education</c:if>   
+                                                            </a>,</li>
                                                     </ul>
                                                 </div>
                                             </div>

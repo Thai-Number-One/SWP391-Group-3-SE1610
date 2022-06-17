@@ -11,7 +11,7 @@
         <link rel="apple-touch-icon" sizes="76x76" href="img/apple-icon.png">
         <link rel="icon" type="image/png" href="img/favicon.png">
         <title>
-            Argon Dashboard 2 by Creative Tim
+            Slider List
         </title>
         <!--     Fonts and icons     -->
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
@@ -146,7 +146,7 @@
 
                                                     </td>
                                                     <td class="align-middle">
-                                                        <a href="DetailControl?pid=${o.slider_ID}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                                                        <a href="LoadSliderDetail?Sid=${o.slider_ID}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                                                             Detail
                                                         </a>
                                                     </td>

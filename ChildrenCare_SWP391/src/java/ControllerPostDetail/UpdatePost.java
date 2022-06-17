@@ -47,17 +47,17 @@ public class UpdatePost extends HttpServlet {
             int Uid = Integer.parseInt(User_id);
             
             
-            String category = "";
+            int category = 0;
             
             
             if(choice.equals("Family")){
-                category = "Family";
+                category = 1;
             }else if(choice.equals("Health")){
-                category = "Health";
+                category = 2;
             }else if(choice.equals("Education")){
-                category = "Education";
+                category = 3;
             }else{
-                category = "Family";
+                category = 1;
             }
            
             String choicestatus = request.getParameter("choicestatus");

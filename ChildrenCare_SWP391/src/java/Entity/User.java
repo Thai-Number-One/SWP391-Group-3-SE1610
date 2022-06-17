@@ -25,8 +25,13 @@ public class User {
     private int Gender;
     private int Role_ID;
     private int Status;
-    
 
+    public User() {
+    }
+    
+    
+    
+    
     public User(int id, String name) {
         this.User_ID = id;
         this.FullName = name;

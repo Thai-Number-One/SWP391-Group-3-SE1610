@@ -83,7 +83,7 @@ public class DashboardDAO {
                         rs.getInt(6),
                         rs.getDate(7),
                         rs.getInt(8),
-                        rs.getString(9)));
+                        rs.getInt(9)));
             }
         } catch (Exception e) {
         }
@@ -92,7 +92,7 @@ public class DashboardDAO {
 
     public List<Slider> getAllSliderList() {
         List<Slider> list = new ArrayList<>();
-        String query = "select * FROM [TestProject4].[dbo].[Sliders]";
+        String query = "select * FROM [TestProject4].[dbo].[Slider]";
         try {
             conn = new BaseDAO().BaseDao();//mo ket noi voi sql
             ps = conn.prepareStatement(query);
@@ -577,7 +577,7 @@ public class DashboardDAO {
                         rs.getInt(6),
                         rs.getDate(7),
                         rs.getInt(8),
-                        rs.getString(9)));
+                        rs.getInt(9)));
             }
         } catch (Exception e) {
         }

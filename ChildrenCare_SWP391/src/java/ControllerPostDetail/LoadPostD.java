@@ -5,12 +5,18 @@
  */
 package ControllerPostDetail;
 
+import DAO.BlogDAO;
 import DAO.PostDetailDAO;
+import Entity.Bloglist;
 import Entity.Posts;
 import Entity.Service;
 import Entity.User;
+import static com.sun.tools.xjc.reader.Ring.begin;
+import static com.sun.tools.xjc.reader.Ring.end;
+import dal_staff.reservatonsDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -64,6 +70,8 @@ public class LoadPostD extends HttpServlet {
             Posts d = dao.getDetail(idd);
             User userName = dao.getDetailUser(idd);
             Service serviceName = dao.getDetailService(idd);
+            
+            
             
             request.setAttribute("userName", userName);
             request.setAttribute("serviceName", serviceName);

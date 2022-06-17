@@ -140,8 +140,9 @@
 
                                                     <td class="align-middle text-center">
                                                         <span class="text-secondary text-xs font-weight-bold">
-                                                            <c:if test = "${o.category == 1}">Suc Khoe</c:if>
-                                                            <c:if test = "${o.category == 2}">Y te cong cong</c:if>
+                                                            <c:if test = "${o.category == 1}">Family</c:if>
+                                                            <c:if test = "${o.category == 2}">Health</c:if>
+                                                            <c:if test = "${o.category == 3}">Education</c:if>
 
                                                             </span>
                                                         </td>

@@ -66,7 +66,7 @@
                             <a href="facility.html" class="dropdown-item">School Facilities</a>
                             <a href="team.html" class="dropdown-item">Popular Teachers</a>
                             <a href="dashboard" class="dropdown-item">Admin</a>
-                            <a href="appointment.html" class="dropdown-item">Manager</a>
+                            <a href="Post" class="dropdown-item">Manager</a>
                             <a href="testimonial.html" class="dropdown-item">Testimonial</a>
                             <a href="404.html" class="dropdown-item">404 Error</a>
                         </div>

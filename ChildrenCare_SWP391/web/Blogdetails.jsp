@@ -133,7 +133,7 @@
                     <h1 class="display-2 text-white animated slideInDown mb-4">Blog</h1>
                     <nav aria-label="breadcrumb animated slideInDown">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="HomePage.jsp">Home</a></li>
+                            <li class="breadcrumb-item"><a href="HomeP.jsp">Home</a></li>
                             <li class="breadcrumb-item"><a href="blogs">Blog</a></li>
                             <li class="breadcrumb-item"><a href="TypeBlog.html">${a.posts.category}</a></li>
                             <li class="breadcrumb-item text-white active" aria-current="page">${a.service.servicename}</li>
