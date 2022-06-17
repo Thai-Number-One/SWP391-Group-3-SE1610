@@ -40,6 +40,29 @@ public class SliderDetailDAO {
         
         return null;
     } 
+    
+    public void updateslider(String title, String blacklink, int user_id, String image, int status, int slider_id){
+ 
+        try {
+            String sql="update Post\n" +
+                        "set Title = ?, BackLink = ?, [User_ID] = ?, [Image] = ?, [Status] = ? \n" +
+                        "where Slider_ID = ?";
+  
+            conn = new BaseDAO().BaseDao();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, title);
+            ps.setString(2, blacklink);
+            ps.setInt(3, user_id);
+            ps.setString(4, image);
+            ps.setInt(5, status);
+            ps.setInt(6, slider_id);
+            ps.executeUpdate();
+            
+        } catch (Exception e) {
+        }
+    }
+    
+    
     public static void main(String[] args) {
         SliderDetailDAO dao = new SliderDetailDAO();
         

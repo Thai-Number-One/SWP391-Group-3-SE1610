@@ -3,17 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Control;
+package ControllerPostDetail;
 
-import DAO.BlogDAO;
-import Entity.Bloglist;
-import dal_staff.reservatonsDAO;
+import DAO.PostDetailDAO;
+import DAO.SliderDetailDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,10 +17,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author dathp
+ * @author s
  */
-@WebServlet(name = "BlogsServlet", urlPatterns = {"/blogs"})
-public class BlogsServlet extends HttpServlet {
+@WebServlet(name = "EditSlider", urlPatterns = {"/EditSlider"})
+public class EditSlider extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,17 +34,34 @@ public class BlogsServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet BlogsServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet BlogsServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        try {
+            String image = request.getParameter("image");
+            String title = request.getParameter("title");
+            String choicestatus = request.getParameter("choicestatus");
+            String backlink = request.getParameter("content");
+            String slider_id = request.getParameter("slider_id");
+            String User_id = request.getParameter("user_id");
+            
+            int Sid = Integer.parseInt(slider_id);
+            int Uid = Integer.parseInt(User_id);
+            
+            int status = 1;
+            
+            if(choicestatus.equals("Show")){
+                status = 1;
+            }else if(choicestatus.equals("Hide")){
+                status = 0;
+            }else{
+                status = 1;
+            }
+            
+
+            SliderDetailDAO dao = new SliderDetailDAO();
+            dao.updateslider(title, backlink, Uid, image, status, Sid);
+            
+            response.sendRedirect("SliderControl");
+            
+        } catch (Exception e) {
         }
     }
 
@@ -65,37 +77,7 @@ public class BlogsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       try {
-            BlogDAO d = new BlogDAO();
-            reservatonsDAO r = new reservatonsDAO();
-            String xpage = request.getParameter("page");
-            int page, size;
-            
-            size = d.Blogs().size();
-            int num=(size%10==0?(size/10):((size/10)+1));
-            
-            if (xpage == null) {
-                page = 1;
-            } else {
-                page = Integer.parseInt(xpage);
-            }
-
-            int begin, end;
-            begin = (page - 1) * 10;
-            end = Math.min(page * 10, size)
-                    ;
-            List<Bloglist> list = new ArrayList<>();
-            list = d.Blogspage(d.Blogs(), begin, end);
-            
-            
-            request.setAttribute("page", page);
-            request.setAttribute("num", num);
-            request.setAttribute("sevices", r.allservice());
-            request.setAttribute("allblogs", list);
-            request.getRequestDispatcher("Blogs/blogs.jsp").forward(request, response);
-        } catch (Exception ex) {
-            Logger.getLogger(feedbackslist.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**

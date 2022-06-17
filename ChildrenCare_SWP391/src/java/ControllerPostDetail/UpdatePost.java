@@ -47,17 +47,17 @@ public class UpdatePost extends HttpServlet {
             int Uid = Integer.parseInt(User_id);
             
             
-            int category = 0;
+            String category = "";
             
             
             if(choice.equals("Family")){
-                category = 1;
+                category = "Family";
             }else if(choice.equals("Health")){
-                category = 2;
+                category = "Health";
             }else if(choice.equals("Education")){
-                category = 3;
+                category = "Education";
             }else{
-                category = 1;
+                category = "Family";
             }
            
             String choicestatus = request.getParameter("choicestatus");
@@ -65,7 +65,7 @@ public class UpdatePost extends HttpServlet {
             
             if(choicestatus.equals("Show")){
                 status = 1;
-            }else if(choice.equals("Hide")){
+            }else if(choicestatus.equals("Hide")){
                 status = 0;
             }else{
                 status = 1;
@@ -75,7 +75,7 @@ public class UpdatePost extends HttpServlet {
             PostDetailDAO dao = new PostDetailDAO();
             dao.updatenews(title, content, Uid, image, status, category, Pid);
             
-            request.getRequestDispatcher("HomeP.jsp").forward(request, response);
+             response.sendRedirect("Post");
         } catch (Exception e) {
         }
         

@@ -139,6 +139,8 @@
                 width: 130px;
             }.blog-posts .down-content h4{
                 font-size: 30px;
+                margin-top: 10px;
+                margin-bottom: 10px;
             }
                 
             
@@ -209,10 +211,10 @@ https://templatemo.com/tm-551-stand-blog
                                         <img src="${Detail.image}" alt="">
                                     </div>
                                     <div class="down-content">
-                                        <span>${serviceName.service_name}</span>
+                                        <span>${serviceName}</span>
                                         <a href="post-details.html"><h4>${Detail.tilte}</h4></a>
                                         <ul class="post-info">
-                                            <li><a href="#">${userName.fullname}</a></li>
+                                            <li><a href="#">${userName}</a></li>
                                             <li><a href="#"></a>${Detail.date}</li>
                                         </ul>
                                         <p>${Detail.content}</p> 
@@ -223,9 +225,7 @@ https://templatemo.com/tm-551-stand-blog
                                                     <ul class="post-tags">
                                                         <li><i class="fa fa-tags"></i></li>
                                                         <li><a href="#">
-                                                            <c:if test = "${Detail.category == 1}">Family</c:if>
-                                                            <c:if test = "${Detail.category == 2}">Health</c:if>
-                                                            <c:if test = "${Detail.category == 3}">Education</c:if>   
+                                                            ${Detail.category}  
                                                             </a>,</li>
                                                     </ul>
                                                 </div>

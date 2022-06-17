@@ -42,7 +42,7 @@
             <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" href="pages/dashboard.html">
+                        <a class="nav-link active" href="gespages/dashboard.html">
                             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                                 <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
                             </div>
@@ -58,7 +58,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="BlogsServlet">
+                        <a class="nav-link " href="blogs">
                             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                                 <i class="ni ni-credit-card text-success text-sm opacity-10"></i>
                             </div>
