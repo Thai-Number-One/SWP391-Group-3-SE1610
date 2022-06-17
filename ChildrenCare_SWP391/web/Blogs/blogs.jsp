@@ -153,12 +153,12 @@
                             <div class="card-body p-4">
 
                                 <div class="d-flex flex-start" style="padding-bottom: 20px;padding-top: 20px;">
-                                    <a href="#"><img class="rounded-circle shadow-1-strong me-3"
+                                    <a href="blogdetails?postid=${a.posts.post_ID}"><img class="rounded-circle shadow-1-strong me-3"
                                                      src="feedbackF/img/${a.posts.image}" alt="avatar" width="60"
                                                      height="60" /></a>
                                     <div>
-                                        <h3 class="fw-bold mb-1"><a href="#">${a.posts.tilte}</a></h3>
-                                        <h6 class="fw-bold mb-1"><a href="#">${a.user.fullname} - ${a.service.servicename}</a></h6>
+                                        <h3 class="fw-bold mb-1"><a href="blogdetails?postid=${a.posts.post_ID}">${a.posts.tilte}</a></h3>
+                                        <h6 class="fw-bold mb-1"><a href="blogdetails?postid=${a.posts.post_ID}">${a.user.fullname} - ${a.service.servicename}</a></h6>
                                         <div class="d-flex align-items-center mb-3">
                                             <p class="mb-0">
                                                 ${a.posts.date} / 
