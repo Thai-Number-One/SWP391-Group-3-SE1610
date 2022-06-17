@@ -45,7 +45,7 @@
                                         <form action="AddControl" method="post">
                                             <div class="modal-body">
                                                 <div class="row">
-                                                    
+
                                                     <div class="col-md-9">
                                                         <div class="form-group">
                                                             <label>Full Name</label>

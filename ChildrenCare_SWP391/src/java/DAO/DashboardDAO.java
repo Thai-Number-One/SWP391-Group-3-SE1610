@@ -43,7 +43,7 @@ public class DashboardDAO {
 
     public List<UserT> getAllProduct() {
         List<UserT> list = new ArrayList<>();
-        String query = "select * from [ChildrenCare].[dbo].[User]";
+        String query = "select * from [TestProject4].[dbo].[User]";
         try {
             conn = new BaseDAO().BaseDao();//mo ket noi voi sql
             ps = conn.prepareStatement(query);
@@ -143,7 +143,7 @@ public class DashboardDAO {
 
     public List<Medicine> getAllMedicine() {
         List<Medicine> list = new ArrayList<>();
-        String query = "select * from [ChildrenCare].[dbo].[Medicine]";
+        String query = "select * from [TestProject4].[dbo].[Medicine]";
         try {
             conn = new BaseDAO().BaseDao();//mo ket noi voi sql
             ps = conn.prepareStatement(query);
@@ -211,7 +211,7 @@ public class DashboardDAO {
 
     public List<String> getStatusReveration() {
         List<String> list = new ArrayList<>();
-        String query = "SELECT Status from  [ChildrenCare].[dbo].[Reservation]";
+        String query = "SELECT Status from  [TestProject4].[dbo].[Reservation]";
         try {
             conn = new BaseDAO().BaseDao();//mo ket noi voi sql
             ps = conn.prepareStatement(query);
@@ -227,7 +227,7 @@ public class DashboardDAO {
 
     public List<Reservation> getReservation() {
         List<Reservation> list = new ArrayList<>();
-        String query = "SELECT Status, Total_cost from  [ChildrenCare].[dbo].[Reservation]";
+        String query = "SELECT Status, Total_cost from  [TestProject4].[dbo].[Reservation]";
         try {
             conn = new BaseDAO().BaseDao();//mo ket noi voi sql
             ps = conn.prepareStatement(query);
@@ -268,7 +268,7 @@ public class DashboardDAO {
 
     public int countFeedBack() {
         String query = "select COUNT(*)\n"
-                + "from [ChildrenCare].[dbo].[Feedback]";
+                + "from [TestProject4].[dbo].[Feedback]";
         int count = 0;
         try {
             conn = new BaseDAO().BaseDao();//mo ket noi voi sql
@@ -286,7 +286,7 @@ public class DashboardDAO {
 
     public double AvgStar() {
         String query = "SELECT SUM(Star)\n"
-                + "FROM [ChildrenCare].[dbo].[Feedback]";
+                + "FROM [TestProject4].[dbo].[Feedback]";
         DashboardDAO dao = new DashboardDAO();
         double total = 0;
         try {
@@ -304,8 +304,13 @@ public class DashboardDAO {
     }
 
     public int countUser() {
+<<<<<<< HEAD
+        String query = "select COUNT(*)\n" +
+"FROM [TestProject4].[dbo].[User]";
+=======
         String query = "select COUNT(*)\n"
                 + "FROM [ChildrenCare].[dbo].[User]";
+>>>>>>> c87879ea3bcd3a596cf1807504f4c401719e7199
         int count = 0;
         try {
             conn = new BaseDAO().BaseDao();//mo ket noi voi sql
@@ -320,10 +325,17 @@ public class DashboardDAO {
 
         return count;
     }
+<<<<<<< HEAD
+    
+      public int countReservation() {
+        String query = "select COUNT(*)\n" +
+"FROM [TestProject4].[dbo].[Reservation]";
+=======
 
     public int countReservation() {
         String query = "select COUNT(*)\n"
                 + "FROM [ChildrenCare].[dbo].[Reservation]";
+>>>>>>> c87879ea3bcd3a596cf1807504f4c401719e7199
         int count = 0;
         try {
             conn = new BaseDAO().BaseDao();//mo ket noi voi sql
@@ -458,7 +470,7 @@ public class DashboardDAO {
     }
 
     public UserT getProductByID(String pid) {
-        String query = "select * from [ChildrenCare].[dbo].[User]\n"
+        String query = "select * from [TestProject4].[dbo].[User]\n"
                 + "where User_ID = ?";
         try {
             conn = new BaseDAO().BaseDao();//mo ket noi voi sql
@@ -513,7 +525,7 @@ public class DashboardDAO {
 
     public List<UserT> fillterAllProduct(Integer g, Integer r, Integer s) {
         List<UserT> list = new ArrayList<>();
-        String query = "select * from [ChildrenCare].[dbo].[User]\n "
+        String query = "select * from [TestProject4].[dbo].[User]\n "
                 + " Where 1=1 ";
         if (g != null) {
             query += "and gender = " + g;
