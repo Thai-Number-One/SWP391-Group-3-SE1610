@@ -46,11 +46,6 @@ public class DAO {
         return null;
     }
 
-    public static void main(String[] args) {
-        DAO dao = new DAO();
-        dao.UpdateServiceByID(1, "Khám Mắt", "ABCD", "CDFG", 650000, 25, "ÁDFFGG", "Active");
-
-    }
 
     public void UpdateServiceByID(int ID, String name, String type, String title, float price, int discount, String description, String status) {
 

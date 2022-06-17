@@ -304,13 +304,11 @@ public class DashboardDAO {
     }
 
     public int countUser() {
-<<<<<<< HEAD
+
         String query = "select COUNT(*)\n" +
 "FROM [TestProject4].[dbo].[User]";
-=======
-        String query = "select COUNT(*)\n"
-                + "FROM [ChildrenCare].[dbo].[User]";
->>>>>>> c87879ea3bcd3a596cf1807504f4c401719e7199
+       
+
         int count = 0;
         try {
             conn = new BaseDAO().BaseDao();//mo ket noi voi sql
@@ -325,17 +323,14 @@ public class DashboardDAO {
 
         return count;
     }
-<<<<<<< HEAD
     
       public int countReservation() {
         String query = "select COUNT(*)\n" +
 "FROM [TestProject4].[dbo].[Reservation]";
-=======
 
-    public int countReservation() {
-        String query = "select COUNT(*)\n"
-                + "FROM [ChildrenCare].[dbo].[Reservation]";
->>>>>>> c87879ea3bcd3a596cf1807504f4c401719e7199
+
+ 
+ 
         int count = 0;
         try {
             conn = new BaseDAO().BaseDao();//mo ket noi voi sql
