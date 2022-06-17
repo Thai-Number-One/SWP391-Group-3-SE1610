@@ -101,4 +101,21 @@ public class DAO {
 
         return null;
     }
+    
+    public void UpdateCustomerByID(int ID, String fullname, String phone, String email, String address, int gender){
+        String query = " update [User] set FullName = ?,Phone = ?,Email = ?,Address = ?,Gender = ? Where User_ID = ?";
+        try {
+            conn = new BaseDAO().BaseDao();
+            ps = conn.prepareStatement(query);
+            ps.setInt(6, ID);
+            ps.setString(1, fullname);
+            ps.setString(2, phone);
+            ps.setString(3, email);
+            ps.setString(4, address);
+            ps.setInt(5, gender);
+
+            rs = ps.executeQuery();
+        } catch (Exception e) {
+        }
+    }
 }
