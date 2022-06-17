@@ -157,7 +157,7 @@
                             <ul>
                                 <c:forEach items="${contactlink}" var="l">
                                     <li>
-                                        <a href="#" style="text-decoration: none;">${l.posts.tilte}</a>
+                                        <a href="${l.posts.Post_ID}" style="text-decoration: none;">${l.posts.tilte}</a>
                                     </li>
                                 </c:forEach>
                             </ul>

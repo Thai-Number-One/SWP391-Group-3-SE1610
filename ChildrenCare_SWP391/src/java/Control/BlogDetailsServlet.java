@@ -42,16 +42,16 @@ public class BlogDetailsServlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             try {
                 /* TODO output your page here. You may use following sample code. */
-//            int blog_id = Integer.parseInt(request.getParameter("blogid"));
+            int blog_id = Integer.parseInt(request.getParameter("blogid"));
                 BlogDAO BDao = new BlogDAO();
                 FeedbacksDAO FDao = new FeedbacksDAO();
                 List lst = new ArrayList();
                 List lst2 = new ArrayList();
-                List<allfeedbacks> lst3 = new ArrayList<allfeedbacks>();
+                List<allfeedbacks> lst3 = new ArrayList<>();
 
                 int index = 0;
                 for (int i = 0; i < BDao.Blogs().size(); i++) {
-                    if (BDao.Blogs().get(i).getPosts().getPost_ID() == 1) {
+                    if (BDao.Blogs().get(i).getPosts().getPost_ID() == blog_id) {
                         lst.add(BDao.Blogs().get(i));
                         index = BDao.Blogs().get(i).getService().getServiceid();
                     }

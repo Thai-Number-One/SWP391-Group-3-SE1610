@@ -33,7 +33,7 @@ public class PostDetailDAO {
             ps.setInt(1, id);
             rs = ps.executeQuery();
             while(rs.next()){
-                Posts p = new Posts (rs.getInt(1),rs.getString(2),rs.getString(3),rs.getInt(4),rs.getString(5),rs.getInt(6),rs.getDate(7),rs.getInt(8),rs.getString(9));
+                Posts p = new Posts (rs.getInt(1),rs.getString(2),rs.getString(3),rs.getInt(4),rs.getString(5),rs.getInt(6),rs.getDate(7),rs.getInt(8),rs.getInt(9));
                         return p;
             }
 
@@ -55,7 +55,7 @@ public class PostDetailDAO {
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
             while(rs.next()){
-                Posts p = new Posts (rs.getInt(1),rs.getString(2),rs.getString(3),rs.getInt(4),rs.getString(5),rs.getInt(6),rs.getDate(7),rs.getInt(8),rs.getString(9));
+                Posts p = new Posts (rs.getInt(1),rs.getString(2),rs.getString(3),rs.getInt(4),rs.getString(5),rs.getInt(6),rs.getDate(7),rs.getInt(8),rs.getInt(9));
                        list.add(p);
             }
             
@@ -73,7 +73,7 @@ public class PostDetailDAO {
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
             while(rs.next()){
-                list.add(new Posts (rs.getInt(1),rs.getString(2),rs.getString(3),rs.getInt(4),rs.getString(5),rs.getInt(6),rs.getDate(7),rs.getInt(8),rs.getString(9)));
+                list.add(new Posts (rs.getInt(1),rs.getString(2),rs.getString(3),rs.getInt(4),rs.getString(5),rs.getInt(6),rs.getDate(7),rs.getInt(8),rs.getInt(9)));
                        
             }
 
