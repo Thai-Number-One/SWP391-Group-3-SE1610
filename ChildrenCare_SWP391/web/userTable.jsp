@@ -3,7 +3,7 @@
 <html lang="en">
     <%@page contentType="text/html" pageEncoding="UTF-8"%>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    
+
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -82,8 +82,8 @@
                                                 <option value="">all</option>
                                                 <option value="1">Admin</option>
                                                 <option value="2">Manager</option>
-                                                <option value="4">Staff</option>
-                                                <option value="5">Customer</option>
+                                                <option value="5">Staff</option>
+                                                <option value="4">Customer</option>
                                             </select>
 
 
@@ -97,7 +97,7 @@
 
                                             <input type="submit" value="fillter">
                                         </form>
-                                        
+
                                     </div>
 
                                     <div class="col-md-4">
@@ -160,12 +160,12 @@
                                                         <span class="text-secondary text-xs font-weight-bold">
                                                             <c:if test = "${o.role == 1}">Admin</c:if>
                                                             <c:if test = "${o.role == 2}">Manager</c:if>
-                                                            <c:if test = "${o.role == 4}">Staff</c:if>
-                                                            <c:if test = "${o.role == 5}">Customer</c:if>
-                                                        </span>
-                                                    </td>
+                                                            <c:if test = "${o.role == 5}">Staff</c:if>
+                                                            <c:if test = "${o.role == 4}">Customer</c:if>
+                                                            </span>
+                                                        </td>
 
-                                                    <td class="align-middle text-center text-sm">
+                                                        <td class="align-middle text-center text-sm">
 
                                                         <c:if test = "${o.status == 1}">
                                                             <span class="badge badge-sm bg-gradient-success">Active</span></c:if> 
