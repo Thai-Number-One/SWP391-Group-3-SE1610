@@ -124,6 +124,26 @@
             </div>
         </div>
 
+        <div class="container my-5 py-1">
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-12 col-lg-4">
+                    <div class="card text-dark">
+                        <div class="card-body p-4">
+                            <form method="get" action="blogssearch">
+                                <table style="margin-left: 20px;">
+                                    <tr>
+                                        <th> <h4>Search tilte:</h4></th>
+                                        <th style="padding-left: 15px;"><input type="search" name="name"></th>
+                                    </tr>
+                                </table>
+                               
+                                
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <c:forEach items="${requestScope.allblogs}" var="a">
             <div class="container my-4 py-1">
 
@@ -137,6 +157,7 @@
                                                      src="feedbackF/img/${a.posts.image}" alt="avatar" width="60"
                                                      height="60" /></a>
                                     <div>
+                                        <h3 class="fw-bold mb-1"><a href="#">${a.posts.tilte}</a></h3>
                                         <h6 class="fw-bold mb-1"><a href="#">${a.user.fullname} - ${a.service.servicename}</a></h6>
                                         <div class="d-flex align-items-center mb-3">
                                             <p class="mb-0">
@@ -162,7 +183,7 @@
                 </div>
             </div>
         </c:forEach>
-        <!-- feedback page start -->
+        <!-- blogs page start -->
         <c:if test="${requestScope.checkpage!=1}">
             <nav aria-label="Page navigation example">
                 <ul class="pagination justify-content-center">
@@ -206,23 +227,23 @@
                 </ul>
             </nav>
         </c:if>
-        <!-- feedback page end -->
+        <!-- blogs page end -->
 
         <!-- filter page start -->
         <c:if test="${requestScope.checkpage==1}">
             <nav aria-label="Page navigation example">
                 <ul class="pagination justify-content-center">
                     <li class="page-item ">
-                        <a class="page-link" href="feedbacksfilter?page=${1}&status=${requestScope.status}&sevice=${requestScope.sevice}&star=${requestScope.star}&name=${requestScope.name}"><<</a>
+                        <a class="page-link" href="blogssearch?page=${1}&name=${requestScope.name}"><<</a>
                     </li>
                     <c:if test="${page ==1}">
                         <li class="page-item disabled">
-                            <a class="page-link" href="feedbacksfilter?page=${page-1}&status=${requestScope.status}&sevice=${requestScope.sevice}&star=${requestScope.star}&name=${requestScope.name}">Previous</a>
+                            <a class="page-link" href="blogssearch?page=${page-1}&name=${requestScope.name}">Previous</a>
                         </li>
                     </c:if>
                     <c:if test="${page !=1}">
                         <li class="page-item ">
-                            <a class="page-link" href="feedbacksfilter?page=${page-1}&status=${requestScope.status}&sevice=${requestScope.sevice}&star=${requestScope.star}&name=${requestScope.name}">Previous</a>
+                            <a class="page-link" href="blogssearch?page=${page-1}&name=${requestScope.name}">Previous</a>
                         </li>
                     </c:if>
                     <!-- /////////////////////////////////////////////////////////////////-->
@@ -230,7 +251,7 @@
                     <c:set var="max" value="${0}"/>
                     <c:forEach begin="${1}" end="${requestScope.num}" var="i">                
                         <c:if test="${i==page-2||i==page-1||i==page+2||i==page+1||i==page}">
-                            <li class=" ${i==page?"active":""} page-item"><a class="page-link" href="feedbacksfilter?page=${i}&status=${requestScope.status}&sevice=${requestScope.sevice}&star=${requestScope.star}&name=${requestScope.name}">${i}</a></li>
+                            <li class=" ${i==page?"active":""} page-item"><a class="page-link" href="blogssearch?page=${i}&name=${requestScope.name}">${i}</a></li>
 
                         </c:if>
                         <h1 style="display: none;">${max=max+1}</h1>
@@ -238,16 +259,16 @@
                     <!-- /////////////////////////////////////////////////////////////////-->
                     <c:if test="${page ==max}">
                         <li class="page-item disabled">
-                            <a class="page-link" href="feedbacksfilter?page=${page+1}&status=${requestScope.status}&sevice=${requestScope.sevice}&star=${requestScope.star}&name=${requestScope.name}">Next</a>
+                            <a class="page-link" href="blogssearch?page=${page+1}&name=${requestScope.name}">Next</a>
                         </li>
                     </c:if>
                     <c:if test="${page !=max}">
                         <li class="page-item ">
-                            <a class="page-link" href="feedbacksfilter?page=${page+1}&status=${requestScope.status}&sevice=${requestScope.sevice}&star=${requestScope.star}&name=${requestScope.name}">Next</a>
+                            <a class="page-link" href="blogssearch?page=${page+1}&name=${requestScope.name}">Next</a>
                         </li>
                     </c:if>
                     <li class="page-item ">
-                        <a class="page-link" href="feedbacksfilter?page=${max}&status=${requestScope.status}&sevice=${requestScope.sevice}&star=${requestScope.star}&name=${requestScope.name}">>></a>
+                        <a class="page-link" href="blogssearch?page=${max}&name=${requestScope.name}">>></a>
                     </li>
                 </ul>
             </nav>
