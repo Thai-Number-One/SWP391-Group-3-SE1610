@@ -7,7 +7,10 @@ package DAO;
 
 import Context.BaseDAO;
 import Entity.Medicine;
+import Entity.Posts;
 import Entity.Reservation;
+import Entity.Slider;
+import Entity.User;
 import Entity.role;
 import Entity.UserT;
 import java.sql.Connection;
@@ -64,6 +67,80 @@ public class DashboardDAO {
         return list;
     }
 
+    public List<Posts> getAllPostList() {
+        List<Posts> list = new ArrayList<>();
+        String query = "select *  FROM [TestProject4].[dbo].[Post]";
+        try {
+            conn = new BaseDAO().BaseDao();//mo ket noi voi sql
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new Posts(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getInt(4),
+                        rs.getString(5),
+                        rs.getInt(6),
+                        rs.getDate(7),
+                        rs.getInt(8),
+                        rs.getString(9)));
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
+    public List<Slider> getAllSliderList() {
+        List<Slider> list = new ArrayList<>();
+        String query = "select * FROM [TestProject4].[dbo].[Slider]";
+        try {
+            conn = new BaseDAO().BaseDao();//mo ket noi voi sql
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new Slider(rs.getInt(1),
+                        rs.getInt(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getInt(6)));
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
+    public List<User> getAuthorByID() {
+        List<User> list = new ArrayList<>();
+        String query = "  select User_ID, FullName\n"
+                + "   FROM [TestProject4].[dbo].[User]\n"
+                + "   where Role_ID = 2";
+        try {
+            conn = new BaseDAO().BaseDao();//mo ket noi voi sql
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new User(
+                        rs.getInt(1),
+                        rs.getString(2)));
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
+    public void deletePost(String pid) {
+        String query = "DELETE FROM [dbo].[Post]\n"
+                + "      WHERE Post_ID = ?";
+        try {
+            conn = new BaseDAO().BaseDao();//mo ket noi voi sql
+            ps = conn.prepareStatement(query);
+            ps.setString(1, pid);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
     public List<Medicine> getAllMedicine() {
         List<Medicine> list = new ArrayList<>();
         String query = "select * from [TestProject4].[dbo].[Medicine]";
@@ -84,14 +161,12 @@ public class DashboardDAO {
         }
         return list;
     }
-    
+
     public static void main(String[] args) {
         DashboardDAO dao = new DashboardDAO();
-        
-        System.out.println(dao.getAllMedicine());
+
+        System.out.println(dao.getAllSliderList());
     }
-    
-    
 
     public void deleteProduct(String pid) {
         String query = "DELETE FROM [dbo].[DataUser]\n"
@@ -105,7 +180,18 @@ public class DashboardDAO {
         }
     }
 
-    
+    public void deleteSlider(String pid) {
+        String query = "DELETE FROM [TestProject4].[dbo].[Sliders]\n"
+                + "where Slider_ID = ?";
+        try {
+            conn = new BaseDAO().BaseDao();//mo ket noi voi sql
+            ps = conn.prepareStatement(query);
+            ps.setString(1, pid);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
     public List<role> getAllRole() {
         List<role> list = new ArrayList<>();
         String query = "select * FROM [product].[dbo].[Role]";
@@ -122,8 +208,8 @@ public class DashboardDAO {
         }
         return list;
     }
-    
-     public List<String> getStatusReveration() {
+
+    public List<String> getStatusReveration() {
         List<String> list = new ArrayList<>();
         String query = "SELECT Status from  [TestProject4].[dbo].[Reservation]";
         try {
@@ -138,8 +224,8 @@ public class DashboardDAO {
         }
         return list;
     }
-     
-     public List<Reservation> getReservation() {
+
+    public List<Reservation> getReservation() {
         List<Reservation> list = new ArrayList<>();
         String query = "SELECT Status, Total_cost from  [TestProject4].[dbo].[Reservation]";
         try {
@@ -155,30 +241,30 @@ public class DashboardDAO {
         }
         return list;
     }
-     
-     public double getREVENUE(){
-         DashboardDAO dao = new DashboardDAO();
+
+    public double getREVENUE() {
+        DashboardDAO dao = new DashboardDAO();
         List<Reservation> list = dao.getReservation();
         double total = 0;
-       for(Reservation s: list){
-           if(s.getStatus().toLowerCase().equals("success")){
-               total += s.getTotalCost();
-           }
-       }
-       return total;
-     }
-     
-     public  int countReveration(String infor){
-         int count = 0;
-         DashboardDAO dao = new DashboardDAO();
-         List<String> list = dao.getStatusReveration();
-          for (String s : list) {
-            if(s.toLowerCase().equals(infor.toLowerCase())){
+        for (Reservation s : list) {
+            if (s.getStatus().toLowerCase().equals("success")) {
+                total += s.getTotalCost();
+            }
+        }
+        return total;
+    }
+
+    public int countReveration(String infor) {
+        int count = 0;
+        DashboardDAO dao = new DashboardDAO();
+        List<String> list = dao.getStatusReveration();
+        for (String s : list) {
+            if (s.toLowerCase().equals(infor.toLowerCase())) {
                 count++;
             }
         }
-          return count;
-     }
+        return count;
+    }
 
     public int countFeedBack() {
         String query = "select COUNT(*)\n"
@@ -210,7 +296,7 @@ public class DashboardDAO {
             while (rs.next()) {
                 total = rs.getInt(1);
             }
-            return (double) Math.round(total/dao.countFeedBack() * 10) / 10 ;
+            return (double) Math.round(total / dao.countFeedBack() * 10) / 10;
         } catch (Exception e) {
         }
 
@@ -218,8 +304,13 @@ public class DashboardDAO {
     }
 
     public int countUser() {
+<<<<<<< HEAD
         String query = "select COUNT(*)\n" +
 "FROM [TestProject4].[dbo].[User]";
+=======
+        String query = "select COUNT(*)\n"
+                + "FROM [ChildrenCare].[dbo].[User]";
+>>>>>>> c87879ea3bcd3a596cf1807504f4c401719e7199
         int count = 0;
         try {
             conn = new BaseDAO().BaseDao();//mo ket noi voi sql
@@ -234,10 +325,17 @@ public class DashboardDAO {
 
         return count;
     }
+<<<<<<< HEAD
     
       public int countReservation() {
         String query = "select COUNT(*)\n" +
 "FROM [TestProject4].[dbo].[Reservation]";
+=======
+
+    public int countReservation() {
+        String query = "select COUNT(*)\n"
+                + "FROM [ChildrenCare].[dbo].[Reservation]";
+>>>>>>> c87879ea3bcd3a596cf1807504f4c401719e7199
         int count = 0;
         try {
             conn = new BaseDAO().BaseDao();//mo ket noi voi sql
@@ -252,8 +350,7 @@ public class DashboardDAO {
 
         return count;
     }
-    
-    
+
     public void insertProduct(String fullname,
             String address, String phone, String email,
             Date date, String user, String password, String avatar, int gender, int role, int status) {
@@ -299,6 +396,73 @@ public class DashboardDAO {
             ps.setInt(9, gender);
             ps.setInt(10, role);
             ps.setInt(11, status);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+
+    }
+
+    public void insertPost(String title, String content,
+            String image, int author, int status, int category) {
+        String query = "INSERT INTO [dbo].[Post]\n"
+                + "           ([Title]\n"
+                + "           ,[Content]\n"
+                + "           ,[User_ID]\n"
+                + "           ,[Image]\n"
+                + "           ,[Service_ID]\n"
+                + "           ,[Date]\n"
+                + "           ,[Status]\n"
+                + "           ,[Category])\n"
+                + "     VALUES\n"
+                + "           (?\n"
+                + "           ,?\n"
+                + "           ,?\n"
+                + "           ,?\n"
+                + "           ,null\n"
+                + "           ,GETDATE()\n"
+                + "           ,?\n"
+                + "           ,?)";
+
+        try {
+            conn = new BaseDAO().BaseDao();//mo ket noi voi sql
+            ps = conn.prepareStatement(query);
+
+            ps.setString(1, title);
+            ps.setString(2, content);
+            ps.setInt(3, author);
+            ps.setString(4, image);
+
+            ps.setInt(5, status);
+            ps.setInt(6, category);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+
+    }
+
+    public void insertSlider(String title, String image,
+            String backLink, int status) {
+        String query = "INSERT INTO [dbo].[Sliders]\n"
+                + "           ([User_ID]\n"
+                + "           ,[Title]\n"
+                + "           ,[Image]\n"
+                + "           ,[BackLink]\n"
+                + "           ,[Status])\n"
+                + "     VALUES\n"
+                + "           (null\n"
+                + "           ,?\n"
+                + "           ,?\n"
+                + "           ,?\n"
+                + "           ,?)";
+
+        try {
+            conn = new BaseDAO().BaseDao();//mo ket noi voi sql
+            ps = conn.prepareStatement(query);
+
+            ps.setString(1, title);
+            ps.setString(2, image);
+            ps.setString(3, backLink);
+            ps.setInt(4, status);
             ps.executeUpdate();
         } catch (Exception e) {
         }
@@ -390,6 +554,68 @@ public class DashboardDAO {
                         rs.getInt(11),
                         rs.getInt(12),
                         rs.getInt(13)));
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
+    public List<Posts> fillterAllPost(Integer c, Integer a, Integer s) {
+        List<Posts> list = new ArrayList<>();
+        String query = "select * FROM [TestProject4].[dbo].[Post]\n "
+                + " Where 1=1 ";
+        if (c != null) {
+            query += "and Category = " + c;
+        }
+
+        if (a != null) {
+            query += "and User_ID = " + a;
+        }
+
+        if (s != null) {
+            query += "and Status = " + s;
+        }
+
+        try {
+            conn = new BaseDAO().BaseDao();//mo ket noi voi sql
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new Posts(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getInt(4),
+                        rs.getString(5),
+                        rs.getInt(6),
+                        rs.getDate(7),
+                        rs.getInt(8),
+                        rs.getString(9)));
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
+    public List<Slider> fillterAllSlider(Integer s) {
+        List<Slider> list = new ArrayList<>();
+        String query = "select * FROM [TestProject4].[dbo].[Sliders]\n "
+                + " Where 1=1 ";
+
+        if (s != null) {
+            query += "and Status = " + s;
+        }
+
+        try {
+            conn = new BaseDAO().BaseDao();//mo ket noi voi sql
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new Slider(rs.getInt(1),
+                        rs.getInt(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getInt(6)));
             }
         } catch (Exception e) {
         }

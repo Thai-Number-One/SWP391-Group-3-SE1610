@@ -42,7 +42,7 @@ public class LoginControl extends HttpServlet {
             request.setAttribute("mess", "Wrong UserName or Password !");
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }else{
-            request.getRequestDispatcher("index.html").forward(request, response);
+            request.getRequestDispatcher("HomeP.jsp").forward(request, response);
         }
         
         

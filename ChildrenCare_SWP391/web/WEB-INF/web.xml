@@ -32,6 +32,22 @@
         <servlet-name>checkprescription</servlet-name>
         <servlet-class>controller_staff.checkprescription</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>feedbackslist</servlet-name>
+        <servlet-class>Control.feedbackslist</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>FeedbacksFilter</servlet-name>
+        <servlet-class>Control.FeedbacksFilter</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>BlogsServlet</servlet-name>
+        <servlet-class>Control.BlogsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>BlogsSearch</servlet-name>
+        <servlet-class>Control.BlogsSearch</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>reservation</servlet-name>
         <url-pattern>/reservation</url-pattern>
@@ -63,6 +79,22 @@
     <servlet-mapping>
         <servlet-name>checkprescription</servlet-name>
         <url-pattern>/checkprescription</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>feedbackslist</servlet-name>
+        <url-pattern>/feedbackslist</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FeedbacksFilter</servlet-name>
+        <url-pattern>/feedbacksfilter</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BlogsServlet</servlet-name>
+        <url-pattern>/blogs</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BlogsSearch</servlet-name>
+        <url-pattern>/blogssearch</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

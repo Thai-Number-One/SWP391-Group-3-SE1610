@@ -9,14 +9,13 @@
 <html lang="en">
 
   <head>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap" rel="stylesheet">
 
-    <title>Post Details</title>
+    
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -26,8 +25,35 @@
     <link rel="stylesheet" href="assets/css/fontawesome.css">
     <link rel="stylesheet" href="assets/css/templatemo-stand-blog.css">
     <link rel="stylesheet" href="assets/css/owl.css">
+<!--
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="" name="keywords">
+        <meta content="" name="description">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <title>Post Detail</title>
+        <link href="img/favicon.ico" rel="icon">
+
+        <!-- Google Web Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@600&family=Lobster+Two:wght@700&display=swap" rel="stylesheet">
+
+        <!-- Icon Font Stylesheet -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <!-- Libraries Stylesheet -->
+        <link href="lib/animate/animate.min.css" rel="stylesheet">
+        <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+        <!-- Customized Bootstrap Stylesheet -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Template Stylesheet -->
+        <link href="css/style.css" rel="stylesheet">
     <style>
-          body {
+           body {
                 margin: 0;
                 font-family: "Heebo",sans-serif;
                 font-size: 1rem;
@@ -53,6 +79,73 @@
             .row{
                 width: 1000px;
             }
+            .blog-thumb{
+                margin-bottom: 40px;
+            .h2{
+                color: rgb(254,93,55);
+            }
+            }.sidebar-h{
+                width: 400px;
+                height: 40px;
+                margin-left: 15px;
+            }
+            
+            .sidebar-h h5 {
+                line-height: 10px;
+                color: rgb(254,93,55);
+            }.sidebar-item{
+                width: 1000px;
+            }
+            .contact-us .contact-form input{
+                text-transform: none;
+                font-size: 16px;
+            }
+            .contact-us .contact-form textarea{
+                text-transform: none;
+                font-size: 16px;
+            }.col-lg{
+                width: 10px;
+                margin-left: 180px;
+            }
+            .contact-us .sidebar-heading h2{
+                font-size: 30px;
+            }.blog-posts .down-content p{
+                font-size: 17px;
+                color: #393f54;
+            }
+            .blog-posts .down-content{
+                margin-left: 160px;
+            }
+            .blog-posts .blog-thumb img{
+                margin-left: 160px;
+                
+            }.post-tags{
+                padding-left: 10px;
+                
+            }.dddd{
+                background-color: #babec2;
+            }.contact-us .contact-form button{
+                margin-top: 50px;
+             
+                
+            }.sidebar-h-a h5{
+                margin-top: 30px;
+                margin-bottom: 28px;
+                line-height: 10px;
+                color: rgb(254,93,55);
+                margin-left: 12px;
+            }
+            .blog-posts .submit-comment button{
+                width: 130px;
+            }.blog-posts .down-content h4{
+                font-size: 30px;
+            }
+                
+            
+            
+           
+            
+            
     </style>
 <!--
 
@@ -70,7 +163,7 @@ https://templatemo.com/tm-551-stand-blog
     <!-- Header -->
     <!-- Navbar Start -->
         <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0">
-            <a href="index.html" class="navbar-brand">
+            <a href="HomeP.jsp" class="navbar-brand">
                 <h1 class="m-0 text-primary"><i class=""></i>ChildrenCare</h1>
             </a>
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -78,23 +171,23 @@ https://templatemo.com/tm-551-stand-blog
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav mx-auto">
-                    <a href="index.html" class="nav-item nav-link ">Home</a>
-                    <a href="about.html" class="nav-item nav-link">About Us</a>
-                    <a href="classes.html" class="nav-item nav-link">Classes</a>
+                    <a href="HomeP.jsp" class="nav-item nav-link active">Home</a>
+                    <a href="HomeP.jsp" class="nav-item nav-link">About Us</a>
+                    <a href="HomeP.jsp" class="nav-item nav-link">Classes</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                         <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0">
-                            <a href="reservation" class="dropdown-item">Reservations List</a>
-                            <a href="medical" class="dropdown-item">Medical list</a>
-                            <a href="prescription" class="dropdown-item">Prescription For Staff</a>
-                            <a href="appointment.html" class="dropdown-item">Make Appointment</a>
+                            <a href="facility.html" class="dropdown-item">School Facilities</a>
+                            <a href="team.html" class="dropdown-item">Popular Teachers</a>
+                            <a href="dashboard" class="dropdown-item">Admin</a>
+                            <a href="appointment.html" class="dropdown-item">Manager</a>
                             <a href="testimonial.html" class="dropdown-item">Testimonial</a>
                             <a href="404.html" class="dropdown-item">404 Error</a>
                         </div>
                     </div>
                     <a href="contact.html" class="nav-item nav-link">Contact Us</a>
                 </div>
-
+                <a href="login.jsp" class="btn btn-primary rounded-pill px-3 d-none d-lg-block">Login<i class="fa fa-arrow-right ms-3"></i></a>
             </div>
         </nav>
 
@@ -110,16 +203,16 @@ https://templatemo.com/tm-551-stand-blog
                 <div class="col-lg-8">
                     <div class="all-blog-posts">
                         <div class="row">
-                            <div class="col-lg-12">
+                            <div class="col-lg-post">
                                 <div class="blog-post">
                                     <div class="blog-thumb">
                                         <img src="${Detail.image}" alt="">
                                     </div>
                                     <div class="down-content">
-                                        <span>${Detail.service_ID}</span>
+                                        <span>${serviceName.service_name}</span>
                                         <a href="post-details.html"><h4>${Detail.tilte}</h4></a>
                                         <ul class="post-info">
-                                            <li><a href="#">${Detail.user_ID}</a></li>
+                                            <li><a href="#">${userName.fullname}</a></li>
                                             <li><a href="#"></a>${Detail.date}</li>
                                         </ul>
                                         <p>${Detail.content}</p> 
@@ -129,14 +222,11 @@ https://templatemo.com/tm-551-stand-blog
                                                 <div class="col-6">
                                                     <ul class="post-tags">
                                                         <li><i class="fa fa-tags"></i></li>
-                                                        <li><a href="#">${Detail.category}</a>,</li>
-                                                    </ul>
-                                                </div>
-                                                <div class="col-6">
-                                                    <ul class="post-share">
-                                                        <li><i class="fa fa-share-alt"></i></li>
-                                                        <li><a href="#">Facebook</a>,</li>
-                                                        <li><a href="#"> Twitter</a></li>
+                                                        <li><a href="#">
+                                                            <c:if test = "${Detail.category == 1}">Family</c:if>
+                                                            <c:if test = "${Detail.category == 2}">Health</c:if>
+                                                            <c:if test = "${Detail.category == 3}">Education</c:if>   
+                                                            </a>,</li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -144,73 +234,28 @@ https://templatemo.com/tm-551-stand-blog
                                     </div>
                                 </div>
                             </div>
-                            <div style="display: flex;">
-                                <div class="col-lg-12">
+                                <div class="col-lg-edit">
                                     <div class="sidebar-item submit-comment">
 
                                         <div class="content">
 
 
-                                            <div class="col-lg-12">
+                                            <div class="col-lg">
                                                 <fieldset>
                                                     <a href="EditPost?Pid=${Detail.post_ID}">
                                                         <button type="submit" id="form-submit" class="main-button">Edit Post</button>
                                                     </a>
                                                 </fieldset>
                                             </div>
-
-
+                                                        
+                                            
 
                                         </div>
                                     </div>
                                 </div>
-                            </div>
                         </div>  
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="sidebar">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="sidebar-item recent-posts">
-                                <div class="sidebar-heading">
-                                    <h2>Recent Posts</h2>
-                                </div>
-                                <div class="content">
-                                    <ul>
-                                        <c:forEach items="${re}" var="o"> 
-                                            <li><a href="post-details.html">
-                                                    <h5>${o.tilte}</h5>
-                                                    <span>${o.date}</span>
-                                                </a>
-                                            </li>
-
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-12">
-                <div class="sidebar-item categories">
-                    <div class="sidebar-heading">
-                        <h2>Categories</h2>
-                    </div>
-                    <div class="content">
-                        <ul>
-                            <c:forEach items="${ce}" var="c"> 
-
-                                <li><a href="#">${c.category}</a></li>
-
-
-                            </c:forEach>
-                        </ul>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
   </section>

@@ -109,11 +109,15 @@ public class Posts {
         this.Category = Category;
     }
 
+  
+
     @Override
     public String toString() {
         return "Posts{" + "Post_ID=" + Post_ID + ", Tilte=" + Tilte + ", Content=" + Content + ", User_ID=" + User_ID + ", Image=" + Image + ", Service_ID=" + Service_ID + ", Date=" + Date + ", Status=" + Status + ", Category=" + Category + '}';
     }
 
+    
+    
     
     
     

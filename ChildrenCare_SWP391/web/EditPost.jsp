@@ -16,7 +16,7 @@
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap" rel="stylesheet">
 
-    <title>Post Details</title>
+    
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -26,6 +26,33 @@
     <link rel="stylesheet" href="assets/css/fontawesome.css">
     <link rel="stylesheet" href="assets/css/templatemo-stand-blog.css">
     <link rel="stylesheet" href="assets/css/owl.css">
+<!--
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="" name="keywords">
+        <meta content="" name="description">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <title>Post Detail</title>
+        <link href="img/favicon.ico" rel="icon">
+
+        <!-- Google Web Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@600&family=Lobster+Two:wght@700&display=swap" rel="stylesheet">
+
+        <!-- Icon Font Stylesheet -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <!-- Libraries Stylesheet -->
+        <link href="lib/animate/animate.min.css" rel="stylesheet">
+        <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+        <!-- Customized Bootstrap Stylesheet -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Template Stylesheet -->
+        <link href="css/style.css" rel="stylesheet">
     <style>
           body {
                 margin: 0;
@@ -64,7 +91,7 @@
                 margin-left: 15px;
             }
             
-            .sidebar-h h5{
+            .sidebar-h h5 {
                 line-height: 10px;
                 color: rgb(254,93,55);
             }.sidebar-item{
@@ -77,7 +104,38 @@
             .contact-us .contact-form textarea{
                 text-transform: none;
                 font-size: 16px;
+            }.col-lg{
+                width: 10px;
+                margin-left: 180px;
             }
+            .contact-us .sidebar-heading h2{
+                font-size: 30px;
+            }.blog-posts .down-content p{
+                font-size: 17px;
+                color: #393f54;
+            }
+            .blog-posts .down-content{
+                margin-left: 160px;
+            }
+            .blog-posts .blog-thumb img{
+                margin-left: 160px;
+                
+            }.post-tags{
+                padding-left: 10px;
+                
+            }.dddd{
+                background-color: #babec2;
+            }.contact-us .contact-form button{
+                margin-top: 50px;
+                
+            }.sidebar-h-a h5{
+                margin-top: 30px;
+                margin-bottom: 28px;
+                line-height: 10px;
+                color: rgb(254,93,55);
+                margin-left: 12px;
+            }
+                
     </style>
 <!--
 
@@ -95,7 +153,7 @@ https://templatemo.com/tm-551-stand-blog
     <!-- Header -->
     <!-- Navbar Start -->
         <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0">
-            <a href="index.html" class="navbar-brand">
+            <a href="HomeP.jsp" class="navbar-brand">
                 <h1 class="m-0 text-primary"><i class=""></i>ChildrenCare</h1>
             </a>
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -103,20 +161,21 @@ https://templatemo.com/tm-551-stand-blog
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav mx-auto">
-                    <a href="index.html" class="nav-item nav-link ">Home</a>
+                    <a href="HomeP.jsp" class="nav-item nav-link ">Home</a>
                     <a href="about.html" class="nav-item nav-link">About Us</a>
                     <a href="classes.html" class="nav-item nav-link">Classes</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                         <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0">
-                            <a href="reservation" class="dropdown-item">Reservations List</a>
-                            <a href="medical" class="dropdown-item">Medical list</a>
-                            <a href="prescription" class="dropdown-item">Prescription For Staff</a>
-                            <a href="appointment.html" class="dropdown-item">Make Appointment</a>
+                            <a href="facility.html" class="dropdown-item">School Facilities</a>
+                            <a href="team.html" class="dropdown-item">Popular Teachers</a>
+                            <a href="dashboard" class="dropdown-item">Admin</a>
+                            <a href="appointment.html" class="dropdown-item">Manager</a>
                             <a href="testimonial.html" class="dropdown-item">Testimonial</a>
                             <a href="404.html" class="dropdown-item">404 Error</a>
                         </div>
                     </div>
+
                     <a href="contact.html" class="nav-item nav-link">Contact Us</a>
                 </div>
 
@@ -131,63 +190,110 @@ https://templatemo.com/tm-551-stand-blog
 
      <section class="contact-us">
       <div class="container">
-        <div class="row">
-        
-          <div class="col-lg-12">
-            <div class="down-contact">
-              <div class="row">
-                <div class="col-lg-8">
-                    <div class="blog-thumb">
-                                        <img src="${Detail.image}" alt="">
-                    </div>
-                  <div class="sidebar-item contact-form">
-                    <div class="sidebar-heading">
-                      <h2>Edit Post</h2>
-                    </div>
-                    <div class="content">
-                      <form id="contact" action="" method="post">
-                        
-                              <div class="sidebar-h">
-                      <h5 clas="edi">Image link</h5>
-                    </div>
-                              <div class="col-md-6 col-sm-12">
-                                  <fieldset>
-                                      <input class="imageli" name="name" type="text" id="name" required="" value="${Detail.image}">
-                                  </fieldset>
+          <div class="row">
+             
+                  <div class="col-lg-12">
+                      <div class="down-contact">
+                          <div class="row">
+                              <div class="col-lg-8">
+                                  <form action="UpdatePost" method="post">
+                                  <div class="blog-thumb">
+                                      <img src="${Detail.image}" alt="">
+                                  </div>
+                                  <div class="sidebar-item contact-form">
+                                      <div class="sidebar-heading">
+                                          <h2>Edit Post</h2>
+                                      </div>
+                                      <div class="content">
+                                          <form id="contact" action="" method="post">
+                                              
+                                              <div class="sidebar-h">
+                                                    <h5 clas="edi">Post_ID: </h5>
+                                              </div>
+                                              <div class="col-md-6 col-sm-12-1">
+                                                  <fieldset>
+                                                      <input class="dddd" name="post_id" type="text" readonly id="name" required="" value="${Detail.post_ID}">
+                                                  </fieldset>
+                                              </div>
+                                                  
+                                              <div class="sidebar-h">
+                                                    <h5 clas="edi">Author: </h5>
+                                              </div>
+                                              <div class="col-md-6 col-sm-12-1">
+                                                  <fieldset>
+                                                      <input class="dddd" name="user_id" type="text" readonly id="name" required="" value="${Detail.user_ID}">
+                                                  </fieldset>
+                                              </div>
+
+
+                                              <div class="sidebar-h">
+                                                  <h5 clas="edi">Image link</h5>
+                                              </div>
+                                              <div class="col-md-6 col-sm-12">
+                                                  <fieldset>
+                                                      <input class="imageli" name="image" type="text" id="name" required="" value="${Detail.image}">
+                                                  </fieldset>
+                                              </div>
+                                              <div class="sidebar-h">
+                                                  <h5 clas="edi">Title </h5>
+                                              </div>
+                                              <div class="col-md-12 col-sm-12">
+                                                  <fieldset>
+                                                      <input name="title" type="text" id="subject" value="${Detail.tilte}">
+                                                  </fieldset>
+                                              </div>
+                                              <div class="sidebar-h">
+                                                  <h5 clas="edi">Content </h5>
+                                              </div>
+                                              <div class="col-lg-12">
+                                                  <fieldset>
+                                                      <textarea name="content" rows="6" id="message"  required="">${Detail.content}</textarea>
+                                                  </fieldset>
+                                              </div>
+                                                  
+                                              <div class="sidebar-h">
+                                                  <h5 clas="edi">Category: </h5>
+                                              </div> 
+                                                  
+                                              <div class="col-lg-12">
+                                                          <select class="choincate" name="choincate">
+                                                              <option><c:if test = "${Detail.category == 1}">Family</c:if></option>
+                                                              <option><c:if test = "${Detail.category == 2}">Health</c:if></option>
+                                                              <option><c:if test = "${Detail.category == 3}">Education</c:if></option>
+                                                          </select>
+                                              </div> 
+                                                  
+                                              <div class="sidebar-h-a">
+                                                  <h5 clas="edi">Status: </h5>
+                                              </div> 
+                                                  
+                                              <div class="col-lg-12">
+                                                          <select class="choincate" name="choicestatus">
+                                                              <option>Show</option>
+                                                              <option>Hide</option>
+                                                          </select>
+                                              </div>     
+                                                     
+                                                  
+                                                  
+                                              <div class="col-lg-12">
+                                                  <fieldset>
+                                                      <button type="submit" id="form-submit" class="main-button" >Update Post</button>
+                                                  </fieldset>
+                                              </div>
+
+                                          </form>
+                                      </div>
+                                  </div>
+                                  </form>                
                               </div>
-                                  <div class="sidebar-h">
-                      <h5 clas="edi">Title </h5>
-                    </div>
-                              <div class="col-md-12 col-sm-12">
-                                  <fieldset>
-                                      <input name="subject" type="text" id="subject" value="${Detail.tilte}">
-                                  </fieldset>
-                              </div>
-                                  <div class="sidebar-h">
-                      <h5 clas="edi">Content </h5>
-                    </div>
-                              <div class="col-lg-12">
-                                  <fieldset>
-                                      <textarea name="message" rows="6" id="message"  required="">${Detail.content}</textarea>
-                                  </fieldset>
-                              </div>
-                              <div class="col-lg-12">
-                                  <fieldset>
-                                      <button type="submit" id="form-submit" class="main-button">Update Post</button>
-                                  </fieldset>
-                              </div>
-                         
-                      </form>
-                    </div>
+                          </div>
+                      </div>
                   </div>
-                </div>
-              </div>
-            </div>
+
+
+              
           </div>
-          
-         
-          
-        </div>
       </div>
     </section>
     

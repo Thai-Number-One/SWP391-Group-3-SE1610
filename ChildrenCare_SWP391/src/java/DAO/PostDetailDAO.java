@@ -6,12 +6,18 @@
 package DAO;
 
 import Context.BaseDAO;
+import Entity.Bloglist;
 import Entity.Posts;
+import Entity.Service;
+import Entity.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import model_staff.service;
+import model_staff.user;
 
 /**
  *
@@ -80,16 +86,94 @@ public class PostDetailDAO {
         
         return list;
     } 
+    public void updatenews(String title, String content, int user_id, String image, int status, int category, int post_id){
+ 
+        try {
+            String sql="update Post\n" +
+                        "set Title = ?, Content = ?, [User_ID] = ?, [Image] = ?, [Status] = ?, Category = ? \n" +
+                        "where Post_ID = ?";
+  
+            conn = new BaseDAO().BaseDao();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, title);
+            ps.setString(2, content);
+            ps.setInt(3, user_id);
+            ps.setString(4, image);
+            ps.setInt(5, status);
+            ps.setInt(6, category);
+            ps.setInt(7, post_id);
+            ps.executeUpdate();
+            
+        } catch (Exception e) {
+        }
+    }
+    public User getDetailUser(int id){
+        try {
+            String sql = "select FullName from [User]\n" +
+                        "join Post on [User].[User_ID] = Post.[User_ID]\n" +
+                        "where Post.Post_ID = ?";
+            conn = new BaseDAO().BaseDao();
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, id);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                return new User(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getDate(6),
+                        rs.getDate(7),
+                        rs.getString(8),
+                        rs.getString(9),
+                        rs.getString(10),
+                        rs.getInt(11),
+                        rs.getInt(12),
+                        rs.getInt(13));
+            }
+
+        } catch (Exception e) {
+        }
+        
+        return null;
+    } 
+    
+    public Service getDetailService(int id){
+        try {
+            String sql = "select [Service_Name] from [Service]\n" +
+                        "join Post on [Service].[Service_ID] = Post.[Service_ID]\n" +
+                        "where Post.Post_ID = ?";
+            conn = new BaseDAO().BaseDao();
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, id);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                return new Service(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getString(6),
+                        rs.getFloat(7),
+                        rs.getInt(8),
+                        rs.getFloat(9),
+                        rs.getString(10));
+            }
+
+        } catch (Exception e) {
+        }
+        
+        return null;
+    } 
+    
     
     
     public static void main(String[] args) {
         PostDetailDAO dao = new PostDetailDAO();
-
-        List<Posts> list = dao.getCategory();
         
-        for (Posts o : list) {
-            System.out.println(o);
-        }
+        Posts d = dao.getDetail(1);
+        Service s = dao.getDetailService(1);
+        System.out.println(s);
 
     }
     
