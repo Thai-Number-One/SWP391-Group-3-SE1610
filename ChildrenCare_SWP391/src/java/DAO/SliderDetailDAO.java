@@ -44,7 +44,7 @@ public class SliderDetailDAO {
     public void updateslider(String title, String blacklink, int user_id, String image, int status, int slider_id){
  
         try {
-            String sql="update Post\n" +
+            String sql="update Slider\n" +
                         "set Title = ?, BackLink = ?, [User_ID] = ?, [Image] = ?, [Status] = ? \n" +
                         "where Slider_ID = ?";
   

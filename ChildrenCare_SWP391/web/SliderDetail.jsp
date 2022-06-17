@@ -279,9 +279,9 @@ https://templatemo.com/tm-551-stand-blog
 
                                                                   <div class="col-lg-r">
                                                                       <fieldset>
-                                                                          <a href="EditPost?Pid=${Detail.SliderD_ID}">
+                                                                          
                                                                               <button type="submit" id="form-submit" class="main-button">Edit Slider</button>
-                                                                          </a>
+                                                                         
                                                                       </fieldset>
                                                                   </div>
 

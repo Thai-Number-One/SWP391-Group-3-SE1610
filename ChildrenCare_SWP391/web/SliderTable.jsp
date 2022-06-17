@@ -137,7 +137,7 @@
 
 
                                                     <td class="align-middle">
-                                                        <a href="LoadControl?pid=${o.slider_ID}" class="text-success text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>
+                                                        <a href="LoadSliderDetail?Sid=${o.slider_ID}" class="text-success text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>
                                                             Edit
                                                         </a>
                                                     </td>
