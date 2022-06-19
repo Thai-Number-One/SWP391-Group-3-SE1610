@@ -8,12 +8,12 @@ package Control;
 import DAO.UserDAO;
 import Entity.User;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -42,6 +42,8 @@ public class LoginControl extends HttpServlet {
             request.setAttribute("mess", "Wrong UserName or Password !");
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }else{
+            HttpSession session = request.getSession();
+            session.setAttribute("loginsuccess", u);
             request.getRequestDispatcher("HomeP.jsp").forward(request, response);
         }
         

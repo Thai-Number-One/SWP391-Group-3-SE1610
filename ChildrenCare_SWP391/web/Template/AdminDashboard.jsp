@@ -25,7 +25,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="dashboard">
                             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                                <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
+                                <i class="ni ni-chart-bar-32 text-primary text-sm opacity-10"></i>
                             </div>
                             <span class="nav-link-text ms-1">Dashboard</span>
                         </a>
@@ -33,25 +33,33 @@
                     <li class="nav-item">
                         <a class="nav-link " href="manager">
                             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                                <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
+                                <i class="ni ni-circle-08 text-warning text-sm opacity-10"></i>
                             </div>
-                            <span class="nav-link-text ms-1">Tables</span>
+                            <span class="nav-link-text ms-1">User Manager</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link " href="servicecontroller">
                             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                                <i class="ni ni-credit-card text-success text-sm opacity-10"></i>
+                                <i class="ni ni-single-copy-04 text-success text-sm opacity-10"></i>
                             </div>
                             <span class="nav-link-text ms-1">Service Manager</span>
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link " href="feedbackslist">
+                            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                                <i class="ni ni-email-83 text-primary text-sm opacity-10"></i>
+                            </div>
+                            <span class="nav-link-text ms-1">Feedback Manager</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link " href="Post">
                             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                                <i class="ni ni-app text-info text-sm opacity-10"></i>
+                                <i class="ni ni-bullet-list-67 text-warning text-sm opacity-10"></i>
                             </div>
-                            <span class="nav-link-text ms-1">Post List</span>
+                            <span class="nav-link-text ms-1">Post Manager</span>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -59,7 +67,7 @@
                             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                                 <i class="ni ni-app text-info text-sm opacity-10"></i>
                             </div>
-                            <span class="nav-link-text ms-1">Slider List</span>
+                            <span class="nav-link-text ms-1">Slider Manager</span>
                         </a>
                     </li>
                     <li class="nav-item">

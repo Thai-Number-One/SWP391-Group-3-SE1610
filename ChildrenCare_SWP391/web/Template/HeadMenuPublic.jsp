@@ -4,6 +4,7 @@
     Author     : HP
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -20,24 +21,28 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav mx-auto">
-                    <a href="HomeP.jsp" class="nav-item nav-link active">Home</a>
+                    <a href="HomeP.jsp" class="nav-item nav-link">Home</a>
                     <a href="HomeP.jsp" class="nav-item nav-link">About Us</a>
                     <a href="blogs" class="nav-item nav-link">Blog</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                         <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0">
-                            <a href="facility.html" class="dropdown-item">School Facilities</a>
-                            <a href="team.html" class="dropdown-item">Popular Teachers</a>
-                            <a href="dashboard" class="dropdown-item">Admin</a>
-                            <a href="Post" class="dropdown-item">Manager</a>
-                            <a href="feedbackslist" class="dropdown-item">Feedbacks</a>
-                            <a href="404.html" class="dropdown-item">404 Error</a>
+                            <a href="#" class="dropdown-item">School Facilities</a>
+                            <a href="#" class="dropdown-item">Popular Teachers</a>
+                            <a href="dashboard" class="dropdown-item">Dashboard</a>
+                            <a href="#" class="dropdown-item">Manager</a>
+                            <a href="#" class="dropdown-item">404 Error</a>
                         </div>
                     </div>
                     <a href="contact.html" class="nav-item nav-link">Contact Us</a>
                 </div>
+                <c:if test="${sessionScope.loginsuccess == null}">
                 <a href="/login.jsp" class="btn btn-primary rounded-pill px-3 d-none d-lg-block">Login<i class="fa fa-arrow-right ms-3"></i></a>
-            </div>
+                </c:if>
+                <c:if test="${sessionScope.loginsuccess != null}">
+                <a href="#" class="nav-item nav-link">Hello ${sessionScope.loginsuccess.getFullName()}</a>
+                </c:if>
+                </div>
         </nav>
     </body>
 </html>
