@@ -37,12 +37,17 @@
                     <a href="contact.html" class="nav-item nav-link">Contact Us</a>
                 </div>
                 <c:if test="${sessionScope.loginsuccess == null}">
-                <a href="/login.jsp" class="btn btn-primary rounded-pill px-3 d-none d-lg-block">Login<i class="fa fa-arrow-right ms-3"></i></a>
+                    <a href="login.jsp" class="btn btn-primary rounded-pill px-3 d-none d-lg-block">Login<i class="fa fa-arrow-right ms-3"></i></a>
+                    </c:if>
+                    <c:if test="${sessionScope.loginsuccess != null}">
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-item nav-link" data-bs-toggle="dropdown">Hello ${sessionScope.loginsuccess.getFullName()}</a>
+                        <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0">
+                            <a href="logout" class="dropdown-item">Logout</a>
+                        </div>
+                    </div>
                 </c:if>
-                <c:if test="${sessionScope.loginsuccess != null}">
-                <a href="#" class="nav-item nav-link">Hello ${sessionScope.loginsuccess.getFullName()}</a>
-                </c:if>
-                </div>
+            </div>
         </nav>
     </body>
 </html>
