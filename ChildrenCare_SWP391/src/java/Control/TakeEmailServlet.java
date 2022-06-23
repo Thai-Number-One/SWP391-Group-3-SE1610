@@ -47,7 +47,7 @@ public class TakeEmailServlet extends HttpServlet {
 
             if(email == null || list.size() == 0){
                 request.setAttribute("mess", "Your email does not have an account");
-                request.getRequestDispatcher("TakeEmail.jsp").forward(request, response);
+                request.getRequestDispatcher("TakeEmailj.jsp").forward(request, response);
             }else {
                 
                 String User_ID;
