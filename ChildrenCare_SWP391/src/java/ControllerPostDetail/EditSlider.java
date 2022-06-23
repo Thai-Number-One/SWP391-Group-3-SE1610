@@ -9,6 +9,7 @@ import DAO.PostDetailDAO;
 import DAO.SliderDetailDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.regex.Pattern;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -38,7 +39,7 @@ public class EditSlider extends HttpServlet {
             String image = request.getParameter("image");
             String title = request.getParameter("title");
             String choicestatus = request.getParameter("choicestatus");
-            String backlink = request.getParameter("content");
+            String backlink = request.getParameter("backlink");
             String slider_id = request.getParameter("slider_id");
             String User_id = request.getParameter("user_id");
             
@@ -55,7 +56,20 @@ public class EditSlider extends HttpServlet {
                 status = 1;
             }
             
-
+            Pattern p = Pattern.compile("^(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]");
+            while(true){
+                if (p.matcher(backlink).find()){
+                
+                     break;
+                }
+                else{
+                    String mess = "Backlink is invalid, please enter again";
+                    request.setAttribute("mess", mess);
+                    request.getRequestDispatcher("SliderDetail.jsp").forward(request, response);
+                }
+            }
+            
+            
             SliderDetailDAO dao = new SliderDetailDAO();
             dao.updateslider(title, backlink, Uid, image, status, Sid);
             

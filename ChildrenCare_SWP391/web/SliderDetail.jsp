@@ -260,6 +260,8 @@ https://templatemo.com/tm-551-stand-blog
                                                   </fieldset>
                                               </div>
                                                   
+                                               <p class="text-danger">${mess}</p>    
+                                                  
                                              <div class="sidebar-h-a">
                                                   <h5 clas="edi">Status: </h5>
                                               </div> 
