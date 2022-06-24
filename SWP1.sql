@@ -79,6 +79,8 @@ SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Reservation](
 	[Reservation_ID] [int] IDENTITY(1,1) NOT NULL,
+	[Children_Name] [nvarchar](255) NOT NULL,
+	[Age] int NOT NULL,
 	[Date] [date] NOT NULL,
 	[Status] [int] NOT NULL,
 	[Begin_Time] [date] NOT NULL,
@@ -96,11 +98,11 @@ SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Reservation_detail](
 	[Prescription_ID] [int] NOT NULL,
-	[Reservation_ID] [int] NULL,
-	[Service_ID] [int] NULL,
-	[User_ID] [int] NULL,
-	[Staff_ID] [nchar](10) NULL,
-	[Name_Sale] [nvarchar](1) NULL,
+	[Reservation_ID] [int] NOT NULL,
+	[Service_ID] [int] NOT NULL,
+	[User_ID] [int] NOT NULL,
+	[Staff_ID] [nchar](10) NOT NULL,
+	[Name_Sale] [nvarchar](1) NOT NULL,
  CONSTRAINT [PK__Reservat__E82EBD58B5D7987C] PRIMARY KEY CLUSTERED 
 (
 	[Prescription_ID] ASC
@@ -167,9 +169,9 @@ SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Slider](
 	[Slider_ID] [int] IDENTITY(1,1) NOT NULL,
-	[User_ID] [int] NULL,
-	[Title] [nvarchar](255) NULL,
-	[Image] [nvarchar](255) NULL,
+	[User_ID] [int] NOT NULL,
+	[Title] [nvarchar](255) NOT NULL,
+	[Image] [nvarchar](255) NOT NULL,
 	[BackLink] [nvarchar](255) NULL,
 	[Status] [int] NULL,
 PRIMARY KEY CLUSTERED 
