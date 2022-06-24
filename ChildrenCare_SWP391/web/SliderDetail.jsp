@@ -138,7 +138,15 @@
             .blog-thumb img{
                 width: auto;
                 height: 100%;
+            }.contact-us .contact-form button{
+                width: 130px;
+            }.col-lg-r{
+                width: 100%;
+                height: 100px;
+                margin-left: 15px;
             }
+            
+            
                 
     </style>
 
@@ -189,7 +197,7 @@ https://templatemo.com/tm-551-stand-blog
                       <div class="down-contact">
                           <div class="row">
                               <div class="col-lg-8">
-                                  <form action="" method="post">
+                                  <form action="EditSlider" method="post">
                                   <div class="blog-thumb">
                                       <img src="${SliderD.image}" alt="">
                                   </div>
@@ -205,7 +213,7 @@ https://templatemo.com/tm-551-stand-blog
                                               </div>
                                               <div class="col-md-6 col-sm-12-1">
                                                   <fieldset>
-                                                      <input class="dddd" name="post_id" type="text" readonly id="name" required="" value="${SliderD.slider_ID}">
+                                                      <input class="dddd" name="slider_id" type="text" readonly id="name" required="" value="${SliderD.slider_ID}">
                                                   </fieldset>
                                               </div>
                                                   
@@ -223,16 +231,16 @@ https://templatemo.com/tm-551-stand-blog
                                               </div>
                                               <div class="col-md-6 col-sm-12-1">
                                                   <fieldset>
-                                                      <input name="title" type="text" id="subject" value="${SliderD.status}">
+                                                      <input name="status" type="text" id="subject" value="${SliderD.status}">
                                                   </fieldset>
                                               </div>      
 
                                               <div class="sidebar-h">
-                                                  <h5 clas="edi">Image link</h5>
+                                                  <h5 clas="edi">Choice Image</h5>
                                               </div>
                                               <div class="col-md-6 col-sm-12">
                                                   <fieldset>
-                                                      <input class="imageli" name="image" type="text" id="name" required="" value="${SliderD.image}">
+                                                      <input class="imageli" name="image" type="file" id="name" required="" value="${SliderD.image}">
                                                   </fieldset>
                                               </div>
                                               <div class="sidebar-h">
@@ -248,10 +256,42 @@ https://templatemo.com/tm-551-stand-blog
                                               </div>
                                               <div class="col-lg-12">
                                                   <fieldset>
-                                                      <textarea name="content" rows="6" id="message"  required="">${SliderD.backLink}</textarea>
+                                                      <textarea name="backlink" rows="6" id="message"  required="">${SliderD.backLink}</textarea>
                                                   </fieldset>
                                               </div>
-     
+                                                  
+                                               <p class="text-danger">${mess}</p>    
+                                                  
+                                             <div class="sidebar-h-a">
+                                                  <h5 clas="edi">Status: </h5>
+                                              </div> 
+                                                  
+                                              <div class="col-lg-12">
+                                                          <select class="choincate" name="choicestatus">
+                                                              <option>Show</option>
+                                                              <option>Hide</option>
+                                                          </select>
+                                              </div>         
+                                                  
+                                                      <div class="col-lg-edit">
+                                                          <div class="sidebar-item submit-comment">
+
+                                                              <div class="content">
+
+
+                                                                  <div class="col-lg-r">
+                                                                      <fieldset>
+                                                                          
+                                                                              <button type="submit" id="form-submit" class="main-button">Edit Slider</button>
+                                                                         
+                                                                      </fieldset>
+                                                                  </div>
+
+
+
+                                                              </div>
+                                                          </div>
+                                                      </div>      
                                                 
                                       </div>
                                   </div>

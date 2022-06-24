@@ -19,12 +19,12 @@ public class Service {
     private float price;
     private int discount;
     private float rate;
-    private String status;
+    private int status;
 
     public Service() {
     }
 
-    public Service(int service_id, String service_name, String detail, String type, String image, String title, float price, int discount, float rate, String status) {
+    public Service(int service_id, String service_name, String detail, String type, String image, String title, float price, int discount, float rate, int status) {
         this.service_id = service_id;
         this.service_name = service_name;
         this.detail = detail;
@@ -109,11 +109,11 @@ public class Service {
         this.rate = rate;
     }
 
-    public String getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 
@@ -121,7 +121,7 @@ public class Service {
     public String toString() {
         return "Service{" + "service_id=" + service_id + ", service_name=" + service_name + ", detail=" + detail + ", type=" + type + ", image=" + image + ", title=" + title + ", price=" + price + ", discount=" + discount + ", rate=" + rate + ", status=" + status + '}';
     }
-    
+
     
 
 }

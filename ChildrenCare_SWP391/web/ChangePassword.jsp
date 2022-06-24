@@ -16,7 +16,7 @@
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="ResetPass/css/style.css">
 
 	</head>
 	<body>
@@ -33,8 +33,8 @@
                                 <div class="text-wrap p-4 p-lg-5 text-center d-flex align-items-center order-md-last">
                                     <div class="text w-100">
                                         <h2>Welcome to ChildrenCare</h2>
-                                        <p>After Change Password, Please login again!!!</p>
-                                        <a href="HomeP.jsp" class="btn btn-white btn-outline-white">Sign In</a>
+                                        <p>Don't have an account?</p>
+                                        <a href="#" class="btn btn-white btn-outline-white">Sign Up</a>
                                     </div>
                                 </div>
                                 <div class="login-wrap p-4 p-lg-5">
@@ -66,10 +66,10 @@
                 </div>
             </section>
 
-	<script src="js/jquery.min.js"></script>
-  <script src="js/popper.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/main.js"></script>
+	<script src="ResetPass/js/jquery.min.js"></script>
+  <script src="ResetPass/js/popper.js"></script>
+  <script src="ResetPass/js/bootstrap.min.js"></script>
+  <script src="ResetPass/js/main.js"></script>
 
 	</body>
 </html>

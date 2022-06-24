@@ -68,8 +68,8 @@ public class LoadPostD extends HttpServlet {
             
             PostDetailDAO dao = new PostDetailDAO();
             Posts d = dao.getDetail(idd);
-            User userName = dao.getDetailUser(idd);
-            Service serviceName = dao.getDetailService(idd);
+            String userName = dao.getDetailUser(idd);
+            String serviceName = dao.getDetailService(idd);
             
             
             

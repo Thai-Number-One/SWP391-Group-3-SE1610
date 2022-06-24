@@ -24,7 +24,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author dathp
  */
-@WebServlet(name = "BlogsServlet", urlPatterns = {"/BlogsServlet"})
+@WebServlet(name = "BlogsServlet", urlPatterns = {"/blogs"})
 public class BlogsServlet extends HttpServlet {
 
     /**

@@ -227,11 +227,11 @@ https://templatemo.com/tm-551-stand-blog
 
 
                                               <div class="sidebar-h">
-                                                  <h5 clas="edi">Image link</h5>
+                                                  <h5 clas="edi">Choice Image</h5>
                                               </div>
                                               <div class="col-md-6 col-sm-12">
                                                   <fieldset>
-                                                      <input class="imageli" name="image" type="text" id="name" required="" value="${Detail.image}">
+                                                      <input class="imageli" name="image" type="file" id="name" required="" value="${Detail.image}">
                                                   </fieldset>
                                               </div>
                                               <div class="sidebar-h">
@@ -257,9 +257,9 @@ https://templatemo.com/tm-551-stand-blog
                                                   
                                               <div class="col-lg-12">
                                                           <select class="choincate" name="choincate">
-                                                              <option><c:if test = "${Detail.category == 1}">Family</c:if></option>
-                                                              <option><c:if test = "${Detail.category == 2}">Health</c:if></option>
-                                                              <option><c:if test = "${Detail.category == 3}">Education</c:if></option>
+                                                              <option>Family</option>
+                                                              <option>Health</option>
+                                                              <option>Education</option>
                                                           </select>
                                               </div> 
                                                   

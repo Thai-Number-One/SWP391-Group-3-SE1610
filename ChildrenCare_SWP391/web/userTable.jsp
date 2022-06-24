@@ -3,7 +3,7 @@
 <html lang="en">
     <%@page contentType="text/html" pageEncoding="UTF-8"%>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    
+
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -41,6 +41,7 @@
     </head>
 <body class="g-sidenav-show   bg-gray-100">
         <div class="min-height-300 bg-primary position-absolute w-100"></div>
+        <jsp:include page="Template/AdminDashboard.jsp"/>
         <main class="main-content position-relative border-radius-lg ">
             <!-- Navbar -->
             <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur" data-scroll="false">
@@ -48,14 +49,14 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
                             <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="dashboard">Pages</a></li>
-                            <li class="breadcrumb-item text-sm text-white active" aria-current="page">Tables</li>
+                            <li class="breadcrumb-item text-sm text-white active" aria-current="page">User Manager</li>
                         </ol>
-                        <h6 class="font-weight-bolder text-white mb-0">Tables</h6>
+                        <h6 class="font-weight-bolder text-white mb-0">User Manager</h6>
                     </nav>
 
                 </div>
-                </div>
             </nav>
+        
             <!-- End Navbar -->
             <div class="container-fluid py-5">
                 <div class="row">
@@ -81,8 +82,8 @@
                                                 <option value="">all</option>
                                                 <option value="1">Admin</option>
                                                 <option value="2">Manager</option>
-                                                <option value="4">Staff</option>
-                                                <option value="5">Customer</option>
+                                                <option value="5">Staff</option>
+                                                <option value="4">Customer</option>
                                             </select>
 
 
@@ -96,7 +97,7 @@
 
                                             <input type="submit" value="fillter">
                                         </form>
-                                        
+
                                     </div>
 
                                     <div class="col-md-4">
@@ -159,12 +160,12 @@
                                                         <span class="text-secondary text-xs font-weight-bold">
                                                             <c:if test = "${o.role == 1}">Admin</c:if>
                                                             <c:if test = "${o.role == 2}">Manager</c:if>
-                                                            <c:if test = "${o.role == 4}">Staff</c:if>
-                                                            <c:if test = "${o.role == 5}">Customer</c:if>
-                                                        </span>
-                                                    </td>
+                                                            <c:if test = "${o.role == 5}">Staff</c:if>
+                                                            <c:if test = "${o.role == 4}">Customer</c:if>
+                                                            </span>
+                                                        </td>
 
-                                                    <td class="align-middle text-center text-sm">
+                                                        <td class="align-middle text-center text-sm">
 
                                                         <c:if test = "${o.status == 1}">
                                                             <span class="badge badge-sm bg-gradient-success">Active</span></c:if> 
