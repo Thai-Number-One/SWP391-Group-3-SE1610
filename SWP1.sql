@@ -7,12 +7,12 @@ SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Feedback](
 	[Feedback_ID] [int] IDENTITY(1,1) NOT NULL,
-	[User_ID] [int] NULL,
+	[User_ID] [int] NOT NULL,
 	[Detail] [nvarchar](255) NOT NULL,
 	[Feedback_status] [int] NOT NULL,
 	[Star] [int] NULL,
-	[Date_Feedback] [date] NULL,
-	[Reservation_ID] [int] NULL,
+	[Date_Feedback] [date] NOT NULL,
+	[Reservation_ID] [int] NOT NULL,
  CONSTRAINT [PK__Feedback__CD3992F8AE89380D] PRIMARY KEY CLUSTERED 
 (
 	[Feedback_ID] ASC
@@ -131,7 +131,7 @@ GO
 CREATE TABLE [dbo].[Service](
 	[Service_ID] [int] NOT NULL,
 	[Service_Name] [nvarchar](255) NOT NULL,
-	[Detail] [nvarchar](255) NOT NULL,
+	[Detail] [nvarchar](max) NOT NULL,
 	[Type] [nvarchar](255) NOT NULL,
 	[Image] [nvarchar](255) NOT NULL,
 	[Title] [nvarchar](255) NOT NULL,
@@ -212,7 +212,7 @@ CREATE TABLE [dbo].[User](
 	[Avatar] [nvarchar](255) NULL,
 	[Gender] [int] NOT NULL,
 	[Role_ID] [int] NOT NULL,
-	[Status] [int] NULL,
+	[Status] [int] NOT NULL,
 PRIMARY KEY CLUSTERED 
 (
 	[User_ID] ASC
