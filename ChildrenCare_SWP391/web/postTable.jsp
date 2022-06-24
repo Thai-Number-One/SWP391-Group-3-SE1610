@@ -11,7 +11,7 @@
         <link rel="apple-touch-icon" sizes="76x76" href="img/apple-icon.png">
         <link rel="icon" type="image/png" href="img/favicon.png">
         <title>
-            Post List
+            Argon Dashboard 2 by Creative Tim
         </title>
         <!--     Fonts and icons     -->
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
@@ -42,17 +42,16 @@
 
     <body class="g-sidenav-show   bg-gray-100">
         <div class="min-height-300 bg-primary position-absolute w-100"></div>
-        <jsp:include page="Template/AdminDashboard.jsp"/>
         <main class="main-content position-relative border-radius-lg ">
             <!-- Navbar -->
             <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur" data-scroll="false">
                 <div class="container-fluid py-1 px-3">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-                            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="dashboard">Pages</a></li>
-                            <li class="breadcrumb-item text-sm text-white active" aria-current="page">Post Manager</li>
+                            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="dashboard">Post</a></li>
+                            <li class="breadcrumb-item text-sm text-white active" aria-current="page">Tables Slider</li>
                         </ol>
-                        <h6 class="font-weight-bolder text-white mb-0">Post Manager</h6>
+                        <h6 class="font-weight-bolder text-white mb-0">Tables</h6>
                     </nav>
 
                 </div>
@@ -79,7 +78,9 @@
 
                                             <select name="author" >
                                                 <option value="">all</option>
-                                                <option value="">${o.user.fullname}</option>
+                                                <c:forEach items="${listU}" var="o">
+                                                    <option value="${o.user_ID}">${o.fullName}</option>
+                                                </c:forEach>
                                             </select>
 
                                             <select name="status">
@@ -118,7 +119,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <c:forEach items="${requestScope.list}" var="o">
+                                            <c:forEach items="${list}" var="o">
                                                 <tr>
 
                                                     <td>
@@ -131,46 +132,52 @@
                                                     </td>
 
                                                     <td class="align-middle text-center">
-                                                        <span class="text-secondary text-xs font-weight-bold">${o.posts.post_ID}</span>
+                                                        <span class="text-secondary text-xs font-weight-bold">${o.post_ID}</span>
                                                     </td>
 
                                                     <td class="align-middle text-center">
-                                                        <span class="text-secondary text-xs font-weight-bold">${o.posts.tilte}</span>
+                                                        <span class="text-secondary text-xs font-weight-bold">${o.tilte}</span>
 
                                                     <td class="align-middle text-center">
                                                         <span class="text-secondary text-xs font-weight-bold">
-                                                            ${o.posts.category}
+                                                            <c:if test = "${o.category == 1}">Suc Khoe</c:if>
+                                                            <c:if test = "${o.category == 2}">Y te cong cong</c:if>
+
                                                             </span>
                                                         </td>
 
-                                                        <td class="align-middle text-center">                                                      
-                                                                <span class="text-secondary text-xs font-weight-bold">${o.user.fullname}</span>
+                                                        <td class="align-middle text-center">
+                                                        <c:forEach items="${listU}" var="u">
+                                                            <c:if test = "${o.user_ID == u.user_ID}">
+                                                                <span class="text-secondary text-xs font-weight-bold">${u.fullName}</span>
+                                                            </c:if> 
+                                                        </c:forEach>
                                                     </td>
                                                     <td class="align-middle text-center">
                                                         <span class="text-secondary text-xs font-weight-bold">Manager</span>
                                                     </td>
                                                     <td class="align-middle text-center text-sm">
 
-                                                        <c:if test = "${o.posts.status == 1}">
+                                                        <c:if test = "${o.status == 1}">
                                                             <span class="badge badge-sm bg-gradient-success">Active</span></c:if> 
 
 
-                                                        <c:if test = "${o.posts.status == 0}"> <span class="badge badge-sm bg-gradient-danger">Deactive</span></c:if> 
+                                                        <c:if test = "${o.status == 0}"> <span class="badge badge-sm bg-gradient-danger">Deactive</span></c:if> 
 
                                                         </td>
 
 
                                                         <td class="align-middle">
-                                                            <a href="EditPost?Pid=${o.posts.post_ID}" class="text-success text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>
+                                                            <a href="EditPost?Pid=${o.post_ID}" class="text-success text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>
                                                             Edit
                                                         </a>
                                                     </td>
                                                     <td class="align-middle">
-                                                        <a href="DeletePost?pid=${o.posts.post_ID}" class="text-danger text-secondary font-weight-bold text-xs" data-toggle="tooltip" onclick="return confirm('Are you sure you want to delete this item?');"><i class="far fa-trash-alt me-2"></i>Delete</a>
+                                                        <a href="DeletePost?pid=${o.post_ID}" class="text-danger text-secondary font-weight-bold text-xs" data-toggle="tooltip" onclick="return confirm('Are you sure you want to delete this item?');"><i class="far fa-trash-alt me-2"></i>Delete</a>
 
                                                     </td>
                                                     <td class="align-middle">
-                                                        <a href="LoadPostD?Did=${o.posts.post_ID}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                                                        <a href="LoadPostD?Did=${o.post_ID}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                                                             Detail
                                                         </a>
                                                     </td>

@@ -45,7 +45,7 @@
                                         <h4 class="title text-bolder">Add New Post</h4>
                                     </div>
                                     <div class="content">
-                                        <form action="AddSliderControl" method="post">
+                                        <form action="AddPostControl" method="post">
                                             <div class="modal-body">
                                                 <div class="row">
 
@@ -71,7 +71,7 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label>Image</label>
-                                                            <input name="Image" type="file" class="form-control" required>
+                                                            <input name="Image" type="text" class="form-control" required>
                                                         </div>
                                                     </div>
 

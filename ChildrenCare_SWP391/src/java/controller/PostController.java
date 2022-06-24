@@ -5,15 +5,12 @@
  */
 package controller;
 
-import DAO.BlogDAO;
 import DAO.DashboardDAO;
 import Entity.Posts;
 import Entity.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -38,18 +35,13 @@ public class PostController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            response.setContentType("text/html;charset=UTF-8");
-            BlogDAO d = new BlogDAO();
-            DashboardDAO dao = new DashboardDAO();
-            List<Posts> list = dao.getAllPostList();
-            List<User> listU = dao.getAuthorByID();
-            request.setAttribute("list", d.Blogs());
-            
-            request.getRequestDispatcher("postTable.jsp").forward(request, response);
-        } catch (Exception ex) {
-            Logger.getLogger(PostController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        response.setContentType("text/html;charset=UTF-8");
+     DashboardDAO dao = new DashboardDAO();
+       List<Posts> list = dao.getAllPostList();
+       List<User> listU = dao.getAuthorByID();
+       request.setAttribute("list", list);
+       request.setAttribute("listU", listU);
+       request.getRequestDispatcher("postTable.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

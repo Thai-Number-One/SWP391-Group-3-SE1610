@@ -48,9 +48,11 @@ public class EditSlider extends HttpServlet {
             
             int status = 1;
             
-            if(choicestatus.equals("Show")){
+            int choice = Integer.parseInt(choicestatus);
+            
+            if(choice == 1){
                 status = 1;
-            }else if(choicestatus.equals("Hide")){
+            }else if(choice == 0){
                 status = 0;
             }else{
                 status = 1;

@@ -11,7 +11,7 @@
         <link rel="apple-touch-icon" sizes="76x76" href="img/apple-icon.png">
         <link rel="icon" type="image/png" href="img/favicon.png">
         <title>
-            Slider List
+            Argon Dashboard 2 by Creative Tim
         </title>
         <!--     Fonts and icons     -->
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
@@ -42,17 +42,16 @@
 
     <body class="g-sidenav-show   bg-gray-100">
         <div class="min-height-300 bg-primary position-absolute w-100"></div>
-        <jsp:include page="Template/AdminDashboard.jsp"/>
         <main class="main-content position-relative border-radius-lg ">
             <!-- Navbar -->
             <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur" data-scroll="false">
                 <div class="container-fluid py-1 px-3">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-                            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="dashboard">Pages</a></li>
-                            <li class="breadcrumb-item text-sm text-white active" aria-current="page">Slider Manager</li>
+                            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="dashboard">Slider</a></li>
+                            <li class="breadcrumb-item text-sm text-white active" aria-current="page">Tables</li>
                         </ol>
-                        <h6 class="font-weight-bolder text-white mb-0">Slider Manager</h6>
+                        <h6 class="font-weight-bolder text-white mb-0">Tables Slider</h6>
                     </nav>
 
                 </div>
@@ -113,7 +112,7 @@
                                                 <tr>
                                                     <td class="align-middle text-center">
                                                         
-                                                         <img src="img/abc.jpg" class="avatar avatar-sm me-3" alt="user1">
+                                                         <img src="${o.image}" class="avatar avatar-sm me-3" alt="user1">
                                                     </td>
                                                     <td class="align-middle text-center">
                                                         <span class="text-secondary text-xs font-weight-bold">${o.slider_ID}</span>

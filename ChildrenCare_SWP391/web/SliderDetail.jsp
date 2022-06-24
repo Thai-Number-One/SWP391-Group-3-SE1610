@@ -236,11 +236,11 @@ https://templatemo.com/tm-551-stand-blog
                                               </div>      
 
                                               <div class="sidebar-h">
-                                                  <h5 clas="edi">Choice Image</h5>
+                                                  <h5 clas="edi"> Image Link</h5>
                                               </div>
                                               <div class="col-md-6 col-sm-12">
                                                   <fieldset>
-                                                      <input class="imageli" name="image" type="file" id="name" required="" value="${SliderD.image}">
+                                                      <input class="imageli" name="image" type="text" id="name" required="" value="${SliderD.image}">
                                                   </fieldset>
                                               </div>
                                               <div class="sidebar-h">
@@ -268,9 +268,11 @@ https://templatemo.com/tm-551-stand-blog
                                                   
                                               <div class="col-lg-12">
                                                           <select class="choincate" name="choicestatus">
-                                                              <option>Show</option>
-                                                              <option>Hide</option>
-                                                          </select>
+                                                           
+                                                                <option value="1">Active</option>
+                                                                <option value="0">Deactive</option>
+                                                            </select>
+                                                        </div>
                                               </div>         
                                                   
                                                       <div class="col-lg-edit">

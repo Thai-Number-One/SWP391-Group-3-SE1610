@@ -43,7 +43,7 @@ public class DashboardDAO {
 
     public List<UserT> getAllProduct() {
         List<UserT> list = new ArrayList<>();
-        String query = "select * from [TestProject4].[dbo].[User]";
+        String query = "select * from [ChildrenCare].[dbo].[User]";
         try {
             conn = new BaseDAO().BaseDao();//mo ket noi voi sql
             ps = conn.prepareStatement(query);
@@ -143,7 +143,7 @@ public class DashboardDAO {
 
     public List<Medicine> getAllMedicine() {
         List<Medicine> list = new ArrayList<>();
-        String query = "select * from [TestProject4].[dbo].[Medicine]";
+        String query = "select * from [ChildrenCare].[dbo].[Medicine]";
         try {
             conn = new BaseDAO().BaseDao();//mo ket noi voi sql
             ps = conn.prepareStatement(query);
@@ -181,7 +181,7 @@ public class DashboardDAO {
     }
 
     public void deleteSlider(String pid) {
-        String query = "DELETE FROM [TestProject4].[dbo].[Sliders]\n"
+        String query = "DELETE FROM [TestProject4].[dbo].[Slider]\n"
                 + "where Slider_ID = ?";
         try {
             conn = new BaseDAO().BaseDao();//mo ket noi voi sql
@@ -211,7 +211,7 @@ public class DashboardDAO {
 
     public List<String> getStatusReveration() {
         List<String> list = new ArrayList<>();
-        String query = "SELECT Status from  [TestProject4].[dbo].[Reservation]";
+        String query = "SELECT Status from  [ChildrenCare].[dbo].[Reservation]";
         try {
             conn = new BaseDAO().BaseDao();//mo ket noi voi sql
             ps = conn.prepareStatement(query);
@@ -227,7 +227,7 @@ public class DashboardDAO {
 
     public List<Reservation> getReservation() {
         List<Reservation> list = new ArrayList<>();
-        String query = "SELECT Status, Total_cost from  [TestProject4].[dbo].[Reservation]";
+        String query = "SELECT Status, Total_cost from  [ChildrenCare].[dbo].[Reservation]";
         try {
             conn = new BaseDAO().BaseDao();//mo ket noi voi sql
             ps = conn.prepareStatement(query);
@@ -268,7 +268,7 @@ public class DashboardDAO {
 
     public int countFeedBack() {
         String query = "select COUNT(*)\n"
-                + "from [TestProject4].[dbo].[Feedback]";
+                + "from [ChildrenCare].[dbo].[Feedback]";
         int count = 0;
         try {
             conn = new BaseDAO().BaseDao();//mo ket noi voi sql
@@ -286,7 +286,7 @@ public class DashboardDAO {
 
     public double AvgStar() {
         String query = "SELECT SUM(Star)\n"
-                + "FROM [TestProject4].[dbo].[Feedback]";
+                + "FROM [ChildrenCare].[dbo].[Feedback]";
         DashboardDAO dao = new DashboardDAO();
         double total = 0;
         try {
@@ -304,11 +304,8 @@ public class DashboardDAO {
     }
 
     public int countUser() {
-
-        String query = "select COUNT(*)\n" +
-"FROM [TestProject4].[dbo].[User]";
-       
-
+        String query = "select COUNT(*)\n"
+                + "FROM [ChildrenCare].[dbo].[User]";
         int count = 0;
         try {
             conn = new BaseDAO().BaseDao();//mo ket noi voi sql
@@ -323,14 +320,10 @@ public class DashboardDAO {
 
         return count;
     }
-    
-      public int countReservation() {
-        String query = "select COUNT(*)\n" +
-"FROM [TestProject4].[dbo].[Reservation]";
 
-
- 
- 
+    public int countReservation() {
+        String query = "select COUNT(*)\n"
+                + "FROM [ChildrenCare].[dbo].[Reservation]";
         int count = 0;
         try {
             conn = new BaseDAO().BaseDao();//mo ket noi voi sql
@@ -437,7 +430,7 @@ public class DashboardDAO {
 
     public void insertSlider(String title, String image,
             String backLink, int status) {
-        String query = "INSERT INTO [dbo].[Sliders]\n"
+        String query = "INSERT INTO [dbo].[Slider]\n"
                 + "           ([User_ID]\n"
                 + "           ,[Title]\n"
                 + "           ,[Image]\n"
@@ -465,7 +458,7 @@ public class DashboardDAO {
     }
 
     public UserT getProductByID(String pid) {
-        String query = "select * from [TestProject4].[dbo].[User]\n"
+        String query = "select * from [ChildrenCare].[dbo].[User]\n"
                 + "where User_ID = ?";
         try {
             conn = new BaseDAO().BaseDao();//mo ket noi voi sql
@@ -520,7 +513,7 @@ public class DashboardDAO {
 
     public List<UserT> fillterAllProduct(Integer g, Integer r, Integer s) {
         List<UserT> list = new ArrayList<>();
-        String query = "select * from [TestProject4].[dbo].[User]\n "
+        String query = "select * from [ChildrenCare].[dbo].[User]\n "
                 + " Where 1=1 ";
         if (g != null) {
             query += "and gender = " + g;
@@ -590,10 +583,11 @@ public class DashboardDAO {
         }
         return list;
     }
+    
 
     public List<Slider> fillterAllSlider(Integer s) {
         List<Slider> list = new ArrayList<>();
-        String query = "select * FROM [TestProject4].[dbo].[Sliders]\n "
+        String query = "select * FROM [TestProject4].[dbo].[Slider]\n "
                 + " Where 1=1 ";
 
         if (s != null) {
