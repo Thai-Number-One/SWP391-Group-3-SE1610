@@ -66,7 +66,17 @@
                 font-weight: 500;
                 outline: none;
             }
-
+            
+            .connetss{
+                 display: -webkit-box;
+                width: 500px;
+                height: auto;
+                line-height: 25px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+            }
 
 
 
@@ -165,7 +175,7 @@
                                                 ${a.posts.category}
                                             </p>
                                         </div>
-                                        <p class="mb-0">
+                                        <p class="mb-0 connetss" >
                                             ${a.posts.content}
                                         </p>                               
                                     </div>
