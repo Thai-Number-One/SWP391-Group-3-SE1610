@@ -66,7 +66,13 @@
                 font-weight: 500;
                 outline: none;
             }
-
+            a{
+                text-decoration: none;
+                color: #FE5D37;
+            }
+            .page-link{
+                color: #FE5D37;
+            }
             .detail{
                  display: -webkit-box;
                 width: 500px;

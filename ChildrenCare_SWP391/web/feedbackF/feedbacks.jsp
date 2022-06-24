@@ -67,7 +67,13 @@
                 outline: none;
             }
 
-
+            a{
+                text-decoration: none;
+                color: #FE5D37;
+            }
+            .page-link{
+                color: #FE5D37;
+            }
 
 
 
@@ -83,18 +89,18 @@
         <div class="container my-5 py-5">
             <div class="d-flex justify-content-center btn-group-sm" >
                 <form action="feedbacksfilter" method="get">
-                    <select style="margin-left: 5px; color: #FFF5F3;" class="btn bg-primary" name="status">
+                    <select style="margin-left: 5px; background:#FE5D37;  color: #FFF5F3;" class="btn bg-default" name="status">
                         <option value="">all</option>
                         <option value="view">view</option>
                         <option value="hide">hide</option>
                     </select>
-                    <select style="margin-left: 5px;  color: #FFF5F3;" class="btn bg-primary" name="sevice">
+                    <select style="margin-left: 5px; background:#FE5D37; color: #FFF5F3;" class="btn bg-default" name="sevice">
                         <option value="">all</option>
                         <c:forEach items="${requestScope.sevices}" var="s">
                             <option>${s.servicename}</option>
                         </c:forEach>
                     </select>
-                    <select style="margin-left: 5px;  color: #FFF5F3;" class="btn bg-primary" name="star">
+                    <select style="margin-left: 5px; background:#FE5D37; color: #FFF5F3;" class="btn bg-default" name="star">
                         <option value="">all</option>
                         <option value="0">0</option>
                         <option value="1">1</option>
@@ -103,8 +109,8 @@
                         <option value="4">4</option>
                         <option value="5">5</option>
                     </select>
-                    <input style="margin-left: 5px;  color: #FFF5F3;" class="btn bg-primary" type="text" name="name" placeholder="Name">
-                    <button style="margin-left: 5px;  color: #FFF5F3;" class="badge btn-primary" type="submit" >Filter</button>
+                    <input style="margin-left: 5px; background:#FE5D37; color: #FFF5F3;" class="btn bg-default" type="text" name="name" placeholder="Name">
+                    <button style="margin-left: 5px; background:#FE5D37; color: #FFF5F3;" class="badge btn-default" type="submit" >Filter</button>
                 </form>
 
             </div>
@@ -127,7 +133,7 @@
                                                 ${a.feedbacks.date}
                                             <form action="feedbackslist" method="post">
                                                 <input type="text" value="${a.feedbacks.feedbackid}" name="id" style="display: none;">
-                                                <select  class="badge bg-primary" style="margin-left: 5px;" name="status">
+                                                <select  class="badge bg-default" style="margin-left: 5px;  background:#FE5D37; color: #FFF5F3;" name="status">
                                                     <option>${a.feedbacks.status}</option>
                                                     <c:if test="${a.feedbacks.status == 'view'}">
                                                         <option>hide</option>
@@ -136,7 +142,7 @@
                                                         <option>view</option>
                                                     </c:if>
                                                 </select>
-                                                <button type="submit" class="badge btn-primary" ><i class="fas fa-genderless"></i></button>
+                                                    <button style=" background:#FE5D37; color: #FFF5F3;" type="submit" class="badge btn-default" ><i class="fas fa-genderless"></i></button>
 
                                             </form>
 
