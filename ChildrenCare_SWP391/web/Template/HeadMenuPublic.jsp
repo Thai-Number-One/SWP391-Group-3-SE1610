@@ -50,6 +50,8 @@
                     </div>
                     <a href="contact.html" class="nav-item nav-link">Contact Us</a>
                 </div>
+                <a href="ReservationDetails.jsp" class="btn btn-primary rounded-pill d-none d-lg-block">Reservation</a>
+                <span class="btn btn-white rounded-pill d-none d-lg-block"></span>
                 <c:if test="${sessionScope.loginsuccess == null}">
                     <a href="login.jsp" class="btn btn-primary rounded-pill px-3 d-none d-lg-block">Login<i class="fa fa-arrow-right ms-3"></i></a>
                     </c:if>
@@ -57,6 +59,8 @@
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-item nav-link" data-bs-toggle="dropdown">Hello ${sessionScope.loginsuccess.getFullName()}</a>
                         <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0">
+                            <a href="#" class="dropdown-item">Profile</a>
+                            <a href="#" class="dropdown-item">My Reservation</a>
                             <a href="logout" class="dropdown-item">Logout</a>
                         </div>
                     </div>
