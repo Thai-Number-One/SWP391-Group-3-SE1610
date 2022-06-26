@@ -57,6 +57,8 @@
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-item nav-link" data-bs-toggle="dropdown">Hello ${sessionScope.loginsuccess.getFullName()}</a>
                         <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0">
+                            <a href="#" class="dropdown-item">Profile</a>
+                            <a href="#" class="dropdown-item">My Reservation</a>
                             <a href="logout" class="dropdown-item">Logout</a>
                         </div>
                     </div>
