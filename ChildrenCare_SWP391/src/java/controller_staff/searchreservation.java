@@ -11,6 +11,7 @@ import java.io.PrintWriter;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -67,8 +68,8 @@ public class searchreservation extends HttpServlet {
 
             String name = request.getParameter("name");
             String rid = request.getParameter("rid");
-           
-            Integer id = (rid  == null || rid .equals(""))
+            Pattern p = Pattern.compile("^[0-9]+$");
+            Integer id = (rid  == null || rid .equals("") || p.matcher(rid).find()==false)
                     ? null : Integer.parseInt(rid );
         
             List l = new ArrayList(); 
