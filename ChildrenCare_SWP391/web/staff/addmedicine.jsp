@@ -52,7 +52,7 @@
                         <h3>User ID: ${a.user.userid}</h3>
                         <h3>User Name: ${a.user.fullname}</h3>
                         <h3>Service Name: ${a.service.servicename}</h3>
-                        <h3>Medicine Name: ${a.medicine.medicinename}</h3>
+                        
                         <input class="form-control"type="text" name="pid" value="${a.prescription.prescriptionid}" style="display: none;">
                         <input class="form-control" type="text" name="uid" value="${a.user.userid}" style="display: none;" >
                     </c:forEach>
@@ -61,8 +61,15 @@
                             <option value="${m.medicineid}">${m.medicinename}</option>
                         </c:forEach>
                     </select><br>    
-                    Amount<input type="text" name="amount" class="form-control"><br> 
-                    Note<input type="text" name="note" class="form-control"><br> 
+                    Amount<input type="text" name="amount" class="form-control">
+                    <c:if test="${requestScope.check==1}">
+                        <h6 style="color: red;">(Please enter number 1 to 99 or don't leave it blank)</h6>
+                    </c:if>
+                          <br> 
+                    Note<input type="text" name="note" class="form-control">
+                     <c:if test="${requestScope.check==1}">
+                        <h6 style="color: red;">(Please don't leave it blank)</h6>
+                    </c:if><br> 
                     <input type="submit" value="Add" class="btn" style="background: #FE5D37; color: azure;">
                     <button class="btn" type="button"  style="background: #FE5D37;"><a style="text-decoration: none; color: white;" href="prescription">Back</a></button>
                 </form>

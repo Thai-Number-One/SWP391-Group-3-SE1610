@@ -43,7 +43,7 @@ public class checkprescription extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet add_prescription</title>");            
+            out.println("<title>Servlet add_prescription</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet add_prescription at " + request.getContextPath() + "</h1>");
@@ -65,25 +65,41 @@ public class checkprescription extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
+            reservatonsDAO d = new reservatonsDAO();
+            Pattern p = Pattern.compile("^[0-9]+$");
             String rid = request.getParameter("id");
-            
+            if (rid.equals("") || p.matcher(rid).find() == false) {
+                response.sendRedirect("prescription?check=1");
+            }
+            int count = 0;
+            for (int i = 0; i < d.allstaff().size(); i++) {
+                if (d.allstaff().get(i).getPrescription().getPrescriptionid() == Integer.parseInt(rid)) {
+                    count++;
+                }
+            }
+            if (count == 0) {
+                response.sendRedirect("prescription?check=1");
+            }
+            String check = request.getParameter("check");
+            if (check != null) {
+                request.setAttribute("check", 1);
+            }
+
             Integer id = (rid == null || rid.equals(""))
                     ? null : Integer.parseInt(rid);
-            if(id==null){
-                response.sendRedirect("prescription");
-            }
-            reservatonsDAO d = new reservatonsDAO();
-            List l =new ArrayList();
+
+            List l = new ArrayList();
             for (int i = 0; i < d.allstaff().size(); i++) {
-                if(d.allstaff().get(i).getPrescription().getPrescriptionid()==id){
+                if (d.allstaff().get(i).getPrescription().getPrescriptionid() == id) {
                     l.add(d.allstaff().get(i));
+                    break;
                 }
             }
             request.setAttribute("me", d.allmedicine());
             request.setAttribute("add", l);
             request.getRequestDispatcher("staff/addmedicine.jsp").forward(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(checkprescription.class.getName()).log(Level.SEVERE, null, ex);
+            reservatonsDAO d = new reservatonsDAO();
         }
     }
 
@@ -103,14 +119,21 @@ public class checkprescription extends HttpServlet {
             int pid = Integer.parseInt(request.getParameter("pid"));
             int uid = Integer.parseInt(request.getParameter("uid"));
             int mid = Integer.parseInt(request.getParameter("mid"));
-            int amount = Integer.parseInt(request.getParameter("amount"));
+            String amount_raw = request.getParameter("amount");
             String note = request.getParameter("note");
-            Pattern p = Pattern.compile("^[0-9]{1,20}$");
-            
-            d.insertPrescription(new Prescription(pid, uid, mid, amount, note));
-            response.sendRedirect("prescription");
+            Pattern p = Pattern.compile("^[1-9]{1,2}$");
+            Pattern pn = Pattern.compile("^[ ]+$");
+            if (p.matcher(amount_raw).find() && !note.equals("") && pn.matcher(note).find() == false) {
+                int amount = Integer.parseInt(amount_raw);
+                d.insertPrescription(new Prescription(pid, uid, mid, amount, note));
+                response.sendRedirect("prescription");
+            } else {
+
+                response.sendRedirect("checkprescription?id=" + pid + "&check=1");
+            }
+
         } catch (Exception ex) {
-            Logger.getLogger(checkprescription.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("error: " + ex);
         }
     }
 

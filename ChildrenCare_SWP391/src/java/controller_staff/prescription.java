@@ -60,6 +60,10 @@ public class prescription extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
+            String check = request.getParameter("check");
+             if (check != null) {
+                request.setAttribute("check", 1);
+            }
             reservatonsDAO d = new reservatonsDAO();
             request.setAttribute("all", d.allstaff());
             request.getRequestDispatcher("staff/addprescription.jsp").forward(request, response);

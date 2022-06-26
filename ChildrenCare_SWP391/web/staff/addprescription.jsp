@@ -115,6 +115,9 @@
                             <tr>
                                 <th><input  class="form-control" type="text" name="id" placeholder="enter prescription ID"></th>
                                 <th> <input style="background:#FE5D37; color: #FFF5F3;" type="submit" value="Check" class="btn btn-secondary"></th>
+                                    <c:if test="${requestScope.check==1}">
+                                    <th style="color: red;">Not Found</th>
+                                    </c:if>
                             </tr>
                         </table>
 
