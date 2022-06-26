@@ -14,19 +14,17 @@ import java.sql.Date;
 public class reservations {
     private int ReservationID;
     private int UserID;
-    private int staffid;
     private Date Date;
-    private String Status;
+    private int Status;
     private Date BeginTime;
     private float Totalcost;
 
     public reservations() {
     }
 
-    public reservations(int ReservationID, int UserID, int staffid, Date Date, String Status, Date BeginTime, float Totalcost) {
+    public reservations(int ReservationID, int UserID, Date Date, int Status, Date BeginTime, float Totalcost) {
         this.ReservationID = ReservationID;
         this.UserID = UserID;
-        this.staffid = staffid;
         this.Date = Date;
         this.Status = Status;
         this.BeginTime = BeginTime;
@@ -49,14 +47,6 @@ public class reservations {
         this.UserID = UserID;
     }
 
-    public int getStaffid() {
-        return staffid;
-    }
-
-    public void setStaffid(int staffid) {
-        this.staffid = staffid;
-    }
-
     public Date getDate() {
         return Date;
     }
@@ -65,11 +55,11 @@ public class reservations {
         this.Date = Date;
     }
 
-    public String getStatus() {
+    public int getStatus() {
         return Status;
     }
 
-    public void setStatus(String Status) {
+    public void setStatus(int Status) {
         this.Status = Status;
     }
 

@@ -10,25 +10,27 @@ package model_staff;
  * @author dathp
  */
 public class service {
-    private int serviceid,discount;
-    private String servicename,detail,type,image,title,status;
+    private int serviceid,discount,status;
+    private String servicename,detail,type,image,title;
     private float price,rate;
 
     public service() {
     }
 
-    public service(int serviceid, int discount, String servicename, String detail, String type, String image, String title, String status, float price, float rate) {
+    public service(int serviceid, int discount, int status, String servicename, String detail, String type, String image, String title, float price, float rate) {
         this.serviceid = serviceid;
         this.discount = discount;
+        this.status = status;
         this.servicename = servicename;
         this.detail = detail;
         this.type = type;
         this.image = image;
         this.title = title;
-        this.status = status;
         this.price = price;
         this.rate = rate;
     }
+
+  
 
     public int getServiceid() {
         return serviceid;
@@ -86,14 +88,15 @@ public class service {
         this.title = title;
     }
 
-    public String getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 
+  
     public float getPrice() {
         return price;
     }

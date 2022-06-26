@@ -77,7 +77,7 @@ public class BlogDAO extends BaseDAO{
                 se.setPrice(rs.getFloat("Price"));
                 se.setDiscount(rs.getInt("Discount"));
                 se.setRate(rs.getFloat("Rate"));
-                se.setStatus(rs.getString("Status"));          
+                se.setStatus(rs.getInt("Status"));          
                 /////////////////////////////////////////////////////////////        
                 user u = new user();
                 u.setUserid(rs.getInt("User_ID"));
@@ -141,7 +141,7 @@ public class BlogDAO extends BaseDAO{
                 se.setPrice(rs.getFloat("Price"));
                 se.setDiscount(rs.getInt("Discount"));
                 se.setRate(rs.getFloat("Rate"));
-                se.setStatus(rs.getString("Status"));          
+                se.setStatus(rs.getInt("Status"));          
                 /////////////////////////////////////////////////////////////        
                 user u = new user();
                 u.setUserid(rs.getInt("User_ID"));

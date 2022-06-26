@@ -43,7 +43,7 @@
             body {
                 font-family: Arial;
                 padding: 20px;
-                background: #f1f1f1;
+                background: #FFF5F3;
             }
 
             /* Header/Blog Title */

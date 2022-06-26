@@ -19,13 +19,13 @@ import model_staff.user;
  */
 public class insert_reservationDAO extends BaseDAO{
     
-    public void updateStatus(int id,String s) throws Exception{
+    public void updateStatus(int id,int s) throws Exception{
         try {
             
               String sql="update Reservation set Status = ?  where User_ID = ?";
                  Connection conn = new BaseDAO().BaseDao();
                   PreparedStatement st = conn.prepareStatement(sql);  
-                  st.setString(1, s);
+                  st.setInt(1, s);
                   st.setInt(2, id); 
     
                   st.executeUpdate();
@@ -83,7 +83,7 @@ public class insert_reservationDAO extends BaseDAO{
                   st.setInt(1, u.getReservationID());
                   st.setInt(2, u.getUserID());
                   st.setDate(3, u.getDate());
-                  st.setString(4, u.getStatus());
+                  st.setInt(4, u.getStatus());
                   st.setFloat(5, u.getTotalcost());
                   st.executeUpdate();              
           } catch (SQLException ex) {

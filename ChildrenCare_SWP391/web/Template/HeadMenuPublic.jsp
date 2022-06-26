@@ -23,7 +23,7 @@
                 <div class="navbar-nav mx-auto">
                     <a href="HomeP.jsp" class="nav-item nav-link">Home</a>
                     <a href="HomeP.jsp" class="nav-item nav-link">About Us</a>
-                    <a href="blogs" class="nav-item nav-link">Blog</a>
+                    <a href="blogs" class="nav-item nav-link">Blogs</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                         <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0">
@@ -32,6 +32,20 @@
                             <a href="dashboard" class="dropdown-item">Dashboard</a>
                             <a href="#" class="dropdown-item">Manager</a>
                             <a href="#" class="dropdown-item">404 Error</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Staff</a>
+                        <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0">
+                            <a href="reservation" class="dropdown-item">Reservations</a>
+                            <a href="prescription" class="dropdown-item">Prescription</a>
+                            <a href="medical" class="dropdown-item">The History Of Examination</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Manager</a>
+                        <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0">
+                            <a href="feedbackslist" class="dropdown-item">Feedbacks</a>
                         </div>
                     </div>
                     <a href="contact.html" class="nav-item nav-link">Contact Us</a>

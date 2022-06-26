@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -104,6 +105,7 @@ public class checkprescription extends HttpServlet {
             int mid = Integer.parseInt(request.getParameter("mid"));
             int amount = Integer.parseInt(request.getParameter("amount"));
             String note = request.getParameter("note");
+            Pattern p = Pattern.compile("^[0-9]{1,20}$");
             
             d.insertPrescription(new Prescription(pid, uid, mid, amount, note));
             response.sendRedirect("prescription");

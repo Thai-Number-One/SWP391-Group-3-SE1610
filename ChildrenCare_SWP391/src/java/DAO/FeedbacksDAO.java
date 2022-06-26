@@ -36,7 +36,7 @@ public class FeedbacksDAO extends BaseDAO{
         String sql = "select *\n" +
 "from Feedback as a inner join Reservation as b on a.Reservation_ID=b.Reservation_ID\n" +
 "					inner join [User] as d on a.User_ID=d.User_ID\n" +
-"					inner join Reservation_detail as c on a.Reservation_ID=c.Reservation_ID			\n" +
+"					inner join Reservation_detail as c on a.Reservation_ID=c.Reservation_ID	\n" +
 "					inner join Service as e on c.Service_ID=e.Service_ID\n" +
 "where 1=1";
         
@@ -70,14 +70,17 @@ public class FeedbacksDAO extends BaseDAO{
                 se.setPrice(rs.getFloat("Price"));
                 se.setDiscount(rs.getInt("Discount"));
                 se.setRate(rs.getFloat("Rate"));
-                se.setStatus(rs.getString("Status"));
+                se.setStatus(rs.getInt("Status"));
                 /////////////////////////////////////////////////////////////
                 reservationdetail rd = new reservationdetail();
                 rd.setPrescription_ID(rs.getInt("Prescription_ID"));
                 rd.setReservationid(rs.getInt("Reservation_ID"));
                 rd.setServiceid(rs.getInt("Service_ID"));
                 rd.setUserid(rs.getInt("User_ID"));
+                rd.setStaffid(rs.getInt("Staff_ID"));
                 rd.setNamesale(rs.getString("Name_Sale"));
+                rd.setChildrenname(rs.getString("Children_Name"));
+                rd.setAge(rs.getInt("Age"));
                 /////////////////////////////////////////////////////////////        
                 user u = new user();
                 u.setUserid(rs.getInt("User_ID"));
@@ -95,9 +98,8 @@ public class FeedbacksDAO extends BaseDAO{
                 reservations r = new reservations();
                 r.setReservationID(rs.getInt("Reservation_ID"));
                 r.setUserID(rs.getInt("User_ID"));
-                r.setStaffid(rs.getInt("Staff_ID"));
                 r.setDate(rs.getDate("Date"));
-                r.setStatus(rs.getString("Status"));
+                r.setStatus(rs.getInt("Status"));
                 r.setBeginTime(rs.getDate("Begin_Time"));
                 r.setTotalcost(rs.getFloat("Total_cost"));
                 //////////////////////////////////////////////////////////////
@@ -215,14 +217,17 @@ public class FeedbacksDAO extends BaseDAO{
                 se.setPrice(rs.getFloat("Price"));
                 se.setDiscount(rs.getInt("Discount"));
                 se.setRate(rs.getFloat("Rate"));
-                se.setStatus(rs.getString("Status"));
+                se.setStatus(rs.getInt("Status"));
                 /////////////////////////////////////////////////////////////
                 reservationdetail rd = new reservationdetail();
                 rd.setPrescription_ID(rs.getInt("Prescription_ID"));
                 rd.setReservationid(rs.getInt("Reservation_ID"));
                 rd.setServiceid(rs.getInt("Service_ID"));
                 rd.setUserid(rs.getInt("User_ID"));
+                rd.setStaffid(rs.getInt("Staff_ID"));
                 rd.setNamesale(rs.getString("Name_Sale"));
+                rd.setChildrenname(rs.getString("Children_Name"));
+                rd.setAge(rs.getInt("Age"));
                 /////////////////////////////////////////////////////////////        
                 user u = new user();
                 u.setUserid(rs.getInt("User_ID"));
@@ -240,9 +245,8 @@ public class FeedbacksDAO extends BaseDAO{
                 reservations r = new reservations();
                 r.setReservationID(rs.getInt("Reservation_ID"));
                 r.setUserID(rs.getInt("User_ID"));
-                r.setStaffid(rs.getInt("Staff_ID"));
                 r.setDate(rs.getDate("Date"));
-                r.setStatus(rs.getString("Status"));
+                r.setStatus(rs.getInt("Status"));
                 r.setBeginTime(rs.getDate("Begin_Time"));
                 r.setTotalcost(rs.getFloat("Total_cost"));
                 //////////////////////////////////////////////////////////////

@@ -15,9 +15,8 @@ public class reservations_user {
     
     private int reservationid;
     private int userid;
-    private int staffid;
     private Date date,ordertime;
-    private String status;
+    private int status;
     private float totalcost;
     private user user;
     private reservationdetail redetail;
@@ -26,10 +25,9 @@ public class reservations_user {
     public reservations_user() {
     }
 
-    public reservations_user(int reservationid, int userid, int staffid, Date date, Date ordertime, String status, float totalcost, user user, reservationdetail redetail, service service) {
+    public reservations_user(int reservationid, int userid, Date date, Date ordertime, int status, float totalcost, user user, reservationdetail redetail, service service) {
         this.reservationid = reservationid;
         this.userid = userid;
-        this.staffid = staffid;
         this.date = date;
         this.ordertime = ordertime;
         this.status = status;
@@ -55,14 +53,6 @@ public class reservations_user {
         this.userid = userid;
     }
 
-    public int getStaffid() {
-        return staffid;
-    }
-
-    public void setStaffid(int staffid) {
-        this.staffid = staffid;
-    }
-
     public Date getDate() {
         return date;
     }
@@ -79,11 +69,11 @@ public class reservations_user {
         this.ordertime = ordertime;
     }
 
-    public String getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 
@@ -119,6 +109,8 @@ public class reservations_user {
         this.service = service;
     }
 
+   
+   
     
 
     

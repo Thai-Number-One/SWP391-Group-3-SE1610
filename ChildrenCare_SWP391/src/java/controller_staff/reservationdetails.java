@@ -92,8 +92,9 @@ public class reservationdetails extends HttpServlet {
             throws ServletException, IOException {
         try {
             String raw_id = request.getParameter("id");
-            String status = request.getParameter("status");
+            String status_raw = request.getParameter("status");
             int id = Integer.parseInt(raw_id);
+            int status = Integer.parseInt(status_raw);
             insert_reservationDAO ind = new insert_reservationDAO();
             ind.updateStatus(id, status);
             response.sendRedirect("reservationdetails?id=" +id);

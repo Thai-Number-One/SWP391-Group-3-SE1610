@@ -75,6 +75,16 @@
                 color: #FE5D37;
             }
 
+             .detail{
+                display: -webkit-box;
+                width: 500px;
+                height: auto;
+                line-height: 25px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                -webkit-line-clamp: 1;
+                -webkit-box-orient: vertical;
+            }
 
 
 
@@ -85,14 +95,26 @@
     <body>
         <!-- Navbar Start -->
         <jsp:include page="/Template/HeadMenuPublic.jsp" />
+        <div class="container-xxl py-5 page-header position-relative mb-5">
+            <div class="container py-5">
+                <h1 class="display-2 text-white animated slideInDown mb-4">Feedback Management</h1>
+                <nav aria-label="breadcrumb animated slideInDown">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="HomeP.jsp">Home</a></li>
+                        <li class="breadcrumb-item"><a href="#">Manager</a></li>
+                        <li class="breadcrumb-item">Feedbacks</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
         <!-- Navbar End -->
         <div class="container my-5 py-5">
             <div class="d-flex justify-content-center btn-group-sm" >
                 <form action="feedbacksfilter" method="get">
                     <select style="margin-left: 5px; background:#FE5D37;  color: #FFF5F3;" class="btn bg-default" name="status">
                         <option value="">all</option>
-                        <option value="view">view</option>
-                        <option value="hide">hide</option>
+                        <option value="1">view</option>
+                        <option value="0">hide</option>
                     </select>
                     <select style="margin-left: 5px; background:#FE5D37; color: #FFF5F3;" class="btn bg-default" name="sevice">
                         <option value="">all</option>
@@ -134,12 +156,13 @@
                                             <form action="feedbackslist" method="post">
                                                 <input type="text" value="${a.feedbacks.feedbackid}" name="id" style="display: none;">
                                                 <select  class="badge bg-default" style="margin-left: 5px;  background:#FE5D37; color: #FFF5F3;" name="status">
-                                                    <option>${a.feedbacks.status}</option>
-                                                    <c:if test="${a.feedbacks.status == 'view'}">
-                                                        <option>hide</option>
+                                                    <c:if test="${a.feedbacks.status == 1}">
+                                                        <option value="${a.feedbacks.status}">view</option>
+                                                        <option value="0">hide</option>
                                                     </c:if>
-                                                    <c:if test="${a.feedbacks.status == 'hide'}">
-                                                        <option>view</option>
+                                                    <c:if test="${a.feedbacks.status == 0}">
+                                                        <option value="${a.feedbacks.status}">hide</option>
+                                                        <option value="1">view</option>
                                                     </c:if>
                                                 </select>
                                                     <button style=" background:#FE5D37; color: #FFF5F3;" type="submit" class="badge btn-default" ><i class="fas fa-genderless"></i></button>
@@ -150,7 +173,7 @@
 
                                             <a href="#!" class="link-muted"><i class="fas fa-star ms-2">${a.feedbacks.star}</i></a>
                                         </div>
-                                        <p class="mb-0">
+                                        <p class="mb-0 detail">
                                             ${a.feedbacks.detail}
                                         </p>                               
                                     </div>

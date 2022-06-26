@@ -13,7 +13,7 @@
         <meta content="" name="keywords">
         <meta content="" name="description">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <title>BlOGS</title>
+        <title>BLOGS</title>
         <link href="img/favicon.ico" rel="icon">
 
         <!-- Google Web Fonts -->
@@ -74,7 +74,7 @@
                 color: #FE5D37;
             }
             .detail{
-                 display: -webkit-box;
+                display: -webkit-box;
                 width: 500px;
                 height: auto;
                 line-height: 25px;
@@ -97,6 +97,17 @@
 
         <!-- Navbar Start -->
         <jsp:include page="/Template/HeadMenuPublic.jsp"/>
+        <div class="container-xxl py-5 page-header position-relative mb-5">
+            <div class="container py-5">
+                <h1 class="display-2 text-white animated slideInDown mb-4">Blogs</h1>
+                <nav aria-label="breadcrumb animated slideInDown">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="HomeP.jsp">Home</a></li>
+                        <li class="breadcrumb-item"><a href="blogs">Blogs</a></li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
         <!-- Navbar End -->
 
         <div class="container my-5 py-1">
@@ -123,8 +134,8 @@
                                         <th style="padding-left: 15px;"><input type="search" name="name"></th>
                                     </tr>
                                 </table>
-                               
-                                
+
+
                             </form>
                         </div>
                     </div>
@@ -141,8 +152,8 @@
 
                                 <div class="d-flex flex-start" style="padding-bottom: 20px;padding-top: 20px;">
                                     <a href="blogdetails?postid=${a.posts.post_ID}"><img class="rounded-circle shadow-1-strong me-3"
-                                                     src="feedbackF/img/${a.posts.image}" alt="avatar" width="60"
-                                                     height="60" /></a>
+                                                                                         src="feedbackF/img/${a.posts.image}" alt="avatar" width="60"
+                                                                                         height="60" /></a>
                                     <div>
                                         <h3 class="fw-bold mb-1"><a href="blogdetails?postid=${a.posts.post_ID}">${a.posts.tilte}</a></h3>
                                         <h6 class="fw-bold mb-1"><a href="blogdetails?postid=${a.posts.post_ID}">${a.user.fullname} - ${a.service.servicename}</a></h6>

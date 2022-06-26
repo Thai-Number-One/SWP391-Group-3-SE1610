@@ -18,12 +18,13 @@
         <!-- Page Header End -->
         <div class="container-xxl py-5 page-header position-relative mb-5">
             <div class="container py-5">
-                <h1 class="display-2 text-white animated slideInDown mb-4">Feedback</h1>
+                <h1 class="display-2 text-white animated slideInDown mb-4">Feedback Details</h1>
                 <nav aria-label="breadcrumb animated slideInDown">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="HomePage.jsp">Home</a></li>
-                        <li class="breadcrumb-item"><a href="feedbackslist">Feedback</a></li>
-                        <li class="breadcrumb-item text-white active" aria-current="page">Details</li>
+                        <li class="breadcrumb-item"><a href="#">Manager</a></li>
+                        <li class="breadcrumb-item"><a href="feedbackslist">Feedbacks</a></li>
+                        <li class="breadcrumb-item" >Details</li>
                     </ol>
                 </nav>
             </div>

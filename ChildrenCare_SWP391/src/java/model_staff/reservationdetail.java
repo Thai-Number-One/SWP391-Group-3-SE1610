@@ -10,18 +10,21 @@ package model_staff;
  * @author dathp
  */
 public class reservationdetail {
-    private int Prescription_ID,reservationid,serviceid,userid;
-    private String namesale;
+    private int Prescription_ID,reservationid,serviceid,userid,staffid,age;
+    private String namesale,childrenname;
 
     public reservationdetail() {
     }
 
-    public reservationdetail(int Prescription_ID, int reservationid, int serviceid, int userid, String namesale) {
+    public reservationdetail(int Prescription_ID, int reservationid, int serviceid, int userid, int staffid, int age, String namesale, String childrenname) {
         this.Prescription_ID = Prescription_ID;
         this.reservationid = reservationid;
         this.serviceid = serviceid;
         this.userid = userid;
+        this.staffid = staffid;
+        this.age = age;
         this.namesale = namesale;
+        this.childrenname = childrenname;
     }
 
     public int getPrescription_ID() {
@@ -56,12 +59,36 @@ public class reservationdetail {
         this.userid = userid;
     }
 
+    public int getStaffid() {
+        return staffid;
+    }
+
+    public void setStaffid(int staffid) {
+        this.staffid = staffid;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
     public String getNamesale() {
         return namesale;
     }
 
     public void setNamesale(String namesale) {
         this.namesale = namesale;
+    }
+
+    public String getChildrenname() {
+        return childrenname;
+    }
+
+    public void setChildrenname(String childrenname) {
+        this.childrenname = childrenname;
     }
 
   
