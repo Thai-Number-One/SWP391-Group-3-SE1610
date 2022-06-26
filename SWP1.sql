@@ -101,7 +101,9 @@ CREATE TABLE [dbo].[Reservation_detail](
 	[Service_ID] [int] NOT NULL,
 	[User_ID] [int] NOT NULL,
 	[Staff_ID] [int] NOT NULL,
-	[Name_Sale] [nvarchar](max) NOT NULL,
+	[Name_Sale] [nvarchar](max) NULL,
+	[Children_Name] [nvarchar](225)  NULL,
+	[Age] [int]  NULL,
  CONSTRAINT [PK__Reservat__E82EBD58B5D7987C] PRIMARY KEY CLUSTERED 
 (
 	[Prescription_ID] ASC
