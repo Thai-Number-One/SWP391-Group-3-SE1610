@@ -1,3 +1,4 @@
+CREATE database [TestProject4]
 USE [TestProject4]
 GO
 /****** Object:  Table [dbo].[Feedback]    Script Date: 6/24/2022 3:48:10 PM ******/
@@ -8,7 +9,7 @@ GO
 CREATE TABLE [dbo].[Feedback](
 	[Feedback_ID] [int] IDENTITY(1,1) NOT NULL,
 	[User_ID] [int] NOT NULL,
-	[Detail] [nvarchar](255) NOT NULL,
+	[Detail] [nvarchar](max) NOT NULL,
 	[Feedback_status] [int] NOT NULL,
 	[Star] [int] NULL,
 	[Date_Feedback] [date] NOT NULL,
@@ -30,7 +31,7 @@ CREATE TABLE [dbo].[Medicine](
 	[Price] [float] NOT NULL,
 	[country] [nvarchar](255) NOT NULL,
 	[Expiry_date] [date] NOT NULL,
-	[Detail] [nvarchar](255) NOT NULL,
+	[Detail] [nvarchar](max) NOT NULL,
 	[Image] [nvarchar](255) NOT NULL,
 PRIMARY KEY CLUSTERED 
 (
@@ -69,7 +70,7 @@ CREATE TABLE [dbo].[Prescription](
 	[User_ID] [int] NULL,
 	[Medicine_ID] [int] NULL,
 	[Amount] [int] NOT NULL,
-	[Note] [nvarchar](255) NOT NULL
+	[Note] [nvarchar](max) NOT NULL
 ) ON [PRIMARY]
 GO
 /****** Object:  Table [dbo].[Reservation]    Script Date: 6/24/2022 3:48:10 PM ******/
@@ -79,8 +80,6 @@ SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Reservation](
 	[Reservation_ID] [int] IDENTITY(1,1) NOT NULL,
-	[Children_Name] [nvarchar](255) NOT NULL,
-	[Age] int NOT NULL,
 	[Date] [date] NOT NULL,
 	[Status] [int] NOT NULL,
 	[Begin_Time] [date] NOT NULL,
@@ -101,8 +100,8 @@ CREATE TABLE [dbo].[Reservation_detail](
 	[Reservation_ID] [int] NOT NULL,
 	[Service_ID] [int] NOT NULL,
 	[User_ID] [int] NOT NULL,
-	[Staff_ID] [nchar](10) NOT NULL,
-	[Name_Sale] [nvarchar](1) NOT NULL,
+	[Staff_ID] [int] NOT NULL,
+	[Name_Sale] [nvarchar](max) NOT NULL,
  CONSTRAINT [PK__Reservat__E82EBD58B5D7987C] PRIMARY KEY CLUSTERED 
 (
 	[Prescription_ID] ASC
