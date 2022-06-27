@@ -50,8 +50,8 @@
                     </div>
                     <a href="contact.html" class="nav-item nav-link">Contact Us</a>
                 </div>
-                <a href="ReservationDetails.jsp" class="btn btn-primary rounded-pill d-none d-lg-block">Reservation</a>
-                <span class="btn btn-white rounded-pill d-none d-lg-block"></span>
+                <h4><a href="ReservationDetails.jsp" style="padding-right: 15px;"><i class="bi bi-cart"></i></a></h4>
+                
                 <c:if test="${sessionScope.loginsuccess == null}">
                     <a href="login.jsp" class="btn btn-primary rounded-pill px-3 d-none d-lg-block">Login<i class="fa fa-arrow-right ms-3"></i></a>
                     </c:if>
