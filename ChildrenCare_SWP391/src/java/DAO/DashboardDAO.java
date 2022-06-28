@@ -234,8 +234,8 @@ public class DashboardDAO {
             rs = ps.executeQuery();
             while (rs.next()) {
 
-                list.add(new Reservation(rs.getString(1),
-                        rs.getDouble(2)));
+                list.add(new Reservation(rs.getInt(1),
+                        rs.getDate(2),rs.getInt(3),rs.getDate(4),rs.getFloat(5)));
             }
         } catch (Exception e) {
         }
@@ -247,7 +247,7 @@ public class DashboardDAO {
         List<Reservation> list = dao.getReservation();
         double total = 0;
         for (Reservation s : list) {
-            if (s.getStatus().toLowerCase().equals("success")) {
+            if (s.getStatus() == 1) {
                 total += s.getTotalCost();
             }
         }
