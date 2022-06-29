@@ -6,11 +6,8 @@
 package controller_staff;
 
 import dal_staff.insert_reservationDAO;
-import dal_staff.reservatonsDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -22,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author dathp
  */
-public class reservationdetails extends HttpServlet {
+public class UpdateStatusReservation extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,10 +38,10 @@ public class reservationdetails extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet reservatindetails</title>");            
+            out.println("<title>Servlet UpdateStatusReservation</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet reservatindetails at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet UpdateStatusReservation at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -62,18 +59,16 @@ public class reservationdetails extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
+          try {
             String raw_id = request.getParameter("id");
+            String raw_uid = request.getParameter("uid");
+            String status_raw = request.getParameter("status");
             int id = Integer.parseInt(raw_id);
-            reservatonsDAO d = new reservatonsDAO();
-            List l =new ArrayList();
-            for (int i = 0; i < d.reservations_user().size(); i++) {
-                if(d.reservations_user().get(i).getRedetail().getUserid()==id){
-                    l.add(d.reservations_user().get(i));
-                }
-            }
-            request.setAttribute("all", l);
-            request.getRequestDispatcher("staff/reservationdetails.jsp").forward(request, response);
+            int uid = Integer.parseInt(raw_uid);
+            int status = Integer.parseInt(status_raw);
+            insert_reservationDAO ind = new insert_reservationDAO();
+            ind.updateStatus(id, status);
+            response.sendRedirect("reservationdetails?id=" +uid);
         } catch (Exception ex) {
             Logger.getLogger(reservationdetails.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -90,8 +85,7 @@ public class reservationdetails extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-      
-        
+        processRequest(request, response);
     }
 
     /**

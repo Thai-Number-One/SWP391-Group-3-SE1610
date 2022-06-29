@@ -180,7 +180,7 @@
                         <th>Customer's child</th>
                         <th class="show" style="text-align:center; display: none;">Child's age</th>
                         <th class="show" style="display: none;">Service name</th>
-                        <th>Total cost</th>
+                        <th>Unit Price</th>
                         <th>Status</th>
                     </tr>
 
@@ -196,15 +196,15 @@
                             <td>${a.redetail.childrenname}</td>
                             <td class="show" style="text-align:center; display: none;">${a.redetail.age}</td>
                             <td class="show" style="display: none;">${a.service.servicename}</td>
-                            <td>${a.reservations.totalcost}</td>
+                            <td>${a.service.price}</td>
                             <c:if test="${a.reservations.status==-1}">
-                                <td>Not Approved ${a.reservations.status}</td>
+                                <td>Not Approved </td>
                             </c:if>
                             <c:if test="${a.reservations.status==0}">
-                                <td>Pending ${a.reservations.status}</td>
+                                <td>Pending </td>
                             </c:if>
                             <c:if test="${a.reservations.status==1}">
-                                <td>Approved ${a.reservations.status}</td>
+                                <td>Approved </td>
                             </c:if>
 
 

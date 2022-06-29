@@ -9,6 +9,8 @@ import Context.BaseDAO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model_staff.Prescription;
 import model_staff.reservations;
 import model_staff.user;
@@ -18,11 +20,19 @@ import model_staff.user;
  * @author dathp
  */
 public class insert_reservationDAO extends BaseDAO{
+    public static void main(String[] args) {
+        try {
+            insert_reservationDAO d = new insert_reservationDAO();
+            d.updateStatus(3, -1);
+        } catch (Exception ex) {
+            Logger.getLogger(insert_reservationDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
     public void updateStatus(int id,int s) throws Exception{
         try {
             
-              String sql="update Reservation set Status = ?  where User_ID = ?";
+              String sql="update Reservation set Status = ?  where Reservation_ID = ?";
                  Connection conn = new BaseDAO().BaseDao();
                   PreparedStatement st = conn.prepareStatement(sql);  
                   st.setInt(1, s);

@@ -151,9 +151,9 @@
                             <div class="card-body p-4">
 
                                 <div class="d-flex flex-start" style="padding-bottom: 20px;padding-top: 20px;">
-                                    <a href="blogdetails?postid=${a.posts.post_ID}"><img class="rounded-circle shadow-1-strong me-3"
-                                                                                         src="feedbackF/img/${a.posts.image}" alt="avatar" width="60"
-                                                                                         height="60" /></a>
+                                    <a href="blogdetails?postid=${a.posts.post_ID}"><img class=" shadow-1-strong me-3"
+                                                                                         src="${a.posts.image}" alt="avatar" width="150"
+                                                                                         height="150" /></a>
                                     <div>
                                         <h3 class="fw-bold mb-1"><a href="blogdetails?postid=${a.posts.post_ID}">${a.posts.tilte}</a></h3>
                                         <h6 class="fw-bold mb-1"><a href="blogdetails?postid=${a.posts.post_ID}">${a.user.fullname} - ${a.service.servicename}</a></h6>
@@ -213,7 +213,7 @@
                         </li>
                     </c:if>
                     <li class="page-item ">
-                        <a class="page-link" href="blogs?page=${max}">>></a>
+                        <a class="page-link" href="blogs?page=${max}"></a>
                     </li>
                 </ul>
             </nav>

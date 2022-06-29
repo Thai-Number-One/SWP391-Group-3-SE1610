@@ -60,10 +60,11 @@
                 outline: none;
             }
             .all{
-                
+                background: #fff;
+                box-shadow: 0 2px 5px 0;
                 padding : 30px;
                 margin: auto;
-                width: 80%;
+                width: 65%;
 
 
             }
@@ -106,132 +107,94 @@
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="HomeP.jsp">Home</a></li>
                         <li class="breadcrumb-item"><a href="#">Staff</a></li>
-                         <li class="breadcrumb-item"><a href="reservation">Reservations</a></li>
-                          <li class="breadcrumb-item">Reservations Detail</li>
-           
+                        <li class="breadcrumb-item"><a href="reservation">Reservations</a></li>
+                        <li class="breadcrumb-item">Reservations Detail</li>
+
                     </ol>
                 </nav>
             </div>
         </div>
         <!-- Navbar End -->
 
-        <div>
-            <div class="all">
-                <h1 style="color: #FE5D37;  text-align: center;">Basic reservation information</h1>
-                <table class="table_r">
-                    <tr>
-                        <th>reservation id</th>
-                        <th>customer full name</th>
-                        <th>Customer's child</th>
-                        <th>Child's age</th>
-                        <th>email</th>
-                        <th>mobile</th>
-                        <th>reservation date</th>
-                        <th>total cost</th>
-                        <th>sale name</th>
-                        <th>status</th>
-                    </tr>
-                    <tr>
-                        <c:set value="0" var="count" />
-                        <c:forEach items="${requestScope.all}" var="a">
-                            <c:if test="${count==0}">
-                                <td>${a.reservationid}</td>                  
-                                <td>${a.user.fullname}</td>
-                                <td>${a.redetail.childrenname}</td>
-                                <td>${a.redetail.age}</td>
-                                <td>${a.user.email}</td>
-                                <td>${a.user.phone}</td>
-                                <td>${a.ordertime}</td>
-                                <td>${a.totalcost}</td>
-                                <c:if test="${a.redetail.namesale ==null}">
-                                    <td>no</td>
-                                </c:if>
-                                <c:if test="${a.redetail.namesale !=null}">
-                                    <td>${a.redetail.namesale}</td>
-                                </c:if>
-
-                                <td>
-                                    <form method="post" action="reservationdetails">
-
-
-                                        <select name="status" class="form-control" >
-
-                                            <option value="${a.status}">${a.status}</option>
-                                            <c:if test="${a.status == 'wait'}">
-                                                <option value="being">being</option>
-                                            </c:if>
-                                            <c:if test="${a.status != 'wait'}">
-                                                <option value="wait">wait</option>
-                                            </c:if>    
-                                            <input style="display: none;" name="id" value="${a.user.userid}">
-                                            <input class="btn btn-secondary" type="submit" value="change">
-                                        </select>
-                                    </form>
-                                </td>
-                            </c:if>
-
+        <div class="all">
+            <div style="margin: auto; width: 80%;" class="row">
+                <h1 style="color: #FE5D37; text-align: center; padding-bottom: 30px;">Reservation Information</h1>
+                <div class="col-8">
+                    <c:set value="0" var="count" />
+                    <c:set value="0" var="total" />
+                    <c:forEach items="${requestScope.all}" var="a">
+                        <c:if test="${count==0}">     
+                            <h2>Customer Full Name: ${a.user.fullname}</h2>
+                            <h2>Address: ${a.user.address}</h2>
+                            <h2>Mobile: ${a.user.phone}</h2>
+                            <h2>Email: ${a.user.email}</h2>
+                            <h2>Reservation Date: ${a.reservations.beginTime}</h2>
+                        </c:if>
+                        <h3 style="display: none;">${count=count +1}</h3>
+                        <h3 style="display: none;">${total=total + a.reservations.totalcost}</h3>
+                    </c:forEach>
+                    <h2>Total Cost: ${total}</h2>
+                </div>
+                <div class="col-4" >
+                    <c:set value="0" var="count" />
+                    <c:forEach items="${requestScope.all}" var="a">
+                        <c:if test="${count==0}">     
+                            <img  src="${a.user.avatar}" width="250" height="auto">
+                        </c:if>
                         <h3 style="display: none;">${count=count +1}</h3>
                     </c:forEach>
-                    </tr>
-                </table>
+                </div>
+            </div><br/>
 
-            </div>
 
-            <div class="all">
-                <h1 style="color: #FE5D37;  text-align: center;">The receiver information</h1>
-                <table class="table_r">
+            <div >
 
-                    <tr>
-                        <th>full name</th>
-                        <th>Customer's child</th>
-                        <th>Child's age</th>
-                        <th>gendar</th>
-                        <th>email</th>
-                        <th>mobile</th>
-                        <th>address</th>
-                    </tr>
-                    <tr>
-                        <c:set value="0" var="count1" />
-                        <c:forEach items="${requestScope.all}" var="a">
-                            <c:if test="${count1==0}">
-                                <td>${a.user.fullname}</td>
-                                <td>${a.redetail.childrenname}</td>
-                                <td>${a.redetail.age}</td>
-                                <c:if test="${a.user.gender==1}"><td>male</td></c:if>
-                                <c:if test="${a.user.gender==0}"><td>female</td></c:if>
-                                <td>${a.user.email}</td>
-                                <td>${a.user.phone}</td>
-                                <td>${a.user.address}</td>
-                            </c:if>
-                        <h3 style="display: none;">${count1=count1 +1}</h3>
-                    </c:forEach>
-                    </tr>
-                </table>
-
-            </div>
-
-            <div class="all">
                 <h1 style="color: #FE5D37;  text-align: center;">This list of reserved services</h1>
                 <table class="table_r">
 
                     <tr>
-                        <th>thumbnail</th>
-                        <th>name</th>
-                        <th>Customer's child</th>
-                        <th>Child's age</th>
-                        <th>category</th>
-                        <th>unit price</th>
-                        <th>total cost</th>
+                        <th>Thumbnail</th>
+                        <th>Customer's Child</th>
+                        <th>Child's Age</th>
+                        <th>Category</th>
+                        <th>Unit Price</th>
+                        <th>Status</th>
+
                     </tr>
                     <c:forEach items="${requestScope.all}" var="a">
                         <tr>
-                            <td>${a.service.image}</td>
-                            <td>${a.user.fullname}</td>
+                            <td><img src="${a.service.image}" width="auto" height="50" class="rounded-circle shadow-1-strong me-3" alt="avatar"/></td>
+
                             <td>${a.redetail.childrenname}</td>
                             <td >${a.redetail.age}</td>
                             <td>${a.service.servicename}</td>
                             <td>${a.service.price}</td>
-                            <td>${a.totalcost}</td>
+                            <td>
+                                <form action="updatestatusreservation" method="get">
+                                    <input type="text" style="display: none;" name="id" value="${a.reservations.reservationID}">
+                                    <input type="text" style="display: none;" name="uid" value="${a.user.userid}">
+                                    <select name="status">
+
+                                        <c:if test="${a.reservations.status==-1}">
+                                            <option value="${a.reservations.status}">Not Approved</option>
+                                            <option value="0">Pending</option>
+                                            <option value="1">Approved</option>
+                                        </c:if>
+                                        <c:if test="${a.reservations.status==0}">
+                                            <option value="${a.reservations.status}">Pending</option>
+                                            <option value="-1">Not Approved</option>
+                                            <option value="1">Approved</option>
+                                        </c:if>
+                                        <c:if test="${a.reservations.status==1}">
+                                            <option value="${a.reservations.status}">Approved</option>
+                                            <option value="-1">Not Approved</option>
+                                            <option value="0">Pending</option>
+                                        </c:if>
+                                    </select>
+                                    <button class="btn" type="submit"><i class="bi bi-arrow-clockwise"></i></button>
+                                </form>
+
+                            </td>
                         </tr>
                     </c:forEach> 
                 </table>
@@ -239,7 +202,7 @@
 
         </div>
 
-          <!-- Footer Start -->
+        <!-- Footer Start -->
         <jsp:include page="/Template/FooterPublic.jsp"/>
         <!-- Footer End -->
 
@@ -247,16 +210,16 @@
 
 
 
-            <!-- JavaScript Libraries -->
-            <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-            <script src="lib/wow/wow.min.js"></script>
-            <script src="lib/easing/easing.min.js"></script>
-            <script src="lib/waypoints/waypoints.min.js"></script>
-            <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+        <!-- JavaScript Libraries -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="lib/wow/wow.min.js"></script>
+        <script src="lib/easing/easing.min.js"></script>
+        <script src="lib/waypoints/waypoints.min.js"></script>
+        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
 
-            <!-- Template Javascript -->
-            <script src="js/main.js"></script>   
+        <!-- Template Javascript -->
+        <script src="js/main.js"></script>   
 
     </body>
 </html>
