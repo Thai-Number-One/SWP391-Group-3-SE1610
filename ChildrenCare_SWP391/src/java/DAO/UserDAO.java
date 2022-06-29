@@ -135,4 +135,32 @@ public class UserDAO {
         
         return null;
     }
+    public List<User> GetStaffActive(){
+        String query = "select * from [User] where Role_ID = 2 and Status = 1";
+        try {
+            conn = new BaseDAO().BaseDao();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            List<User> lst = new ArrayList<>();
+            while(rs.next()){
+                User u = new User(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getDate(6),
+                        rs.getDate(7),
+                        rs.getString(8),
+                        rs.getString(9),
+                        rs.getString(10),
+                        rs.getInt(11),
+                        rs.getInt(12),
+                        rs.getInt(13));
+                lst.add(u);
+            }
+            return lst;
+        } catch (Exception e) {
+        }
+        return null;
+    }
 }

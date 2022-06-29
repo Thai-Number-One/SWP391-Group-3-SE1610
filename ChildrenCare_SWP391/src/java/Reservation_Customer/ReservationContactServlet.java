@@ -3,14 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Control;
+package Reservation_Customer;
 
-import DAO.BlogDAO;
-import DAO.FeedbacksDAO;
-import Entity.allfeedbacks;
+import Entity.ReservationCustomer;
+import Entity.User;
+import dal_staff.reservatonsDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
+import java.text.ParseException;
+import java.time.LocalDateTime;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,13 +22,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import model_staff.reservationdetail;
 
 /**
  *
  * @author HP
  */
-@WebServlet(name = "BlogDetailsServlet", urlPatterns = {"/blogdetails"})
-public class BlogDetailsServlet extends HttpServlet {
+@WebServlet(name = "ReservationContactServlet", urlPatterns = {"/reservationcontact"})
+public class ReservationContactServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,41 +44,7 @@ public class BlogDetailsServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            try {
-                /* TODO output your page here. You may use following sample code. */
-                int blog_id = Integer.parseInt(request.getParameter("postid"));
-                BlogDAO BDao = new BlogDAO();
-                FeedbacksDAO FDao = new FeedbacksDAO();
-                List lst = new ArrayList();
-                List lst2 = new ArrayList();
-                List<allfeedbacks> lst3 = new ArrayList<>();
-
-                int index = 0;
-                for (int i = 0; i < BDao.Blogs().size(); i++) {
-                    if (BDao.Blogs().get(i).getPosts().getPost_ID() == blog_id) {
-                        lst.add(BDao.Blogs().get(i));
-                        index = BDao.Blogs().get(i).getService().getServiceid();
-                    }
-                }
-                for (int i = 0; i < BDao.Blogs().size(); i++) {
-                    if (BDao.Blogs().get(i).getPosts().getService_ID() == index) {
-                        lst2.add(BDao.Blogs().get(i));
-                    }
-                }
-                for (int i = 0; i < FDao.allfeedbacks().size(); i++) {
-                    if (FDao.allfeedbacks().get(i).getService().getServiceid() == index && FDao.allfeedbacks().get(i).getFeedbacks().getStatus() == 1) {
-                        lst3.add(FDao.allfeedbacks().get(i));
-                    }
-                }
-                request.setAttribute("blogdetails", lst);
-                request.setAttribute("contactlink", lst2);
-                request.setAttribute("feedback", lst3);
-                request.getRequestDispatcher("Blogdetails.jsp").forward(request, response);
-            } catch (Exception ex) {
-                Logger.getLogger(BlogDetailsServlet.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -102,7 +73,37 @@ public class BlogDetailsServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        HttpSession session = request.getSession();
+        Object u = session.getAttribute("loginsuccess");
+        User user = (User) u;
+        if (user != null) {
+            try {
+                Object obj = session.getAttribute("rd");
+                reservatonsDAO dao = new reservatonsDAO();
+                List<ReservationCustomer> lst;
+                lst = (List<ReservationCustomer>) obj;
+                for (int i = 0; i < lst.size(); i++) {
+                    String ChildrenName = request.getParameter("children" + lst.get(i).getId());
+                    int Age = Integer.parseInt(request.getParameter("Age" + lst.get(i).getId()));
+                    String sDate = request.getParameter("Date" + lst.get(i).getId());
+                    int Service_ID = lst.get(i).getService_id();
+                    Date date = new SimpleDateFormat("yyyy-MM-dd").parse(sDate);
+                    String Time = request.getParameter("Time" + lst.get(i).getId());
+                    int Doctor = Integer.parseInt(request.getParameter("Doctor" + lst.get(i).getId()));
+                    dao.AddNewReservation(0, date, lst.get(i).getPrice());
+                    int Prescription_ID = dao.TotalReservationDetails() + 1;
+                    int Reservation_ID = dao.TakeFinalReservationID();
+                    int user_id = user.getUser_ID();
+                    reservationdetail rd = new reservationdetail(Prescription_ID, Reservation_ID, Service_ID, user_id, Doctor, Age, Time, ChildrenName);
+                    dao.AddToReservationDetails(rd);
+                }
+            } catch (ParseException ex) {
+                Logger.getLogger(ReservationContactServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            response.sendRedirect("ReservationCompletion.jsp");
+        } else {
+            response.sendRedirect("login.jsp");
+        }
     }
 
     /**

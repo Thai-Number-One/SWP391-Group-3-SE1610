@@ -12,20 +12,20 @@ import java.sql.Date;
  * @author dathp
  */
 public class Feedbacks {
-    private int feedbackid,userid,star,reservationid;
-    private String detail,status;
+    private int feedbackid,userid,star,reservationid, status;
+    private String detail;
     private Date date;
 
     public Feedbacks() {
     }
 
-    public Feedbacks(int feedbackid, int userid, int star, int reservationid, String detail, String status, Date date) {
+    public Feedbacks(int feedbackid, int userid, int star, int reservationid, int status, String detail, Date date) {
         this.feedbackid = feedbackid;
         this.userid = userid;
         this.star = star;
         this.reservationid = reservationid;
-        this.detail = detail;
         this.status = status;
+        this.detail = detail;
         this.date = date;
     }
 
@@ -61,20 +61,20 @@ public class Feedbacks {
         this.reservationid = reservationid;
     }
 
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
     public String getDetail() {
         return detail;
     }
 
     public void setDetail(String detail) {
         this.detail = detail;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
     }
 
     public Date getDate() {
@@ -84,7 +84,4 @@ public class Feedbacks {
     public void setDate(Date date) {
         this.date = date;
     }
-    
-    
-    
 }

@@ -14,51 +14,44 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Login</title>
-        <link href="css/styles.css" rel="stylesheet" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+        <jsp:include page="Template/DesignPublic.jsp"/>
     </head>
-    <body class="bg-secondary">
+    <body>
+        <jsp:include page="Template/HeadMenuPublic.jsp"/>
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
-                <main>
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-5">
-                                <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Login</h3></div>
-                                    <div class="card-body">
-                                        <form action="login" method="post">
-                                            <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputUser" name="username" type="user" placeholder="username" />
-                                                <label for="User name">User name</label>
-                                            </div>
-                                            <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputPassword" name="password" type="password" placeholder="Password" />
-                                                <label for="inputPassword">Password</label>
-                                            </div>
-                                                <p class="text-danger">${mess}</p>
-                                            <div class="form-check mb-3">
-                                                <input class="form-check-input" id="inputRememberPassword" type="checkbox" value="" />
-                                                <label class="form-check-label" for="inputRememberPassword">Remember Password</label>
-                                            </div>
-                                            <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                <a class="small" href="TakeEmailj.jsp">Forgot Password?</a>
-                                                <input class="btn btn-primary" value="Login" type="submit">
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div class="card-footer text-center py-3">
-                                        <div class="small"><a href="register.html">Need an account? Sign up!</a></div>
-                                    </div>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-5">
+                            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                <div class="card-header"><h2 class="text-center font-weight-light my-4">Login</h2></div>
+                                <div class="card-body">
+                                    <form action="login" method="post">
+                                        <div class="form-floating mb-3">
+                                            <input class="form-control" name="username" type="user" placeholder="username" required=""/>
+                                            <label for="User name">User name</label>
+                                        </div>
+                                        <div class="form-floating mb-3">
+                                            <input class="form-control" name="password" type="password" placeholder="Password" required=""/>
+                                            <label for="inputPassword">Password</label>
+                                        </div>
+                                        <p class="text-danger">${mess}</p>
+                                        <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
+                                            <a class="small" href="TakeEmailj.jsp">Forgot Password?</a>
+                                            <input class="btn btn-primary" value="Login" type="submit">
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="card-footer text-center py-3">
+                                    <div class="small"><a href="register.html">Need an account? Sign up!</a></div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </main>
+                </div>
             </div>
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="js/scripts.js"></script>
+        <jsp:include page="Template/FooterPublic.jsp"/>
     </body>
 </html>
 

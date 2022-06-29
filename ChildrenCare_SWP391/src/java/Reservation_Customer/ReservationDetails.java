@@ -3,25 +3,28 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Control;
+package Reservation_Customer;
 
-import DAO.FeedbacksDAO;
+import DAO.ServiceDetailDAO;
+import Entity.ReservationCustomer;
+import Entity.Service;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author HP
  */
-@WebServlet(name = "ChangeStatusServlet", urlPatterns = {"/feedbackstatus"})
-public class ChangeStatusServlet extends HttpServlet {
+@WebServlet(name = "ReservationDetails", urlPatterns = {"/reservationdetail"})
+public class ReservationDetails extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,18 +38,21 @@ public class ChangeStatusServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ChangeStatusServlet</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ChangeStatusServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        int service_id = Integer.parseInt(request.getParameter("serviceid"));
+        ServiceDetailDAO dao = new ServiceDetailDAO();
+        Service s = dao.GetServiceByID(service_id);
+        HttpSession session = request.getSession();
+        Object obj = session.getAttribute("rd");
+        List<ReservationCustomer> lst = null;
+        if (obj == null) {
+            lst = new ArrayList<>();
+        } else {
+            lst = (List<ReservationCustomer>) obj;
         }
+        ReservationCustomer rd = new ReservationCustomer(lst.size(), 1, service_id, s.getService_name(), s.getPrice(), s.getDiscount());
+        lst.add(rd);
+        session.setAttribute("rd", lst);
+        response.sendRedirect("listService.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -61,19 +67,7 @@ public class ChangeStatusServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        FeedbacksDAO Fdao = new FeedbacksDAO();
-        int status = Integer.parseInt(request.getParameter("status"));
-        int feedback_ID = Integer.parseInt(request.getParameter("feedback_id"));
-        try {
-            if (status == 0) {
-                Fdao.updateStatusFeedback(feedback_ID, 1);
-            } else {
-                Fdao.updateStatusFeedback(feedback_ID, 0);
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(FeedbackDetailsServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        response.sendRedirect("feedbackdetails?idfeedback=" + feedback_ID);
+        processRequest(request, response);
     }
 
     /**

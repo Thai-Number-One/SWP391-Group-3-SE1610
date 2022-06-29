@@ -122,11 +122,11 @@
                                                 <tr>
                                                     <th class="text-uppercase text-secondary text-xx font-weight-bolder opacity-50 ps-2">Status</th>
                                                     <td>
-                                                        <c:if test="${requestScope.feedbackdetails.status == 'view'}">
-                                                        <a class="fas fa-eye" style="font-size: 30px; color: black;" href="feedbackstatus?status=view&feedback_id=${feedbackdetails.feedbackid}"></a>
+                                                        <c:if test="${requestScope.feedbackdetails.status == 1}">
+                                                        <a class="fas fa-eye" style="font-size: 30px; color: black;" href="feedbackstatus?status=1&feedback_id=${feedbackdetails.feedbackid}"></a>
                                                         </c:if>
-                                                        <c:if test="${requestScope.feedbackdetails.status == 'hide'}">
-                                                        <a class="fas fa-eye-slash" style="font-size: 30px; color: black;" href="feedbackstatus?status=hide&feedback_id=${feedbackdetails.feedbackid}"></a>
+                                                        <c:if test="${requestScope.feedbackdetails.status == 0}">
+                                                        <a class="fas fa-eye-slash" style="font-size: 30px; color: black;" href="feedbackstatus?status=0&feedback_id=${feedbackdetails.feedbackid}"></a>
                                                         </c:if>
                                                         </td>
                                                 </tr>
