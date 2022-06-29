@@ -547,6 +547,80 @@ public class reservatonsDAO extends BaseDAO {
         }
         return list;
     }
+    public void AddNewReservation(int status, Date BookDate, float cost) {
+        String query = "INSERT INTO [dbo].[Reservation] ([Date] ,[Status] ,[Begin_Time] ,[Total_cost]) VALUES (GETDATE(),?,?,?)";
+        java.sql.Date x = new java.sql.Date(BookDate.getTime());
+        try {
+            Connection conn = new BaseDAO().BaseDao();
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setInt(1, status);
+            ps.setDate(2, x);
+            ps.setFloat(3, cost);
+            ps.executeUpdate();
+            ps.close();
+        } catch (Exception e) {
+        }
+    }
+
+    public int TakeFinalReservationID() {
+        String query = " select TOP 1 [Reservation_ID] from [Reservation]\n"
+                + "  Order by [Reservation_ID] DESC";
+        try {
+            Connection conn = new BaseDAO().BaseDao();
+            PreparedStatement ps = conn.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+        }
+        return 0;
+    }
+
+    public int TotalReservationDetails() {
+        String query = "select count(*) from [Reservation_detail]";
+        try {
+            Connection conn = new BaseDAO().BaseDao();
+            PreparedStatement ps = conn.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+        }
+        return 0;
+    }
+
+    public void AddToReservationDetails(reservationdetail rd) {
+        String query = "INSERT INTO [dbo].[Reservation_detail] ([Prescription_ID] ,[Reservation_ID] ,[Service_ID] ,[User_ID] ,[Staff_ID] ,[Name_Sale] ,[Children_Name] ,[Age]) VALUES (?,?,?,?,?,?,?,?)";
+        try {
+            Connection conn = new BaseDAO().BaseDao();
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setInt(1, rd.getPrescription_ID());
+            ps.setInt(2, rd.getReservationid());
+            ps.setInt(3, rd.getServiceid());
+            ps.setInt(4, rd.getUserid());
+            ps.setInt(5, rd.getStaffid());
+            ps.setString(6, rd.getNamesale());
+            ps.setString(7, rd.getChildrenname());
+            ps.setInt(8, rd.getAge());
+            ps.executeUpdate();
+            ps.close();
+        } catch (Exception e) {
+        }
+    }
+    public void changeStatusReservation(int id, int status){
+        String query = "UPDATE [dbo].[Reservation] SET [Status] = ? WHERE  [Reservation_ID] = ?";
+        try {
+            Connection conn = new BaseDAO().BaseDao();
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setInt(1, status);
+            ps.setInt(2, id);
+            ps.executeUpdate();
+            ps.close();
+        } catch (Exception e) {
+        }
+    }
 
     public static void main(String[] args) {
         try {
