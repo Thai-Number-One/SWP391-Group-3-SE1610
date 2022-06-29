@@ -189,21 +189,21 @@
                         <tr>                 
 
 
-                            <td class="show" style="text-align:center; display: none;"><a style="text-decoration: none; color: black" href="reservationdetails?id=${a.user.userid}">${a.reservationid}</a></td>
+                            <td class="show" style="text-align:center; display: none;"><a style="text-decoration: none; color: black" href="reservationdetails?id=${a.user.userid}">${a.reservations.reservationID}</a></td>
 
                             <td>${a.ordertime}</td>
                             <td><a style="text-decoration: none; color: black" href="reservationdetails?id=${a.user.userid}">${a.user.fullname}</a></td>
                             <td>${a.redetail.childrenname}</td>
                             <td class="show" style="text-align:center; display: none;">${a.redetail.age}</td>
                             <td class="show" style="display: none;">${a.service.servicename}</td>
-                            <td>${a.totalcost}</td>
-                            <c:if test="${a.status==-1}">
+                            <td>${a.reservations.totalcost}</td>
+                            <c:if test="${a.reservations.status==-1}">
                                 <td>Not Approved</td>
                             </c:if>
-                            <c:if test="${a.status==0}">
+                            <c:if test="${a.reservations.status==0}">
                                 <td>Pending</td>
                             </c:if>
-                            <c:if test="${a.status==1}">
+                            <c:if test="${a.reservations.status==1}">
                                 <td>Approved</td>
                             </c:if>
 
