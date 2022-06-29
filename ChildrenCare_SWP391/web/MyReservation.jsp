@@ -142,13 +142,13 @@
                         <tr>                 
 
                             
-                            <td ><a style="text-decoration: none; color: black" href="reservationdetails?id=${a.reservationid}">${a.reservationid}</a></td>
+                            <td ><a style="text-decoration: none; color: black" href="reservationdetails?id=${a.reservations.reservationID}">${a.reservations.reservationID}</a></td>
                  
-                            <td>${a.ordertime}</td>
+                            <td>${a.reservations.beginTime}</td>
                             <td>${a.service.servicename}</td>
-                            <td>${a.date}</td>
-                            <td>${a.totalcost}</td>
-                            <td>${a.status}</td>
+                            <td>${a.reservations.Date}</td>
+                            <td>${a.reservations.totalcost}</td>
+                            <td>${a.reservations.status}</td>
                        
 
                         </tr>
