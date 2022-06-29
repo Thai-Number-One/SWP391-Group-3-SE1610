@@ -90,10 +90,11 @@ public class FeedbacksDAO extends BaseDAO {
                 u.setAvatar(rs.getString("Avatar"));
                 u.setGender(rs.getInt("Gender"));
                 u.setRoleid(rs.getInt("Role_ID"));
+                 u.setStatus(rs.getInt("Status"));
                 //////////////////////////////////////////////////////////////                           
                 reservations r = new reservations();
                 r.setReservationID(rs.getInt("Reservation_ID"));
-                r.setUserID(rs.getInt("User_ID"));
+                
                 r.setDate(rs.getDate("Date"));
                 r.setStatus(rs.getInt("Status"));
                 r.setBeginTime(rs.getDate("Begin_Time"));
@@ -238,10 +239,11 @@ public class FeedbacksDAO extends BaseDAO {
                 u.setAvatar(rs.getString("Avatar"));
                 u.setGender(rs.getInt("Gender"));
                 u.setRoleid(rs.getInt("Role_ID"));
+                u.setStatus(rs.getInt("Status"));
                 //////////////////////////////////////////////////////////////                           
                 reservations r = new reservations();
                 r.setReservationID(rs.getInt("Reservation_ID"));
-                r.setUserID(rs.getInt("User_ID"));
+               
                 r.setDate(rs.getDate("Date"));
                 r.setStatus(rs.getInt("Status"));
                 r.setBeginTime(rs.getDate("Begin_Time"));

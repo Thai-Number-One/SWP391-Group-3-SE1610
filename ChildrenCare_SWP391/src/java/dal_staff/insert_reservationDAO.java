@@ -76,15 +76,14 @@ public class insert_reservationDAO extends BaseDAO{
     
     public void insertReservation(reservations u) throws SQLException, Exception{
           try {
-              String sql="insert into Reservation(Reservation_ID, User_ID,Date,Status,Begin_Time,Total_cost)\n" +
+              String sql="insert into Reservation(Reservation_ID,Date,Status,Begin_Time,Total_cost)\n" +
 "values(?,?,?,?,?,?)";
                 Connection conn = new BaseDAO().BaseDao();
                   PreparedStatement st = conn.prepareStatement(sql);  
                   st.setInt(1, u.getReservationID());
-                  st.setInt(2, u.getUserID());
-                  st.setDate(3, u.getDate());
-                  st.setInt(4, u.getStatus());
-                  st.setFloat(5, u.getTotalcost());
+                  st.setDate(2, u.getDate());
+                  st.setInt(3, u.getStatus());
+                  st.setFloat(4, u.getTotalcost());
                   st.executeUpdate();              
           } catch (SQLException ex) {
               System.out.println(ex);

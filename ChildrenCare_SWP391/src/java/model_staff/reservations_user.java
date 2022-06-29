@@ -13,11 +13,7 @@ import java.sql.Date;
  */
 public class reservations_user {
     
-    private int reservationid;
-    private int userid;
-    private Date date,ordertime;
-    private int status;
-    private float totalcost;
+    private  reservations reservations;
     private user user;
     private reservationdetail redetail;
     private service service;
@@ -25,64 +21,19 @@ public class reservations_user {
     public reservations_user() {
     }
 
-    public reservations_user(int reservationid, int userid, Date date, Date ordertime, int status, float totalcost, user user, reservationdetail redetail, service service) {
-        this.reservationid = reservationid;
-        this.userid = userid;
-        this.date = date;
-        this.ordertime = ordertime;
-        this.status = status;
-        this.totalcost = totalcost;
+    public reservations_user(reservations reservations, user user, reservationdetail redetail, service service) {
+        this.reservations = reservations;
         this.user = user;
         this.redetail = redetail;
         this.service = service;
     }
 
-    public int getReservationid() {
-        return reservationid;
+    public reservations getReservations() {
+        return reservations;
     }
 
-    public void setReservationid(int reservationid) {
-        this.reservationid = reservationid;
-    }
-
-    public int getUserid() {
-        return userid;
-    }
-
-    public void setUserid(int userid) {
-        this.userid = userid;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public Date getOrdertime() {
-        return ordertime;
-    }
-
-    public void setOrdertime(Date ordertime) {
-        this.ordertime = ordertime;
-    }
-
-    public int getStatus() {
-        return status;
-    }
-
-    public void setStatus(int status) {
-        this.status = status;
-    }
-
-    public float getTotalcost() {
-        return totalcost;
-    }
-
-    public void setTotalcost(float totalcost) {
-        this.totalcost = totalcost;
+    public void setReservations(reservations reservations) {
+        this.reservations = reservations;
     }
 
     public user getUser() {
@@ -110,8 +61,6 @@ public class reservations_user {
     }
 
    
-   
-    
 
     
    
