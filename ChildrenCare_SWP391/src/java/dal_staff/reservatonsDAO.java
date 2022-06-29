@@ -392,20 +392,19 @@ public class reservatonsDAO extends BaseDAO {
     }
 
     public List<reservations_user> filter(Integer staffid,
-            String status,
+            Integer status,
             Date from, Date to) throws Exception {
         List<reservations_user> list = new ArrayList<>();
         String sql = "select *\n" +
 "                from Reservation_detail as a inner join  [User] as b on a.User_ID = b.User_ID\n" +
 "                			inner join Reservation as c on a.Reservation_ID=c.Reservation_ID\n" +
 "                				inner join Service as d on a.Service_ID=d.Service_ID\n" +
-"                where b.Role_ID = 4 \n" +
-"                order by c.Begin_Time";
+"                where b.Role_ID = 4";
         if (staffid != null) {
             sql += " AND a.Staff_ID = " + staffid;
         }
-        if (status != null && !status.equals("")) {
-            sql += " AND a.Status like '%" + status + "%'";
+        if (status != null ) {
+            sql += " AND c.Status = " + status;
         }
 
         if (from != null) {
@@ -482,8 +481,7 @@ public class reservatonsDAO extends BaseDAO {
 "                from Reservation_detail as a inner join  [User] as b on a.User_ID = b.User_ID\n" +
 "                			inner join Reservation as c on a.Reservation_ID=c.Reservation_ID\n" +
 "                				inner join Service as d on a.Service_ID=d.Service_ID\n" +
-"                where b.Role_ID = 4 \n" +
-"                order by c.Begin_Time";
+"                where b.Role_ID = 4 \n";
         if (id != null) {
             sql += " AND a.Reservation_ID = " + id;
         }
@@ -561,6 +559,7 @@ public class reservatonsDAO extends BaseDAO {
                 System.out.println(list.get(i).getOrdertime());
             }
    
+            System.out.println(d.search(1, null).get(0).getOrdertime());
 
         } catch (Exception ex) {
             Logger.getLogger(reservatonsDAO.class.getName()).log(Level.SEVERE, null, ex);

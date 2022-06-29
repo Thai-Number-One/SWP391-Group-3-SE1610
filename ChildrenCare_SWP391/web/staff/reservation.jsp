@@ -134,7 +134,7 @@
                     <table>
                         <tr>
                             <th><input type="text" name="rid"  placeholder="Search Reservation ID"  class="form-control" /></th>
-                            <th><input type="text" name="rid"  placeholder="Search Customer Name"  class="form-control" /></th>
+                            <th><input type="text" name="name"  placeholder="Search Customer Name"  class="form-control" /></th>
                             <th><button type="submit" style="background:#FE5D37; color: #FFF5F3;" class="btn btn-secondary">
                                     <i class="fas fa-search"></i>
                                 </button></th>
@@ -150,8 +150,9 @@
                             <th><input class="form-control" type="date" name="dateto" ></th>
                             <th><select name="status" class="form-control">
                                     <option value="">all status</option>
-                                    <option value="wait">wait</option>
-                                    <option value="being">being</option>
+                                    <option value="-1">Not Approved</option>
+                                    <option value="0">Pending</option>
+                                    <option value="1">Approved</option>
                                 </select></th>
                             <th>
                                 <select name="staff" class="form-control">
@@ -162,7 +163,7 @@
                                 </select>
                             </th>
                             <th><button style="background:#FE5D37; color: #FFF5F3;" class="btn btn-secondary" type="submit">Filter</button></th>
- 
+
                         </tr>
                     </table>
                 </form>
@@ -172,7 +173,7 @@
             <div class="all">
                 <table class="table_r">
                     <tr>
-                        
+
                         <th class="show" style="display: none;">Reservation id</th>
                         <th>Reservation date</th>
                         <th>Customer name</th>
@@ -182,22 +183,31 @@
                         <th>Total cost</th>
                         <th>Status</th>
                     </tr>
-                    
+
                     <c:forEach items="${requestScope.all}" var="a">
 
                         <tr>                 
 
-                            
+
                             <td class="show" style="text-align:center; display: none;"><a style="text-decoration: none; color: black" href="reservationdetails?id=${a.user.userid}">${a.reservationid}</a></td>
-                 
+
                             <td>${a.ordertime}</td>
                             <td><a style="text-decoration: none; color: black" href="reservationdetails?id=${a.user.userid}">${a.user.fullname}</a></td>
                             <td>${a.redetail.childrenname}</td>
                             <td class="show" style="text-align:center; display: none;">${a.redetail.age}</td>
                             <td class="show" style="display: none;">${a.service.servicename}</td>
                             <td>${a.totalcost}</td>
-                            <td>${a.status}</td>
-                       
+                            <c:if test="${a.status==-1}">
+                                <td>Not Approved</td>
+                            </c:if>
+                            <c:if test="${a.status==0}">
+                                <td>Pending</td>
+                            </c:if>
+                            <c:if test="${a.status==1}">
+                                <td>Approved</td>
+                            </c:if>
+
+
 
                         </tr>
                     </c:forEach>

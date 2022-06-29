@@ -39,7 +39,7 @@ public class filterreservation extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet filterreservation</title>");            
+            out.println("<title>Servlet filterreservation</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet filterreservation at " + request.getContextPath() + "</h1>");
@@ -62,26 +62,31 @@ public class filterreservation extends HttpServlet {
             throws ServletException, IOException {
         try {
             reservatonsDAO d = new reservatonsDAO();
-            
-            String datefrom =request.getParameter("datefrom");
+
+            String datefrom = request.getParameter("datefrom");
             String dateto = request.getParameter("dateto");
-            String status = request.getParameter("status");
+            String statusR = request.getParameter("status");
             String staff = request.getParameter("staff");
-            
+
             Date from = (datefrom == null || datefrom.equals(""))
                     ? null : Date.valueOf(datefrom);
             Date to = (dateto == null || dateto.equals(""))
                     ? null : Date.valueOf(dateto);
             Integer id = (staff == null || staff.equals(""))
                     ? null : Integer.parseInt(staff);
-        
-            List l = new ArrayList(); 
-            for (int i = 0; i < d.Alluser().size(); i++)
-                if(d.Alluser().get(i).getRoleid()==2) l.add(d.Alluser().get(i));
-            
+            Integer status = (statusR == null || statusR.equals(""))
+                    ? null : Integer.parseInt(statusR);
+
+            List l = new ArrayList();
+            for (int i = 0; i < d.Alluser().size(); i++) {
+                if (d.Alluser().get(i).getRoleid() == 2) {
+                    l.add(d.Alluser().get(i));
+                }
+            }
+
             request.setAttribute("all", d.filter(id, status, from, to));
-            request.setAttribute("staff", l);  
-            
+            request.setAttribute("staff", l);
+
             request.getRequestDispatcher("staff/reservation.jsp").forward(request, response);
         } catch (Exception ex) {
             System.out.println(ex);
