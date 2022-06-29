@@ -46,6 +46,6 @@ public class ReservationDAO {
         
         Reservation r = dao.getDetail(4);
         
-        System.out.println(r);
+        System.out.println(r.getReservation_ID());
     }
 }

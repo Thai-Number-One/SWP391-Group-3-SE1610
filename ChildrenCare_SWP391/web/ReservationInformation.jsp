@@ -1,6 +1,6 @@
 <%-- 
-    Document   : MyReservation
-    Created on : Jun 28, 2022, 8:50:21 PM
+    Document   : ReservationInformation
+    Created on : Jun 28, 2022, 10:23:10 PM
     Author     : s
 --%>
 
@@ -13,7 +13,7 @@
         <meta content="" name="keywords">
         <meta content="" name="description">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <title>MY RESERVATIONS</title>
+        <title>RESERVATIONS INFORMATION</title>
         <link href="img/favicon.ico" rel="icon">
 
         <!-- Google Web Fonts -->
@@ -103,23 +103,23 @@
 
 
         </style>
-    </head>
     <body>
         <!-- Navbar Start -->
         <jsp:include page="/Template/HeadMenuPublic.jsp"/>
         <div class="container-xxl py-5 page-header position-relative mb-5">
             <div class="container py-5">
-                <h1 class="display-2 text-white animated slideInDown mb-4">My Reservations</h1>
+                <h1 class="display-2 text-white animated slideInDown mb-4">Reservations Information</h1>
                 <nav aria-label="breadcrumb animated slideInDown">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="HomeP.jsp">Home</a></li>
-                        <li class="breadcrumb-item">Reservations</li>
+                        <li class="breadcrumb-item"><a href="LoadMyReservation?Uid=">My Reservations</a></li>
+                        <li class="breadcrumb-item">Reservations Information</li>
                     </ol>
                 </nav>
             </div>
         </div>
         <!-- Navbar End -->
-
+        
         <div >
              
 
@@ -140,11 +140,11 @@
                         <tr>                 
 
                             
-                            <td ><a style="text-decoration: none; color: black" href="reservationdetails?id=${a.reservationid}">${a.reservationid}</a></td>
+                            <td ><a style="text-decoration: none; color: black" href="reservationdetails?id=${a.reservation_ID}">${a.reservation_ID}</a></td>
                  
-                            <td>${a.ordertime}</td>
-                            <td>${a.service.servicename}</td>
-                            <td>${a.totalcost}</td>
+                            <td>${a.date}</td>
+                            <td>Kham Benh</td>
+                            <td>${a.totalCost}</td>
                             <td>${a.status}</td>
                        
 
@@ -155,9 +155,8 @@
 
 
         </div>
-
-
-        <!-- Footer Start -->
+        
+         <!-- Footer Start -->
         <jsp:include page="/Template/FooterPublic.jsp"/>
         <!-- Footer End -->
 

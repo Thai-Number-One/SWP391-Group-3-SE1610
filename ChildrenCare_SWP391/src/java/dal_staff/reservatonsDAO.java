@@ -560,9 +560,7 @@ public class reservatonsDAO extends BaseDAO {
             for (int i = 0; i < list.size(); i++) {
                 System.out.println(list.get(i).getOrdertime());
             }
-             for (int i = 0; i < list2.size(); i++) {
-                System.out.println(list2.get(i).getFullname());
-            }
+   
 
         } catch (Exception ex) {
             Logger.getLogger(reservatonsDAO.class.getName()).log(Level.SEVERE, null, ex);

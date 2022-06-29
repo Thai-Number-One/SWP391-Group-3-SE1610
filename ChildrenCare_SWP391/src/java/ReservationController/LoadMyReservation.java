@@ -7,6 +7,7 @@ package ReservationController;
 
 import DAO.ReservationDAO;
 import Entity.Reservation;
+import dal_staff.reservatonsDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model_staff.reservations_user;
 
 /**
  *
@@ -37,21 +39,22 @@ public class LoadMyReservation extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try {
-            
-            String id = request.getParameter("Uid");
-            
+
+            String id = "5";
+
             int idd = Integer.parseInt(id);
-            
-            ReservationDAO dao = new ReservationDAO();
-        
-            Reservation r = dao.getDetail(idd);
-            
-              
-            
-            request.setAttribute("detailreser", r);
-            
+
+            reservatonsDAO r = new reservatonsDAO();
+            List<reservations_user> l = new ArrayList<>();
+            for (int i = 0; i < r.reservations_user().size(); i++) {
+                if(r.reservations_user().get(i).getRedetail().getUserid() == idd){
+                    l.add(r.reservations_user().get(i));
+                }
+            }
+            request.setAttribute("detailreser", l);
+
             request.getRequestDispatcher("MyReservation.jsp").forward(request, response);
-            
+
         } catch (Exception e) {
         }
     }
