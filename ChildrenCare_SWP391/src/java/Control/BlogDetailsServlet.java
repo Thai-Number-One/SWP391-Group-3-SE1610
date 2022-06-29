@@ -62,7 +62,7 @@ public class BlogDetailsServlet extends HttpServlet {
                     }
                 }
                 for (int i = 0; i < FDao.allfeedbacks().size(); i++) {
-                    if (FDao.allfeedbacks().get(i).getService().getServiceid() == index && FDao.allfeedbacks().get(i).getFeedbacks().getStatus().equals("view")) {
+                    if (FDao.allfeedbacks().get(i).getService().getServiceid() == index && FDao.allfeedbacks().get(i).getFeedbacks().getStatus() == 1) {
                         lst3.add(FDao.allfeedbacks().get(i));
                     }
                 }

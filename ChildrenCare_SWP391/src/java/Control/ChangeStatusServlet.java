@@ -62,13 +62,13 @@ public class ChangeStatusServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         FeedbacksDAO Fdao = new FeedbacksDAO();
-        String status = request.getParameter("status");
+        int status = Integer.parseInt(request.getParameter("status"));
         int feedback_ID = Integer.parseInt(request.getParameter("feedback_id"));
         try {
-            if (status.equals("hide")) {
-                Fdao.updateStatusFeedback(feedback_ID, "view");
+            if (status == 0) {
+                Fdao.updateStatusFeedback(feedback_ID, 1);
             } else {
-                Fdao.updateStatusFeedback(feedback_ID, "hide");
+                Fdao.updateStatusFeedback(feedback_ID, 0);
             }
         } catch (Exception ex) {
             Logger.getLogger(FeedbackDetailsServlet.class.getName()).log(Level.SEVERE, null, ex);
