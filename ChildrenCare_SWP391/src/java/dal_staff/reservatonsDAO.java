@@ -242,7 +242,8 @@ public class reservatonsDAO extends BaseDAO {
         }
         return list;
     }
-     public reservations FULLreservations() throws Exception {
+
+    public reservations FULLreservations() throws Exception {
         reservations s = new reservations();
         String sql = "select Reservation_ID,Date,Status,Begin_Time,Total_cost\n"
                 + "from Reservation";
@@ -251,13 +252,13 @@ public class reservatonsDAO extends BaseDAO {
             PreparedStatement st = conn.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
-               
+
                 s.setReservationID(rs.getInt("Reservation_ID"));
                 s.setDate(rs.getDate("Date"));
                 s.setStatus(rs.getInt("Status"));
                 s.setBeginTime(rs.getDate("Begin_Time"));
                 s.setTotalcost(rs.getFloat("Total_cost"));
-                
+
             }
         } catch (SQLException e) {
             System.out.println(e);
@@ -348,7 +349,7 @@ public class reservatonsDAO extends BaseDAO {
 
     public List<reservations_user> reservations_user() throws Exception {
         List<reservations_user> list = new ArrayList<>();
-        String sql = "select *\n"
+        String sql = "select a.Prescription_ID,a.Reservation_ID,a.Service_ID,a.User_ID,a.Staff_ID,a.Name_Sale,a.Children_Name,a.Age,b.User_ID,b.FullName,b.Address,b.Phone,b.Email,b.Date,b.Date_New,b.User_Name,b.Password,b.Avatar,b.Address,b.Gender,b.Role_ID,b.Status,c.Reservation_ID,c.Date,c.Status as status_re,c.Begin_Time,c.Total_cost,d.Service_ID,d.Service_Name,d.Detail,d.Type,d.Image,d.Title,d.Price,d.Discount,d.Rate,d.Status as status_se \n"
                 + "                from Reservation_detail as a inner join  [User] as b on a.User_ID = b.User_ID\n"
                 + "                			inner join Reservation as c on a.Reservation_ID=c.Reservation_ID\n"
                 + "                				inner join Service as d on a.Service_ID=d.Service_ID\n"
@@ -385,7 +386,13 @@ public class reservatonsDAO extends BaseDAO {
                 u.setRoleid(rs.getInt("Role_ID"));
                 u.setStatus(rs.getInt("Status"));
                 //////////////////////////////////////////////////////////////      
-                reservations r = FULLreservations();
+                reservations r = new reservations();
+                r.setReservationID(rs.getInt("Reservation_ID"));
+                r.setDate(rs.getDate("Date"));
+                r.setStatus(rs.getInt("status_re"));
+                r.setBeginTime(rs.getDate("Begin_Time"));
+                r.setTotalcost(rs.getFloat("Total_cost"));
+
                 //////////////////////////////////////////////////////////////         
                 service se = new service();
                 se.setServiceid(rs.getInt("Service_ID"));
@@ -397,7 +404,7 @@ public class reservatonsDAO extends BaseDAO {
                 se.setPrice(rs.getFloat("Price"));
                 se.setDiscount(rs.getInt("Discount"));
                 se.setRate(rs.getFloat("Rate"));
-                se.setStatus(rs.getInt("Status"));
+                se.setStatus(rs.getInt("status_se"));
                 /////////////////////////////////////////////////////////////                        
 
                 s.setReservations(r);
@@ -416,7 +423,7 @@ public class reservatonsDAO extends BaseDAO {
             Integer status,
             Date from, Date to) throws Exception {
         List<reservations_user> list = new ArrayList<>();
-        String sql = "select *\n"
+        String sql = "select a.Prescription_ID,a.Reservation_ID,a.Service_ID,a.User_ID,a.Staff_ID,a.Name_Sale,a.Children_Name,a.Age,b.User_ID,b.FullName,b.Address,b.Phone,b.Email,b.Date,b.Date_New,b.User_Name,b.Password,b.Avatar,b.Address,b.Gender,b.Role_ID,b.Status,c.Reservation_ID,c.Date,c.Status as status_re,c.Begin_Time,c.Total_cost,d.Service_ID,d.Service_Name,d.Detail,d.Type,d.Image,d.Title,d.Price,d.Discount,d.Rate,d.Status as status_se \n"
                 + "                from Reservation_detail as a inner join  [User] as b on a.User_ID = b.User_ID\n"
                 + "                			inner join Reservation as c on a.Reservation_ID=c.Reservation_ID\n"
                 + "                				inner join Service as d on a.Service_ID=d.Service_ID\n"
@@ -470,7 +477,7 @@ public class reservatonsDAO extends BaseDAO {
                 reservations r = new reservations();
                 r.setReservationID(rs.getInt("Reservation_ID"));
                 r.setDate(rs.getDate("Date"));
-                r.setStatus(rs.getInt("Status"));
+                r.setStatus(rs.getInt("status_re"));
                 r.setBeginTime(rs.getDate("Begin_Time"));
                 r.setTotalcost(rs.getFloat("Total_cost"));
                 //////////////////////////////////////////////////////////////         
@@ -484,7 +491,7 @@ public class reservatonsDAO extends BaseDAO {
                 se.setPrice(rs.getFloat("Price"));
                 se.setDiscount(rs.getInt("Discount"));
                 se.setRate(rs.getFloat("Rate"));
-                se.setStatus(rs.getInt("Status"));
+                se.setStatus(rs.getInt("status_se"));
                 /////////////////////////////////////////////////////////////        
                 s.setReservations(r);
                 s.setUser(u);
@@ -502,7 +509,7 @@ public class reservatonsDAO extends BaseDAO {
             String name
     ) throws Exception {
         List<reservations_user> list = new ArrayList<>();
-        String sql = "select *\n"
+        String sql = "select a.Prescription_ID,a.Reservation_ID,a.Service_ID,a.User_ID,a.Staff_ID,a.Name_Sale,a.Children_Name,a.Age,b.User_ID,b.FullName,b.Address,b.Phone,b.Email,b.Date,b.Date_New,b.User_Name,b.Password,b.Avatar,b.Address,b.Gender,b.Role_ID,b.Status,c.Reservation_ID,c.Date,c.Status as status_re,c.Begin_Time,c.Total_cost,d.Service_ID,d.Service_Name,d.Detail,d.Type,d.Image,d.Title,d.Price,d.Discount,d.Rate,d.Status as status_se \n"
                 + "                from Reservation_detail as a inner join  [User] as b on a.User_ID = b.User_ID\n"
                 + "                			inner join Reservation as c on a.Reservation_ID=c.Reservation_ID\n"
                 + "                				inner join Service as d on a.Service_ID=d.Service_ID\n"
@@ -549,7 +556,7 @@ public class reservatonsDAO extends BaseDAO {
                 reservations r = new reservations();
                 r.setReservationID(rs.getInt("Reservation_ID"));
                 r.setDate(rs.getDate("Date"));
-                r.setStatus(rs.getInt("Status"));
+                r.setStatus(rs.getInt("status_re"));
                 r.setBeginTime(rs.getDate("Begin_Time"));
                 r.setTotalcost(rs.getFloat("Total_cost"));
                 //////////////////////////////////////////////////////////////         
@@ -563,7 +570,7 @@ public class reservatonsDAO extends BaseDAO {
                 se.setPrice(rs.getFloat("Price"));
                 se.setDiscount(rs.getInt("Discount"));
                 se.setRate(rs.getFloat("Rate"));
-                se.setStatus(rs.getInt("Status"));
+                se.setStatus(rs.getInt("status_se"));
                 /////////////////////////////////////////////////////////////        
                 s.setReservations(r);
                 s.setUser(u);

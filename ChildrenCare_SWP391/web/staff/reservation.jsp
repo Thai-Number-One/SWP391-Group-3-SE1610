@@ -191,20 +191,20 @@
 
                             <td class="show" style="text-align:center; display: none;"><a style="text-decoration: none; color: black" href="reservationdetails?id=${a.user.userid}">${a.reservations.reservationID}</a></td>
 
-                            <td>${a.ordertime}</td>
+                            <td>${a.reservations.beginTime}</td>
                             <td><a style="text-decoration: none; color: black" href="reservationdetails?id=${a.user.userid}">${a.user.fullname}</a></td>
                             <td>${a.redetail.childrenname}</td>
                             <td class="show" style="text-align:center; display: none;">${a.redetail.age}</td>
                             <td class="show" style="display: none;">${a.service.servicename}</td>
                             <td>${a.reservations.totalcost}</td>
                             <c:if test="${a.reservations.status==-1}">
-                                <td>Not Approved</td>
+                                <td>Not Approved ${a.reservations.status}</td>
                             </c:if>
                             <c:if test="${a.reservations.status==0}">
-                                <td>Pending</td>
+                                <td>Pending ${a.reservations.status}</td>
                             </c:if>
                             <c:if test="${a.reservations.status==1}">
-                                <td>Approved</td>
+                                <td>Approved ${a.reservations.status}</td>
                             </c:if>
 
 
