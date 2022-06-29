@@ -10,6 +10,8 @@ import Entity.Reservation;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -20,7 +22,8 @@ public class ReservationDAO {
     PreparedStatement ps = null;
     ResultSet rs = null;
     
-    public Reservation getDetail(int id){
+    public List<Reservation> getDetail(int id){
+        List<Reservation> list = new ArrayList<>();
         try {
             String sql = "select R.Reservation_ID, R.[Date], R.Status, R.Begin_Time, R.Total_cost, Rd.Service_ID  from [User] u\n" +
 " join Reservation_detail Rd on u.User_ID = Rd.User_ID\n" +
@@ -32,20 +35,22 @@ public class ReservationDAO {
             rs = ps.executeQuery();
             while(rs.next()){
                 Reservation p = new Reservation (rs.getInt(1),rs.getDate(2),rs.getInt(3),rs.getDate(4),rs.getFloat(5));
-                        return p;
+                        list.add(p);
             }
 
         } catch (Exception e) {
         }
         
-        return null;
+        return list;
     } 
 
     public static void main(String[] args) {
         ReservationDAO dao = new ReservationDAO();
         
-        Reservation r = dao.getDetail(4);
+        List<Reservation> l = dao.getDetail(4);
         
-        System.out.println(r.getReservation_ID());
+        for (Reservation re : l) {
+            System.out.println(re);
+        }
     }
 }

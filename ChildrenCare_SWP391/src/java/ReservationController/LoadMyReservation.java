@@ -40,7 +40,7 @@ public class LoadMyReservation extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try {
 
-            String id = "5";
+            String id = request.getParameter("Uid");
 
             int idd = Integer.parseInt(id);
 
@@ -51,7 +51,7 @@ public class LoadMyReservation extends HttpServlet {
                     l.add(r.reservations_user().get(i));
                 }
             }
-            request.setAttribute("detailreser", l);
+            request.setAttribute("detailreser", r.reservations_user());
 
             request.getRequestDispatcher("MyReservation.jsp").forward(request, response);
 
