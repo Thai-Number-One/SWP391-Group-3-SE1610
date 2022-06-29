@@ -40,7 +40,7 @@ public class LoadMyReservation extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try {
 
-            String id = "5";
+            String id = request.getParameter("Uid");
 
             int idd = Integer.parseInt(id);
 

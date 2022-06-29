@@ -3,7 +3,8 @@
     Created on : Jun 28, 2022, 8:50:21 PM
     Author     : s
 --%>
-
+<%@page import="model_staff.reservations_user"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -145,6 +146,7 @@
                  
                             <td>${a.ordertime}</td>
                             <td>${a.service.servicename}</td>
+                            <td>${a.date}</td>
                             <td>${a.totalcost}</td>
                             <td>${a.status}</td>
                        
