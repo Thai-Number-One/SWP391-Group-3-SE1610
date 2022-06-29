@@ -34,6 +34,7 @@ values('10/24/2021',0,'1/5/2022',8495.615)
 insert into Reservation( Date,Status,Begin_Time,Total_cost)
 values('5/28/2021',0,'2/24/2022',8495.615)
 
+
 insert into Service(Service_ID,Service_Name,Detail,Type,Image,Title,Price,Discount,Rate,Status)
 values(1,'kham tong quat','kiem tra suc khoe, tim mach,v.v','S','image','suc khoe',200,20,4.5,1)
 insert into Service(Service_ID,Service_Name,Detail,Type,Image,Title,Price,Discount,Rate,Status)
@@ -43,13 +44,13 @@ values(3,'tap luyen suc khoe','huan luyen vien day be cac bai tap nang cao suc k
 
 
 insert into Reservation_detail(Prescription_ID,Reservation_ID,Service_ID,User_ID,Staff_ID,Name_Sale,Children_Name,Age)
-values(1,1,1,4,1,'sale 10%','con a',12)
+values(1,1,1,6,4,'sale 10%','con a',12)
 insert into Reservation_detail(Prescription_ID,Reservation_ID,Service_ID,User_ID,Staff_ID,Name_Sale,Children_Name,Age)
-values(2,2,2,6,2,'sale 10%','con a',12)
+values(2,2,2,6,4,'sale 10%','con b',11)
 insert into Reservation_detail(Prescription_ID,Reservation_ID,Service_ID,User_ID,Staff_ID,Name_Sale,Children_Name,Age)
-values(3,3,3,7,2,'sale 10%','con a',12)
+values(3,3,1,7,5,'sale 10%','con c',15)
 insert into Reservation_detail(Prescription_ID,Reservation_ID,Service_ID,User_ID,Staff_ID,Name_Sale,Children_Name,Age)
-values(4,4,1,5,3,'sale 10%','con a',12)
+values(4,4,3,7,5,'sale 10%','con d',17)
 
 
 insert Medicine(Medicine_ID,Medicine_name,Price,country,Expiry_date,Detail,Image)
@@ -60,33 +61,33 @@ insert Medicine(Medicine_ID,Medicine_name,Price,country,Expiry_date,Detail,Image
 values(3,'thuoc chong viem',99,'and','9/12/2025','khang viem cho tre','image')
 
 insert Prescription(Prescription_ID,User_ID,Medicine_ID,Amount,Note)
-values(1,4,1,2,'NO');
+values(1,6,1,2,'NO');
 insert Prescription(Prescription_ID,User_ID,Medicine_ID,Amount,Note)
-values(2,6,3,1,'NO');
+values(2,6,2,1,'NO');
 insert Prescription(Prescription_ID,User_ID,Medicine_ID,Amount,Note)
 values(3,7,1,3,'NO');
 insert Prescription(Prescription_ID,User_ID,Medicine_ID,Amount,Note)
-values(4,5,1,3,'NO');
+values(4,7,3,3,'NO');
 
 insert Feedback(User_ID,Detail,Feedback_status,Star,Date_Feedback,Reservation_ID)
-values(4,'good',1,4,'9/12/2021',1)
+values(6,'good',1,4,'9/12/2021',1)
 insert Feedback(User_ID,Detail,Feedback_status,Star,Date_Feedback,Reservation_ID)
-values(5,'bad',0,3,'9/12/2021',2)
+values(7,'bad',0,3,'9/12/2021',3)
 insert Feedback(User_ID,Detail,Feedback_status,Star,Date_Feedback,Reservation_ID)
-values(6,'very good',1,2,'9/12/2021',3)
+values(6,'very good',1,2,'9/12/2021',2)
 insert Feedback(User_ID,Detail,Feedback_status,Star,Date_Feedback,Reservation_ID)
 values(7,'good look',1,1,'9/12/2021',4)
 insert Feedback(User_ID,Detail,Feedback_status,Star,Date_Feedback,Reservation_ID)
-values(4,'very bad',1,2,'9/12/2021',2)
+values(6,'very bad',1,2,'9/12/2021',2)
 insert Feedback(User_ID,Detail,Feedback_status,Star,Date_Feedback,Reservation_ID)
-values(5,'well',0,5,'9/12/2021',2)
+values(7,'well',0,5,'9/12/2021',3)
 
 insert Post(Title,Content,User_ID,Image,Service_ID,Date,Status,Category)
-values('cham soc suc khoe','Humans Homo sapiens are the most abundant and widespread species of primate, characterized by bipedalism and large, complex brains. aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',8,'anh-avatar-dep-cho-con-gai.jpg',1,'9/12/2021',1,'suc khoe')
+values('cham soc suc khoe','Humans Homo sapiens are the most abundant and widespread species of primate, characterized by bipedalism and large, complex brains. aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',2,'anh-avatar-dep-cho-con-gai.jpg',1,'9/12/2021',1,'suc khoe')
 
 insert Post(Title,Content,User_ID,Image,Service_ID,Date,Status,Category)
-values('cham soc tam ly tre','tu van cham soc suc khoe',8,'anh-avatar-dep-cho-con-gai.jpg',2,'9/12/2021',1,'tam ly')
+values('cham soc tam ly tre','tu van cham soc suc khoe',2,'anh-avatar-dep-cho-con-gai.jpg',2,'9/12/2021',1,'tam ly')
 insert Post(Title,Content,User_ID,Image,Service_ID,Date,Status,Category)
-values('cham soc co the tre','tu van cham soc suc khoe',8,'anh-avatar-dep-cho-con-gai.jpg',3,'9/12/2021',1,'suc khoe')
+values('cham soc co the tre','tu van cham soc suc khoe',3,'anh-avatar-dep-cho-con-gai.jpg',3,'9/12/2021',1,'suc khoe')
 insert Post(Title,Content,User_ID,Image,Service_ID,Date,Status,Category)
-values('huong dan tu kiem tra suc khoe tai nha','tu van cham soc suc khoe',8,'anh-avatar-dep-cho-con-gai.jpg',1,'9/12/2021',1,'huong dan')
+values('huong dan tu kiem tra suc khoe tai nha','tu van cham soc suc khoe',3,'anh-avatar-dep-cho-con-gai.jpg',1,'9/12/2021',1,'huong dan')
