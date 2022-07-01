@@ -20,6 +20,8 @@
         <% UserDAO dao = new UserDAO();%>
         <%List<User> lst = (List<User>) dao.GetStaffActive();%>
         <jsp:include page="Template/HeadMenuPublic.jsp"/>
+        <h1 style="padding: 10px">Reservation Contact</h1>
+            <hr/>
         <form method="Post" action="reservationcontact">
             <table class="table">
                 <th scope="col" style="color: orange">Service Name</th>
@@ -30,7 +32,7 @@
                 <th scope="col" style="color: orange"></th>
                 <th scope="col" style="color: orange">Time</th>
                 <th scope="col" style="color: orange">Doctor</th>
-                <th scope="col">Total</th>
+                <th scope="col" style="color: orange">Price</th>
                 <th scope="col"></th>
                     <c:forEach items="${rd}" var="o">
                     <tr>
@@ -54,6 +56,13 @@
                         <td scope="row">${o.price}</td>
                         <td></td>
                     </c:forEach>
+            </table>
+             <table class="table">
+                <td scope="row"></td>
+                <td scope="row"></td>
+                <td scope="row"></td>
+                <td scope="row"></td>
+                <td scope="row"><span>Total: </span></td>
             </table>
             <a href="ReservationDetails.jsp" class="btn btn-secondary">Change</a>
             <input type="submit" value="Submit" class="btn btn-secondary">

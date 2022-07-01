@@ -49,8 +49,8 @@ public class SendMailConfirm {
             e.printStackTrace();
         }
     }
-     public static void main(String[] args) {
-       String subject = "[Reservation Succssfully]";
+    public void SendMailConfirm(String email) {
+       String subject = "[Reservation Successfully]";
        String message = "<!DOCTYPE html>\n"
                 + "<html lang=\"en\">\n "
                 + "\n"
@@ -68,6 +68,7 @@ public class SendMailConfirm {
                 + "</body>\n"
                 + "\n"
                 + "</html>";
-        SendMailConfirm.send("", subject, message, "", "");
+        SendMailConfirm.send(email, subject, message, "", "");
     }
 }
+

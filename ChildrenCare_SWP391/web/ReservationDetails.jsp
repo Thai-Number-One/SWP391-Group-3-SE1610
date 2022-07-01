@@ -15,6 +15,8 @@
     </head>
     <body>
         <jsp:include page="Template/HeadMenuPublic.jsp"/>
+            <h1 style="padding: 10px">Reservation Details</h1>
+            <hr/>
             <table class="table">
                 <th scope="col" style="color: orange">Service Name</th>
                 <th scope="col" style="color: orange">Quantity</th>
@@ -28,16 +30,20 @@
                         <td>${r.quantity}</td>
                         <td>${r.price}</td>
                         <td>${r.discount}</td>
-                        <td><a href="revervationremove?id=${r.id}">X</a></td>
+                        <td><a href="revervationremove?id=${r.id}"><i class="far fa-trash-alt me-2"></i></a></td>
                     </c:forEach>
             </table>
             <table class="table">
-                <th scope="col"></th>
-                <td scope="row"><span class="button">Total: </span></td>
+                <td scope="row"></td>
+                <td scope="row"></td>
+                <td scope="row"></td>
+                <td scope="row"></td>
+                <td scope="row"><span>Total: </span></td>
             </table>
-            <button><a href="listService.jsp">Choose More Service</a></button>
-            <button><a href="ReservationContact.jsp" class="button">Check out</a></button>
-        
+        <div class="col-md-5 mt-4">
+            <a href="listService.jsp" class="btn btn-secondary">Choose More Service</a>
+            <a href="ReservationContact.jsp" class="btn btn-secondary">Check out</a>
+        </div>
         <jsp:include page="Template/FooterPublic.jsp"/>
     </body>
 </html>
