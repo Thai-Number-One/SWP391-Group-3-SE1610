@@ -22,16 +22,15 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav mx-auto">
                     <a href="HomeP.jsp" class="nav-item nav-link">Home</a>
-                    <a href="HomeP.jsp" class="nav-item nav-link">About Us</a>
+                    <a href="#" class="nav-item nav-link">Service</a>
                     <a href="blogs" class="nav-item nav-link">Blogs</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                         <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0">
-                            <a href="#" class="dropdown-item">School Facilities</a>
-                            <a href="#" class="dropdown-item">Popular Teachers</a>
+                          
                             <a href="dashboard" class="dropdown-item">Dashboard</a>
                             <a href="#" class="dropdown-item">Manager</a>
-                            <a href="#" class="dropdown-item">404 Error</a>
+                            
                         </div>
                     </div>
                     <div class="nav-item dropdown">
@@ -48,7 +47,7 @@
                             <a href="feedbackslist" class="dropdown-item">Feedbacks</a>
                         </div>
                     </div>
-                    <a href="contact.html" class="nav-item nav-link">Contact Us</a>
+                     <a href="contact.jsp" class="nav-item nav-link">Contact</a>
                 </div>
                 <h4><a href="ReservationDetails.jsp" style="padding-right: 15px;"><i class="bi bi-cart"></i></a></h4>
                 

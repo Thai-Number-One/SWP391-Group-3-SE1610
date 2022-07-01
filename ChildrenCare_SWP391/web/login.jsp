@@ -35,6 +35,12 @@
                                             <input class="form-control" name="password" type="password" placeholder="Password" required=""/>
                                             <label for="inputPassword">Password</label>
                                         </div>
+                                        <div class="form-floating mb-3">
+                                            <div class="form-check">
+                                                <input ${(cookie.rem.value eq 'ON')?"checked":""} class="form-check-input align-middle" type="checkbox" name="remember" id="remember-check">
+                                                <label class="form-check-label" for="remember-check">Lưu tài khoản</label>
+                                            </div>
+                                        </div>
                                         <p class="text-danger">${mess}</p>
                                         <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
                                             <a class="small" href="TakeEmailj.jsp">Forgot Password?</a>
