@@ -74,6 +74,7 @@ public class ReservationCustomer {
     public void setDiscount(int discount) {
         this.discount = discount;
     }
-
-   
+    public float getTotal(){
+    return price - (price*discount);
+    }
 }

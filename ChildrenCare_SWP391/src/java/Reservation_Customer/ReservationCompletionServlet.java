@@ -7,7 +7,6 @@ package Reservation_Customer;
 
 import Entity.User;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -38,9 +37,9 @@ public class ReservationCompletionServlet extends HttpServlet {
        HttpSession session = request.getSession();
        Object obj = session.getAttribute("loginsuccess");
        User u = (User) obj;
-       SendMailConfirm sm = new SendMailConfirm();
-       sm.SendMailConfirm(u.getEmail());
-        
+       SendMailConfirm.SendMailConfirm(u.getEmail(),u.getFullName());
+       response.sendRedirect("ReservationCompletion.jsp");
+      
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

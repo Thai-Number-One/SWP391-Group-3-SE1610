@@ -38,7 +38,12 @@
                 <td scope="row"></td>
                 <td scope="row"></td>
                 <td scope="row"></td>
-                <td scope="row"><span>Total: </span></td>
+                <c:if test="${total != null}">
+                <td scope="row"><span>Total: ${total}</span></td>
+                </c:if>
+                <c:if test="${total == null}">
+                <td scope="row"><span>Total: 0</span></td>
+                </c:if>
             </table>
         <div class="col-md-5 mt-4">
             <a href="listserviceservlet" class="btn btn-secondary">Choose More Service</a>

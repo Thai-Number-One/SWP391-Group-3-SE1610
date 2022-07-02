@@ -5,13 +5,18 @@
  */
 package Reservation_Customer;
 
+import Entity.User;
+import dal_staff.reservatonsDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import model_staff.reservationdetail;
 
 /**
  *
@@ -34,15 +39,22 @@ public class SubmitReservationServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet SubmitReservationServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet SubmitReservationServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            HttpSession session = request.getSession();
+            List<reservationdetail> lst = ( List<reservationdetail>) session.getAttribute("reservationdetail");
+            User u = ( User) session.getAttribute("loginsuccess");
+            reservatonsDAO dao = new reservatonsDAO();
+            if(u == null){
+                response.sendRedirect("login.jsp");
+            }else{
+                for (int i = 0; i < lst.size(); i++) {
+                    dao.changeStatusReservation(lst.get(i).getReservationid());
+                }
+            }
+            session.removeAttribute("reservationdetail");
+            session.removeAttribute("completion");
+            session.removeAttribute("rd");
+            session.removeAttribute("total");
+            response.sendRedirect("Reservation_Success.jsp");
         }
     }
 
