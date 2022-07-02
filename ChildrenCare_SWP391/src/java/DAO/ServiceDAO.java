@@ -6,6 +6,7 @@
 package DAO;
 
 import Context.BaseDAO;
+import Entity.Bloglist;
 import model.Service;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -49,8 +50,43 @@ public class ServiceDAO {
         }
         return list;
     }
+    public List<Service> filterServices(String name) {
+        List<Service> list = new ArrayList<>();
+        String query = "select * FROM [TestProject4].[dbo].[Service]\n" 
+                + " where 1=1 ";
+        if (name != null||!name.equals("")) {
+            query += " AND Service_Name like '%" + name +"%'";
+        }
+        try {
+            conn = new BaseDAO().BaseDao();//mo ket noi voi sql
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new Service(
+                        rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getString(6),
+                        rs.getFloat(7),
+                        rs.getInt(8),
+                        rs.getFloat(9),
+                        rs.getInt(10)
+                ));
 
-    
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
+    public List<Service> Servicepage(List<Service> list, int begin, int end){  
+        List<Service> l = new ArrayList();
+        for (int i = begin; i < end; i++) 
+            l.add(list.get(i));
+        return l;
+    }
 
     public void insertService(int Service_ID,
             String Service_Name, String Detail, String Type,

@@ -179,7 +179,7 @@
             <nav aria-label="Page navigation example">
                 <ul class="pagination justify-content-center">
                     <li class="page-item ">
-                        <a class="page-link" href="blogs?page=${1}"><<</a>
+                        <a class="page-link" href="blogs?page=${1}"><i class="bi bi-chevron-double-left"></i></a>
                     </li>
                     <c:if test="${page ==1}">
                         <li class="page-item disabled">
@@ -213,7 +213,7 @@
                         </li>
                     </c:if>
                     <li class="page-item ">
-                        <a class="page-link" href="blogs?page=${max}"></a>
+                        <a class="page-link" href="blogs?page=${max}"><i class="bi bi-chevron-double-right"></i></a>
                     </li>
                 </ul>
             </nav>
@@ -222,11 +222,19 @@
 
         <!-- filter page start -->
         <c:if test="${requestScope.checkpage==1}">
+            <c:set var="max" value="${0}"/>
             <nav aria-label="Page navigation example">
                 <ul class="pagination justify-content-center">
-                    <li class="page-item ">
-                        <a class="page-link" href="blogssearch?page=${1}&name=${requestScope.name}"><<</a>
-                    </li>
+                    <c:if test="${max !=0}">
+                        <li class="page-item ">
+                            <a class="page-link" href="blogssearch?page=${1}&name=${requestScope.name}"><i class="bi bi-chevron-double-left"></i></a>
+                        </li>
+                    </c:if>
+                    <c:if test="${max ==0}">
+                        <li class="page-item disabled">
+                            <a class="page-link " href="blogssearch?page=${1}&name=${requestScope.name}"><i class="bi bi-chevron-double-left"></i></a>
+                        </li>
+                    </c:if>
                     <c:if test="${page ==1}">
                         <li class="page-item disabled">
                             <a class="page-link" href="blogssearch?page=${page-1}&name=${requestScope.name}">Previous</a>
@@ -239,7 +247,7 @@
                     </c:if>
                     <!-- /////////////////////////////////////////////////////////////////-->
                     <c:set var="page" value="${requestScope.page}"/>
-                    <c:set var="max" value="${0}"/>
+                    
                     <c:forEach begin="${1}" end="${requestScope.num}" var="i">                
                         <c:if test="${i==page-2||i==page-1||i==page+2||i==page+1||i==page}">
                             <li class=" ${i==page?"active":""} page-item"><a class="page-link" href="blogssearch?page=${i}&name=${requestScope.name}">${i}</a></li>
@@ -253,14 +261,26 @@
                             <a class="page-link" href="blogssearch?page=${page+1}&name=${requestScope.name}">Next</a>
                         </li>
                     </c:if>
-                    <c:if test="${page !=max}">
+                    <c:if test="${max ==0}">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="blogssearch?page=${page+1}&name=${requestScope.name}">Next</a>
+                        </li>
+                    </c:if>
+                    <c:if test="${page !=max&&max !=0}">
                         <li class="page-item ">
                             <a class="page-link" href="blogssearch?page=${page+1}&name=${requestScope.name}">Next</a>
                         </li>
                     </c:if>
-                    <li class="page-item ">
-                        <a class="page-link" href="blogssearch?page=${max}&name=${requestScope.name}">>></a>
-                    </li>
+                    <c:if test="${max !=0}">
+                        <li class="page-item ">
+                            <a class="page-link" href="blogssearch?page=${max}&name=${requestScope.name}"><i class="bi bi-chevron-double-right"></i></a>
+                        </li>
+                    </c:if>
+                    <c:if test="${max ==0}">
+                        <li class="page-item disabled">
+                            <a class="page-link " href="blogssearch?page=${max}&name=${requestScope.name}"><i class="bi bi-chevron-double-right"></i></a>
+                        </li>
+                    </c:if>
                 </ul>
             </nav>
         </c:if>
@@ -270,18 +290,18 @@
         <jsp:include page="/Template/FooterPublic.jsp"/>
         <!-- Footer End -->
 
-        
 
 
-            <!-- JavaScript Libraries -->
-            <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-            <script src="lib/wow/wow.min.js"></script>
-            <script src="lib/easing/easing.min.js"></script>
-            <script src="lib/waypoints/waypoints.min.js"></script>
-            <script src="lib/owlcarousel/owl.carousel.min.js"></script>
 
-            <!-- Template Javascript -->
-            <script src="js/main.js"></script>                
+        <!-- JavaScript Libraries -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="lib/wow/wow.min.js"></script>
+        <script src="lib/easing/easing.min.js"></script>
+        <script src="lib/waypoints/waypoints.min.js"></script>
+        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+        <!-- Template Javascript -->
+        <script src="js/main.js"></script>                
     </body>
 </html>

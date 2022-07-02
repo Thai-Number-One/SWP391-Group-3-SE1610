@@ -86,6 +86,11 @@ values(16,'Women, Infants & Children (WIC) Program','Due to the COVID-19 outbrea
 WIC Staff will certify new participants and provide nutrition education for all participants via telephone. Food vouchers will then be mailed to participants. Please expect a phone call from your clinic’s WIC staff.
 The special supplemental nutrition program for Women, Infants, and Children (WIC) provides nutrition education counseling, breastfeeding support and counseling, health and dietary assessments, and supplemental food to eligible clients. The program serves pregnant, breastfeeding, and postpartum women, infants, and children under the age of 5 who are both income eligible and nutritionally at risk.','Mom','img/img_service/service3.jpg','Women, Infants & Children (WIC) Program',300,0,4.5,1)
 
+insert into Service(Service_ID,Service_Name,Detail,Type,Image,Title,Price,Discount,Rate,Status)
+values(17,'Women, Infants & Children (WIC) Program','Due to the COVID-19 outbreak, all counties within the Southeast Health District are providing WIC services via telephone for new and current WIC participants. 
+WIC Staff will certify new participants and provide nutrition education for all participants via telephone. Food vouchers will then be mailed to participants. Please expect a phone call from your clinic’s WIC staff.
+The special supplemental nutrition program for Women, Infants, and Children (WIC) provides nutrition education counseling, breastfeeding support and counseling, health and dietary assessments, and supplemental food to eligible clients. The program serves pregnant, breastfeeding, and postpartum women, infants, and children under the age of 5 who are both income eligible and nutritionally at risk.','Mom','img/img_service/service3.jpg','Women, Infants & Children (WIC) Program',300,25,1,1)
+
 
 
 

@@ -56,6 +56,10 @@
         <servlet-name>ListServiceServlet</servlet-name>
         <servlet-class>Control.ListServiceServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>FilterService</servlet-name>
+        <servlet-class>Control.FilterService</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>reservation</servlet-name>
         <url-pattern>/reservation</url-pattern>
@@ -111,6 +115,10 @@
     <servlet-mapping>
         <servlet-name>ListServiceServlet</servlet-name>
         <url-pattern>/listserviceservlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FilterService</servlet-name>
+        <url-pattern>/filterservice</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

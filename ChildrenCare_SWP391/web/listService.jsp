@@ -39,7 +39,7 @@
         <style>
             .servicedetail{
                 display: -webkit-box;
-                width: 280px;
+                width: 250px;
                 height: auto;
                 line-height: 25px;
                 overflow: hidden;
@@ -51,6 +51,7 @@
                 margin: auto;
                 width: 90%;
             }
+
         </style>
     </head>
     <body>
@@ -58,36 +59,43 @@
         <jsp:include page="/Template/HeadMenuPublic.jsp"/>
         <div class="container-xxl py-5 page-header position-relative mb-5">
             <div class="container py-5">
-                <h1 class="display-2 text-white animated slideInDown mb-4">Blogs</h1>
+                <h1 class="display-2 text-white animated slideInDown mb-4">Service</h1>
                 <nav aria-label="breadcrumb animated slideInDown">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="HomeP.jsp">Home</a></li>
-                        <li class="breadcrumb-item"><a href="blogs">Blogs</a></li>
+                        <li class="breadcrumb-item">Service</li>
                     </ol>
                 </nav>
             </div>
         </div>
         <!-- Navbar End -->
-        <div class="all">
-            <div class="row justify-content-between" >
+
+        <div class="all ">
+            <div class="filter " style="margin: auto; width:20%; margin-bottom: 10px;">
+                <form method="get" action="filterservice">
+                    <input class="btn btn-primary"  type="text" name="name" placeholder="Name Servicce">
+                    <button class="btn btn-primary" type="submit"><i class="bi bi-search"></i></button>
+                </form>
+            </div>
+            <div class="row" style="margin-left: 200px;">
                 <c:forEach items="${requestScope.service}" var="s">
-                    <div class="col-5 border" style="margin-bottom: 30px; background: #FFF; border-radius: 15px;">
+                    <div class="col-5 border" style="margin-bottom: 30px; background: #FFF; border-radius: 15px; margin-right: 30px;  ">
                         <div class="container">
                             <div class="row">
                                 <div class="col-6">
-                                    <img alt="avatar" src="${s.image}" width="300" height="250">
+                                    <img alt="avatar" src="${s.image}" width="300" height="260">
                                 </div>
-                                <div class="col-6" style="padding-left: 30px; padding-top: 20px; ">
+                                <div class="col-6" style="padding-left: 35px; padding-top: 20px; ">
                                     <h3 >${s.servicename}</h3>
                                     <p style="color: #000; font-size: 16px;">
                                         <c:if test="${s.discount>0}">
                                             <span style="  text-decoration: line-through;">${s.price}$</span>
-                                            ${s.price/s.discount}$
+                                            ${s.price-s.discount}$
                                         </c:if>
                                         <c:if test="${s.discount==0}">                                   
                                             ${s.price}$
                                         </c:if>
-                                            &nbsp
+                                        &nbsp
                                         <c:set value="${5-s.rate}" var="star"/>
                                         <c:forEach var="count" begin="1" end="5">
 
@@ -117,6 +125,116 @@
 
             </div>
         </div><br>
+        <!-- filter page start -->
+        <c:if test="${requestScope.checkpage==0}">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item ">
+                        <a class="page-link" href="listserviceservlet?page=${1}"><i class="bi bi-chevron-double-left"></i></a>
+                    </li>
+                    <c:if test="${page ==1}">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="listserviceservlet?page=${page-1}">Previous</a>
+                        </li>
+                    </c:if>
+                    <c:if test="${page !=1}">
+                        <li class="page-item ">
+                            <a class="page-link" href="listserviceservlet?page=${page-1}">Previous</a>
+                        </li>
+                    </c:if>
+                    <!-- /////////////////////////////////////////////////////////////////-->
+                    <c:set var="page" value="${requestScope.page}"/>
+                    <c:set var="max" value="${0}"/>
+                    <c:forEach begin="${1}" end="${requestScope.num}" var="i">                
+                        <c:if test="${i==page-2||i==page-1||i==page+2||i==page+1||i==page}">
+                            <li class=" ${i==page?"active":""} page-item"><a class="page-link" href="listserviceservlet?page=${i}">${i}</a></li>
+
+                        </c:if>
+                        <h1 style="display: none;">${max=max+1}</h1>
+                    </c:forEach>
+                    <!-- /////////////////////////////////////////////////////////////////-->
+                    <c:if test="${page ==max}">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="listserviceservlet?page=${page+1}">Next</a>
+                        </li>
+                    </c:if>
+                    <c:if test="${page !=max}">
+                        <li class="page-item ">
+                            <a class="page-link" href="listserviceservlet?page=${page+1}">Next</a>
+                        </li>
+                    </c:if>
+                    <li class="page-item ">
+                        <a class="page-link" href="listserviceservlet?page=${max}"><i class="bi bi-chevron-double-right"></i></a>
+                    </li>
+                </ul>
+            </nav>
+        </c:if>
+
+        <c:if test="${requestScope.checkpage==1}">
+            <c:set var="max" value="${0}"/>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <c:if test="${max!=0}">
+                        <li class="page-item ">
+                            <a class="page-link" href="filterservice?page=${1}&name=${requestScope.name}"><i class="bi bi-chevron-double-left"></i></a>
+                        </li>
+                    </c:if>
+                    <c:if test="${max==0}">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="filterservice?page=${1}&name=${requestScope.name}"><i class="bi bi-chevron-double-left"></i></a>
+                        </li>
+                    </c:if>
+                    <c:if test="${page ==1}">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="filterservice?page=${page-1}&name=${requestScope.name}">Previous</a>
+                        </li>
+                    </c:if>
+                    <c:if test="${page !=1}">
+                        <li class="page-item ">
+                            <a class="page-link" href="filterservice?page=${page-1}&name=${requestScope.name}">Previous</a>
+                        </li>
+                    </c:if>
+                    <!-- /////////////////////////////////////////////////////////////////-->
+                    <c:set var="page" value="${requestScope.page}"/>
+                    
+                    <c:forEach begin="${1}" end="${requestScope.num}" var="i">                
+                        <c:if test="${i==page-2||i==page-1||i==page+2||i==page+1||i==page}">
+                            <li class=" ${i==page?"active":""} page-item"><a class="page-link" href="filterservice?page=${i}&name=${requestScope.name}">${i}</a></li>
+
+                        </c:if>
+                        <h1 style="display: none;">${max=max+1}</h1>
+                    </c:forEach>
+                    <!-- /////////////////////////////////////////////////////////////////-->
+                    <c:if test="${page ==max}">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="filterservice?page=${page+1}&name=${requestScope.name}">Next</a>
+                        </li>
+                    </c:if>
+                    <c:if test="${max ==0}">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="filterservice?page=${page+1}&name=${requestScope.name}">Next</a>
+                        </li>
+                    </c:if>
+                    <c:if test="${page !=max&&max !=0}">
+                        <li class="page-item ">
+                            <a class="page-link" href="filterservice?page=${page+1}&name=${requestScope.name}">Next</a>
+                        </li>
+                    </c:if>
+                    <c:if test="${max!=0}">
+                        <li class="page-item ">
+                            <a class="page-link" href="filterservice?page=${max}&name=${requestScope.name}"><i class="bi bi-chevron-double-right"></i></a>
+                        </li>
+                    </c:if>
+                    <c:if test="${max==0}">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="filterservice?page=${max}&name=${requestScope.name}"><i class="bi bi-chevron-double-right"></i></a>
+                        </li>
+                    </c:if>
+                </ul>
+            </nav>
+        </c:if>
+
+        <!-- filter page end -->
 
 
         <!-- Footer Start -->

@@ -6,7 +6,6 @@
 package Control;
 
 import DAO.ServiceDAO;
-import Entity.Bloglist;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -16,13 +15,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Service;
-import model_staff.service;
 
 /**
  *
  * @author dathp
  */
-public class ListServiceServlet extends HttpServlet {
+public class FilterService extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,10 +39,10 @@ public class ListServiceServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ListServiceServlet</title>");
+            out.println("<title>Servlet FilterService</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ListServiceServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet FilterService at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -62,11 +60,12 @@ public class ListServiceServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String name = request.getParameter("name");
         ServiceDAO d = new ServiceDAO();
         String xpage = request.getParameter("page");
-        int page, size;
+         int page, size;
 
-        size = d.getAllServices().size();
+        size = d.filterServices(name).size();
         int num = (size % 8 == 0 ? (size / 8) : ((size / 8) + 1));
 
         if (xpage == null) {
@@ -79,11 +78,12 @@ public class ListServiceServlet extends HttpServlet {
         begin = (page - 1) * 8;
         end = Math.min(page * 8, size);
         List<Service> list = new ArrayList<>();
-        list = d.Servicepage(d.getAllServices(), begin, end);
+        list = d.Servicepage(d.filterServices(name), begin, end);
 
         request.setAttribute("page", page);
         request.setAttribute("num", num);
-        request.setAttribute("checkpage", 0);
+        request.setAttribute("checkpage", 1);
+        request.setAttribute("name", name);
         request.setAttribute("service", list);
         request.getRequestDispatcher("listService.jsp").forward(request, response);
     }
