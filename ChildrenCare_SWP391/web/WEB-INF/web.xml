@@ -52,6 +52,10 @@
         <servlet-name>UpdateStatusReservation</servlet-name>
         <servlet-class>controller_staff.UpdateStatusReservation</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ListServiceServlet</servlet-name>
+        <servlet-class>Control.ListServiceServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>reservation</servlet-name>
         <url-pattern>/reservation</url-pattern>
@@ -103,6 +107,10 @@
     <servlet-mapping>
         <servlet-name>UpdateStatusReservation</servlet-name>
         <url-pattern>/updatestatusreservation</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListServiceServlet</servlet-name>
+        <url-pattern>/listserviceservlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

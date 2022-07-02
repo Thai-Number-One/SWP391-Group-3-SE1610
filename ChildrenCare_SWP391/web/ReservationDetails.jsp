@@ -41,7 +41,7 @@
                 <td scope="row"><span>Total: </span></td>
             </table>
         <div class="col-md-5 mt-4">
-            <a href="listService.jsp" class="btn btn-secondary">Choose More Service</a>
+            <a href="listserviceservlet" class="btn btn-secondary">Choose More Service</a>
             <a href="ReservationContact.jsp" class="btn btn-secondary">Check out</a>
         </div>
         <jsp:include page="Template/FooterPublic.jsp"/>

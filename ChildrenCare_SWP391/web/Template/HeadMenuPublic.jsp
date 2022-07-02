@@ -22,8 +22,9 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav mx-auto">
                     <a href="HomeP.jsp" class="nav-item nav-link">Home</a>
-                    <a href="#" class="nav-item nav-link">Service</a>
+                    <a href="#" class="nav-item nav-link">About</a>
                     <a href="blogs" class="nav-item nav-link">Blogs</a>
+                    <a href="listserviceservlet" class="nav-item nav-link">Service</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                         <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0">

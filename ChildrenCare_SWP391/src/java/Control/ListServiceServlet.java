@@ -3,28 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Reservation_Customer;
+package Control;
 
-import DAO.ServiceDetailDAO;
-import Entity.ReservationCustomer;
-import Entity.Service;
+import DAO.ServiceDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author HP
+ * @author dathp
  */
-@WebServlet(name = "ReservationDetails", urlPatterns = {"/reservationdetail"})
-public class ReservationDetails extends HttpServlet {
+public class ListServiceServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,21 +31,18 @@ public class ReservationDetails extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        int service_id = Integer.parseInt(request.getParameter("serviceid"));
-        ServiceDetailDAO dao = new ServiceDetailDAO();
-        Service s = dao.GetServiceByID(service_id);
-        HttpSession session = request.getSession();
-        Object obj = session.getAttribute("rd");
-        List<ReservationCustomer> lst = null;
-        if (obj == null) {
-            lst = new ArrayList<>();
-        } else {
-            lst = (List<ReservationCustomer>) obj;
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet ListServiceServlet</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet ListServiceServlet at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
-        ReservationCustomer rd = new ReservationCustomer(lst.size(), 1, service_id, s.getService_name(), s.getPrice(), s.getDiscount());
-        lst.add(rd);
-        session.setAttribute("rd", lst);
-        response.sendRedirect("listserviceservlet");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -67,7 +57,9 @@ public class ReservationDetails extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        ServiceDAO d = new ServiceDAO();
+        request.setAttribute("service", d.getAllServices());
+        request.getRequestDispatcher("listService.jsp").forward(request, response);
     }
 
     /**
