@@ -43,6 +43,7 @@ public class ReservationDetails extends HttpServlet {
         Service s = dao.GetServiceByID(service_id);
         HttpSession session = request.getSession();
         Object obj = session.getAttribute("rd");
+        Object obj2 = session.getAttribute("total");
         List<ReservationCustomer> lst = null;
         if (obj == null) {
             lst = new ArrayList<>();
@@ -50,8 +51,13 @@ public class ReservationDetails extends HttpServlet {
             lst = (List<ReservationCustomer>) obj;
         }
         ReservationCustomer rd = new ReservationCustomer(lst.size(), 1, service_id, s.getService_name(), s.getPrice(), s.getDiscount());
+        float total = rd.getTotal();
+        if(obj2 != null){
+            total += (float) obj2;
+        }
         lst.add(rd);
         session.setAttribute("rd", lst);
+        session.setAttribute("total", total);
         response.sendRedirect("listserviceservlet");
     }
 

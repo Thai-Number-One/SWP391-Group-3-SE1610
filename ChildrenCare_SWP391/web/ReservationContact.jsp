@@ -24,7 +24,7 @@
             <hr/>
         <form method="Post" action="reservationcontact">
             <table class="table">
-                <th scope="col" style="color: orange">Service Name</th>
+                <th scope="col" ">Service Name</th>
                 <th scope="col" style="color: orange">Children Name</th>
                 <th scope="col" style="color: orange">Age</th>
                 <th scope="col" style="color: orange"></th>
@@ -62,7 +62,12 @@
                 <td scope="row"></td>
                 <td scope="row"></td>
                 <td scope="row"></td>
-                <td scope="row"><span>Total: </span></td>
+                <c:if test="${total != null}">
+                <td scope="row"><span>Total: ${total}</span></td>
+                </c:if>
+                <c:if test="${total == null}">
+                <td scope="row"><span>Total: 0</span></td>
+                </c:if>
             </table>
             <a href="ReservationDetails.jsp" class="btn btn-secondary">Change</a>
             <input type="submit" value="Submit" class="btn btn-secondary">
