@@ -52,8 +52,8 @@
                                                         <div>
                                                             <p class="text-muted">Service photo update</p>
                                                             <div id="myfileupload">
-                                                                <img src="${l.image}" width="50" height="50">
-                                                                <input type="file" name="Image" id="uploadfile" name="ImageUpload" onchange="readURL(this);" />
+                                                                <img src="${l.image}" width="50" height="50"><br>
+                                                                <input  type="file" name="Image" name="ImageUpload" accept="image/*" id="uploadfile" onchange="readURL(this);" />
                                                             </div>
                                                             <div id="thumbbox">
                                                                 <img class="rounded" height="20%" width="30%" alt="Thumb image" id="thumbimage" style="display: none" />

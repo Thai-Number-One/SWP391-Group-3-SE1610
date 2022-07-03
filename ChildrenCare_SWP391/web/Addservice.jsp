@@ -50,10 +50,10 @@
                                                     <div>
                                                         <p class="text-muted">Service photo update</p>
                                                         <div id="myfileupload">
-                                                            <input type="file" name="Image" id="uploadfile" name="ImageUpload" onchange="readURL(this);" />
+                                                            <input  type="file" name="Image" id="uploadfile" accept="image/*"  name="ImageUpload" onchange="readURL(this);" />
                                                         </div>
                                                         <div id="thumbbox">
-                                                            <img class="rounded" height="20%" width="30%" alt="Thumb image" id="thumbimage" style="display: none" />
+                                                            <img class="rounded" height="20%" width="30%"  alt="Thumb image" id="thumbimage" style="display: none" />
                                                             <a class="removeimg" href="javascript:"></a>
                                                         </div>
                                                         <div id="boxchoice">
