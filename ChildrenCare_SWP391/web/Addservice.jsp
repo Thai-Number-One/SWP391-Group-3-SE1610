@@ -77,6 +77,12 @@
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
+                                                            <label>Title</label>
+                                                            <input name="Title" type="text" class="form-control" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
                                                             <label>Type</label>
                                                             <input name="Type" type="text" class="form-control" required>
                                                         </div>

@@ -60,6 +60,10 @@
         <servlet-name>FilterService</servlet-name>
         <servlet-class>Control.FilterService</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UpdateService</servlet-name>
+        <servlet-class>controller.admin.UpdateService</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>reservation</servlet-name>
         <url-pattern>/reservation</url-pattern>
@@ -119,6 +123,10 @@
     <servlet-mapping>
         <servlet-name>FilterService</servlet-name>
         <url-pattern>/filterservice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateService</servlet-name>
+        <url-pattern>/updateservice</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

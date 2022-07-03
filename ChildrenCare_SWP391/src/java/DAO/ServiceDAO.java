@@ -23,6 +23,32 @@ public class ServiceDAO {
     Connection conn = null;
     PreparedStatement ps = null;
     ResultSet rs = null;
+    
+
+    public void upService(int Service_ID,
+            String Service_Name, String Detail,
+            String Image, String Title, float Price, int Discount, float Rate, int status) {
+        String query = "update Service set Service_Name = ?, Detail = ?, Image = ?, Type = ?, Price =  ?, Discount =  ?, Rate =  ?, Status =  ? where  Service_ID =  ?";
+
+        try {
+            conn = new BaseDAO().BaseDao();//mo ket noi voi sql
+            ps = conn.prepareStatement(query);
+
+            
+            ps.setString(1, Service_Name);
+            ps.setString(2, Detail);
+            ps.setString(3, Image);
+            ps.setString(4, Title);
+            ps.setFloat(5, Price);
+            ps.setInt(6, Discount);
+            ps.setFloat(7, Rate);
+            ps.setInt(8, status);
+            ps.setInt(9, Service_ID);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+
+    }
 
     public List<Service> getAllServices() {
         List<Service> list = new ArrayList<>();
@@ -50,12 +76,13 @@ public class ServiceDAO {
         }
         return list;
     }
+
     public List<Service> filterServices(String name) {
         List<Service> list = new ArrayList<>();
-        String query = "select * FROM [TestProject4].[dbo].[Service]\n" 
+        String query = "select * FROM [TestProject4].[dbo].[Service]\n"
                 + " where 1=1 ";
-        if (name != null||!name.equals("")) {
-            query += " AND Service_Name like '%" + name +"%'";
+        if (name != null || !name.equals("")) {
+            query += " AND Service_Name like '%" + name + "%'";
         }
         try {
             conn = new BaseDAO().BaseDao();//mo ket noi voi sql
@@ -81,38 +108,19 @@ public class ServiceDAO {
         return list;
     }
 
-    public List<Service> Servicepage(List<Service> list, int begin, int end){  
+    public List<Service> Servicepage(List<Service> list, int begin, int end) {
         List<Service> l = new ArrayList();
-        for (int i = begin; i < end; i++) 
+        for (int i = begin; i < end; i++) {
             l.add(list.get(i));
+        }
         return l;
     }
 
     public void insertService(int Service_ID,
             String Service_Name, String Detail, String Type,
             String Image, String Title, float Price, int Discount, float Rate, int status) {
-        String query = "INSERT INTO [dbo].[Service]\n"
-                + "           ([Service_ID]\n"
-                + "           ,[Service_Name]\n"
-                + "           ,[Detail]\n"
-                + "           ,[Type]\n"
-                + "           ,[Image]\n"
-                + "           ,[Title]\n"
-                + "           ,[Price]\n"
-                + "           ,[Discount]\n"
-                + "           ,[Rate]\n"
-                + "           ,[Status])\n"
-                + "     VALUES\n"
-                + "           (?\n"
-                + "           ,?\n"
-                + "           ,?\n"
-                + "           ,?\n"
-                + "           ,?\n"
-                + "           ,?\n"
-                + "           ,?\n"
-                + "           ,?\n"
-                + "           ,?\n"
-                + "           ,?)";
+        String query = "insert into Service(Service_ID,Service_Name,Detail,Type,Image,Title,Price,Discount,Rate,Status)\n"
+                + "values(?,?,?,?,?,?,?,?,?,?)";
 
         try {
             conn = new BaseDAO().BaseDao();//mo ket noi voi sql
@@ -133,7 +141,7 @@ public class ServiceDAO {
         }
 
     }
-    
+
     public void deleteService(String pid) {
         String query = "DELETE FROM [TestProject4].[dbo].[Service]\n"
                 + "where Service_ID = ?";
@@ -145,13 +153,14 @@ public class ServiceDAO {
         } catch (Exception e) {
         }
     }
+
     public static void main(String[] args) {
-        
+
         ServiceDAO dao = new ServiceDAO();
         List<Service> list = dao.getAllServices();
         for (Service service : list) {
             System.out.println(service);
         }
     }
-   
+
 }
