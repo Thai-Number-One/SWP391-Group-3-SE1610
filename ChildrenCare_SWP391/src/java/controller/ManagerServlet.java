@@ -50,11 +50,9 @@ public class ManagerServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        DashboardDAO dao = new DashboardDAO();
-        List<UserT> list = dao.getAllProduct();
+       DashboardDAO dao = new DashboardDAO();
+       List<UserT> list = dao.getAllProduct();
        request.setAttribute("list", list);
-       
-       request.setAttribute("listP", list);
        request.getRequestDispatcher("userTable.jsp").forward(request, response);
     }
 

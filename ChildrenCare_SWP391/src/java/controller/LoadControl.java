@@ -52,10 +52,9 @@ public class LoadControl extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       String id = request.getParameter("pid");
+        String id = request.getParameter("pid");
         DashboardDAO dao = new DashboardDAO();
         UserT p = dao.getProductByID(id);
- 
         List<role> list = dao.getAllRole();
         request.setAttribute("list", list);
         request.setAttribute("detail", p);
