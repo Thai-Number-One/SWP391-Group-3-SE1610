@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package ReservationController;
 
 import DAO.ReservationDAO;
@@ -51,7 +47,7 @@ public class LoadMyReservation extends HttpServlet {
                     l.add(r.reservations_user().get(i));
                 }
             }
-            request.setAttribute("detailreser", r.reservations_user());
+            request.setAttribute("detailreser", l);
 
             request.getRequestDispatcher("MyReservation.jsp").forward(request, response);
 

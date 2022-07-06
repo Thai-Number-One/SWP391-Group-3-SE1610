@@ -146,7 +146,7 @@
                  
                             <td>${a.reservations.beginTime}</td>
                             <td>${a.service.servicename}</td>
-                            <td>${a.reservations.Date}</td>
+                            <td>${a.reservations.date}</td>
                             <td>${a.reservations.totalcost}</td>
                             <td>${a.reservations.status}</td>
                        
