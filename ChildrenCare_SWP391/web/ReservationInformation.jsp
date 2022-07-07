@@ -78,6 +78,7 @@
 
             }
             .table_r {
+                margin-top: 50px;
                 width: 100%;
                 border-collapse: collapse;
                 overflow: hidden;
@@ -98,6 +99,8 @@
                 padding: 20px;
                 background-color: rgba(255,255,255,0.2);
                 color: #000;
+            }.lists{
+                margin-top: 100px;
             }
 
 
@@ -161,7 +164,8 @@
                 <table class="table_r">
                     <tr>
                         
-                        <th class="show">Reservation ID</th>
+                        <th class="show">Customer's Child</th>
+                        <th>Child's Age</th>
                         <th>Reservation Date</th>
                         <th>Service Name</th>
                         <th>Time Check</th>
@@ -173,10 +177,10 @@
                         <tr>                 
 
                             
-                            <td ><a style="text-decoration: none; color: black">${detailreser.reservation_ID}</a></td>
-                 
+                            <td>${ReDetail.children_name}</td>
+                            <td>${ReDetail.age}</td>
                             <td>${detailreser.begin_time}</td>
-                            <td>ff</td>
+                            <td>${SerDe.service_name}</td>
                             <td>${detailreser.date}</td>
                             <td>${detailreser.totalCost}</td>
 
@@ -195,6 +199,79 @@
                         </tr>
                    
                 </table>
+                            
+                <div class="lists">
+
+                <h1 style="color: #FE5D37;  text-align: center;">Service Detail</h1>
+                <table class="table_r">
+
+                    <tr>
+                        <th>Thumbnail</th>
+                        <th>Service Name</th>
+                        <th>Category</th>
+                        <th>Unit Price</th>
+                        <th>Discount</th>
+                        <th>Rate</th>
+
+                    </tr>
+                    
+                        <tr>
+                            <td><img src="${SerDe.image}" width="auto" height="50" class="rounded-circle shadow-1-strong me-3" alt="avatar"/></td>
+
+                            <td>${SerDe.service_name}</td>
+                            <td>${SerDe.type}</td>
+                            <td>${SerDe.price}</td>
+                            <td >${SerDe.discount}</td>
+                            <td>
+                                <c:if test="${requestScope.SerDe.rate == 1}">
+                                    <span class="fas fa-star" style="color: orange;"></span>
+                                    <span class="far fa-star" style="color: orange;"></span>
+                                    <span class="far fa-star" style="color: orange;"></span>
+                                    <span class="far fa-star" style="color: orange;"></span>
+                                    <span class="far fa-star" style="color: orange;"></span>
+                                </c:if>
+                                <c:if test="${requestScope.SerDe.rate == 2}">
+                                    <span class="fas fa-star" style="color: orange;"></span>
+                                    <span class="fas fa-star" style="color: orange;"></span>
+                                    <span class="far fa-star" style="color: orange;"></span>
+                                    <span class="far fa-star" style="color: orange;"></span>
+                                    <span class="far fa-star" style="color: orange;"></span>
+                                </c:if>
+                                <c:if test="${requestScope.SerDe.rate == 3}">
+                                    <span class="fas fa-star" style="color: orange;"></span>
+                                    <span class="fas fa-star" style="color: orange;"></span>
+                                    <span class="fas fa-star" style="color: orange;"></span>
+                                    <span class="far fa-star" style="color: orange;"></span>
+                                    <span class="far fa-star" style="color: orange;"></span>
+                                </c:if>
+                                <c:if test="${requestScope.SerDe.rate == 4}">
+                                    <span class="fas fa-star" style="color: orange;"></span>
+                                    <span class="fas fa-star" style="color: orange;"></span>
+                                    <span class="fas fa-star" style="color: orange;"></span>
+                                    <span class="fas fa-star" style="color: orange;"></span>
+                                    <span class="far fa-star" style="color: orange;"></span>
+                                </c:if>
+                                    <c:if test="${requestScope.SerDe.rate == 4.5}">
+                                        <span class="fas fa-star" style="color: orange;"></span>
+                                        <span class="fas fa-star" style="color: orange;"></span>
+                                        <span class="fas fa-star" style="color: orange;"></span>
+                                        <span class="fas fa-star" style="color: orange;"></span>
+                                        <span class="far fa-star" style="color: orange;"></span>
+                                    </c:if>
+                                <c:if test="${requestScope.SerDe.rate == 5}">
+                                    <span class="fas fa-star" style="color: orange;"></span>
+                                    <span class="fas fa-star" style="color: orange;"></span>
+                                    <span class="fas fa-star" style="color: orange;"></span>
+                                    <span class="fas fa-star" style="color: orange;"></span>
+                                    <span class="fas fa-star" style="color: orange;"></span>
+                                </c:if>
+                            </td>
+                            
+                        </tr>
+                    
+                </table>
+            </div>            
+                            
             </div>
 
 

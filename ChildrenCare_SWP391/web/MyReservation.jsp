@@ -135,6 +135,7 @@
                         <th>Time Check</th>
                         <th>Total Cost</th>
                         <th>Status</th>
+                        <th>Edit</th>
                     </tr>
                     
                     <c:forEach items="${requestScope.detailreser}" var="a">
@@ -157,6 +158,7 @@
                             <c:if test="${a.reservations.status==1}">
                                 <td>Approved </td>
                             </c:if>
+                                <td><a href="deleteReservation?id=${a.reservations.reservationID}"><button>Delete</button></a></td>
                        
 
                         </tr>

@@ -6,27 +6,23 @@
 package ReservationController;
 
 import DAO.ReservationDAO;
-import Entity.Reservation;
-import Entity.Reservation_detail;
-import Entity.Service;
-import dal_staff.reservatonsDAO;
+import DAO.UserDAO;
+import Entity.User;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model_staff.reservations_user;
 
 /**
  *
  * @author s
  */
-@WebServlet(name = "LoadReservationInformation", urlPatterns = {"/loadreservationinformation"})
-public class LoadReservationInformation extends HttpServlet {
+@WebServlet(name = "DeleteReservation", urlPatterns = {"/deleteReservation"})
+public class DeleteReservation extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,7 +36,24 @@ public class LoadReservationInformation extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+        try {
+            String id = request.getParameter("id");
+            
+            int idd = Integer.parseInt(id);
+            
+            ReservationDAO dao = new ReservationDAO();
+            
+            dao.deleteReservation(idd);
+            
+            User u = dao.getUser(idd);
+            
+            response.sendRedirect("HomeP.jsp");
+            
+            
+            
+            
+        } catch (Exception e) {
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -55,42 +68,7 @@ public class LoadReservationInformation extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);
-        try {
-
-            String id = request.getParameter("id");
-
-            int idd = Integer.parseInt(id);
-
-            reservatonsDAO d = new reservatonsDAO();
-            List l =new ArrayList();
-            for (int i = 0; i < d.reservations_user().size(); i++) {
-                if(d.reservations_user().get(i).getRedetail().getUserid()==idd){
-                    l.add(d.reservations_user().get(i));
-                }
-            }
-            
-            ReservationDAO dao = new ReservationDAO();
-            Reservation ll = dao.getDetailID(idd);
-            
-                        
-            String Servicename = dao.getDetailService(idd);
-            
-            
-            Reservation_detail rd = dao.getReDe(idd);
-            
-            Service s = dao.getServiceDe(idd);
-            
-            request.setAttribute("detailreser", ll);
-            request.setAttribute("servicename", Servicename);
-            request.setAttribute("ReDetail", rd);
-            request.setAttribute("SerDe", s);
-            request.setAttribute("all", l);
-
-            request.getRequestDispatcher("ReservationInformation.jsp").forward(request, response);
-
-        } catch (Exception e) {
-        }
+        processRequest(request, response);
     }
 
     /**
