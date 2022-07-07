@@ -52,7 +52,7 @@ public class addservice extends HttpServlet {
 
         
         
-        d.insertService(Service_ID, Service_Name, Detail, Type, Image, Title, Price, Discount, Rate, status);
+        d.insertService(Service_ID, Service_Name, Detail, Type, "img/img_service/"+Image, Title, Price, Discount, Rate, status);
         response.sendRedirect("servicecontroller");
     }
 

@@ -27,7 +27,7 @@ public class ServiceDAO {
 
     public void upService(int Service_ID,
             String Service_Name, String Detail,
-            String Image, String Title, float Price, int Discount, float Rate, int status) {
+            String Image, String Title, float Price, int Discount, float Rate, int status, String type) {
         String query = "update Service set Service_Name = ?, Detail = ?, Image = ?, Type = ?, Price =  ?, Discount =  ?, Rate =  ?, Status =  ? where  Service_ID =  ?";
 
         try {
@@ -38,7 +38,7 @@ public class ServiceDAO {
             ps.setString(1, Service_Name);
             ps.setString(2, Detail);
             ps.setString(3, Image);
-            ps.setString(4, Title);
+            ps.setString(4, type);
             ps.setFloat(5, Price);
             ps.setInt(6, Discount);
             ps.setFloat(7, Rate);

@@ -89,11 +89,12 @@ public class UpdateService extends HttpServlet {
         String Detail = request.getParameter("Detail"); 
         String Image = request.getParameter("Image");
         String Title = request.getParameter("Title");
+        String type = request.getParameter("type");
         float Price = Float.parseFloat(request.getParameter("Price"));
         int Discount = Integer.parseInt(request.getParameter("Discount"));
         float Rate = Float.parseFloat(request.getParameter("Rate"));
         int status = Integer.parseInt(request.getParameter("status"));
-        d.upService(Service_ID, Service_Name, Detail, Image, Title, Price, Discount, Rate, status);
+        d.upService(Service_ID, Service_Name, Detail, "img/img_service/"+Image, Title, Price, Discount, Rate, status, type);
         response.sendRedirect("servicecontroller");
     }
 

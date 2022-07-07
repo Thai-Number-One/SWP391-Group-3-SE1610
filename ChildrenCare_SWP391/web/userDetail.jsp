@@ -72,21 +72,21 @@
                                                         <c:if test="${detail.gender == 0}">
                                                             <td>Female</td>
                                                         </c:if>
-                                                        <tr> 
+                                                    <tr> 
                                                         <th>Email: </th><td>${detail.email}</td> <tr> 
                                                         <th>UserName: </th><td>${detail.userName}</td><tr>  
                                                         <th>Role: </th>
-                                                        <c:if test="${detail.role == 1}">
-                                                        <td>Admin</td> 
+                                                            <c:if test="${detail.role == 1}">
+                                                            <td>Admin</td> 
                                                         </c:if>
                                                         <c:if test="${detail.role == 2}">
-                                                        <td>Staff</td> 
+                                                            <td>Staff</td> 
                                                         </c:if>
                                                         <c:if test="${detail.role == 3}">
-                                                        <td>Manager</td> 
+                                                            <td>Manager</td> 
                                                         </c:if>
                                                         <c:if test="${detail.role == 4}">
-                                                        <td>Customer</td> 
+                                                            <td>Customer</td> 
                                                         </c:if>
                                                     <tr> 
                                                         <th>Status: </th><td>${detail.status}</td> 

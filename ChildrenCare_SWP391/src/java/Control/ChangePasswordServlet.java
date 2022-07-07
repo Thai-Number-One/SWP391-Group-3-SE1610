@@ -38,46 +38,7 @@ public class ChangePasswordServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try {
-            String newpass = request.getParameter("newpass");
-            String retypepass = request.getParameter("retypepass");
-            Pattern p = Pattern.compile("^.*(?=.{8,})(?=..*[0-9])(?=.*[a-z])(?=.*[A-Z]).*$");
-            if (p.matcher(newpass).find() && newpass != null && newpass.equals(retypepass)) {
-            
-                Cookie arr[] = request.getCookies();
-                if (arr != null) {
-                    for (Cookie o : arr) {
-                        if (o.getName().equals("user_id")) {
-                            String User_ID = o.getValue();
 
-                            UserDAO dao = new UserDAO();
-                            dao.updateaccount(User_ID, newpass);
-                            break;
-                        }
-                    }
-                }
-                String mess = "Change password successfully";
-                request.setAttribute("mess", mess);
-                request.getRequestDispatcher("ChangePassword.jsp").forward(request, response);
-
-                
-            }
-            else if(!newpass.equals(retypepass)){
-                 
-                String mess2 = "Failed to change password"; 
-                String mess3 = "Retype password not same New Password";
-                request.setAttribute("mess", mess2);
-                request.setAttribute("mess1", mess3);
-                request.getRequestDispatcher("ChangePassword.jsp").forward(request, response);
-            }else{
-                String mess2 = "Failed to change password"; 
-                String mess3 = "Please enter a new password with 8 characters and no special characters";
-                request.setAttribute("mess", mess2);
-                request.setAttribute("mess1", mess3);
-                request.getRequestDispatcher("ChangePassword.jsp").forward(request, response);
-            }
-        } catch (Exception e) {
-        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -92,7 +53,13 @@ public class ChangePasswordServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        HttpSession session = request.getSession();
+        User u = (User) session.getAttribute("loginsuccess");
+        if (u != null) {
+            response.sendRedirect("ChangePassword.jsp");
+        } else {
+            response.sendRedirect("login.jsp");
+        }
     }
 
     /**
@@ -106,7 +73,39 @@ public class ChangePasswordServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        HttpSession session = request.getSession();
+        User u = (User) session.getAttribute("loginsuccess");
+        if (u != null) {
+            try {
+                String oldpass = request.getParameter("oldpass");
+                if (!u.getPassword().equals(oldpass)) {
+                    String mess = "old password not correct";
+                    request.setAttribute("mess", mess);
+                    request.getRequestDispatcher("ChangePassword.jsp").forward(request, response);
+                }
+                String newpass = request.getParameter("newpass");
+                String retypepass = request.getParameter("retypepass");
+                if (newpass.equals(retypepass)) {
+                    String User_ID = u.getUser_ID() + "";
+                    UserDAO dao = new UserDAO();
+                    dao.updateaccount(User_ID, newpass);
+                    String mess = "Change password successfully";
+                    request.setAttribute("mess", mess);
+                    request.getRequestDispatcher("ChangePassword.jsp").forward(request, response);
+
+                } else {
+
+                    String mess2 = "Failed to change password";
+                    String mess3 = "Retype password not same New Password";
+                    request.setAttribute("mess", mess2);
+                    request.setAttribute("mess1", mess3);
+                    request.getRequestDispatcher("ChangePassword.jsp").forward(request, response);
+                }
+            } catch (IOException | ServletException e) {
+            }
+        } else {
+            response.sendRedirect("login.jsp");
+        }
     }
 
     /**

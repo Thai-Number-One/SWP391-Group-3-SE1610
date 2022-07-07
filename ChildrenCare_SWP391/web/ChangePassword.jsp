@@ -7,16 +7,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-     <head>
-  	<title>Change Password</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap" rel="stylesheet">
-
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	
-	<link rel="stylesheet" href="ResetPass/css/style.css">
+    <head>
+        <title>Change Password</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -25,13 +17,21 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
         <link rel="stylesheet" href="ResetPass/css/style.css">
-        
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <link rel="stylesheet" href="ResetPass/css/style.css">
+
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="" name="keywords">
         <meta content="" name="description">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        
+
         <link href="img/favicon.ico" rel="icon">
 
         <!-- Google Web Fonts -->
@@ -117,7 +117,7 @@
             }.text-wrap{
                 background: #FE5D37;
             }
-            
+
 
 
 
@@ -126,61 +126,64 @@
 
 
         </style>
-	</head>
-	<body>
-            
-             <!-- Navbar Start -->
-        <jsp:include page="/Template/HeadMenuPublic.jsp"/>
-        
-        <!-- Navbar End -->
-            
-            <section class="ftco-section">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-md-6 text-center mb-5">
-                            <h2 class="heading-section" style=";font-size: 40px;">Change Password</h2>
-                        </div>
-                    </div>
-                    <div class="row justify-content-center">
-                        <div class="col-md-12 col-lg-10">
-                            <div class="wrap d-md-flex">
-                                <div class="text-wrap p-4 p-lg-5 text-center d-flex align-items-center order-md-last">
-                                    <div class="text w-100">
-                                        <h2>Welcome to ChildrenCare</h2>
-                                        <p>Don't have an account?</p>
-                                        <a href="login.jsp" class="btn btn-white btn-outline-white">Sign Up</a>
-                                    </div>
-                                </div>
-                                <div class="login-wrap p-4 p-lg-5">
-                                    <div class="d-flex">
-                                        <div class="w-100">
-                                            <h3 class="mb-4">Change Password</h3>
-                                        </div>
+    </head>
+    <body>
 
-                                    </div>
-                                    <form action="ChangePassword" method="post">
-                                        <div class="form-group mb-3">
-                                            <label class="label" for="name">New Password</label>
-                                            <input type="text" class="form-control" name="newpass" placeholder="Username" required>
-                                        </div>
-                                        <div class="form-group mb-3">
-                                            <label class="label" for="password">Retype New Password</label>
-                                            <input type="password" class="form-control" name="retypepass" placeholder="Password" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <button type="submit" class="form-control btn btn-primary submit px-3">Change Password</button>
-                                        </div>
-                                        <p class="text-danger">${mess}</p>
-                                        <p class="text-danger">${mess1}</p>
-                                    </form>
+        <!-- Navbar Start -->
+        <jsp:include page="/Template/HeadMenuPublic.jsp"/>
+
+        <!-- Navbar End -->
+
+        <section class="ftco-section">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-6 text-center mb-5">
+                        <h2 class="heading-section" style=";font-size: 40px;">Change Password</h2>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-12 col-lg-10">
+                        <div class="wrap d-md-flex">
+                            <div class="text-wrap p-4 p-lg-5 text-center d-flex align-items-center order-md-last">
+                                <div class="text w-100">
+                                    <h2>Welcome to ChildrenCare</h2>
+                                    <p>Don't have an account?</p>
+                                    <a href="login.jsp" class="btn btn-white btn-outline-white">Sign Up</a>
                                 </div>
+                            </div>
+                            <div class="login-wrap p-4 p-lg-5">
+                                <div class="d-flex">
+                                    <div class="w-100">
+                                        <h3 class="mb-4">Change Password</h3>
+                                    </div>
+                                </div>
+                                <form action="ChangePassword" method="post">
+                                    <div class="form-group mb-3">
+                                        <div class="form-group mb-3">
+                                            <label class="label" for="name">Old Password</label>
+                                            <input type="password" class="form-control" name="oldpass"  required>
+                                        </div>
+                                        <label class="label" for="name">New Password</label>
+                                        <input type="password" class="form-control" name="newpass" required>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                        <label class="label" for="password">Retype New Password</label>
+                                        <input type="password" class="form-control" name="retypepass" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" class="form-control btn btn-primary submit px-3">Change Password</button>
+                                    </div>
+                                    <p class="text-danger">${mess}</p>
+                                    <p class="text-danger">${mess1}</p>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-	<!-- Footer Start -->
+        <!-- Footer Start -->
         <jsp:include page="/Template/FooterPublic.jsp"/>
         <!-- Footer End -->
 
@@ -200,5 +203,5 @@
         <!-- Template Javascript -->
         <script src="js/main.js"></script>    
 
-	</body>
+    </body>
 </html>

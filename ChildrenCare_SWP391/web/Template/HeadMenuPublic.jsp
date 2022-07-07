@@ -61,6 +61,7 @@
                         <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0">
                             <a href="#" class="dropdown-item">Profile</a>
                             <a href="LoadMyReservation?Uid=${sessionScope.loginsuccess.getUser_ID()}" class="dropdown-item">My Reservation</a>
+                            <a href="ChangePassword" class="dropdown-item">Change Password</a>
                             <a href="logout" class="dropdown-item">Logout</a>
                         </div>
                     </div>
