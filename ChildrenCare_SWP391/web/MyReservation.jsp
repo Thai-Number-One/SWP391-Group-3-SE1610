@@ -148,7 +148,15 @@
                             <td>${a.service.servicename}</td>
                             <td>${a.reservations.date}</td>
                             <td>${a.reservations.totalcost}</td>
-                            <td>${a.reservations.status}</td>
+                            <c:if test="${a.reservations.status==-1}">
+                                <td>Not Approved </td>
+                            </c:if>
+                            <c:if test="${a.reservations.status==0}">
+                                <td>Pending </td>
+                            </c:if>
+                            <c:if test="${a.reservations.status==1}">
+                                <td>Approved </td>
+                            </c:if>
                        
 
                         </tr>
