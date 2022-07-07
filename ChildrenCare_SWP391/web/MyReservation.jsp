@@ -142,7 +142,7 @@
                         <tr>                 
 
                             
-                            <td ><a style="text-decoration: none; color: black" href="reservationdetails?id=${a.reservations.reservationID}">${a.reservations.reservationID}</a></td>
+                            <td ><a style="text-decoration: none; color: black" href="loadreservationinformation?id=${a.user.userid}">${a.reservations.reservationID}</a></td>
                  
                             <td>${a.reservations.beginTime}</td>
                             <td>${a.service.servicename}</td>

@@ -4,6 +4,7 @@
     Author     : s
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -68,8 +69,11 @@
             }
             .all{
 
+                background: #fff;
+                box-shadow: 0 2px 5px 0;
+                padding : 30px;
                 margin: auto;
-                width: 70%;
+                width: 65%;
 
 
             }
@@ -124,6 +128,36 @@
              
 
             <div class="all">
+                
+                <div style="margin: auto; width: 80%;" class="row">
+                <h1 style="color: #FE5D37; text-align: center; padding-bottom: 30px;">Reservation Information</h1>
+                <div class="col-8">
+                    <c:set value="0" var="count" />
+                    <c:set value="0" var="total" />
+                    <c:forEach items="${requestScope.all}" var="a">
+                        <c:if test="${count==0}">     
+                            <h2>Full Name: ${a.user.fullname}</h2>
+                            <h2>Address: ${a.user.address}</h2>
+                            <h2>Mobile: ${a.user.phone}</h2>
+                            <h2>Email: ${a.user.email}</h2>
+                            
+                        </c:if>
+                        <h3 style="display: none;">${count=count +1}</h3>
+                    </c:forEach>
+                    
+                </div>
+                <div class="col-4" >
+                    <c:set value="0" var="count" />
+                    <c:forEach items="${requestScope.all}" var="a">
+                        <c:if test="${count==0}">     
+                            <img  src="${a.user.avatar}" width="250" height="auto">
+                        </c:if>
+                        <h3 style="display: none;">${count=count +1}</h3>
+                    </c:forEach>
+                </div>
+            </div><br/>
+                
+                
                 <table class="table_r">
                     <tr>
                         
@@ -135,21 +169,31 @@
                         <th>Status</th>
                     </tr>
                     
-                    <c:forEach items="${detailreser}" var="a">
 
                         <tr>                 
 
                             
-                            <td ><a style="text-decoration: none; color: black" href="reservationdetails?id=${a.reservation_ID}">${a.reservation_ID}</a></td>
+                            <td ><a style="text-decoration: none; color: black">${detailreser.reservation_ID}</a></td>
                  
-                            <td>${a.date}</td>
-                            <td>Kham Benh</td>
-                            <td>${a.totalCost}</td>
-                            <td>${a.status}</td>
+                            <td>${detailreser.begin_time}</td>
+                            <td>ff</td>
+                            <td>${detailreser.date}</td>
+                            <td>${detailreser.totalCost}</td>
+
+                            <c:if test="${detailreser.status==-1}">
+                                <td>Not Approved </td>
+                            </c:if>
+                            <c:if test="${detailreser.status==0}">
+                                <td>Pending </td>
+                            </c:if>
+                            <c:if test="${detailreser.status==1}">
+                                <td>Approved </td>
+                            </c:if>
+
                        
 
                         </tr>
-                    </c:forEach>
+                   
                 </table>
             </div>
 
