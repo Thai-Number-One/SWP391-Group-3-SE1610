@@ -115,7 +115,7 @@
                                         </c:forEach>                                      
                                     </p>
                                     <h6 class="servicedetail">${s.detail}</h6>
-                                    <button type="button"><a href="reservationdetail?serviceid=${s.serviceid}">Add Cart</a></button>
+                                    <a class="btn btn-primary" style="color: #040505;" href="reservationdetail?serviceid=${s.serviceid}">Add Cart</a>
                                 </div>
                             </div>
                         </div>
