@@ -135,6 +135,7 @@
                         <th>Time Check</th>
                         <th>Total Cost</th>
                         <th>Status</th>
+                        <th>Edit</th>
                     </tr>
                     
                     <c:forEach items="${requestScope.detailreser}" var="a">
@@ -142,13 +143,22 @@
                         <tr>                 
 
                             
-                            <td ><a style="text-decoration: none; color: black" href="reservationdetails?id=${a.reservations.reservationID}">${a.reservations.reservationID}</a></td>
+                            <td ><a style="text-decoration: none; color: black" href="loadreservationinformation?id=${a.user.userid}">${a.reservations.reservationID}</a></td>
                  
                             <td>${a.reservations.beginTime}</td>
                             <td>${a.service.servicename}</td>
-                            <td>${a.reservations.Date}</td>
+                            <td>${a.reservations.date}</td>
                             <td>${a.reservations.totalcost}</td>
-                            <td>${a.reservations.status}</td>
+                            <c:if test="${a.reservations.status==-1}">
+                                <td>Not Approved </td>
+                            </c:if>
+                            <c:if test="${a.reservations.status==0}">
+                                <td>Pending </td>
+                            </c:if>
+                            <c:if test="${a.reservations.status==1}">
+                                <td>Approved </td>
+                            </c:if>
+                                <td><a href="deleteReservation?id=${a.reservations.reservationID}"><button>Delete</button></a></td>
                        
 
                         </tr>

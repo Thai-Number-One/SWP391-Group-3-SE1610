@@ -3,24 +3,27 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Control;
+package Reservation_Customer;
 
-import DAO.UserDAO;
 import Entity.User;
+import dal_staff.reservatonsDAO;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import model_staff.reservationdetail;
 
 /**
  *
- * @author win
+ * @author HP
  */
-@WebServlet(name = "LoginControl", urlPatterns = {"/login"})
-public class LoginControl extends HttpServlet {
+@WebServlet(name = "SubmitReservationServlet", urlPatterns = {"/submitreservation"})
+public class SubmitReservationServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,27 +37,25 @@ public class LoginControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        request.removeAttribute("mess");
-        request.removeAttribute("mess1");
-        UserDAO Udao = new UserDAO();
-        User u = Udao.login(username, password);
-        if(u == null){
-            request.setAttribute("mess", "Wrong UserName or Password !");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-        }else if(u != null && u.getStatus() == 0){
-        request.setAttribute("mess1", "Your account has been disabled!");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-        }
-        else
-        {
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
             HttpSession session = request.getSession();
-            session.setAttribute("loginsuccess", u);
-            request.getRequestDispatcher("HomeP.jsp").forward(request, response);
+            List<reservationdetail> lst = ( List<reservationdetail>) session.getAttribute("reservationdetail");
+            User u = ( User) session.getAttribute("loginsuccess");
+            reservatonsDAO dao = new reservatonsDAO();
+            if(u == null){
+                response.sendRedirect("login.jsp");
+            }else{
+                for (int i = 0; i < lst.size(); i++) {
+                    dao.changeStatusReservation(lst.get(i).getReservationid());
+                }
+            }
+            session.removeAttribute("reservationdetail");
+            session.removeAttribute("completion");
+            session.removeAttribute("rd");
+            session.removeAttribute("total");
+            response.sendRedirect("Reservation_Success.jsp");
         }
-        
-        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

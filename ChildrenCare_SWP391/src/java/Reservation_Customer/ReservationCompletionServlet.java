@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Control;
+package Reservation_Customer;
 
-import DAO.UserDAO;
 import Entity.User;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -14,13 +13,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import newpackage.SendMailConfirm;
 
 /**
  *
- * @author win
+ * @author HP
  */
-@WebServlet(name = "LoginControl", urlPatterns = {"/login"})
-public class LoginControl extends HttpServlet {
+@WebServlet(name = "ReservationCompletionServlet", urlPatterns = {"/reservationcompletion"})
+public class ReservationCompletionServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,28 +33,13 @@ public class LoginControl extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        request.removeAttribute("mess");
-        request.removeAttribute("mess1");
-        UserDAO Udao = new UserDAO();
-        User u = Udao.login(username, password);
-        if(u == null){
-            request.setAttribute("mess", "Wrong UserName or Password !");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-        }else if(u != null && u.getStatus() == 0){
-        request.setAttribute("mess1", "Your account has been disabled!");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-        }
-        else
-        {
-            HttpSession session = request.getSession();
-            session.setAttribute("loginsuccess", u);
-            request.getRequestDispatcher("HomeP.jsp").forward(request, response);
-        }
-        
-        
+       response.setContentType("text/html;charset=UTF-8");
+       HttpSession session = request.getSession();
+       Object obj = session.getAttribute("loginsuccess");
+       User u = (User) obj;
+       SendMailConfirm.SendMailConfirm(u.getEmail(),u.getFullName());
+       response.sendRedirect("ReservationCompletion.jsp");
+      
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

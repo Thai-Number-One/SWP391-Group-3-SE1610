@@ -38,11 +38,14 @@ public class RemoveReservationDetails extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         HttpSession session = request.getSession();
         Object obj = session.getAttribute("rd");
+        float total = (float) session.getAttribute("total");
         List<ReservationCustomer> list = (List<ReservationCustomer>) obj;
         for (int i = 0; i < list.size(); i++) {
             if (list.get(i).getId() == id) {
+                 total -= list.get(i).getTotal();
                 list.remove(i);
                 session.setAttribute("rd", list);
+                session.setAttribute("total", total);
                 response.sendRedirect("ReservationDetails.jsp");
             }
         }

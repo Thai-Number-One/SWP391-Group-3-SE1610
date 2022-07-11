@@ -647,13 +647,12 @@ public class reservatonsDAO extends BaseDAO {
         }
     }
 
-    public void changeStatusReservation(int id, int status) {
-        String query = "UPDATE [dbo].[Reservation] SET [Status] = ? WHERE  [Reservation_ID] = ?";
+    public void changeStatusReservation(int reservation_id) {
+        String query = "UPDATE [dbo].[Reservation] SET [Status] = 1 WHERE  [Reservation_ID] = ?";
         try {
             Connection conn = new BaseDAO().BaseDao();
             PreparedStatement ps = conn.prepareStatement(query);
-            ps.setInt(1, status);
-            ps.setInt(2, id);
+            ps.setInt(1, reservation_id);
             ps.executeUpdate();
             ps.close();
         } catch (Exception e) {

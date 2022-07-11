@@ -5,22 +5,24 @@
  */
 package Control;
 
-import DAO.UserDAO;
-import Entity.User;
+import DAO.ServiceDAO;
+import Entity.Bloglist;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import model.Service;
+import model_staff.service;
 
 /**
  *
- * @author win
+ * @author dathp
  */
-@WebServlet(name = "LoginControl", urlPatterns = {"/login"})
-public class LoginControl extends HttpServlet {
+public class ListServiceServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,27 +36,18 @@ public class LoginControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        request.removeAttribute("mess");
-        request.removeAttribute("mess1");
-        UserDAO Udao = new UserDAO();
-        User u = Udao.login(username, password);
-        if(u == null){
-            request.setAttribute("mess", "Wrong UserName or Password !");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-        }else if(u != null && u.getStatus() == 0){
-        request.setAttribute("mess1", "Your account has been disabled!");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet ListServiceServlet</title>");
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet ListServiceServlet at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
-        else
-        {
-            HttpSession session = request.getSession();
-            session.setAttribute("loginsuccess", u);
-            request.getRequestDispatcher("HomeP.jsp").forward(request, response);
-        }
-        
-        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -69,7 +62,30 @@ public class LoginControl extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        ServiceDAO d = new ServiceDAO();
+        String xpage = request.getParameter("page");
+        int page, size;
+
+        size = d.getAllServices().size();
+        int num = (size % 8 == 0 ? (size / 8) : ((size / 8) + 1));
+
+        if (xpage == null) {
+            page = 1;
+        } else {
+            page = Integer.parseInt(xpage);
+        }
+
+        int begin, end;
+        begin = (page - 1) * 8;
+        end = Math.min(page * 8, size);
+        List<Service> list = new ArrayList<>();
+        list = d.Servicepage(d.getAllServices(), begin, end);
+
+        request.setAttribute("page", page);
+        request.setAttribute("num", num);
+        request.setAttribute("checkpage", 0);
+        request.setAttribute("service", list);
+        request.getRequestDispatcher("listService.jsp").forward(request, response);
     }
 
     /**

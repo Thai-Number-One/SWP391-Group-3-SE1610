@@ -8,20 +8,20 @@ values(3,'Manager')
 insert into Role (Role_ID,Role_Name)
 values(4,'Customer')
 
-insert into [User]([User_ID],FullName,Address,Phone,Email,Date,Date_New,User_Name,Password,Avatar,Gender,Role_ID,Status)
-values (1,'ChildrenCare','FPT','0987654321','Admin@Gmail.com','1/1/2001','2/2/2001','Admin','12345','img/img_user/admin.jpg',1,1,1)
-insert into [User]([User_ID],FullName,Address,Phone,Email,Date,Date_New,User_Name,Password,Avatar,Gender,Role_ID,Status)
-values (2,N'Trịnh Đình Thái',N'Hà Nội','0987654321','ThaiTDHE153161@fpt.edu.vn','1/1/2001','1/1/2001','thai','12345','img/img_user/user1.jpg',1,3,1)
-insert into [User]([User_ID],FullName,Address,Phone,Email,Date,Date_New,User_Name,Password,Avatar,Gender,Role_ID,Status)
-values (3,N'Lê Minh Vũ',N'Hà Nội','0987654321','VuLMHE153202@fpt.edu.vn','1/1/2001','1/1/2001','vu123','12345','img/img_user/user2.jpg',1,3,1)
-insert into [User]([User_ID],FullName,Address,Phone,Email,Date,Date_New,User_Name,Password,Avatar,Gender,Role_ID,Status)
-values (4,N'Lê Hữu Đạt',N'Hải Phòng','0987654321','DatLHHE151375@fpt.edu.vn','1/1/2001','1/1/2001','dat1','12345','img/img_user/user3.jpg',1,2,1)
-insert into [User]([User_ID],FullName,Address,Phone,Email,Date,Date_New,User_Name,Password,Avatar,Gender,Role_ID,Status)
-values (5,N'Nguyễn Văn Cương',N'Bắc Ninh','0987654321','CuongNVHS150257@fpt.edu.vn','1/1/2001','1/1/2001','cuong','12345','img/img_user/user4.jpg',1,2,1)
-insert into [User]([User_ID],FullName,Address,Phone,Email,Date,Date_New,User_Name,Password,Avatar,Gender,Role_ID,Status)
-values (6,N'Phan Trọng Nhân',N'Hải Phòng','0987654321','NhanPTHE151206@fpt.edu.vn','1/1/2001','1/1/2001','nhan','12345','img/img_user/user5.jpg',1,4,1)
-insert into [User]([User_ID],FullName,Address,Phone,Email,Date,Date_New,User_Name,Password,Avatar,Gender,Role_ID,Status)
-values (7,N'Lương Văn Đại',N'Bắc Ninh','0987654321','Dailvhe151191@fpt.edu.vn','1/1/2001','1/1/2001','dai1','12345','img/img_user/user6.jpg',1,4,1)
+insert into [User](FullName,Address,Phone,Email,Date,Date_New,User_Name,Password,Avatar,Gender,Role_ID,Status)
+values ('ChildrenCare','FPT','0987654321','Admin@Gmail.com','1/1/2001','2/2/2001','Admin','12345','img/img_user/admin.jpg',1,1,1)
+insert into [User](FullName,Address,Phone,Email,Date,Date_New,User_Name,Password,Avatar,Gender,Role_ID,Status)
+values (N'Trịnh Đình Thái',N'Hà Nội','0987654321','ThaiTDHE153161@fpt.edu.vn','1/1/2001','1/1/2001','thai','12345','img/img_user/user1.jpg',1,3,1)
+insert into [User](FullName,Address,Phone,Email,Date,Date_New,User_Name,Password,Avatar,Gender,Role_ID,Status)
+values (N'Lê Minh Vũ',N'Hà Nội','0987654321','VuLMHE153202@fpt.edu.vn','1/1/2001','1/1/2001','vu123','12345','img/img_user/user2.jpg',1,3,1)
+insert into [User](FullName,Address,Phone,Email,Date,Date_New,User_Name,Password,Avatar,Gender,Role_ID,Status)
+values (N'Lê Hữu Đạt',N'Hải Phòng','0987654321','DatLHHE151375@fpt.edu.vn','1/1/2001','1/1/2001','dat1','12345','img/img_user/user3.jpg',1,2,1)
+insert into [User](FullName,Address,Phone,Email,Date,Date_New,User_Name,Password,Avatar,Gender,Role_ID,Status)
+values (N'Nguyễn Văn Cương',N'Bắc Ninh','0987654321','CuongNVHS150257@fpt.edu.vn','1/1/2001','1/1/2001','cuong','12345','img/img_user/user4.jpg',1,2,1)
+insert into [User](FullName,Address,Phone,Email,Date,Date_New,User_Name,Password,Avatar,Gender,Role_ID,Status)
+values (N'Phan Trọng Nhân',N'Hải Phòng','0987654321','NhanPTHE151206@fpt.edu.vn','1/1/2001','1/1/2001','nhan','12345','img/img_user/user5.jpg',1,4,1)
+insert into [User](FullName,Address,Phone,Email,Date,Date_New,User_Name,Password,Avatar,Gender,Role_ID,Status)
+values (N'Lương Văn Đại',N'Bắc Ninh','0987654321','Dailvhe151191@fpt.edu.vn','1/1/2001','1/1/2001','dai1','12345','img/img_user/user6.jpg',1,4,1)
 
 insert into Service(Service_ID,Service_Name,Detail,Type,Image,Title,Price,Discount,Rate,Status)
 values(1,'Babies Can’t Wait','Babies Can’t Wait (BCW) is a program designed to help families of young children who are experiencing delays or who have diagnosed conditions that may result in developmental delays. Children aged birth through their third birthday, regardless of income, may be eligible for Babies Can’t Wait in one of two ways:
@@ -85,6 +85,11 @@ insert into Service(Service_ID,Service_Name,Detail,Type,Image,Title,Price,Discou
 values(16,'Women, Infants & Children (WIC) Program','Due to the COVID-19 outbreak, all counties within the Southeast Health District are providing WIC services via telephone for new and current WIC participants. 
 WIC Staff will certify new participants and provide nutrition education for all participants via telephone. Food vouchers will then be mailed to participants. Please expect a phone call from your clinic’s WIC staff.
 The special supplemental nutrition program for Women, Infants, and Children (WIC) provides nutrition education counseling, breastfeeding support and counseling, health and dietary assessments, and supplemental food to eligible clients. The program serves pregnant, breastfeeding, and postpartum women, infants, and children under the age of 5 who are both income eligible and nutritionally at risk.','Mom','img/img_service/service3.jpg','Women, Infants & Children (WIC) Program',300,0,4.5,1)
+
+insert into Service(Service_ID,Service_Name,Detail,Type,Image,Title,Price,Discount,Rate,Status)
+values(17,'Women, Infants & Children (WIC) Program','Due to the COVID-19 outbreak, all counties within the Southeast Health District are providing WIC services via telephone for new and current WIC participants. 
+WIC Staff will certify new participants and provide nutrition education for all participants via telephone. Food vouchers will then be mailed to participants. Please expect a phone call from your clinic’s WIC staff.
+The special supplemental nutrition program for Women, Infants, and Children (WIC) provides nutrition education counseling, breastfeeding support and counseling, health and dietary assessments, and supplemental food to eligible clients. The program serves pregnant, breastfeeding, and postpartum women, infants, and children under the age of 5 who are both income eligible and nutritionally at risk.','Mom','img/img_service/service3.jpg','Women, Infants & Children (WIC) Program',300,25,1,1)
 
 
 

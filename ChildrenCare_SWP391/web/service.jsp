@@ -94,18 +94,20 @@
                                 <div class="table-responsive p-0" >
                                     <table id="example" class="table table-striped" style="width:100%; margin-bottom: 50px ">
                                         <thead>
-                                            <tr>
+                                            <tr >
 
-                                                <th>Service_ID</th>
-                                                <th>Service_Name</th>
-                                                <th>Type</th>
-                                                <th>Title</th>
-                                                <th>Price</th>
-                                                <th>Discount</th>
-                                                <th>Status</th>
-                                                <th>Edit</th>
-                                                <th>Delete</th>
-                                                <th>Detail</th>
+                                                <th style="text-align: center;">Service_ID</th>
+                                                <th style="text-align: center;">Service_Name</th>
+                                                <th style="text-align: center;">Image</th>
+                                                <th style="text-align: center;">Type</th>
+                                                <th style="text-align: center;">Title</th>
+                                                <th style="text-align: center;">Price</th>
+                                                <th style="text-align: center;">Discount</th>
+                                                <th style="text-align: center;">Star</th>
+                                                <th style="text-align: center;">Status</th>
+                                                <th style="text-align: center;">Edit</th>
+                                                <th style="text-align: center;">Delete</th>
+                                                <th style="text-align: center;">Detail</th>
 
                                             </tr>
                                         </thead>
@@ -119,6 +121,9 @@
                                                      <td class="align-middle text-center">
                                                         <span class="text-secondary text-xs font-weight-bold">${o.servicename}</span>
                                                     </td>
+                                                    <td class="align-middle text-center">
+                                                        <span class="text-secondary text-xs font-weight-bold"><img width="80" height="60" src="${o.image}"></span>
+                                                    </td>
                                                      <td class="align-middle text-center">
                                                         <span class="text-secondary text-xs font-weight-bold">${o.type}</span>
                                                     </td>
@@ -131,7 +136,9 @@
                                                      <td class="align-middle text-center">
                                                         <span class="text-secondary text-xs font-weight-bold">${o.discount}</span>
                                                     </td>
-
+                                                    <td class="align-middle text-center">
+                                                        <span class="text-secondary text-xs font-weight-bold">${o.rate}</span>
+                                                    </td>
                                                     <td class="align-middle text-center text-sm">
 
                                                         <c:if test = "${o.status == 1}">
@@ -143,15 +150,15 @@
                                                         </td>
 
                                                         <td class="align-middle">
-                                                            <a href="LoadControl?pid=${o.serviceid}" class="text-success text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>
+                                                            <a href="updateservice?pid=${o.serviceid}" class="text-success text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>
                                                             Edit
                                                         </a>
                                                     </td>
-                                                    <td class="align-middle">
+                                                    <td class="align-middle text-center">
                                                         <a href="deleteservice?pid=${o.serviceid}" class="text-danger text-secondary font-weight-bold text-xs" data-toggle="tooltip" onclick="return confirm('Are you sure you want to delete this item?');"><i class="far fa-trash-alt me-2"></i>Delete</a>
 
                                                     </td>
-                                                    <td class="align-middle">
+                                                    <td class="align-middle text-center">
                                                         <a href="service_detail?id=${o.serviceid}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                                                             Detail
                                                         </a>

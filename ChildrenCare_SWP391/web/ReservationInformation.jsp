@@ -4,6 +4,7 @@
     Author     : s
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -68,12 +69,16 @@
             }
             .all{
 
+                background: #fff;
+                box-shadow: 0 2px 5px 0;
+                padding : 30px;
                 margin: auto;
-                width: 70%;
+                width: 65%;
 
 
             }
             .table_r {
+                margin-top: 50px;
                 width: 100%;
                 border-collapse: collapse;
                 overflow: hidden;
@@ -94,6 +99,8 @@
                 padding: 20px;
                 background-color: rgba(255,255,255,0.2);
                 color: #000;
+            }.lists{
+                margin-top: 100px;
             }
 
 
@@ -124,10 +131,41 @@
              
 
             <div class="all">
+                
+                <div style="margin: auto; width: 80%;" class="row">
+                <h1 style="color: #FE5D37; text-align: center; padding-bottom: 30px;">Reservation Information</h1>
+                <div class="col-8">
+                    <c:set value="0" var="count" />
+                    <c:set value="0" var="total" />
+                    <c:forEach items="${requestScope.all}" var="a">
+                        <c:if test="${count==0}">     
+                            <h2>Full Name: ${a.user.fullname}</h2>
+                            <h2>Address: ${a.user.address}</h2>
+                            <h2>Mobile: ${a.user.phone}</h2>
+                            <h2>Email: ${a.user.email}</h2>
+                            
+                        </c:if>
+                        <h3 style="display: none;">${count=count +1}</h3>
+                    </c:forEach>
+                    
+                </div>
+                <div class="col-4" >
+                    <c:set value="0" var="count" />
+                    <c:forEach items="${requestScope.all}" var="a">
+                        <c:if test="${count==0}">     
+                            <img  src="${a.user.avatar}" width="250" height="auto">
+                        </c:if>
+                        <h3 style="display: none;">${count=count +1}</h3>
+                    </c:forEach>
+                </div>
+            </div><br/>
+                
+                
                 <table class="table_r">
                     <tr>
                         
-                        <th class="show">Reservation ID</th>
+                        <th class="show">Customer's Child</th>
+                        <th>Child's Age</th>
                         <th>Reservation Date</th>
                         <th>Service Name</th>
                         <th>Time Check</th>
@@ -135,22 +173,105 @@
                         <th>Status</th>
                     </tr>
                     
-                    <c:forEach items="${detailreser}" var="a">
 
                         <tr>                 
 
                             
-                            <td ><a style="text-decoration: none; color: black" href="reservationdetails?id=${a.reservation_ID}">${a.reservation_ID}</a></td>
-                 
-                            <td>${a.date}</td>
-                            <td>Kham Benh</td>
-                            <td>${a.totalCost}</td>
-                            <td>${a.status}</td>
+                            <td>${ReDetail.children_name}</td>
+                            <td>${ReDetail.age}</td>
+                            <td>${detailreser.begin_time}</td>
+                            <td>${SerDe.service_name}</td>
+                            <td>${detailreser.date}</td>
+                            <td>${detailreser.totalCost}</td>
+
+                            <c:if test="${detailreser.status==-1}">
+                                <td>Not Approved </td>
+                            </c:if>
+                            <c:if test="${detailreser.status==0}">
+                                <td>Pending </td>
+                            </c:if>
+                            <c:if test="${detailreser.status==1}">
+                                <td>Approved </td>
+                            </c:if>
+
                        
 
                         </tr>
-                    </c:forEach>
+                   
                 </table>
+                            
+                <div class="lists">
+
+                <h1 style="color: #FE5D37;  text-align: center;">Service Detail</h1>
+                <table class="table_r">
+
+                    <tr>
+                        <th>Thumbnail</th>
+                        <th>Service Name</th>
+                        <th>Category</th>
+                        <th>Unit Price</th>
+                        <th>Discount</th>
+                        <th>Rate</th>
+
+                    </tr>
+                    
+                        <tr>
+                            <td><img src="${SerDe.image}" width="auto" height="50" class="rounded-circle shadow-1-strong me-3" alt="avatar"/></td>
+
+                            <td>${SerDe.service_name}</td>
+                            <td>${SerDe.type}</td>
+                            <td>${SerDe.price}</td>
+                            <td >${SerDe.discount}</td>
+                            <td>
+                                <c:if test="${requestScope.SerDe.rate == 1}">
+                                    <span class="fas fa-star" style="color: orange;"></span>
+                                    <span class="far fa-star" style="color: orange;"></span>
+                                    <span class="far fa-star" style="color: orange;"></span>
+                                    <span class="far fa-star" style="color: orange;"></span>
+                                    <span class="far fa-star" style="color: orange;"></span>
+                                </c:if>
+                                <c:if test="${requestScope.SerDe.rate == 2}">
+                                    <span class="fas fa-star" style="color: orange;"></span>
+                                    <span class="fas fa-star" style="color: orange;"></span>
+                                    <span class="far fa-star" style="color: orange;"></span>
+                                    <span class="far fa-star" style="color: orange;"></span>
+                                    <span class="far fa-star" style="color: orange;"></span>
+                                </c:if>
+                                <c:if test="${requestScope.SerDe.rate == 3}">
+                                    <span class="fas fa-star" style="color: orange;"></span>
+                                    <span class="fas fa-star" style="color: orange;"></span>
+                                    <span class="fas fa-star" style="color: orange;"></span>
+                                    <span class="far fa-star" style="color: orange;"></span>
+                                    <span class="far fa-star" style="color: orange;"></span>
+                                </c:if>
+                                <c:if test="${requestScope.SerDe.rate == 4}">
+                                    <span class="fas fa-star" style="color: orange;"></span>
+                                    <span class="fas fa-star" style="color: orange;"></span>
+                                    <span class="fas fa-star" style="color: orange;"></span>
+                                    <span class="fas fa-star" style="color: orange;"></span>
+                                    <span class="far fa-star" style="color: orange;"></span>
+                                </c:if>
+                                    <c:if test="${requestScope.SerDe.rate == 4.5}">
+                                        <span class="fas fa-star" style="color: orange;"></span>
+                                        <span class="fas fa-star" style="color: orange;"></span>
+                                        <span class="fas fa-star" style="color: orange;"></span>
+                                        <span class="fas fa-star" style="color: orange;"></span>
+                                        <span class="far fa-star" style="color: orange;"></span>
+                                    </c:if>
+                                <c:if test="${requestScope.SerDe.rate == 5}">
+                                    <span class="fas fa-star" style="color: orange;"></span>
+                                    <span class="fas fa-star" style="color: orange;"></span>
+                                    <span class="fas fa-star" style="color: orange;"></span>
+                                    <span class="fas fa-star" style="color: orange;"></span>
+                                    <span class="fas fa-star" style="color: orange;"></span>
+                                </c:if>
+                            </td>
+                            
+                        </tr>
+                    
+                </table>
+            </div>            
+                            
             </div>
 
 

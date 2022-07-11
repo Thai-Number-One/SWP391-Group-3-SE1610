@@ -8,19 +8,24 @@ package Control;
 import DAO.UserDAO;
 import Entity.User;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Date;
+import java.time.LocalDate;
+import static java.util.Collections.list;
+import java.util.List;
+import java.util.regex.Pattern;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author win
  */
-@WebServlet(name = "LoginControl", urlPatterns = {"/login"})
-public class LoginControl extends HttpServlet {
+@WebServlet(name = "RegisterControl", urlPatterns = {"/register"})
+public class RegisterControl extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,28 +39,50 @@ public class LoginControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        request.removeAttribute("mess");
+        
+        String fullname = request.getParameter("fullname");
+        String phone = request.getParameter("phone");
+        String address = request.getParameter("address");
+        String email = request.getParameter("email");
+        String user = request.getParameter("username");
+        String pass = request.getParameter("password");
+        String repass = request.getParameter("repassword");
+        Date dob = Date.valueOf(request.getParameter("birthday"));
+        int gender = Integer.parseInt(request.getParameter("gender"));
+        LocalDate newdate = java.time.LocalDate.now();
+        
         request.removeAttribute("mess1");
-        UserDAO Udao = new UserDAO();
-        User u = Udao.login(username, password);
-        if(u == null){
-            request.setAttribute("mess", "Wrong UserName or Password !");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-        }else if(u != null && u.getStatus() == 0){
-        request.setAttribute("mess1", "Your account has been disabled!");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-        }
-        else
-        {
-            HttpSession session = request.getSession();
-            session.setAttribute("loginsuccess", u);
-            request.getRequestDispatcher("HomeP.jsp").forward(request, response);
+        request.removeAttribute("mess2");
+        request.removeAttribute("mess3");
+        request.removeAttribute("mess4");
+        Pattern p2 = Pattern.compile("^[0-9]{10}$");
+        if(p2.matcher(email).find()){
+            request.setAttribute("mess4", "Please check your phone number again!");
+            request.getRequestDispatcher("register.jsp").forward(request, response);
         }
         
+        if(!pass.equals(repass)){
+            request.setAttribute("mess1", "Pass and ConfirmPass are not the same !");
+            request.getRequestDispatcher("register.jsp").forward(request, response);
+        }
         
+        UserDAO u = new UserDAO();
+        String account = u.CheckUserNameExists(user);
+        if(account != null){
+            
+            request.setAttribute("mess2", "User name already exists!");
+            request.getRequestDispatcher("register.jsp").forward(request, response);
+        }
+        Pattern p1 = Pattern.compile("^[a-zA-Z][a-zA-Z0-9]+@[a-zA-Z]+(\\.[a-zA-Z]+)$");
+        if(p1.matcher(email).find()){
+            request.setAttribute("mess3", "Your email is not formatted !");
+            request.getRequestDispatcher("register.jsp").forward(request, response);
+        }
+        
+        u.CreateUser(fullname,phone,address,email,user,pass,dob,gender);
+            
     }
+    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -96,4 +123,5 @@ public class LoginControl extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
+    
 }

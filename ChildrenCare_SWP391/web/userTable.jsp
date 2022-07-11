@@ -39,7 +39,7 @@
 
 
     </head>
-<body class="g-sidenav-show   bg-gray-100">
+    <body class="g-sidenav-show   bg-gray-100">
         <div class="min-height-300 bg-primary position-absolute w-100"></div>
         <jsp:include page="Template/AdminDashboard.jsp"/>
         <main class="main-content position-relative border-radius-lg ">
@@ -56,7 +56,7 @@
 
                 </div>
             </nav>
-        
+
             <!-- End Navbar -->
             <div class="container-fluid py-5">
                 <div class="row">
@@ -130,7 +130,7 @@
                                                     <td>
                                                         <div class="d-flex px-2 py-1">
                                                             <div>
-                                                                <img src="img/${o.avatar}" class="avatar avatar-sm me-3" alt="user1">
+                                                                <img src="${o.avatar}" class="avatar avatar-sm me-3" alt="user1">
                                                             </div>
                                                             <div class="d-flex flex-column justify-content-center">
                                                                 <h6 class="mb-0 text-sm">${o.userName}</h6>
@@ -159,8 +159,8 @@
                                                     <td class="align-middle text-center">
                                                         <span class="text-secondary text-xs font-weight-bold">
                                                             <c:if test = "${o.role == 1}">Admin</c:if>
-                                                            <c:if test = "${o.role == 2}">Manager</c:if>
-                                                            <c:if test = "${o.role == 5}">Staff</c:if>
+                                                            <c:if test = "${o.role == 3}">Manager</c:if>
+                                                            <c:if test = "${o.role == 2}">Staff</c:if>
                                                             <c:if test = "${o.role == 4}">Customer</c:if>
                                                             </span>
                                                         </td>
@@ -202,8 +202,8 @@
             </div>
         </div>
     </main>
-   
-  
+
+
 
     <div id="addEmployeeModal" class="modal fade">
         <div class="modal-dialog">
@@ -332,6 +332,7 @@
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
     <script src="./js/app.js"></script>
+
 </body>
 
 </html>

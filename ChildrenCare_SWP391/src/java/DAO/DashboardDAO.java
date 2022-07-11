@@ -9,6 +9,7 @@ import Context.BaseDAO;
 import Entity.Medicine;
 import Entity.Posts;
 import Entity.Reservation;
+import Entity.Service;
 import Entity.Slider;
 import Entity.User;
 import Entity.role;
@@ -43,7 +44,7 @@ public class DashboardDAO {
 
     public List<UserT> getAllProduct() {
         List<UserT> list = new ArrayList<>();
-        String query = "select * from [ChildrenCare].[dbo].[User]";
+        String query = "select * from [User]";
         try {
             conn = new BaseDAO().BaseDao();//mo ket noi voi sql
             ps = conn.prepareStatement(query);
@@ -69,7 +70,7 @@ public class DashboardDAO {
 
     public List<Posts> getAllPostList() {
         List<Posts> list = new ArrayList<>();
-        String query = "select *  FROM [TestProject4].[dbo].[Post]";
+        String query = "select *  FROM [Post]";
         try {
             conn = new BaseDAO().BaseDao();//mo ket noi voi sql
             ps = conn.prepareStatement(query);
@@ -92,7 +93,7 @@ public class DashboardDAO {
 
     public List<Slider> getAllSliderList() {
         List<Slider> list = new ArrayList<>();
-        String query = "select * FROM [TestProject4].[dbo].[Slider]";
+        String query = "select * FROM [Slider]";
         try {
             conn = new BaseDAO().BaseDao();//mo ket noi voi sql
             ps = conn.prepareStatement(query);
@@ -113,7 +114,7 @@ public class DashboardDAO {
     public List<User> getAuthorByID() {
         List<User> list = new ArrayList<>();
         String query = "  select User_ID, FullName\n"
-                + "   FROM [TestProject4].[dbo].[User]\n"
+                + "   FROM [User]\n"
                 + "   where Role_ID = 2";
         try {
             conn = new BaseDAO().BaseDao();//mo ket noi voi sql
@@ -130,7 +131,7 @@ public class DashboardDAO {
     }
 
     public void deletePost(String pid) {
-        String query = "DELETE FROM [dbo].[Post]\n"
+        String query = "DELETE FROM [Post]\n"
                 + "      WHERE Post_ID = ?";
         try {
             conn = new BaseDAO().BaseDao();//mo ket noi voi sql
@@ -143,7 +144,7 @@ public class DashboardDAO {
 
     public List<Medicine> getAllMedicine() {
         List<Medicine> list = new ArrayList<>();
-        String query = "select * from [ChildrenCare].[dbo].[Medicine]";
+        String query = "select * from [Medicine]";
         try {
             conn = new BaseDAO().BaseDao();//mo ket noi voi sql
             ps = conn.prepareStatement(query);
@@ -165,7 +166,7 @@ public class DashboardDAO {
     public static void main(String[] args) {
         DashboardDAO dao = new DashboardDAO();
 
-        System.out.println(dao.getAllSliderList());
+        System.out.println(dao.getServiceByID("1"));
     }
 
     public void deleteProduct(String pid) {
@@ -181,7 +182,7 @@ public class DashboardDAO {
     }
 
     public void deleteSlider(String pid) {
-        String query = "DELETE FROM [TestProject4].[dbo].[Slider]\n"
+        String query = "DELETE FROM [Slider]\n"
                 + "where Slider_ID = ?";
         try {
             conn = new BaseDAO().BaseDao();//mo ket noi voi sql
@@ -457,8 +458,34 @@ public class DashboardDAO {
 
     }
 
+    public Service getServiceByID(String pid) {
+        String query = "select * FROM [TestProject4].[dbo].[Service]\n"
+                + "where Service_ID = ?";
+        try {
+            conn = new BaseDAO().BaseDao();//mo ket noi voi sql
+            ps = conn.prepareStatement(query);
+            ps.setString(1, pid);
+            rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                return new Service(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getString(6),
+                        rs.getFloat(7),
+                        rs.getInt(8),
+                        rs.getFloat(9),
+                        rs.getInt(10));
+            }
+        } catch (Exception e) {
+        }
+        return null;
+    }
+    
     public UserT getProductByID(String pid) {
-        String query = "select * from [ChildrenCare].[dbo].[User]\n"
+        String query = "select * from [User]\n"
                 + "where User_ID = ?";
         try {
             conn = new BaseDAO().BaseDao();//mo ket noi voi sql

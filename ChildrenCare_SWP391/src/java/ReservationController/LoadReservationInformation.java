@@ -3,24 +3,30 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Control;
+package ReservationController;
 
-import DAO.UserDAO;
-import Entity.User;
+import DAO.ReservationDAO;
+import Entity.Reservation;
+import Entity.Reservation_detail;
+import Entity.Service;
+import dal_staff.reservatonsDAO;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import model_staff.reservations_user;
 
 /**
  *
- * @author win
+ * @author s
  */
-@WebServlet(name = "LoginControl", urlPatterns = {"/login"})
-public class LoginControl extends HttpServlet {
+@WebServlet(name = "LoadReservationInformation", urlPatterns = {"/loadreservationinformation"})
+public class LoadReservationInformation extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,26 +40,6 @@ public class LoginControl extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        request.removeAttribute("mess");
-        request.removeAttribute("mess1");
-        UserDAO Udao = new UserDAO();
-        User u = Udao.login(username, password);
-        if(u == null){
-            request.setAttribute("mess", "Wrong UserName or Password !");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-        }else if(u != null && u.getStatus() == 0){
-        request.setAttribute("mess1", "Your account has been disabled!");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-        }
-        else
-        {
-            HttpSession session = request.getSession();
-            session.setAttribute("loginsuccess", u);
-            request.getRequestDispatcher("HomeP.jsp").forward(request, response);
-        }
-        
         
     }
 
@@ -69,7 +55,42 @@ public class LoginControl extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        //processRequest(request, response);
+        try {
+
+            String id = request.getParameter("id");
+
+            int idd = Integer.parseInt(id);
+
+            reservatonsDAO d = new reservatonsDAO();
+            List l =new ArrayList();
+            for (int i = 0; i < d.reservations_user().size(); i++) {
+                if(d.reservations_user().get(i).getRedetail().getUserid()==idd){
+                    l.add(d.reservations_user().get(i));
+                }
+            }
+            
+            ReservationDAO dao = new ReservationDAO();
+            Reservation ll = dao.getDetailID(idd);
+            
+                        
+            String Servicename = dao.getDetailService(idd);
+            
+            
+            Reservation_detail rd = dao.getReDe(idd);
+            
+            Service s = dao.getServiceDe(idd);
+            
+            request.setAttribute("detailreser", ll);
+            request.setAttribute("servicename", Servicename);
+            request.setAttribute("ReDetail", rd);
+            request.setAttribute("SerDe", s);
+            request.setAttribute("all", l);
+
+            request.getRequestDispatcher("ReservationInformation.jsp").forward(request, response);
+
+        } catch (Exception e) {
+        }
     }
 
     /**

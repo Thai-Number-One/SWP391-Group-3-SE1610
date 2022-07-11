@@ -8,6 +8,7 @@ package DAO;
 import Context.BaseDAO;
 import Entity.User;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -162,5 +163,44 @@ public class UserDAO {
         } catch (Exception e) {
         }
         return null;
+    }
+    
+    public String CheckUserNameExists(String user) {
+        String query = "select User_Name from [User] where User_name = ?";
+        try {
+            conn = new BaseDAO().BaseDao();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, user);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                return rs.getString(1);
+            }
+            
+        } catch (Exception e) {
+        }
+        return null;
+    }
+    
+    public void CreateUser(String fullname, String phone, String address, String email, String user, String pass, Date dob, int gender) {
+        String query = "insert into [User](FullName,Address,Phone,Email,Date,Date_New,User_Name,Password,Avatar,Gender,Role_ID,Status)\n" +
+        "values (?,?,?,?,?,?,?,?,Null,?,4,1)";
+        try {
+            Date newdate = Date.valueOf(java.time.LocalDate.now());
+            conn = new BaseDAO().BaseDao();
+            ps = conn.prepareStatement(query);
+            ps.setString(1, fullname);
+            ps.setString(2, address);
+            ps.setString(3, phone);
+            ps.setString(4, email);
+            ps.setDate(5, dob);
+            ps.setDate(6, newdate);
+            ps.setString(7, user);
+            ps.setString(8, pass);
+            ps.setInt(9, gender);
+            rs = ps.executeQuery();
+            
+        } catch (Exception e) {
+        }
+        
     }
 }
