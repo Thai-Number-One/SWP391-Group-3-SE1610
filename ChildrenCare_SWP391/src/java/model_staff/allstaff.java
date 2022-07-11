@@ -5,8 +5,6 @@
  */
 package model_staff;
 
-import controller_staff.reservation;
-
 /**
  *
  * @author dathp

@@ -36,12 +36,19 @@ public class LoginControl extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String username = request.getParameter("username");
         String password = request.getParameter("password");
+        request.removeAttribute("mess");
+        request.removeAttribute("mess1");
         UserDAO Udao = new UserDAO();
         User u = Udao.login(username, password);
         if(u == null){
             request.setAttribute("mess", "Wrong UserName or Password !");
             request.getRequestDispatcher("login.jsp").forward(request, response);
-        }else{
+        }else if(u != null && u.getStatus() == 0){
+        request.setAttribute("mess1", "Your account has been disabled!");
+            request.getRequestDispatcher("login.jsp").forward(request, response);
+        }
+        else
+        {
             HttpSession session = request.getSession();
             session.setAttribute("loginsuccess", u);
             request.getRequestDispatcher("HomeP.jsp").forward(request, response);

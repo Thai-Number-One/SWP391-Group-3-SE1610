@@ -19,7 +19,7 @@ import javax.mail.internet.MimeMessage;
  * @author HP
  */
 public class SendMailConfirm {
-    
+
     public static void send(String to, String sub,
             String msg, final String user, final String pass) {
         Properties props = new Properties();
@@ -49,25 +49,29 @@ public class SendMailConfirm {
             e.printStackTrace();
         }
     }
-     public static void main(String[] args) {
-        String subject = "your order";
-       String message = "<!DOCTYPE html>\n"
+
+    public static void SendMailConfirm(String email, String FullName) {
+        String subject = "[Reservation Successfully]";
+        String code = "http://localhost:8080/ChildrenCare_SWP391/submitreservation";
+        String fromEmail = "leemuld10@gmail.com";
+        String password = "levu050721";
+        String message = "<!DOCTYPE html>\n"
                 + "<html lang=\"en\">\n "
                 + "\n"
                 + "<head>\n "
                 + "</head>\n"
                 + "\n"
                 + "<body>\n"
-                + "    <h3 style=\"color: blue;\">Xin chào " + "Username" + " !</h3>\n"
-                + "    <div>Link xác minh tài khoản của bạn là : <a href=\"" + "code" + "\">Nhấn vào đây!</a></div>\n"
-                + "    <div>Thư này được tạo ra tự động.</div>\n"
-                + "    <div>Nếu bạn cần trợ giúp hoặc có câu hỏi, hãy gửi email đến doctris.care@gmail.com bất cứ lúc nào.</div>\n"
-                + "    <h3 style=\"color: blue;\">Trân trọng!</h3>\n"
+                + "<h3 style=\"color: orange;\">Xin chào " + FullName + " !</h3>\n"
+                + "<div>Cảm ơn bạn đã tin tưởng đặt dịch vụ ở trang web chúng tôi </div>"
+                + "<div> Để xác nhận lịch đặt chỗ, bạn vui lòng nhấn vào link sau đây: <a href=\"" + code + "\">Nhấn vào đây!</a></div>\n"
+                + "<div>Thư này được tạo ra tự động.</div>\n"
+                + "<div>Nếu bạn cần trợ giúp hoặc có câu hỏi, hãy gửi email đến ChildrenCare@gmail.com bất cứ lúc nào.</div>\n"
+                + "<h3 style=\"color: orange;\">Trân trọng!</h3>\n"
                 + "\n"
                 + "</body>\n"
                 + "\n"
                 + "</html>";
-        SendMailConfirm.send("", subject, message, "", "");
+        SendMailConfirm.send(email, subject, message, fromEmail, password);
     }
-
 }

@@ -5,40 +5,77 @@
  */
 package Entity;
 
+import java.sql.Date;
+
 /**
  *
  * @author thaic
  */
 public class Reservation {
-    private String status ;
-    private double totalCost ;
+    private int reservation_ID;
+    private Date date;
+    private int status;
+    private Date begin_time;
+    private float totalCost;
 
-    public Reservation(String status, double totalCost) {
+    public Reservation() {
+    }
+
+    public Reservation(int reservation_ID, Date date, int status, Date begin_time, float totalCost) {
+        this.reservation_ID = reservation_ID;
+        this.date = date;
         this.status = status;
+        this.begin_time = begin_time;
         this.totalCost = totalCost;
     }
 
-    public String getStatus() {
+    public int getReservation_ID() {
+        return reservation_ID;
+    }
+
+    public void setReservation_ID(int reservation_ID) {
+        this.reservation_ID = reservation_ID;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 
-    public double getTotalCost() {
+    public Date getBegin_time() {
+        return begin_time;
+    }
+
+    public void setBegin_time(Date begin_time) {
+        this.begin_time = begin_time;
+    }
+
+    public float getTotalCost() {
         return totalCost;
     }
 
-    public void setTotalCost(double totalCost) {
+    public void setTotalCost(float totalCost) {
         this.totalCost = totalCost;
     }
 
-    
     @Override
     public String toString() {
-        return "Reservation{" + "status=" + status + ", totalCost=" + totalCost + '}';
+        return "Reservation{" + "reservation_ID=" + reservation_ID + ", date=" + date + ", status=" + status + ", begin_time=" + begin_time + ", totalCost=" + totalCost + '}';
     }
+
+    
+    
     
     
     

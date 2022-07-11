@@ -90,17 +90,7 @@ public class reservationdetails extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            String raw_id = request.getParameter("id");
-            String status_raw = request.getParameter("status");
-            int id = Integer.parseInt(raw_id);
-            int status = Integer.parseInt(status_raw);
-            insert_reservationDAO ind = new insert_reservationDAO();
-            ind.updateStatus(id, status);
-            response.sendRedirect("reservationdetails?id=" +id);
-        } catch (Exception ex) {
-            Logger.getLogger(reservationdetails.class.getName()).log(Level.SEVERE, null, ex);
-        }
+      
         
     }
 

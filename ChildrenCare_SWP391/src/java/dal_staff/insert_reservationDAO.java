@@ -9,6 +9,8 @@ import Context.BaseDAO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model_staff.Prescription;
 import model_staff.reservations;
 import model_staff.user;
@@ -18,11 +20,19 @@ import model_staff.user;
  * @author dathp
  */
 public class insert_reservationDAO extends BaseDAO{
+    public static void main(String[] args) {
+        try {
+            insert_reservationDAO d = new insert_reservationDAO();
+            d.updateStatus(3, -1);
+        } catch (Exception ex) {
+            Logger.getLogger(insert_reservationDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
     public void updateStatus(int id,int s) throws Exception{
         try {
             
-              String sql="update Reservation set Status = ?  where User_ID = ?";
+              String sql="update Reservation set Status = ?  where Reservation_ID = ?";
                  Connection conn = new BaseDAO().BaseDao();
                   PreparedStatement st = conn.prepareStatement(sql);  
                   st.setInt(1, s);
@@ -76,15 +86,14 @@ public class insert_reservationDAO extends BaseDAO{
     
     public void insertReservation(reservations u) throws SQLException, Exception{
           try {
-              String sql="insert into Reservation(Reservation_ID, User_ID,Date,Status,Begin_Time,Total_cost)\n" +
+              String sql="insert into Reservation(Reservation_ID,Date,Status,Begin_Time,Total_cost)\n" +
 "values(?,?,?,?,?,?)";
                 Connection conn = new BaseDAO().BaseDao();
                   PreparedStatement st = conn.prepareStatement(sql);  
                   st.setInt(1, u.getReservationID());
-                  st.setInt(2, u.getUserID());
-                  st.setDate(3, u.getDate());
-                  st.setInt(4, u.getStatus());
-                  st.setFloat(5, u.getTotalcost());
+                  st.setDate(2, u.getDate());
+                  st.setInt(3, u.getStatus());
+                  st.setFloat(4, u.getTotalcost());
                   st.executeUpdate();              
           } catch (SQLException ex) {
               System.out.println(ex);

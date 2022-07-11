@@ -109,7 +109,7 @@ public class feedbackslist extends HttpServlet {
             throws ServletException, IOException {
         try {
             int id = Integer.parseInt(request.getParameter("id"));
-            String status = request.getParameter("status");
+            int status = Integer.parseInt(request.getParameter("status"));
             FeedbacksDAO d = new FeedbacksDAO();
             d.updateStatusFeedback(id, status);
             response.sendRedirect("feedbackslist");

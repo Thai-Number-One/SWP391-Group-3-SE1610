@@ -151,9 +151,9 @@
                             <div class="card-body p-4">
 
                                 <div class="d-flex flex-start" style="padding-bottom: 20px;padding-top: 20px;">
-                                    <a href="blogdetails?postid=${a.posts.post_ID}"><img class="rounded-circle shadow-1-strong me-3"
-                                                                                         src="feedbackF/img/${a.posts.image}" alt="avatar" width="60"
-                                                                                         height="60" /></a>
+                                    <a href="blogdetails?postid=${a.posts.post_ID}"><img class=" shadow-1-strong me-3"
+                                                                                         src="${a.posts.image}" alt="avatar" width="150"
+                                                                                         height="150" /></a>
                                     <div>
                                         <h3 class="fw-bold mb-1"><a href="blogdetails?postid=${a.posts.post_ID}">${a.posts.tilte}</a></h3>
                                         <h6 class="fw-bold mb-1"><a href="blogdetails?postid=${a.posts.post_ID}">${a.user.fullname} - ${a.service.servicename}</a></h6>
@@ -179,7 +179,7 @@
             <nav aria-label="Page navigation example">
                 <ul class="pagination justify-content-center">
                     <li class="page-item ">
-                        <a class="page-link" href="blogs?page=${1}"><<</a>
+                        <a class="page-link" href="blogs?page=${1}"><i class="bi bi-chevron-double-left"></i></a>
                     </li>
                     <c:if test="${page ==1}">
                         <li class="page-item disabled">
@@ -213,7 +213,7 @@
                         </li>
                     </c:if>
                     <li class="page-item ">
-                        <a class="page-link" href="blogs?page=${max}">>></a>
+                        <a class="page-link" href="blogs?page=${max}"><i class="bi bi-chevron-double-right"></i></a>
                     </li>
                 </ul>
             </nav>
@@ -222,11 +222,19 @@
 
         <!-- filter page start -->
         <c:if test="${requestScope.checkpage==1}">
+            <c:set var="max" value="${0}"/>
             <nav aria-label="Page navigation example">
                 <ul class="pagination justify-content-center">
-                    <li class="page-item ">
-                        <a class="page-link" href="blogssearch?page=${1}&name=${requestScope.name}"><<</a>
-                    </li>
+                    <c:if test="${max !=0}">
+                        <li class="page-item ">
+                            <a class="page-link" href="blogssearch?page=${1}&name=${requestScope.name}"><i class="bi bi-chevron-double-left"></i></a>
+                        </li>
+                    </c:if>
+                    <c:if test="${max ==0}">
+                        <li class="page-item disabled">
+                            <a class="page-link " href="blogssearch?page=${1}&name=${requestScope.name}"><i class="bi bi-chevron-double-left"></i></a>
+                        </li>
+                    </c:if>
                     <c:if test="${page ==1}">
                         <li class="page-item disabled">
                             <a class="page-link" href="blogssearch?page=${page-1}&name=${requestScope.name}">Previous</a>
@@ -239,7 +247,7 @@
                     </c:if>
                     <!-- /////////////////////////////////////////////////////////////////-->
                     <c:set var="page" value="${requestScope.page}"/>
-                    <c:set var="max" value="${0}"/>
+                    
                     <c:forEach begin="${1}" end="${requestScope.num}" var="i">                
                         <c:if test="${i==page-2||i==page-1||i==page+2||i==page+1||i==page}">
                             <li class=" ${i==page?"active":""} page-item"><a class="page-link" href="blogssearch?page=${i}&name=${requestScope.name}">${i}</a></li>
@@ -253,14 +261,26 @@
                             <a class="page-link" href="blogssearch?page=${page+1}&name=${requestScope.name}">Next</a>
                         </li>
                     </c:if>
-                    <c:if test="${page !=max}">
+                    <c:if test="${max ==0}">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="blogssearch?page=${page+1}&name=${requestScope.name}">Next</a>
+                        </li>
+                    </c:if>
+                    <c:if test="${page !=max&&max !=0}">
                         <li class="page-item ">
                             <a class="page-link" href="blogssearch?page=${page+1}&name=${requestScope.name}">Next</a>
                         </li>
                     </c:if>
-                    <li class="page-item ">
-                        <a class="page-link" href="blogssearch?page=${max}&name=${requestScope.name}">>></a>
-                    </li>
+                    <c:if test="${max !=0}">
+                        <li class="page-item ">
+                            <a class="page-link" href="blogssearch?page=${max}&name=${requestScope.name}"><i class="bi bi-chevron-double-right"></i></a>
+                        </li>
+                    </c:if>
+                    <c:if test="${max ==0}">
+                        <li class="page-item disabled">
+                            <a class="page-link " href="blogssearch?page=${max}&name=${requestScope.name}"><i class="bi bi-chevron-double-right"></i></a>
+                        </li>
+                    </c:if>
                 </ul>
             </nav>
         </c:if>
@@ -269,7 +289,6 @@
         <!-- Footer Start -->
         <jsp:include page="/Template/FooterPublic.jsp"/>
         <!-- Footer End -->
-
 
 
 

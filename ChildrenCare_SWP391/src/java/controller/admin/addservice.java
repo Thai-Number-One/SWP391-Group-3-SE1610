@@ -35,8 +35,8 @@ public class addservice extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-        int Service_ID = Integer.parseInt(request.getParameter("Service_ID"));
+        ServiceDAO d = new ServiceDAO();
+        int Service_ID=d.getAllServices().get(d.getAllServices().size()-1).getServiceid()+1;
         String Service_Name = request.getParameter("Service_Name");
         String Detail = request.getParameter("Detail");
         String Type = request.getParameter("Type");
@@ -48,10 +48,11 @@ public class addservice extends HttpServlet {
         float Rate = Float.parseFloat(request.getParameter("Rate"));
         int status = Integer.parseInt(request.getParameter("status"));
         
+        
 
         
-        ServiceDAO dao = new ServiceDAO();
-        dao.insertService(Service_ID, Service_Name, Detail, Type, Image, Title, Price, Discount, Rate, status);
+        
+        d.insertService(Service_ID, Service_Name, Detail, Type, "img/img_service/"+Image, Title, Price, Discount, Rate, status);
         response.sendRedirect("servicecontroller");
     }
 

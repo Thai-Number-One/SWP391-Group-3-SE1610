@@ -48,6 +48,22 @@
         <servlet-name>BlogsSearch</servlet-name>
         <servlet-class>Control.BlogsSearch</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UpdateStatusReservation</servlet-name>
+        <servlet-class>controller_staff.UpdateStatusReservation</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListServiceServlet</servlet-name>
+        <servlet-class>Control.ListServiceServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>FilterService</servlet-name>
+        <servlet-class>Control.FilterService</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateService</servlet-name>
+        <servlet-class>controller.admin.UpdateService</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>reservation</servlet-name>
         <url-pattern>/reservation</url-pattern>
@@ -96,9 +112,25 @@
         <servlet-name>BlogsSearch</servlet-name>
         <url-pattern>/blogssearch</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateStatusReservation</servlet-name>
+        <url-pattern>/updatestatusreservation</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListServiceServlet</servlet-name>
+        <url-pattern>/listserviceservlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FilterService</servlet-name>
+        <url-pattern>/filterservice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateService</servlet-name>
+        <url-pattern>/updateservice</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
-            30
+            150
         </session-timeout>
     </session-config>
 </web-app>
