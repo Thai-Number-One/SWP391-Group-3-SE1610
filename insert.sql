@@ -1,3 +1,5 @@
+use TestProject4
+
 
 insert into Role (Role_ID,Role_Name)
 values(1,'Admin')
@@ -275,3 +277,22 @@ Setting healthy limits on digital screen use can help your tween learn to use te
 • Limit tech time. Set time limits for media use. To teach tweens that technology use is a privilege, not a right, some parents reward good behavior, grades or chores with digital media time. (Click here for helpful tech tips for tweens on limiting computer gaming.)
 
 • Monitor tech use. Teach your child to use digital media responsibly and discuss the consequences of posting decisions. Use parental controls to monitor and help limit your child’s risk.',3,'img/img_post/post8.jpg',1,'09/26/2014',1,'Childhood')
+
+
+
+insert Feedback(User_ID,Detail,Feedback_status,Star,Date_Feedback,Reservation_ID)
+values(6,'very good',1,4,'2/2/2022',1)
+insert Feedback(User_ID,Detail,Feedback_status,Star,Date_Feedback,Reservation_ID)
+values(7,'very great',1,4,'2/2/2022',2)
+insert Feedback(User_ID,Detail,Feedback_status,Star,Date_Feedback,Reservation_ID)
+values(6,' good',1,4,'2/2/2022',3)
+insert Feedback(User_ID,Detail,Feedback_status,Star,Date_Feedback,Reservation_ID)
+values(7,'not good',1,4,'2/2/2022',4)
+insert Feedback(User_ID,Detail,Feedback_status,Star,Date_Feedback,Reservation_ID)
+values(6,'very good',0,4,'2/2/2022',5)
+insert Feedback(User_ID,Detail,Feedback_status,Star,Date_Feedback,Reservation_ID)
+values(7,'very good',1,4,'2/2/2022',6)
+insert Feedback(User_ID,Detail,Feedback_status,Star,Date_Feedback,Reservation_ID)
+values(6,'very good',1,4,'2/2/2022',7)
+insert Feedback(User_ID,Detail,Feedback_status,Star,Date_Feedback,Reservation_ID)
+values(7,'very good',0,4,'2/2/2022',8)
