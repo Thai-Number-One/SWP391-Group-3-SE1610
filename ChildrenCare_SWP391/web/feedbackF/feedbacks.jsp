@@ -146,7 +146,7 @@
                             <c:forEach items="${requestScope.allfeedbacks}" var="a">
                                 <div class="d-flex flex-start" style="padding-bottom: 20px;padding-top: 20px;">
                                     <a href="feedbackdetails?idfeedback=${a.feedbacks.feedbackid}"><img class="rounded-circle shadow-1-strong me-3"
-                                         src="feedbackF/img/${a.user.avatar}" alt="avatar" width="60"
+                                         src="${a.user.avatar}" alt="avatar" width="60"
                                          height="60" /></a>
                                     <div>
                                         <h6 class="fw-bold mb-1"><a href="feedbackdetails?idfeedback=${a.feedbacks.feedbackid}">${a.user.fullname} - ${a.service.servicename}</a></h6>

@@ -28,10 +28,9 @@ public class ReservationDAO {
     public List<Reservation> getDetail(int id){
         List<Reservation> list = new ArrayList<>();
         try {
-            String sql = "select R.Reservation_ID, R.[Date], R.Status, R.Begin_Time, R.Total_cost, Rd.Service_ID  from [User] u\n" +
-" join Reservation_detail Rd on u.User_ID = Rd.User_ID\n" +
-" join Reservation R on Rd.Reservation_ID = R.Reservation_ID\n" +
-" where u.User_ID = ?";
+            String sql = "select * from Reservation r \n" +
+                        "join Reservation_detail rd on r.Reservation_ID = rd.Reservation_ID\n" +
+                        "where r.Reservation_ID = ?";
             conn = new BaseDAO().BaseDao();
             ps = conn.prepareStatement(sql);
             ps.setInt(1, id);
@@ -50,10 +49,9 @@ public class ReservationDAO {
     public Reservation getDetailID(int id){
         
         try {
-            String sql = "select R.Reservation_ID, R.[Date], R.Status, R.Begin_Time, R.Total_cost, Rd.Service_ID   from [User] u\n" +
-" join Reservation_detail Rd on u.User_ID = Rd.User_ID\n" +
-" join Reservation R on Rd.Reservation_ID = R.Reservation_ID\n" +
-" where u.User_ID = ?";
+            String sql = "select * from Reservation r \n" +
+"join Reservation_detail rd on r.Reservation_ID = rd.Reservation_ID\n" +
+"where r.Reservation_ID = ?";
             conn = new BaseDAO().BaseDao();
             ps = conn.prepareStatement(sql);
             ps.setInt(1, id);
@@ -72,8 +70,7 @@ public class ReservationDAO {
         try {
             String sql = "select [Service_Name] from [Service] s\n" +
                         "join Reservation_detail r on s.Service_ID = r.Service_ID\n" +
-                        "where [User_ID] = ? \n" +
-                        "order by Service_Name asc";
+                        "where [Reservation_ID] = ?";
             conn = new BaseDAO().BaseDao();
             ps = conn.prepareStatement(sql);
             ps.setInt(1, id);
@@ -91,7 +88,7 @@ public class ReservationDAO {
     public Reservation_detail getReDe(int id){
         try {
             String sql = "select * from Reservation_detail\n" +
-                        "where [User_ID] = ?";
+                        "where [Reservation_ID] = ?";
             conn = new BaseDAO().BaseDao();
             ps = conn.prepareStatement(sql);
             ps.setInt(1, id);
@@ -110,7 +107,7 @@ public class ReservationDAO {
         try {
             String sql = "select * from [Service] s\n" +
                         "join Reservation_detail r on s.Service_ID = r.Service_ID \n" +
-                        "where [User_ID] = ?";
+                        "where [Reservation_ID] = ?";
             conn = new BaseDAO().BaseDao();
             ps = conn.prepareStatement(sql);
             ps.setInt(1, id);
@@ -172,7 +169,7 @@ public class ReservationDAO {
     public static void main(String[] args) {
         ReservationDAO dao = new ReservationDAO();
         
-       Reservation_detail re = dao.getReDe(6);
+       String re = dao.getDetailService(2);
         System.out.println(re);
     }
 }

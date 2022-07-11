@@ -21,8 +21,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav mx-auto">
-                    <a href="HomeP.jsp" class="nav-item nav-link">Home</a>
-                    <a href="#" class="nav-item nav-link">About</a>
+                    <a href="homeservlet" class="nav-item nav-link">Home</a>
                     <a href="blogs" class="nav-item nav-link">Blogs</a>
                     <a href="listserviceservlet" class="nav-item nav-link">Service</a>
                     <div class="nav-item dropdown">

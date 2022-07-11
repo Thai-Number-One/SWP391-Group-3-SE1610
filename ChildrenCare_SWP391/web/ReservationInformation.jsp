@@ -101,6 +101,17 @@
                 color: #000;
             }.lists{
                 margin-top: 100px;
+            }.col-lg-edit{
+                width: 100%;
+                height: 100px;
+            }.col-lg a button{
+                margin-top: 40px;
+                margin-left: 650px;
+                width: 250px;
+                height: 50px;
+                background-color: #FE5D37;
+                color: #ffffff;
+                border: 0;
             }
 
 
@@ -270,6 +281,29 @@
                         </tr>
                     
                 </table>
+                            <%--
+                            
+                            <div class="col-lg-edit">
+                                <div class="sidebar-item submit-comment">
+
+                                    <div class="content">
+
+
+                                        <div class="col-lg">
+                                            <fieldset>
+                                                <a href="">
+                                                    <button type="submit" id="form-submit" class="main-button">Edit Reservation Information</button>
+                                                </a>
+                                            </fieldset>
+                                        </div>
+
+
+
+                                    </div>
+                                </div>
+                            </div>  
+
+                            --%>
             </div>            
                             
             </div>

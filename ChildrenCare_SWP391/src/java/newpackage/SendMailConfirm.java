@@ -72,6 +72,8 @@ public class SendMailConfirm {
                 + "</body>\n"
                 + "\n"
                 + "</html>";
-        SendMailConfirm.send(email, subject, message, fromEmail, password);
+        SendMailConfirm.send("dathp028@gmail.com", subject, message, fromEmail, password);
+        
+        
     }
 }
