@@ -59,27 +59,35 @@ public class LoadReservationInformation extends HttpServlet {
         try {
 
             String id = request.getParameter("id");
-
+            
             int idd = Integer.parseInt(id);
 
+            String rid = request.getParameter("rid");
+            
+            int idr = Integer.parseInt(rid);
+            
             reservatonsDAO d = new reservatonsDAO();
+          
             List l =new ArrayList();
+
             for (int i = 0; i < d.reservations_user().size(); i++) {
                 if(d.reservations_user().get(i).getRedetail().getUserid()==idd){
                     l.add(d.reservations_user().get(i));
                 }
             }
             
+            
+            
             ReservationDAO dao = new ReservationDAO();
-            Reservation ll = dao.getDetailID(idd);
+            Reservation ll = dao.getDetailID(idr);
             
                         
-            String Servicename = dao.getDetailService(idd);
+            String Servicename = dao.getDetailService(idr);
             
             
-            Reservation_detail rd = dao.getReDe(idd);
+            Reservation_detail rd = dao.getReDe(idr);
             
-            Service s = dao.getServiceDe(idd);
+            Service s = dao.getServiceDe(idr);
             
             request.setAttribute("detailreser", ll);
             request.setAttribute("servicename", Servicename);
