@@ -78,92 +78,129 @@
     });
     
 })(jQuery);
-function nguoidung() {
-    //kiem tra ho ten
-    var hoten = document.formlh.ht.value;
-    //kiem tra so dien thoai
-    var dienthoai = document.formlh.sdt.value;
-    
+//function nguoidung() {
+//    //kiem tra ho ten
+//    var hoten = document.formlh.ht.value;
+//    //kiem tra so dien thoai
+//    var dienthoai = document.formlh.sdt.value;
+//    
+//
+//    //kiểm tra họ tên
+//    if (!checkName(hoten)) {
+//        addAlertBox('Họ tên không phù hợp.', '#f55', '#000', 3000);
+//        formlh.ht.focus();
+//        return false;
+//    }
+//    //-------
+//    else if (!checkPhone(dienthoai)) {
+//        addAlertBox('Số điện thoại không phù hợp.', '#f55', '#000', 3000);
+//        return false;
+//    }
+//    if (!checkPhone2(dienthoai)) {
+//        addAlertBox('Số điện thoại không phù hợp.', '#f55', '#000', 3000);
+//        return false;
+//    }
+//    if (!checkPhone3(dienthoai)) {
+//        addAlertBox('Số điện thoại không phù hợp.', '#f55', '#000', 3000);
+//        return false;
+//    }
+//    
+// var button = document.getElementById("btn");
+//            submit.onclick = function(){
+//                alert("Gửi thành công. Chúng tôi chân thành cám ơn những góp ý từ bạn.");
+//            }
+//           
+//    //addAlertBox('Gửi thành công. Chúng tôi chân thành cám ơn những góp ý từ bạn.', '#5f5', '#000', 5000); // cám ơn
+//    // document.formlh.reset(); // làm sạch
+//    //return false; // thoát
+//}
+//
+//function checkName(str) {
+//    var special = '~!@#$%^&*()_+=-`./*{}[]|\'<>?;"';
+//
+//    for (var i = 0; i < str.length; i++) {
+//        if (Number(str[i])) return false;
+//        for(var j = 0; j < special.length; j++)
+//            if (str[i] == special[j]) return false;
+//    }
+//    return true;
+//}
+//
+//function checkPhone(phone) {
+//    for(var i =0 ; i< phone.length ;i++)
+//    {
+//        if(phone.charAt(i)<"0" || phone.charAt(i)>"9")
+//            return false;
+//    }
+//    return true;
+//}
+//
+//function checkPhone2(phone) {
+//    var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+//    if (phone.match(phoneno)) {
+//        return true;
+//    }else{
+//        return false;
+//    }
+//
+//    
+//}
+//function checkPhone3(phone) {
+//    $(document).ready(function() {
+//    $('body').on('click','.checkAll', function() {
+//    var vnf_regex = /((09|03|07|08|05)+([0-9]{8})\b)/g;
+//    var mobile = $('#phone').val();
+//    if(mobile !==''){
+//        if (vnf_regex.test(mobile) == false) 
+//        {
+//            alert('Số điện thoại của bạn không đúng định dạng!');
+//        }else{
+//            alert('Số điện thoại của bạn hợp lệ!');
+//        }
+//    }else{
+//        alert('Bạn chưa điền số điện thoại!');
+//    }
+//    });
+//});
+//    
+//}
+function validate(){
+  var name = document.getElementById("name").value;
+  var phone = document.getElementById("phone").value;
+  var email = document.getElementById("email").value;
+  var message = document.getElementById("message").value;
+  var error_message = document.getElementById("error_message");
+  
+  error_message.style.padding = "10px";
 
-    //kiểm tra họ tên
-    if (!checkName(hoten)) {
-        addAlertBox('Họ tên không phù hợp.', '#f55', '#000', 3000);
-        formlh.ht.focus();
-        return false;
-    }
-    //-------
-    else if (!checkPhone(dienthoai)) {
-        addAlertBox('Số điện thoại không phù hợp.', '#f55', '#000', 3000);
-        return false;
-    }
-    if (!checkPhone2(dienthoai)) {
-        addAlertBox('Số điện thoại không phù hợp.', '#f55', '#000', 3000);
-        return false;
-    }
-    if (!checkPhone3(dienthoai)) {
-        addAlertBox('Số điện thoại không phù hợp.', '#f55', '#000', 3000);
-        return false;
-    }
-    
- var button = document.getElementById("btn");
-            submit.onclick = function(){
-                alert("Gửi thành công. Chúng tôi chân thành cám ơn những góp ý từ bạn.");
-            }
-           
-    //addAlertBox('Gửi thành công. Chúng tôi chân thành cám ơn những góp ý từ bạn.', '#5f5', '#000', 5000); // cám ơn
-    // document.formlh.reset(); // làm sạch
-    //return false; // thoát
-}
-
-function checkName(str) {
-    var special = '~!@#$%^&*()_+=-`./*{}[]|\'<>?;"';
-
-    for (var i = 0; i < str.length; i++) {
-        if (Number(str[i])) return false;
-        for(var j = 0; j < special.length; j++)
-            if (str[i] == special[j]) return false;
-    }
+ var text;
+  if(name.length < 5){
+    text = "Please Enter valid Name";
+    error_message.innerHTML = text;
+    return false;
+  }
+var phone = /((09|03|07|08|05)+([0-9]{8})\b)/g;
+  if(phone.match(phone)) {
+    text = "Please Enter valid Phone Number";
+    error_message.innerHTML = text;
     return true;
+  }  else {  
+    return false;
+  }
+
+  if(email.indexOf("@") == -1 || email.length < 6){
+    text = "Please Enter valid Email";
+    error_message.innerHTML = text;
+    return false;
+  }
+  if(message.length <= 10){
+    text = "Please Enter More Than 10 Characters";
+    error_message.innerHTML = text;
+    return false;
+  }
+
+  alert("Form Submitted Successfully!");
+  return true;
+  
 }
-
-function checkPhone(phone) {
-    for(var i =0 ; i< phone.length ;i++)
-    {
-        if(phone.charAt(i)<"0" || phone.charAt(i)>"9")
-            return false;
-    }
-    return true;
-}
-
-function checkPhone2(phone) {
-    var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
-    if (phone.match(phoneno)) {
-        return true;
-    }else{
-        return false;
-    }
-
-    
-}
-function checkPhone3(phone) {
-    $(document).ready(function() {
-    $('body').on('click','.checkAll', function() {
-    var vnf_regex = /((09|03|07|08|05)+([0-9]{8})\b)/g;
-    var mobile = $('#phone').val();
-    if(mobile !==''){
-        if (vnf_regex.test(mobile) == false) 
-        {
-            alert('Số điện thoại của bạn không đúng định dạng!');
-        }else{
-            alert('Số điện thoại của bạn hợp lệ!');
-        }
-    }else{
-        alert('Bạn chưa điền số điện thoại!');
-    }
-    });
-});
-    
-}
-
-
 
