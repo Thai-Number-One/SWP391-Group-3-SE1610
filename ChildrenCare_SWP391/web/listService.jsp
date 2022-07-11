@@ -86,7 +86,7 @@
                                     <img alt="avatar" src="${s.image}" width="300" height="260">
                                 </div>
                                 <div class="col-6" style="padding-left: 35px; padding-top: 20px; ">
-                                    <h3 >${s.servicename}</h3>
+                                    <h3 ><a href="ServiceDetail?serviceid=${s.serviceid}" >${s.servicename}</a></h3>
                                     <p style="color: #000; font-size: 16px;">
                                         <c:if test="${s.discount>0}">
                                             <span style="  text-decoration: line-through;">${s.price}$</span>

@@ -46,18 +46,16 @@
                                             <div class="modal-body">
                                                 <div class="row">
                                                     <div class="col-md-8">
-
-
-                                                        <h5>Title: ${detail.id}</h5> 
-                                                        <h5>Category:${detail.fullName}</h5>
-                                                        <h5>Original Price:${detail.phone}</h5>
+                                                        <h5>Title: ${detail.type}</h5> 
+                                                        <h5>Category:${detail.type}</h5>
+                                                        <h5>Original Price:$${detail.price}</h5>
                                                        
-                                                        <h5>Sale Price: ${detail.gender}</h5>
+                                                        <h5>Sale Price: $${detail.discount}</h5>
                                                             
-                                                            <h5>Service Details: ${detail.email}</h5>
+                                                            <h5>Service Details: ${detail.detail}</h5>
                 </div>
                                                     <div class="col-md-4">
-                                                        <img src="img/${detail.avatar}" width="200" height="200" alt="" />
+                                                        <img src="img/${detail.image}" width="200" height="200" alt="" />
                                                     </div>
 
 
