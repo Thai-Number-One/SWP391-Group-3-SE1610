@@ -64,6 +64,10 @@
         <servlet-name>UpdateService</servlet-name>
         <servlet-class>controller.admin.UpdateService</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>HomeServlet</servlet-name>
+        <servlet-class>Control.HomeServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>reservation</servlet-name>
         <url-pattern>/reservation</url-pattern>
@@ -127,6 +131,10 @@
     <servlet-mapping>
         <servlet-name>UpdateService</servlet-name>
         <url-pattern>/updateservice</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HomeServlet</servlet-name>
+        <url-pattern>/homeservlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -81,7 +81,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <a href="manager" class="btn btn-default" data-dismiss="modal">Back to manager</a>
+                        <a href="listserviceservlet" class="btn btn-default" data-dismiss="modal">Back to service list</a>
                     </div>
                 </form>
             </div>
