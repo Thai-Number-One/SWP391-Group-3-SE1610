@@ -213,7 +213,7 @@
                                     <img style="height: 14rem;width: 100%"src="data:image/png;base64,${s.img}" class="img-fluid" alt="">
                                 </div>
                                 <div class="card-body content text-center">
-                                    <a href="#" class="title text- h5 d-block mb-0">${s.title}</a>
+                                    <a href="listserviceservlet" class="title text- h5 d-block mb-0">${s.title}</a>
                                     <small class="text-muted speciality">${s.setting.name}</small>
                                 </div>
                             </div>
