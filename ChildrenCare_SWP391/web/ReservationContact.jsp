@@ -38,7 +38,7 @@
                     <tr>
                         <td scope="row">${o.service_Name}</td>
                         <td scope="row"><h4><input type="text" class="form-control" name="children${o.id}" required=""></h4></td>
-                        <td scope="row"><input type="number" class="form-control" name="Age${o.id}" required=""><td>
+                        <td scope="row"><input type="number" class="form-control" name="Age${o.id}" min="1" required=""><td>
                         <td scope="row"><input type="date" class="form-control" name="Date${o.id}" required=""><td>
                         <td scope="row"><select class="nav-link dropdown-toggle" data-bs-toggle="dropdown" name="Time${o.id}">
                                     <option value="7:30">7:30</option>

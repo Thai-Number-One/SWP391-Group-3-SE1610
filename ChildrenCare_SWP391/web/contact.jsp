@@ -47,7 +47,11 @@
         <script src="js/main.js"></script>
         <script src="js/lienhe.js"></script>
 
-
+        <script>
+             function Submit() {
+                alert("Thank you for contacting us");
+            }
+        </script>
     </head>
 
     <body>
@@ -89,34 +93,35 @@
                                     <div id="error_message">
 
                                     </div>
-                                    <form action="" id="myform" onsubmit = "return validate();">
+                                    <form action="contactservlet" method="post">
                                         <div class="row g-3">
                                             <div class="col-sm-6">
                                                 <div class="form-floating">
-                                                    <input type="text" class="form-control border-0" id="name" placeholder="Name">
+                                                    <input type="text" class="form-control border-0" name="name" id="name" placeholder="Name">
                                                     <label for="name">Your Name</label>
                                                 </div>
                                             </div>
                                             <div class="col-sm-6">
                                                 <div class="form-floating">
-                                                    <input type="email" class="form-control border-0" id="email" placeholder="Email">
+                                                    <input type="email" class="form-control border-0" name="email" id="email" placeholder="Email">
                                                     <label for="email">Your Email</label>
                                                 </div>
                                             </div>
                                             <div class="col-12">
                                                 <div class="form-floating">
-                                                    <input type="text" class="form-control border-0" id="phone" maxlength="11" placeholder="Phone">
+                                                    <input type="text" class="form-control border-0" name="phone" id="phone" minlength="10" maxlength="11" placeholder="Phone">
                                                     <label for="subject">Phone</label>
                                                 </div>
                                             </div>
                                             <div class="col-12">
                                                 <div class="form-floating">
-                                                    <textarea class="form-control border-0" placeholder="Message" id="message" style="height: 100px"></textarea>
+                                                    <textarea class="form-control border-0" placeholder="Message" name="mess" id="message" style="height: 100px"></textarea>
                                                     <label for="message">Message</label>
                                                 </div>
                                             </div>
+                                             <input type="number" name="change" value="1" style="display: none;">
                                             <div class="col-12">
-                                                <button class="btn btn-primary w-100 py-3 btn" type="submit">Send Message</button>
+                                                <button class="btn btn-primary w-100 py-3 btn" onclick="Submit()" type="submit">Send Message</button>
                                             </div>
                                         </div>
                                     </form>

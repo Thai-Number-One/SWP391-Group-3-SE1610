@@ -45,6 +45,7 @@
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Manager</a>
                         <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0">
                             <a href="feedbackslist" class="dropdown-item">Feedbacks</a>
+                            <a href="contactservlet" class="dropdown-item">List Contact</a>
                         </div>
                     </div>
                      <a href="contact.jsp" class="nav-item nav-link">Contact</a>
