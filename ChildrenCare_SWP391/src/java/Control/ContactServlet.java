@@ -83,7 +83,7 @@ public class ContactServlet extends HttpServlet {
             ContactDAO c = new ContactDAO();    
             int change = Integer.parseInt(request.getParameter("change"));
             if (change == 0) {
-                int id = Integer.parseInt(request.getParameter("id"));
+                int id = Integer.parseInt(request.getParameter("idc"));
                 c.DeleteContat(id);
                 response.sendRedirect("contactservlet");
             }

@@ -35,12 +35,6 @@
         <!-- Template Stylesheet -->
         <link href="css/style.css" rel="stylesheet">
         <script>
-            $(document).ready(function () {
-                $("button").click(function () {
-                    $(".show").toggle();
-                });
-            });
-
             function Delete() {
                 var result = confirm("Are you want delete it?");
                 if (result == true) {
@@ -133,7 +127,7 @@
                 <div class="col-md-12 col-lg-10">
                     <div class="card text-dark">
                         <div class="card-body p-4">
-                            <form action="contactservlet" method="post">
+                            
                                 <table class="table_r">
                                     <tr>
                                         <th>Name</th>
@@ -150,15 +144,17 @@
                                             <td>${a.mess}</td>
 
                                             <td>
+                                                <form action="contactservlet" method="post">
                                                 <input type="number" name="change" value="0" style="display: none;">
-                                                <input type="number" name="id" value="${a.contactid}" style="display: none;">
-                                                <button type="submit" class="btn btn-primary" onclick="Delete()">Delete</button>
+                                                <input type="text" name="idc" value="${a.contactid}" style="display: none;">
+                                                <button type="submit" class="btn btn-primary" onclick="Delete()">Delete ${a.contactid}</button>
+                                                </form>
                                             </td>
 
                                         </tr>
                                     </c:forEach>
                                 </table>
-                            </form> 
+                            
 
 
                         </div>
