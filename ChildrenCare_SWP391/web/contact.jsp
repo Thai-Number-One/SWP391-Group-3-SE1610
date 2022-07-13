@@ -46,7 +46,11 @@
         <!-- Template Javascript -->
         <script src="js/main.js"></script>
         <script src="js/lienhe.js"></script>
-
+        <script >
+             function Submit() {
+                alert("Thank you for contacting us");
+            }
+        </script>
 
     </head>
 
@@ -85,41 +89,46 @@
                         <div class="row g-0">
                             <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
                                 <div class="h-100 d-flex flex-column justify-content-center p-5">
-                                    <p class="mb-4">Hãy Nhập thông tin </p>
+   
                                     <div id="error_message">
 
                                     </div>
-                                    <form action="" id="myform" onsubmit = "return validate();">
-                                        <div class="row g-3">
-                                            <div class="col-sm-6">
-                                                <div class="form-floating">
-                                                    <input type="text" class="form-control border-0" id="name" placeholder="Name">
-                                                    <label for="name">Your Name</label>
-                                                </div>
+                                    <div class="guithongtin">
+                                        <p style="font-size: 22px; color: gray">Hãy nhập thông tin </p>
+                                        <hr/>
+                                        <form action="contactservlet" method="post">
+                                    <div class="row g-3">
+                                        <div class="col-sm-6">
+                                            <div class="form-floating">
+                                                <input type="text" class="form-control border-0" id="gname" name="name" placeholder="Name">
+                                                <label for="gname">Your Name</label>
                                             </div>
-                                            <div class="col-sm-6">
-                                                <div class="form-floating">
-                                                    <input type="email" class="form-control border-0" id="email" placeholder="Email">
-                                                    <label for="email">Your Email</label>
-                                                </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-floating">
+                                                <input type="email" class="form-control border-0" id="gmail" name="email" placeholder="Email">
+                                                <label for="gmail">Your Email</label>
                                             </div>
-                                            <div class="col-12">
+                                        </div>
+                                        <div class="col-12">
                                                 <div class="form-floating">
-                                                    <input type="text" class="form-control border-0" id="phone" maxlength="11" placeholder="Phone">
+                                                    <input type="text" class="form-control border-0" name="phone" id="phone" maxlength="11" placeholder="Phone">
                                                     <label for="subject">Phone</label>
                                                 </div>
                                             </div>
-                                            <div class="col-12">
-                                                <div class="form-floating">
-                                                    <textarea class="form-control border-0" placeholder="Message" id="message" style="height: 100px"></textarea>
-                                                    <label for="message">Message</label>
-                                                </div>
+                                        <div class="col-12">
+                                            <div class="form-floating">
+                                                <textarea class="form-control border-0" placeholder="Leave a message here" name="mess" id="message" style="height: 100px"></textarea>
+                                                <label for="message">Message</label>
                                             </div>
-                                            <div class="col-12">
-                                                <button class="btn btn-primary w-100 py-3 btn" type="submit">Send Message</button>
-                                            </div>
+                                            <input type="number" name="change" value="1" style="display: none;">
                                         </div>
-                                    </form>
+                                        <div class="col-12">
+                                            <button class="btn btn-primary w-100 py-3" type="submit" onclick="Submit()">Submit</button>
+                                        </div>
+                                    </div>
+                                </form>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s" style="min-height: 400px;">

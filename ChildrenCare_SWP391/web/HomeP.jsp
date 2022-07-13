@@ -36,6 +36,11 @@
 
         <!-- Template Stylesheet -->
         <link href="css/style.css" rel="stylesheet">
+        <script >
+             function Submit() {
+                alert("Thank you for contacting us");
+            }
+        </script>
     </head>
     <body>
         <!-- Navbar Start -->
@@ -238,40 +243,35 @@
                         <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
                             <div class="h-100 d-flex flex-column justify-content-center p-5">
                                 <h1 class="mb-4">Schedule a Health Consultation</h1>
-                                <form>
+                                <form action="contactservlet" method="post">
                                     <div class="row g-3">
                                         <div class="col-sm-6">
                                             <div class="form-floating">
-                                                <input type="text" class="form-control border-0" id="gname" placeholder="Gurdian Name">
-                                                <label for="gname">Gurdian Name</label>
+                                                <input type="text" class="form-control border-0" id="gname" name="name" placeholder="Name">
+                                                <label for="gname">Your Name</label>
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form-floating">
-                                                <input type="email" class="form-control border-0" id="gmail" placeholder="Gurdian Email">
-                                                <label for="gmail">Gurdian Email</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div class="form-floating">
-                                                <input type="text" class="form-control border-0" id="cname" placeholder="Child Name">
-                                                <label for="cname">Child Name</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div class="form-floating">
-                                                <input type="text" class="form-control border-0" id="cage" placeholder="Child Age">
-                                                <label for="cage">Child Age</label>
+                                                <input type="email" class="form-control border-0" id="gmail" name="email" placeholder="Email">
+                                                <label for="gmail">Your Email</label>
                                             </div>
                                         </div>
                                         <div class="col-12">
+                                                <div class="form-floating">
+                                                    <input type="text" class="form-control border-0" name="phone" id="phone" maxlength="11" placeholder="Phone">
+                                                    <label for="subject">Phone</label>
+                                                </div>
+                                            </div>
+                                        <div class="col-12">
                                             <div class="form-floating">
-                                                <textarea class="form-control border-0" placeholder="Leave a message here" id="message" style="height: 100px"></textarea>
+                                                <textarea class="form-control border-0" placeholder="Leave a message here" name="mess" id="message" style="height: 100px"></textarea>
                                                 <label for="message">Message</label>
                                             </div>
+                                            <input type="number" name="change" value="1" style="display: none;">
                                         </div>
                                         <div class="col-12">
-                                            <button class="btn btn-primary w-100 py-3" type="submit">Submit</button>
+                                            <button class="btn btn-primary w-100 py-3" type="submit" onclick="Submit()">Submit</button>
                                         </div>
                                     </div>
                                 </form>
