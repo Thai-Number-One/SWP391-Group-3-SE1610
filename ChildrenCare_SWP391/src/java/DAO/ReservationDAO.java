@@ -11,6 +11,7 @@ import Entity.Reservation_detail;
 import Entity.Service;
 import Entity.User;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -165,11 +166,47 @@ public class ReservationDAO {
         return null;
     }
     
+    public void updateReservation_detail(String childrenname, int age, int Doctor, String Time, int Reservation_ID){
+ 
+        try {
+            String sql="update Reservation_detail\n" +
+                        "set Children_Name = ?, Age = ?, Staff_ID = ?, Name_Sale = ?\n" +
+                        "where Reservation_ID = ?";
+  
+            conn = new BaseDAO().BaseDao();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, childrenname);
+            ps.setInt(2, age);
+            ps.setInt(3, Doctor);
+            ps.setString(4, Time);
+            ps.setInt(5, Reservation_ID);
+            ps.executeUpdate();
+            
+        } catch (Exception e) {
+        }
+    }
+    
+      public void updateReservation(Date date, int Reservation_ID){
+ 
+        try {
+            String sql="update Reservation\n" +
+                        "set [Date] = ?\n" +
+                        "where Reservation_ID = ?";
+  
+            conn = new BaseDAO().BaseDao();
+            ps = conn.prepareStatement(sql);
+            ps.setDate(1, date);
+            ps.setInt(2, Reservation_ID);
+            ps.executeUpdate();
+            
+        } catch (Exception e) {
+        }
+    }
+    
     
     public static void main(String[] args) {
         ReservationDAO dao = new ReservationDAO();
         
-       String re = dao.getDetailService(2);
-        System.out.println(re);
+       dao.updateReservation_detail("Dat con", 8, 13, "9:30", 2);
     }
 }

@@ -291,7 +291,7 @@
 
                                         <div class="col-lg">
                                             <fieldset>
-                                                <a href="ChangeReservationInformation.jsp">
+                                                <a href="ChangeReservation?Rid=${ReDetail.reservation_ID}">
                                                     <button type="submit" id="form-submit" class="main-button">Edit Reservation Information</button>
                                                 </a>
                                             </fieldset>
