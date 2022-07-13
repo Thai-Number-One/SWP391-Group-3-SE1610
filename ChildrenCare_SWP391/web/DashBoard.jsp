@@ -47,12 +47,7 @@
 
                         </div>
                         <ul class="navbar-nav  justify-content-end">
-                            <li class="nav-item d-flex align-items-center">
-                                <a href="javascript:;" class="nav-link text-white font-weight-bold px-0">
-                                    <i class="fa fa-user me-sm-1"></i>
-                                    <span class="d-sm-inline d-none">Sign In</span>
-                                </a>
-                            </li>
+                            
                             <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
                                 <a href="javascript:;" class="nav-link text-white p-0" id="iconNavbarSidenav">
                                     <div class="sidenav-toggler-inner">
@@ -199,7 +194,7 @@
                                             Total: +${totaluser_rev}
                                         </h5>
                                         <p class=" font-weight-bolder">New Registered: +${totaluser}</p>
-                                        <p class=" font-weight-bolder">New Reserved: +${totalrever}</p>
+                                        
 
                                     </div>
 
@@ -229,88 +224,7 @@
                     </div>
                 </div>
 
-                <div class="row mt-4">
-
-                    <div class="card ">
-                        <div class="card-header pb-0 p-3">
-                            <div class="d-flex justify-content-between">
-                                <h6 class="mb-2">List of last product</h6>
-                            </div>
-                        </div>
-                        <div class="table-responsive">
-                            <table class="table align-items-center ">
-                                <tbody>
-                                    <tr>
-                                        <td class="w-30">
-                                            <div class="d-flex px-2 py-1 align-items-center">
-                                                <div class="ms-4">
-                                                    <h1 class="text-sm mb-0">ID Product</h1>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="text-center">
-                                                <h1 class="text-sm mb-0">Name Product</h1>
-
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="text-center">
-                                                <h1 class="text-sm mb-0">Price</h1>
-                                            </div>
-                                        </td>
-                                        <td class="align-middle text-sm">
-                                            <div class="col text-center">
-                                                <h1 class="text-sm mb-0">Expiry Date</h1>
-                                            </div>
-                                        </td>
-                                         <td class="align-middle text-sm">
-                                            <div class="col text-center">
-                                                <h1 class="text-sm mb-0">Country</h1>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                         <c:forEach items="${list}" var="o">
-
-                                    
-                                        <td class="w-30">
-                                            <div class="d-flex px-2 py-1 align-items-center">
-                                                <div class="ms-4">
-                                                    <h1 class="text-sm mb-0 text-uppercase font-weight-bold">${o.id}</h1>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="text-center">
-                                                <h6 class="text-sm mb-0">${o.name}</h6>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="text-center">
-
-                                                <h6 class="text-sm mb-0">${o.price}</h6>
-                                            </div>
-                                        </td>
-                                        <td class="align-middle text-sm">
-                                            <div class="col text-center">
-                                                <h6 class="text-sm mb-0">${o.ex_date}</h6>
-                                            </div>
-                                        </td>
-                                        <td class="align-middle text-sm">
-                                            <div class="col text-center">
-                                                <h6 class="text-sm mb-0">${o.country}</h6>
-                                            </div>
-                                        </td>
-                                       
-                                        </c:forEach>
-                                    </tr>
-
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>             
+                            
             </div>
         </main>
 

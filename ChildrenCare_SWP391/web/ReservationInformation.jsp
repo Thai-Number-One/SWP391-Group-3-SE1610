@@ -281,7 +281,7 @@
                         </tr>
                     
                 </table>
-                            <%--
+                            
                             
                             <div class="col-lg-edit">
                                 <div class="sidebar-item submit-comment">
@@ -291,7 +291,7 @@
 
                                         <div class="col-lg">
                                             <fieldset>
-                                                <a href="">
+                                                <a href="ChangeReservationInformation.jsp">
                                                     <button type="submit" id="form-submit" class="main-button">Edit Reservation Information</button>
                                                 </a>
                                             </fieldset>
@@ -303,7 +303,7 @@
                                 </div>
                             </div>  
 
-                            --%>
+                            
             </div>            
                             
             </div>

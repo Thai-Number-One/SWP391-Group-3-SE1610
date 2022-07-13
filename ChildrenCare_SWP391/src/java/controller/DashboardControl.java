@@ -39,11 +39,11 @@ public class DashboardControl extends HttpServlet {
         int totalfeedback = dao.countFeedBack();
         double avgStar = dao.AvgStar();
         int totaluser = dao.countUser();
-        int totalrever = dao.countReservation();
+        int totalrever = 0;
         int totaluser_rev = totalrever + totaluser;
-        int successStatus = dao.countReveration("success");
-        int canceledStatus = dao.countReveration("canceled");
-        int submittedStatus = dao.countReveration("submitted");
+        int successStatus = dao.countReveration(1);
+        int canceledStatus = dao.countReveration(-1);
+        int submittedStatus = dao.countReveration(0);
         int totalStatus = submittedStatus + canceledStatus + successStatus;
          double totalREVENUE = dao.getREVENUE();
          

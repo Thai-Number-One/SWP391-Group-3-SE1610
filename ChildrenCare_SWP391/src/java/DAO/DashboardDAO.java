@@ -163,11 +163,7 @@ public class DashboardDAO {
         return list;
     }
 
-    public static void main(String[] args) {
-        DashboardDAO dao = new DashboardDAO();
-
-        System.out.println(dao.getServiceByID("1"));
-    }
+    
 
     public void deleteProduct(String pid) {
         String query = "DELETE FROM [dbo].[DataUser]\n"
@@ -210,38 +206,40 @@ public class DashboardDAO {
         return list;
     }
 
-    public List<String> getStatusReveration() {
-        List<String> list = new ArrayList<>();
-        String query = "SELECT Status from  [ChildrenCare].[dbo].[Reservation]";
+    public List getStatusReveration() {
+        List list = new ArrayList<>();
+        String query = "SELECT Status FROM [TestProject4].[dbo].[Reservation]";
         try {
             conn = new BaseDAO().BaseDao();//mo ket noi voi sql
             ps = conn.prepareStatement(query);
             rs = ps.executeQuery();
             while (rs.next()) {
 
-                list.add(rs.getString(1));
+                list.add(rs.getInt(1));
             }
         } catch (Exception e) {
         }
         return list;
     }
-
+    
+    
     public List<Reservation> getReservation() {
         List<Reservation> list = new ArrayList<>();
-        String query = "SELECT Status, Total_cost from  [ChildrenCare].[dbo].[Reservation]";
+        String query = "SELECT Status, Total_cost  FROM [TestProject4].[dbo].[Reservation]";
         try {
             conn = new BaseDAO().BaseDao();//mo ket noi voi sql
             ps = conn.prepareStatement(query);
             rs = ps.executeQuery();
             while (rs.next()) {
 
-                list.add(new Reservation(rs.getInt(1),
-                        rs.getDate(2),rs.getInt(3),rs.getDate(4),rs.getFloat(5)));
+                list.add(new Reservation(rs.getInt(1),rs.getFloat(2)));
             }
         } catch (Exception e) {
         }
         return list;
     }
+    
+   
 
     public double getREVENUE() {
         DashboardDAO dao = new DashboardDAO();
@@ -254,22 +252,27 @@ public class DashboardDAO {
         }
         return total;
     }
+    
+    
 
-    public int countReveration(String infor) {
+    public int countReveration(int infor) {
         int count = 0;
         DashboardDAO dao = new DashboardDAO();
-        List<String> list = dao.getStatusReveration();
-        for (String s : list) {
-            if (s.toLowerCase().equals(infor.toLowerCase())) {
+        List list = dao.getStatusReveration();
+        for (int i = 0; i < list.size(); i++) {
+            if((int)list.get(i) == infor){
                 count++;
             }
         }
         return count;
     }
+    
+    
+
 
     public int countFeedBack() {
         String query = "select COUNT(*)\n"
-                + "from [ChildrenCare].[dbo].[Feedback]";
+                + " FROM [TestProject4].[dbo].[Feedback]";
         int count = 0;
         try {
             conn = new BaseDAO().BaseDao();//mo ket noi voi sql
@@ -284,10 +287,16 @@ public class DashboardDAO {
 
         return count;
     }
+    
+     public static void main(String[] args) {
+        DashboardDAO dao = new DashboardDAO();
+        
+        System.out.println(dao.AvgStar());
+    }
 
     public double AvgStar() {
         String query = "SELECT SUM(Star)\n"
-                + "FROM [ChildrenCare].[dbo].[Feedback]";
+                + "FROM [TestProject4].[dbo].[Feedback]";
         DashboardDAO dao = new DashboardDAO();
         double total = 0;
         try {
@@ -306,7 +315,7 @@ public class DashboardDAO {
 
     public int countUser() {
         String query = "select COUNT(*)\n"
-                + "FROM [ChildrenCare].[dbo].[User]";
+                + "FROM [TestProject4].[dbo].[User]";
         int count = 0;
         try {
             conn = new BaseDAO().BaseDao();//mo ket noi voi sql
@@ -322,9 +331,10 @@ public class DashboardDAO {
         return count;
     }
 
+    
     public int countReservation() {
         String query = "select COUNT(*)\n"
-                + "FROM [ChildrenCare].[dbo].[Reservation]";
+                + "FROM [TestProject4].[dbo].[Reservation]";
         int count = 0;
         try {
             conn = new BaseDAO().BaseDao();//mo ket noi voi sql

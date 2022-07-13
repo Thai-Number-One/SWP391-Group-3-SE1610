@@ -21,6 +21,12 @@ public class Reservation {
     public Reservation() {
     }
 
+     public Reservation( int status, float totalCost) {
+        
+        this.status = status;
+        
+        this.totalCost = totalCost;
+    }
     public Reservation(int reservation_ID, Date date, int status, Date begin_time, float totalCost) {
         this.reservation_ID = reservation_ID;
         this.date = date;
