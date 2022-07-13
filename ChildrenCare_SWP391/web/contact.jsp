@@ -47,11 +47,7 @@
         <script src="js/main.js"></script>
         <script src="js/lienhe.js"></script>
 
-        <script>
-             function Submit() {
-                alert("Thank you for contacting us");
-            }
-        </script>
+
     </head>
 
     <body>
@@ -93,38 +89,43 @@
                                     <div id="error_message">
 
                                     </div>
-                                    <form action="contactservlet" method="post">
-                                        <div class="row g-3">
-                                            <div class="col-sm-6">
-                                                <div class="form-floating">
-                                                    <input type="text" class="form-control border-0" name="name" id="name" placeholder="Name">
-                                                    <label for="name">Your Name</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <div class="form-floating">
-                                                    <input type="email" class="form-control border-0" name="email" id="email" placeholder="Email">
-                                                    <label for="email">Your Email</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-12">
-                                                <div class="form-floating">
-                                                    <input type="text" class="form-control border-0" name="phone" id="phone" minlength="10" maxlength="11" placeholder="Phone">
-                                                    <label for="subject">Phone</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-12">
-                                                <div class="form-floating">
-                                                    <textarea class="form-control border-0" placeholder="Message" name="mess" id="message" style="height: 100px"></textarea>
-                                                    <label for="message">Message</label>
-                                                </div>
-                                            </div>
-                                             <input type="number" name="change" value="1" style="display: none;">
-                                            <div class="col-12">
-                                                <button class="btn btn-primary w-100 py-3 btn" onclick="Submit()" type="submit">Send Message</button>
-                                            </div>
-                                        </div>
-                                    </form>
+                                    <div class="guithongtin">
+                                        <p style="font-size: 22px; color: gray">Gửi thông tin liên lạc cho chúng tôi: </p>
+                                        <hr/>
+                                        <form name="formlh" onsubmit="return nguoidung()">
+                                            <table cellspacing="10px">
+                                                <tr>
+                                                    <td>Họ và tên</td>
+                                                    <td><input type="text" name="ht" size="40" maxlength="40" placeholder="Họ tên"
+                                                               autocomplete="off" required></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Điện thoại liên hệ</td>
+                                                    <td><input type="text" name="sdt" size="40" maxlength="11" minlength="10" placeholder="Điện thoại"
+                                                               required></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Địa chỉ Email</td>
+                                                    <td><input type="email" name="em" size="40" placeholder="Email" autocomplete="off"
+                                                               required></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Tiêu đề</td>
+                                                    <td><input type="text" name="tde" size="40" maxlength="100" placeholder="Tiêu đề"
+                                                               required>
+                                                </tr>
+                                                <tr>
+                                                    <td>Nội dung</td>
+                                                    <td><textarea name="nd" rows="5" cols="44" maxlength="500" wrap="physical"
+                                                                  placeholder="Nội dung liên hệ" required></textarea></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td><button class="checkAll" type="submit">Gửi thông tin liên hệ</button></td>
+                                                </tr>
+                                            </table>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s" style="min-height: 400px;">
