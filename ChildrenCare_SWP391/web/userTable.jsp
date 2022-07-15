@@ -101,7 +101,7 @@
                                     </div>
 
                                     <div class="col-md-4">
-                                        <a href="AddUser.jsp" class="text-success text-secondary font-weight-bold text-sm" >Add new</a>
+                                        <a href="AddUser.jsp" class="text-success text-secondary font-weight-bold text-sm"  >Add new</a>
                                     </div>
                                 </div>
                             </div>
@@ -308,6 +308,20 @@
             </div>
         </div>
     </div>
+    <script>
+    function phonenumber(inputtxt)
+{
+  var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+  if(inputtxt.value.match(phoneno))
+     {
+	   return true;      
+	 }
+   else
+     {
+	   alert("Not a valid Phone Number");
+	   return false;
+     }
+}
 
     <!--   Core JS Files   -->
     <script src="js/core/popper.min.js"></script>

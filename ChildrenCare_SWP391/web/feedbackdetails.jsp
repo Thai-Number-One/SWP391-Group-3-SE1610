@@ -22,7 +22,7 @@
                 <nav aria-label="breadcrumb animated slideInDown">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="HomePage.jsp">Home</a></li>
-                        <li class="breadcrumb-item"><a href="#">Manager</a></li>
+                        <li class="breadcrumb-item"><a href="manager.jsp">Manager</a></li>
                         <li class="breadcrumb-item"><a href="feedbackslist">Feedbacks</a></li>
                         <li class="breadcrumb-item" >Details</li>
                     </ol>
