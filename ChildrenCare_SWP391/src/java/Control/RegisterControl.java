@@ -49,14 +49,13 @@ public class RegisterControl extends HttpServlet {
         String repass = request.getParameter("repassword");
         Date dob = Date.valueOf(request.getParameter("birthday"));
         int gender = Integer.parseInt(request.getParameter("gender"));
-        LocalDate newdate = java.time.LocalDate.now();
         
         request.removeAttribute("mess1");
         request.removeAttribute("mess2");
         request.removeAttribute("mess3");
         request.removeAttribute("mess4");
         Pattern p2 = Pattern.compile("^[0-9]{10}$");
-        if(p2.matcher(email).find()){
+        if(!p2.matcher(phone).find()){
             request.setAttribute("mess4", "Please check your phone number again!");
             request.getRequestDispatcher("register.jsp").forward(request, response);
         }
@@ -73,14 +72,17 @@ public class RegisterControl extends HttpServlet {
             request.setAttribute("mess2", "User name already exists!");
             request.getRequestDispatcher("register.jsp").forward(request, response);
         }
-        Pattern p1 = Pattern.compile("^[a-zA-Z][a-zA-Z0-9]+@[a-zA-Z]+(\\.[a-zA-Z]+)$");
-        if(p1.matcher(email).find()){
+        Pattern p1 = Pattern.compile("^[a-zA-Z][a-zA-Z0-9]+@[a-zA-Z]+(\\.[a-zA-Z]+)+$");
+        if(!p1.matcher(email).find()){
             request.setAttribute("mess3", "Your email is not formatted !");
             request.getRequestDispatcher("register.jsp").forward(request, response);
         }
-        
+        else{
         u.CreateUser(fullname,phone,address,email,user,pass,dob,gender);
-            
+        
+        request.setAttribute("mess2", "Sign up success, Please login in. ");
+        request.getRequestDispatcher("login.jsp").forward(request, response);
+        }
     }
     
 
