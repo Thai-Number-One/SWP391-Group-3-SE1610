@@ -31,7 +31,7 @@
             <hr/>
         <form method="Post" action="ChangeReservation">
             <table class="table">
-                <th scope="col" ">Service Name</th>
+                <th scope="col" >Service Name</th>
                 <th scope="col" style="color: orange">Children Name</th>
                 <th scope="col" style="color: orange">Age</th>
                 <th scope="col" style="color: orange"></th>
@@ -43,7 +43,7 @@
                     
                     <tr>
                         
-                        <td scope="row">${SerDe.service_name}<input style="display: none" v></td>
+                        <td scope="row">${SerDe.service_name}<input style="display: none" name="id=${ReDetail.reservation_ID}"></td>
                         <td scope="row"><h4><input type="text" class="form-control" name="children" required="" value="${ReDetail.children_name}"></h4></td>
                         <td scope="row"><input type="number" class="form-control" name="Age" required="" value="${ReDetail.age}"><td>
                         <td scope="row"><input type="date" class="form-control" name="Date" required="" value="${detailreser.date}"><td>

@@ -17,6 +17,7 @@ import java.util.Date;
 import java.time.LocalDateTime;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -78,7 +79,7 @@ public class ChangeReservation extends HttpServlet {
         
         Service s = dao.getServiceDe(idd);
         
-       
+        
         
         request.setAttribute("ReDetail", rd);
         request.setAttribute("SerDe", s);
@@ -103,22 +104,36 @@ public class ChangeReservation extends HttpServlet {
         
         try {
             
-        
-            String childrenname = request.getParameter("children");
-            String age = request.getParameter("Age");
-            int Age = Integer.parseInt(age);
-            //String sDate = request.getParameter("Date");
-            //Date date = new SimpleDateFormat("yyyy-MM-dd").parse(sDate);
-            String Time = request.getParameter("Time");
-            int Doctor = Integer.parseInt(request.getParameter("Doctor"));
-        
-            ReservationDAO dao = new ReservationDAO();
-        
-            //dao.updateReservation_detail(childrenname, Age, Doctor, Time, idd);
-            //dao.updateReservation((java.sql.Date) date, idd);
+            Cookie arr[] = request.getCookies();
             
-            response.sendRedirect("HomeP.jsp");
+            if (arr != null) {
+                for (Cookie o : arr) {
+                    if (o.getName().equals("Rid")) {
+                        String id = o.getValue();
+                        int idd = Integer.parseInt(id);
+                        String childrenname = request.getParameter("children");
+                        String age = request.getParameter("Age");
+                        int Age = Integer.parseInt(age);
+                        String sDate = request.getParameter("Date");
+                        Date date = new SimpleDateFormat("yyyy-MM-dd").parse(sDate);
+                        String Time = request.getParameter("Time");
+                        int Doctor = Integer.parseInt(request.getParameter("Doctor"));
+
+                        ReservationDAO dao = new ReservationDAO();
+
+                        dao.updateReservation_detail(childrenname, Age, Doctor, Time, idd);
+                        //dao.updateReservation((java.sql.Date) date, idd);
+
+                        response.sendRedirect("MyReservation.jsp");
             
+                    }
+                }
+            }else{
+                response.sendRedirect("HomeP.jsp");
+            }
+            
+        
+           
         } catch (Exception e) {
         }
         

@@ -192,10 +192,10 @@ public class ReservationDAO {
             String sql="update Reservation\n" +
                         "set [Date] = ?\n" +
                         "where Reservation_ID = ?";
-  
+            java.sql.Date x = new java.sql.Date(date.getTime());
             conn = new BaseDAO().BaseDao();
             ps = conn.prepareStatement(sql);
-            ps.setDate(1, date);
+            ps.setDate(1, x);
             ps.setInt(2, Reservation_ID);
             ps.executeUpdate();
             
@@ -207,6 +207,6 @@ public class ReservationDAO {
     public static void main(String[] args) {
         ReservationDAO dao = new ReservationDAO();
         
-       dao.updateReservation_detail("Dat con", 8, 13, "9:30", 2);
+       
     }
 }

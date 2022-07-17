@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -66,6 +67,11 @@ public class LoadReservationInformation extends HttpServlet {
             
             int idr = Integer.parseInt(rid);
             
+            Cookie u = new Cookie("Rid",rid);
+            Cookie g = new Cookie("Uid", id);
+            u.setMaxAge(60*60);
+            g.setMaxAge(60*60);
+            
             reservatonsDAO d = new reservatonsDAO();
           
             List l =new ArrayList();
@@ -77,7 +83,8 @@ public class LoadReservationInformation extends HttpServlet {
             }
             
             
-            
+            response.addCookie(u);
+            response.addCookie(g);
             ReservationDAO dao = new ReservationDAO();
             Reservation ll = dao.getDetailID(idr);
             
