@@ -69,7 +69,7 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Phone</label>
-                                                    <input name="phone" type="text" class="form-control" required>
+                                                    <input name="phone" type="text" class="form-control" name="Phone Number" pattern="[0]{1}[0-9]{9}"required>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
@@ -152,30 +152,45 @@
             </div>
         </div>
     </main>
+    <script>
+        function phonenumber(inputtxt)
+                {
+                var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+                if (inputtxt.value.match(phoneno))
+                {
+                return true;
+                }
+                else
+                {
+                alert("Not a valid Phone Number");
+                return false;
+                }
+                }
+                </script>
 
-    <!--   Core JS Files   -->
-    <script src="js/core/popper.min.js"></script>
+<!--   Core JS Files   -->
+<script src="js/core/popper.min.js"></script>
     <script src="js/core/bootstrap.min.js"></script>
     <script src="js/plugins/perfect-scrollbar.min.js"></script>
     <script src="js/plugins/smooth-scrollbar.min.js"></script>
-    <script>
-        var win = navigator.platform.indexOf('Win') > -1;
-        if (win && document.querySelector('#sidenav-scrollbar')) {
-            var options = {
+<script>
+            var win = navigator.platform.indexOf('Win') > -1;
+if (win && document.querySelector('#sidenav-scrollbar')) {
+                var options = {
                 damping: '0.5'
-            }
+                }
             Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
-        }
-    </script>
-    <!-- Github buttons -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
-    <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="js/argon-dashboard.min.js?v=2.0.2"></script>
+            }
+                </script>
+    <!--        Github buttons -->
+    <scr        ipt async defer src="https://buttons.github.io/buttons.js"></script>
+    <!--        Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
+    <scr        ipt src="js/argon-dashboard.min.js?v=2.0.2"></script>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
-    <script src="./js/app.js"></script>
+    <scr        ipt src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <scr        ipt src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <scr        ipt src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+    <scr        ipt src="./js/app.js"></script>
 
 </body>
-</html>
+    </html>
