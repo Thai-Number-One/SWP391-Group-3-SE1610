@@ -70,10 +70,11 @@ public class AddNewSettingServlet extends HttpServlet {
         int type = Integer.parseInt(request.getParameter("type"));
         String value = request.getParameter("value");
         String description = request.getParameter("description");
+        String href = request.getParameter("href");
         SettingDAO dao = new SettingDAO();
         List<Setting> list = dao.GetAllSetting();
         int id = list.get(list.size() - 1).getSetting_ID() + 1;
-        Setting s = new Setting(id, type, value, description, true);
+        Setting s = new Setting(id, type, value, description, true, href);
         dao.AddNewSetting(s);
         response.sendRedirect("settinglist");
         

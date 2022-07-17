@@ -3,6 +3,7 @@ package ReservationController;
 
 import DAO.ReservationDAO;
 import Entity.Reservation;
+import Entity.User;
 import dal_staff.reservatonsDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -16,6 +17,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model_staff.reservations_user;
 
 /**
@@ -57,10 +59,11 @@ public class LoadMyReservation extends HttpServlet {
         //processRequest(request, response);
         
         try {
+            
+            HttpSession session = request.getSession();
+            User u = (User) session.getAttribute("loginsuccess");
 
-            String id = request.getParameter("Uid");
-
-            int idd = Integer.parseInt(id);
+            int idd = u.getUser_ID();
 
             reservatonsDAO r = new reservatonsDAO();
             List<reservations_user> l = new ArrayList<>();

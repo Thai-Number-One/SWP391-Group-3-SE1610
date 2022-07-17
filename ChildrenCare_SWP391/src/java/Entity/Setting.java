@@ -15,16 +15,18 @@ public class Setting {
     private String value;
     private String description;
     private boolean status;
+    private String href;
 
     public Setting() {
     }
 
-    public Setting(int Setting_ID, int Type_ID, String value, String description, boolean status) {
+    public Setting(int Setting_ID, int Type_ID, String value, String description, boolean status, String href) {
         this.Setting_ID = Setting_ID;
         this.Type_ID = Type_ID;
         this.value = value;
         this.description = description;
         this.status = status;
+        this.href = href;
     }
 
     public int getSetting_ID() {
@@ -66,5 +68,14 @@ public class Setting {
     public void setStatus(boolean status) {
         this.status = status;
     }
+
+    public String getHref() {
+        return href;
+    }
+
+    public void setHref(String href) {
+        this.href = href;
+    }
+    
     
 }

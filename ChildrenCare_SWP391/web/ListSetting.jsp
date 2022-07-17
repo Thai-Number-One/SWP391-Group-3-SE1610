@@ -115,6 +115,10 @@
                                                                 <input type="text" name="value" class="form-control" required="" >
                                                             </div>
                                                             <div class="mb-3">
+                                                                <label for="href" class="col-form-label">Href</label>
+                                                                <input type="text" name="href" class="form-control" required="" >
+                                                            </div>
+                                                            <div class="mb-3">
                                                                 <label for="description" class="col-form-label">Description:</label>
                                                                 <textarea class="form-control" name="description" required="" autofocus=""></textarea>
                                                             </div>
@@ -173,10 +177,11 @@
                                             <%}%>
                                         </table>
                                     </div>
+
                                     <div style="margin: 20px auto; width: 500px" aria-label="...">
                                         <ul class="pagination">
-                                            <c:forEach begin="1" end="${a.numberPage}" var="i">
-                                                <li class="page-item ${index == i ? "active":""}"><a class="page-link" href="settinglist?index=${i}">${i}</a></li>
+                                            <c:forEach begin="1" end="${requestScope.numberPage}" var="i">
+                                                <li class="page-item ${i == index ? "active":""}"><a class="page-link" href="settinglist?index=${i}">${i}</a></li>
                                                 </c:forEach>
                                         </ul>
                                     </div>

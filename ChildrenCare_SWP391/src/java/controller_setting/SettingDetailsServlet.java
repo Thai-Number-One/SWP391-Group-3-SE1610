@@ -89,6 +89,7 @@ public class SettingDetailsServlet extends HttpServlet {
         String value = request.getParameter("value");
         String description = request.getParameter("description");
         int status = Integer.parseInt(request.getParameter("status"));
+        String href = request.getParameter("href");
         
         boolean index;
         if (status == 1) {
@@ -96,7 +97,7 @@ public class SettingDetailsServlet extends HttpServlet {
         } else {
             index = false;
         }
-        Setting s = new Setting(id, type, value, description, index);
+        Setting s = new Setting(id, type, value, description, index, href);
         SettingDAO dao = new SettingDAO();
         dao.UpdateSetting(s);
         response.sendRedirect("settinglist");

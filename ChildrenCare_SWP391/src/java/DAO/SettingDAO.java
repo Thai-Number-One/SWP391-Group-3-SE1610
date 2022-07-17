@@ -11,11 +11,8 @@ import Entity.Type;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -39,7 +36,8 @@ public class SettingDAO {
                         rs.getInt(2),
                         rs.getString(3),
                         rs.getString(4),
-                        rs.getBoolean(5));
+                        rs.getBoolean(5),
+                 rs.getString(6));
                 list.add(s);
             }
             return list;
@@ -61,7 +59,8 @@ public class SettingDAO {
                         rs.getInt(2),
                         rs.getString(3),
                         rs.getString(4),
-                        rs.getBoolean(5));
+                        rs.getBoolean(5),
+                rs.getString(6));
                 list.add(s);
             }
             return list;
@@ -70,54 +69,9 @@ public class SettingDAO {
         return null;
     }
 
-    public int getNumberPage() {
-        String query = "select count(*) from Setting";
-        try {
-            con = new BaseDAO().BaseDao();
-            ps = con.prepareStatement(query);
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                int total = rs.getInt(1);
-                int countPage = 0;
-                countPage = total / 5;
-                if (total % 5 != 0) {
-                    countPage++;
-                }
-                return countPage;
-            }
-        } catch (Exception e) {
-        }
-        return 0;
-    }
+    
 
-    public List<Setting> GetPage(int index) {
-        String query = "  select * from Setting \n"
-                + "  order by Setting_ID\n"
-                + "  OFFSET ? Rows\n"
-                + "  FETCH FIRST 5 ROWS ONLY";
-        try {
-            try {
-                con = new BaseDAO().BaseDao();
-            } catch (Exception ex) {
-                Logger.getLogger(SettingDAO.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            ps = con.prepareStatement(query);
-            ps.setInt(1, (index - 1) * 5);
-            rs = ps.executeQuery();
-            List<Setting> list = new ArrayList<>();
-            while (rs.next()) {
-                Setting s = new Setting(rs.getInt(1),
-                        rs.getInt(2),
-                        rs.getString(3),
-                        rs.getString(4),
-                        rs.getBoolean(5));
-                list.add(s);
-            }
-            return list;
-        } catch (SQLException e) {
-        }
-        return null;
-    }
+    
 
     public List<Type> GetAllType() {
         String query = "Select * from Type";
@@ -136,6 +90,13 @@ public class SettingDAO {
         }
         return null;
     }
+        public List<Setting> Settingpage(List<Setting> list, int begin, int end) {
+        List<Setting> lst = new ArrayList();
+        for (int i = begin; i < end; i++) {
+            lst.add(list.get(i));
+        }
+        return lst;
+    }
     public Setting GetSetting(int id) {
         String query = "select * from Setting where Setting_ID = ?";
         try {
@@ -148,7 +109,8 @@ public class SettingDAO {
                         rs.getInt(2),
                         rs.getString(3),
                         rs.getString(4),
-                        rs.getBoolean(5));
+                        rs.getBoolean(5),
+                rs.getString(6));
                 return s;
             }
         } catch (Exception e) {
@@ -184,7 +146,8 @@ public class SettingDAO {
                         rs.getInt(2),
                         rs.getString(3),
                         rs.getString(4),
-                        rs.getBoolean(5));
+                        rs.getBoolean(5),
+                rs.getString(6));
                 list.add(s);
             }
             return list;
@@ -206,7 +169,8 @@ public class SettingDAO {
                         rs.getInt(2),
                         rs.getString(3),
                         rs.getString(4),
-                        rs.getBoolean(5));
+                        rs.getBoolean(5),
+                rs.getString(6));
                 list.add(s);
             }
             return list;
@@ -216,7 +180,7 @@ public class SettingDAO {
     }
 
     public void AddNewSetting(Setting s) {
-        String query = "Insert into Setting values (?,?,?,?,?)";
+        String query = "Insert into Setting values (?,?,?,?,?,?)";
         try {
             con = new BaseDAO().BaseDao();
             ps = con.prepareStatement(query);
@@ -225,6 +189,7 @@ public class SettingDAO {
             ps.setString(3, s.getValue());
             ps.setString(4, s.getDescription());
             ps.setInt(5, 1);
+            ps.setString(6, s.getHref());
             ps.executeUpdate();
         } catch (Exception e) {
         }
@@ -241,7 +206,8 @@ public class SettingDAO {
                 Setting s = new Setting(rs.getInt(1),
                         rs.getInt(2),
                         rs.getString(3),
-                        rs.getString(4), rs.getBoolean(5));
+                        rs.getString(4), rs.getBoolean(5),
+                rs.getString(6));
                 return s;
             }
         } catch (Exception e) {
@@ -250,15 +216,16 @@ public class SettingDAO {
     }
 
     public void UpdateSetting(Setting s) {
-        String query = "UPDATE [dbo].[Setting] SET [Type_ID] = ?,[Value] = ? ,[Description] = ?,[Status] = ? where [Setting_ID] = ?";
+        String query = "UPDATE [dbo].[Setting] SET [Type_ID] = ?,[Value] = ? ,[Description] = ?,[Status] = ?, [Href] = ? where [Setting_ID] = ?";
         try {
             con = new BaseDAO().BaseDao();
             ps = con.prepareStatement(query);
-            ps.setInt(1, 1);
+            ps.setInt(1, s.getType_ID());
             ps.setString(2, s.getValue());
             ps.setString(3, s.getDescription());
             ps.setBoolean(4, s.isStatus());
-            ps.setInt(5, s.getSetting_ID());
+            ps.setString(5, s.getHref());
+            ps.setInt(6, s.getSetting_ID());
             ps.executeUpdate();
         } catch (Exception e) {
         }

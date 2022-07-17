@@ -37,15 +37,24 @@ public class SettingListServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            String index = request.getParameter("index");
-            if (index == null) {
-                index = "1";
-            }
-            request.setAttribute("index", index);
-            int numberPage = Integer.parseInt(index);
             SettingDAO dao = new SettingDAO();
-            List<Setting> list = dao.GetPage(numberPage);
+            String index = request.getParameter("index");
+            int page, size;
+            size = dao.GetAllSetting().size();
+            int numberPage = (size % 3 == 0 ? (size / 3) : (size / 3) + 1);
+            if (index == null) {
+                page = 1;
+            } else {
+                page = Integer.parseInt(index);
+            }
+            int begin, end;
+            begin = (page - 1) * 3;
+            end = Math.min(page * 3, size);
+            List<Setting> list = dao.Settingpage(dao.GetAllSetting(), begin, end);
             request.setAttribute("listSetting", list);
+            request.setAttribute("index", page);
+            request.setAttribute("numberPage", numberPage);
+            
             request.getRequestDispatcher("ListSetting.jsp").forward(request, response);
         }
     }
