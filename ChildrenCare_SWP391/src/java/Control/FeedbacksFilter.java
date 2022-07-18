@@ -104,7 +104,7 @@ public class FeedbacksFilter extends HttpServlet {
             request.setAttribute("sevice", sevice);
             request.setAttribute("star", star);
             request.setAttribute("name", name);
-            request.getRequestDispatcher("feedbackF/feedbacks.jsp").forward(request, response);
+            request.getRequestDispatcher("feedback.jsp").forward(request, response);
         } catch (Exception ex) {
             Logger.getLogger(feedbackslist.class.getName()).log(Level.SEVERE, null, ex);
         }

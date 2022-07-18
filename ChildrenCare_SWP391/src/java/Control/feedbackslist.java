@@ -90,7 +90,7 @@ public class feedbackslist extends HttpServlet {
             request.setAttribute("num", num);
             request.setAttribute("sevices", r.allservice());
             request.setAttribute("allfeedbacks", list);
-            request.getRequestDispatcher("feedbackF/feedbacks.jsp").forward(request, response);
+            request.getRequestDispatcher("feedback.jsp").forward(request, response);
         } catch (Exception ex) {
             Logger.getLogger(feedbackslist.class.getName()).log(Level.SEVERE, null, ex);
         }

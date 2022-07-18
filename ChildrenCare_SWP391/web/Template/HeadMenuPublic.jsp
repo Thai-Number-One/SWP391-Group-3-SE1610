@@ -28,14 +28,8 @@
                 <div class="navbar-nav mx-auto">
                     <a href="homeservlet" class="nav-item nav-link">Home</a>
                     <div class="nav-item dropdown">
-                        <a href="blogs" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Blog</a>
-                        <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0">
-                            <% for (int i = 0; i < lst.size(); i++) {%>
-                            <% if(lst.get(i).getType_ID() == 3){ %>
-                            <a href="<%=lst.get(i).getHref()%>" class="dropdown-item"><%= lst.get(i).getValue()%></a>
-                            <%}%>
-                            <%}%>
-                        </div>
+                        <a href="blogs"  class="nav-item nav-link" >Blog</a>
+                        
                     </div>
                     <a href="listserviceservlet" class="nav-item nav-link">Service</a>
                     <div class="nav-item dropdown">
