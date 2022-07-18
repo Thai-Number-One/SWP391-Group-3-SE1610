@@ -122,7 +122,7 @@ public class ChangeReservation extends HttpServlet {
                         ReservationDAO dao = new ReservationDAO();
 
                         dao.updateReservation_detail(childrenname, Age, Doctor, Time, idd);
-                        //dao.updateReservation((java.sql.Date) date, idd);
+                        dao.updateReservation(date, idd);
 
                         response.sendRedirect("MyReservation.jsp");
             
