@@ -89,49 +89,6 @@
                                                 <li><a class="dropdown-item" href="SearchSetting?active=0">Deactive</a></li>
                                             </ul>
                                     </div>
-                                    <div class="col-md-4">
-                                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#AddnewSetting">add new setting</button>
-                                    </div>
-                                    <div class="modal fade" id="AddnewSetting" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">New setting</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <form action="addsetting" method="post">
-                                                    <div class="modal-body">
-                                                        <div>
-                                                            <div class="col-lg-5">
-                                                                <label for="type" class="col-form-label">Type:</label>
-                                                                <select class="form-control m-b-10" name="type">
-                                                                    <% for (Type t : listT) {%>
-                                                                    <option value="<%= t.getType_ID()%>"><%= t.getType_Name()%></option>
-                                                                    <%}%>
-                                                                </select>
-                                                            </div>
-                                                            <div class="mb-3">
-                                                                <label for="value" class="col-form-label">Value:</label>
-                                                                <input type="text" name="value" class="form-control" required="" >
-                                                            </div>
-                                                            <div class="mb-3">
-                                                                <label for="href" class="col-form-label">Href</label>
-                                                                <input type="text" name="href" class="form-control" required="" >
-                                                            </div>
-                                                            <div class="mb-3">
-                                                                <label for="description" class="col-form-label">Description:</label>
-                                                                <textarea class="form-control" name="description" required="" autofocus=""></textarea>
-                                                            </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                            <button type="submit" class="btn btn-primary">add</button>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                                 <div class="card-body px-0 pt-0 pb-5">
                                     <div class="table-responsive p-0">

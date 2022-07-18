@@ -4,6 +4,9 @@
     Author     : HP
 --%>
 
+<%@page import="Entity.Setting"%>
+<%@page import="java.util.List"%>
+<%@page import="DAO.SettingDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -16,6 +19,8 @@
         </style>
     </head>
     <body>
+        <% SettingDAO dao = new SettingDAO(); %>
+        <% List<Setting> lst = dao.GetSettingByStatus(1); %>
        <aside class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 " id="sidenav-main">
             <div class="sidenav-header">
                 <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
@@ -26,40 +31,17 @@
             <hr class="horizontal dark mt-0">
             <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
                 <ul class="navbar-nav">
-                    
+                    <% for (int i = 0; i < lst.size(); i++) { %>
+                    <%if(lst.get(i).getType_ID() == 3){%>
                     <li class="nav-item">
-                        <a class="nav-link " href="servicecontroller">
+                        <a class="nav-link " href="<%=lst.get(i).getHref()%>">
                             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                                <i class="ni ni-single-copy-04 text-success text-sm opacity-10"></i>
                             </div>
-                            <span class="nav-link-text ms-1">Service Manager</span>
+                            <span class="nav-link-text ms-1"><%= lst.get(i).getValue()%></span>
                         </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="feedbackslist">
-                            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                                <i class="ni ni-email-83 text-primary text-sm opacity-10"></i>
-                            </div>
-                            <span class="nav-link-text ms-1">Feedback Manager</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="Post">
-                            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                                <i class="ni ni-bullet-list-67 text-warning text-sm opacity-10"></i>
-                            </div>
-                            <span class="nav-link-text ms-1">Post Manager</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="SliderControl">
-                            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                                <i class="ni ni-app text-info text-sm opacity-10"></i>
-                            </div>
-                            <span class="nav-link-text ms-1">Slider Manager</span>
-                        </a>
-                    </li>
-                     
+                    </li> 
+                    <%}%>
+                    <%}%>
                 </ul>
             </div>
         </aside>

@@ -30,45 +30,43 @@
         <section class="bg-light">
             <%User u = (User) request.getAttribute("customerdetail");%>
             <form action="customerdetail" method="post">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 mb-4 mb-sm-5">
-                        <div class="card card-style1 border-0">
-                            <div class="card-body p-1-9 p-sm-2-3 p-md-6 p-lg-7">
-                                <div class="row align-items-center">
-                                    <div class="col-lg-6 mb-4 mb-lg-0">
-                                        <img src="<%=u.getAvatar() %>" alt="...">
-                                    </div>
-                                    <div class="col-lg-6 px-xl-10">
-                                        <div class="bg-secondary d-lg-inline-block py-1-9 px-1-9 px-sm-6 mb-1-9 rounded">
-                                            <h3 class="h2 text-white mb-0">Customer informations</h3>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 mb-4 mb-sm-5">
+                            <div class="card card-style1 border-0">
+                                <div class="card-body p-1-9 p-sm-2-3 p-md-6 p-lg-7">
+                                    <div class="row align-items-center">
+                                        <div class="col-lg-6 mb-4 mb-lg-0">
+                                            <img src="<%=u.getAvatar()%>" alt="...">
                                         </div>
-                                        <ul class="list-unstyled mb-1-9">
-                                            <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Full name:</span> <input type="text" value="<%=u.getFullName()%>" class="form-control" name="fullname" ></li>
-                                            <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Phone:</span> <input type="text" value="<%=u.getPhone()%>" class="form-control" name="phone" ></li>
-                                            <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Email:</span> <input type="text" value="<%=u.getEmail()%>" class="form-control" name="email" ></li>
-                                            <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Address:</span> <input type="text" value="<%=u.getAddress()%>" class="form-control" name="address" ></li>
-                                            <li class="display-28"><span class="display-26 text-secondary me-2 font-weight-600">Gender</span> <select class="form-control m-b-10" name="gender" >
-                                                                                                                                            <% if (u.getGender()==1) { %>
-                                                                                                                                            <option selected value="1">Male</option>
-                                                                                                                                            <option value="0">Female</option>
-                                                                                                                                            <%} else {%>
-                                                                                                                                            <option  value="1">Male</option>
-                                                                                                                                            <option selected value="0">Female</option>
-                                                                                                                                            <%}%>
-                                                                                                                                        </select>
-                                        </ul>
-                                           <p class="text-success">${mess}</p>
-                                          <input class="btn btn-primary" value="Save" type="submit">                                                                                               
+                                        <div class="col-lg-6 px-xl-10">
+                                            <div class="bg-secondary d-lg-inline-block py-1-9 px-1-9 px-sm-6 mb-1-9 rounded">
+                                                <h3 class="h2 text-white mb-0">Customer informations</h3>
+                                            </div>
+                                            <ul class="list-unstyled mb-1-9">
+                                                <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Full name:</span> <input type="text" value="<%=u.getFullName()%>" class="form-control" name="fullname" ></li>
+                                                <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Phone:</span> <input type="text" value="<%=u.getPhone()%>" class="form-control" name="phone" ></li>
+                                                <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Email:</span> <input type="text" value="<%=u.getEmail()%>" class="form-control" name="email" ></li>
+                                                <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Address:</span> <input type="text" value="<%=u.getAddress()%>" class="form-control" name="address" ></li>
+                                                <li class="display-28"><span class="display-26 text-secondary me-2 font-weight-600">Gender</span> <select class="form-control m-b-10" name="gender" >
+                                                        <% if (u.getGender() == 1) { %>
+                                                        <option selected value="1">Male</option>
+                                                        <option value="0">Female</option>
+                                                        <%} else {%>
+                                                        <option  value="1">Male</option>
+                                                        <option selected value="0">Female</option>
+                                                        <%}%>
+                                                    </select>
+                                            </ul>
+                                            <p class="text-success">${mess}</p>
+                                            <input class="btn btn-primary" value="Save" type="submit">                                                                                               
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-
                 </div>
-            </div>
             </form>
         </section>
 

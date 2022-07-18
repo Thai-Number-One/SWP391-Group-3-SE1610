@@ -57,35 +57,102 @@
 
         <div class="all">
             <div class="container">
-            <div class="">
-                <h1 style="text-align: center;" class="title text-bolder">Service Detail</h1>
-            </div>
-            <div class="">
-                <form action="Edit" method="post">
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-md-8">
-                                <h5><span style="font-size: 25px;">Title:</span> ${detail.service_name}</h5> 
-                                <h5><span style="font-size: 25px;">Category:</span>${detail.type}</h5>
-                                <h5><span style="font-size: 25px;">Original Price:</span>$${detail.price}</h5>
+                <div class="">
+                    <h1 style="text-align: center;" class="title text-bolder">Service Detail</h1>
+                </div>
+                <div class="">
+                    <form action="Edit" method="post">
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <h5><span style="font-size: 25px;">Title:</span> ${detail.service_name}</h5> 
+                                    <h5><span style="font-size: 25px;">Category:</span>${detail.type}</h5>
+                                    <h5><span style="font-size: 25px;">Original Price:</span>$${detail.price}</h5>
 
-                                <h5><span style="font-size: 25px;">Sale Price:</span>$${detail.discount}</h5>
+                                    <h5><span style="font-size: 25px;">Sale Price:</span>$${detail.discount}</h5>
 
-                                <h5><span style="font-size: 25px;">Service Details:</span>${detail.detail}</h5>
+                                    <h5><span style="font-size: 25px;">Service Details:</span>${detail.detail}</h5>
+                                </div>
+                                <div class="col-md-4">
+                                    <img src="${detail.image}" width="400" height="400" alt="" />
+                                </div>
+
+
                             </div>
-                            <div class="col-md-4">
-                                <img src="${detail.image}" width="400" height="400" alt="" />
-                            </div>
-
-
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <a href="listserviceservlet" class="btn btn-default" data-dismiss="modal">Back to service list</a>
-                    </div>
-                </form>
+                        <div class="modal-footer">
+                            <a href="listserviceservlet" class="btn btn-default" data-dismiss="modal">Back to service list</a>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-md-7 mt-4">
+                <div class="bg-white rounded shadow overflow-hidden">
+                    <div class="p-4 border-bottom">
+                        <h5 class="mb-0">Feedback</h5>
+                    </div>
+                    <c:forEach items="${requestScope.feedback}" var="f">
+                        <ul class="media-list list-unstyled p-4 mb-0">
+                            <li class="mt-4">
+                                <div class="d-flex justify-content-between">
+                                    <div class="d-flex align-items-center">
+                                        <a class="pe-2" href="#">
+                                            <img src="img/def.png" class="img-fluid avatar avatar-md-sm rounded-circle shadow" alt="img" width="50" height="50">
+                                        </a>
+                                        <div class="commentor-detail">
+                                            <h6 class="mb-0"><a href="javascript:void(0)" class="text-dark media-heading">${f.user.fullname}</a></h6>
+                                            <small class="text-muted">${f.feedbacks.date}</small>
+                                        </div>
+                                    </div>
+                                    <ul class="list-unstyled text-warning h5 mb-0">
+                                        <c:if test="${f.feedbacks.star == 1}">
+                                            <span class="fas fa-star" style="color: orange;"></span>
+                                            <span class="far fa-star" style="color: orange;"></span>
+                                            <span class="far fa-star" style="color: orange;"></span>
+                                            <span class="far fa-star" style="color: orange;"></span>
+                                            <span class="far fa-star" style="color: orange;"></span>
+                                        </c:if>
+                                        <c:if test="${f.feedbacks.star == 2}">
+                                            <span class="fas fa-star" style="color: orange;"></span>
+                                            <span class="fas fa-star" style="color: orange;"></span>
+                                            <span class="far fa-star" style="color: orange;"></span>
+                                            <span class="far fa-star" style="color: orange;"></span>
+                                            <span class="far fa-star" style="color: orange;"></span>
+                                        </c:if>
+                                        <c:if test="${f.feedbacks.star == 3}">
+                                            <span class="fas fa-star" style="color: orange;"></span>
+                                            <span class="fas fa-star" style="color: orange;"></span>
+                                            <span class="fas fa-star" style="color: orange;"></span>
+                                            <span class="far fa-star" style="color: orange;"></span>
+                                            <span class="far fa-star" style="color: orange;"></span>
+                                        </c:if>
+                                        <c:if test="${f.feedbacks.star == 4}">
+                                            <span class="fas fa-star" style="color: orange;"></span>
+                                            <span class="fas fa-star" style="color: orange;"></span>
+                                            <span class="fas fa-star" style="color: orange;"></span>
+                                            <span class="fas fa-star" style="color: orange;"></span>
+                                            <span class="far fa-star" style="color: orange;"></span>
+                                        </c:if>
+                                        <c:if test="${f.feedbacks.star == 5}">
+                                            <span class="fas fa-star" style="color: orange;"></span>
+                                            <span class="fas fa-star" style="color: orange;"></span>
+                                            <span class="fas fa-star" style="color: orange;"></span>
+                                            <span class="fas fa-star" style="color: orange;"></span>
+                                            <span class="fas fa-star" style="color: orange;"></span>
+                                        </c:if>
+                                    </ul>
+                                </div>
+                                <div class="mt-3">
+                                    <p class="text-muted font-italic p-3 bg-light rounded">${f.feedbacks.detail}</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </c:forEach>
+                </div>
+            </div>
         </div>
 
         <!-- Footer Start -->

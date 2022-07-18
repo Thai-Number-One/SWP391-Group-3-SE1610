@@ -6,10 +6,16 @@
 package controller;
 
 import DAO.DashboardDAO;
+import DAO.FeedbacksDAO;
 import Entity.Service;
 import Entity.UserT;
+import Entity.allfeedbacks;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -35,11 +41,22 @@ public class ServiceDetail extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-       String id = request.getParameter("serviceid");
-        DashboardDAO dao = new DashboardDAO();
-        Service s = dao.getServiceByID(id);
- 
-        request.setAttribute("detail", s);
+        try {
+            String id = request.getParameter("serviceid");
+            DashboardDAO dao = new DashboardDAO();
+            Service s = dao.getServiceByID(id);
+            List<allfeedbacks> lst = new ArrayList<>();
+            FeedbacksDAO FDao = new FeedbacksDAO();
+            for (int i = 0; i < FDao.allfeedbacks().size(); i++) {
+                if (FDao.allfeedbacks().get(i).getService().getServiceid() == s.getService_id() && FDao.allfeedbacks().get(i).getFeedbacks().getStatus() == 1) {
+                    lst.add(FDao.allfeedbacks().get(i));
+                }
+            }
+            request.setAttribute("feedback", lst);
+            request.setAttribute("detail", s);
+        } catch (Exception ex) {
+            Logger.getLogger(ServiceDetail.class.getName()).log(Level.SEVERE, null, ex);
+        }
         request.getRequestDispatcher("serviceDetailPublic.jsp").forward(request, response);
     }
 

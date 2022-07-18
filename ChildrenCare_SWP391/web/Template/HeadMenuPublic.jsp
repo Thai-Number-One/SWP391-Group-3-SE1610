@@ -32,16 +32,19 @@
                         
                     </div>
                     <a href="listserviceservlet" class="nav-item nav-link">Service</a>
+                     <c:if test="${sessionScope.loginsuccess.getRole_ID() == 1}">
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Admin</a>
                         <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0">
                              <% for (int i = 0; i < lst.size(); i++) {%>
-                            <% if(lst.get(i).getType_ID() == 6){ %>
+                            <% if(lst.get(i).getType_ID() == 4){ %>
                             <a href="<%=lst.get(i).getHref()%>" class="dropdown-item"><%= lst.get(i).getValue()%></a>
                             <%}%>
                             <%}%>  
                         </div>
                     </div>
+                     </c:if>
+                     <c:if test="${sessionScope.loginsuccess.getRole_ID() == 2}">
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Staff</a>
                         <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0">
@@ -52,16 +55,19 @@
                             <%}%>                          
                         </div>
                     </div>
+                     </c:if>
+                     <c:if test="${sessionScope.loginsuccess.getRole_ID() == 3}">
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Manager</a>
                         <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0">
                             <% for (int i = 0; i < lst.size(); i++) {%>
-                            <% if(lst.get(i).getType_ID() == 5){ %>
+                            <% if(lst.get(i).getType_ID() == 3){ %>
                             <a href="<%=lst.get(i).getHref()%>" class="dropdown-item"><%= lst.get(i).getValue()%></a>
                             <%}%>
                             <%}%>  
                         </div>
                     </div>
+                     </c:if>
                     <a href="contact.jsp" class="nav-item nav-link">Contact</a>
                 </div>
                 <h4><a href="ReservationDetails.jsp" style="padding-right: 15px;"><i class="bi bi-cart"></i></a></h4>
@@ -74,7 +80,7 @@
                         <a href="#" class="nav-item nav-link" data-bs-toggle="dropdown">Hello ${sessionScope.loginsuccess.getFullName()}</a>
                         <div class="dropdown-menu rounded-0 rounded-bottom border-0 shadow-sm m-0">
                             <% for (int i = 0; i < lst.size(); i++) {%>
-                            <% if(lst.get(i).getType_ID() == 4){ %>
+                            <% if(lst.get(i).getType_ID() == 2){ %>
                             <a href="<%= lst.get(i).getHref() %>" class="dropdown-item"><%= lst.get(i).getValue()%></a>
                             <%}%>
                             <%}%> 
