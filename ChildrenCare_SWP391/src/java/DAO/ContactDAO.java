@@ -90,7 +90,6 @@ public class ContactDAO {
         try {
             ContactDAO d = new ContactDAO();
             System.out.println(d.listContact().get(0).getEmail());
-            d.DeleteContat(3);
         } catch (Exception ex) {
             Logger.getLogger(ContactDAO.class.getName()).log(Level.SEVERE, null, ex);
         }

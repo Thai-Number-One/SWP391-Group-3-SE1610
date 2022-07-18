@@ -110,12 +110,12 @@
         <jsp:include page="/Template/HeadMenuPublic.jsp" />
         <div class="container-xxl py-5 page-header position-relative mb-5">
             <div class="container py-5">
-                <h1 class="display-2 text-white animated slideInDown mb-4">Feedback Management</h1>
+                <h1 class="display-2 text-white animated slideInDown mb-4">Contact</h1>
                 <nav aria-label="breadcrumb animated slideInDown">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="HomeP.jsp">Home</a></li>
                         <li class="breadcrumb-item"><a href="#">Manager</a></li>
-                        <li class="breadcrumb-item">Feedbacks</li>
+                        <li class="breadcrumb-item">Contact</li>
                     </ol>
                 </nav>
             </div>
@@ -147,7 +147,7 @@
                                                 <form action="contactservlet" method="post">
                                                 <input type="number" name="change" value="0" style="display: none;">
                                                 <input type="text" name="idc" value="${a.contactid}" style="display: none;">
-                                                <button type="submit" class="btn btn-primary" onclick="Delete()">Delete ${a.contactid}</button>
+                                                <button type="submit" class="btn btn-primary" onclick="Delete()">Delete</button>
                                                 </form>
                                             </td>
 
