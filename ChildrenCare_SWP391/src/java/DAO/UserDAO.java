@@ -203,4 +203,20 @@ public class UserDAO {
         }
         
     }
+    public void UpdateUserProfileByID(int id, String fullname, String address, String phone, Date dob, int gender) {
+        String query = " update [User] set FullName = ?,Address = ?,Phone = ?,Date = ?,Gender = ? Where User_ID = ?";
+        try {
+            conn = new BaseDAO().BaseDao();
+            ps = conn.prepareStatement(query);
+            ps.setInt(6, id);
+            ps.setString(1, fullname);
+            ps.setString(2, address);
+            ps.setString(3, phone);
+            ps.setDate(4, dob);
+            ps.setInt(5, gender);
+
+            rs = ps.executeQuery();
+        } catch (Exception e) {
+        }
+    }
 }
