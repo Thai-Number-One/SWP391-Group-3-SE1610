@@ -90,11 +90,11 @@ public class FeedbacksDAO extends BaseDAO {
                 u.setAvatar(rs.getString("Avatar"));
                 u.setGender(rs.getInt("Gender"));
                 u.setRoleid(rs.getInt("Role_ID"));
-                 u.setStatus(rs.getInt("Status"));
+                u.setStatus(rs.getInt("Status"));
                 //////////////////////////////////////////////////////////////                           
                 reservations r = new reservations();
                 r.setReservationID(rs.getInt("Reservation_ID"));
-                
+
                 r.setDate(rs.getDate("Date"));
                 r.setStatus(rs.getInt("Status"));
                 r.setBeginTime(rs.getDate("Begin_Time"));
@@ -192,6 +192,25 @@ public class FeedbacksDAO extends BaseDAO {
         return null;
     }
 
+    public void AddNewFeedback(int userid, int star, int reservationid, String details) {
+        String query = "INSERT INTO [dbo].[Feedback]([User_ID], [Detail] ,[Feedback_status] ,[Star] ,[Date_Feedback] ,[Reservation_ID])\n"
+                + "VALUES (?,?,?,?,GETDATE(),?)";
+        try {
+            Connection conn = new BaseDAO().BaseDao();
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setInt(1, userid);
+            ps.setString(2, details);
+            ps.setInt(3, 1);
+            ps.setInt(4, star);
+            ps.setInt(5, reservationid);
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException e) {
+        } catch (Exception ex) {
+            Logger.getLogger(FeedbacksDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     public List<allfeedbacks> allfeedbacks() throws Exception {
         List<allfeedbacks> list = new ArrayList<>();
         String sql = "select * \n"
@@ -243,7 +262,7 @@ public class FeedbacksDAO extends BaseDAO {
                 //////////////////////////////////////////////////////////////                           
                 reservations r = new reservations();
                 r.setReservationID(rs.getInt("Reservation_ID"));
-               
+
                 r.setDate(rs.getDate("Date"));
                 r.setStatus(rs.getInt("Status"));
                 r.setBeginTime(rs.getDate("Begin_Time"));
