@@ -208,7 +208,7 @@ https://templatemo.com/tm-551-stand-blog
                             <div class="col-lg-post">
                                 <div class="blog-post">
                                     <div class="blog-thumb">
-                                        <img src="${Detail.image}" alt="">
+                                        <img src="img/${Detail.image}" alt="">
                                     </div>
                                     <div class="down-content">
                                         <span>${serviceName}</span>

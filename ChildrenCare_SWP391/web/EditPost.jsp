@@ -179,7 +179,7 @@ https://templatemo.com/tm-551-stand-blog
                               <div class="col-lg-8">
                                   <form action="UpdatePost" method="post">
                                   <div class="blog-thumb">
-                                      <img src="${Detail.image}" alt="">
+                                      <img src="img/${Detail.image}" alt="">
                                   </div>
                                   <div class="sidebar-item contact-form">
                                       <div class="sidebar-heading">
@@ -208,11 +208,11 @@ https://templatemo.com/tm-551-stand-blog
 
 
                                               <div class="sidebar-h">
-                                                  <h5 clas="edi">Image link</h5>
+                                                  <h5 clas="edi">Choice Image: </h5>
                                               </div>
                                               <div class="col-md-6 col-sm-12">
                                                   <fieldset>
-                                                      <input class="imageli" name="image" type="text" id="name" required="" value="${Detail.image}">
+                                                      <input class="imageli" name="image" type="file" id="name" required="" value="img/${Detail.image}">
                                                   </fieldset>
                                               </div>
                                               <div class="sidebar-h">

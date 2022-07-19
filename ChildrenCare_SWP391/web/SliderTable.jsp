@@ -113,7 +113,7 @@
                                                 <tr>
                                                     <td class="align-middle text-center">
                                                         
-                                                         <img src="${o.image}" class="avatar avatar-sm me-3" alt="user1">
+                                                         <img src="img/${o.image}" class="avatar avatar-sm me-3" alt="user1">
                                                     </td>
                                                     <td class="align-middle text-center">
                                                         <span class="text-secondary text-xs font-weight-bold">${o.slider_ID}</span>

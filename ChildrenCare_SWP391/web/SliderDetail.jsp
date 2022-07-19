@@ -7,6 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+    <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -50,6 +51,9 @@
 
         <!-- Template Stylesheet -->
         <link href="css/style.css" rel="stylesheet">
+
+        <jsp:include page="Template/DesignPublic.jsp"/>
+        
     <style>
           body {
                 margin: 0;
@@ -156,7 +160,9 @@ TemplateMo 551 Stand Blog
 
 https://templatemo.com/tm-551-stand-blog
 
+  
 -->
+  
   </head>
     <body>
         <!-- Navbar Start -->
@@ -174,7 +180,7 @@ https://templatemo.com/tm-551-stand-blog
                               <div class="col-lg-8">
                                   <form action="EditSlider" method="post">
                                   <div class="blog-thumb">
-                                      <img src="${SliderD.image}" alt="">
+                                      <img src="img/${SliderD.image}" alt="">
                                   </div>
                                   <div class="sidebar-item contact-form">
                                       <div class="sidebar-heading">
@@ -211,11 +217,11 @@ https://templatemo.com/tm-551-stand-blog
                                               </div>      
 
                                               <div class="sidebar-h">
-                                                  <h5 clas="edi"> Image Link</h5>
+                                                  <h5 clas="edi"> Choice Image:</h5>
                                               </div>
                                               <div class="col-md-6 col-sm-12">
                                                   <fieldset>
-                                                      <input class="imageli" name="image" type="text" id="name" required="" value="${SliderD.image}">
+                                                      <input class="imageli" name="image" type="file" id="name" required="" value="img/${SliderD.image}">
                                                   </fieldset>
                                               </div>
                                               <div class="sidebar-h">

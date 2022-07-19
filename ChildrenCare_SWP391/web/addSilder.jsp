@@ -63,7 +63,7 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label>Image</label>
-                                                            <input name="Image" type="text" class="form-control" required>
+                                                            <input name="Image" type="file" class="form-control" required>
                                                         </div>
                                                     </div>
 

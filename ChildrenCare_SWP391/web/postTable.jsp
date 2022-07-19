@@ -125,7 +125,7 @@
                                                     <td>
                                                         <div class="d-flex px-2 py-1">
                                                             <div>
-                                                                <img src="img/abc.jpg" class="avatar avatar-sm me-3" alt="user1">
+                                                                <img src="img/${o.image}" class="avatar avatar-sm me-3" alt="user1">
                                                             </div>
 
                                                         </div>
