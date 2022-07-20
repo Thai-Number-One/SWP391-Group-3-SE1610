@@ -8,83 +8,46 @@
 <!DOCTYPE html>
 <html>
     <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap" rel="stylesheet">
-
+   
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="apple-touch-icon" sizes="76x76" href="img/apple-icon.png">
+        <link rel="icon" type="image/png" href="img/favicon.png">
+        <title>
+            Slider Details
+        </title>
     
 
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-
     <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="assets/css/fontawesome.css">
+   
     <link rel="stylesheet" href="assets/css/templatemo-stand-blog.css">
-    <link rel="stylesheet" href="assets/css/owl.css">
+   
 <!--
+   
+        
+        <!--     Fonts and icons     -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+        <!-- Nucleo Icons -->
+        <link href="css/nucleo-icons.css" rel="stylesheet" />
+        <link href="css/nucleo-svg.css" rel="stylesheet" />
+        <!-- Font Awesome Icons -->
+        <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+        <link href="css/nucleo-svg.css" rel="stylesheet" />
+        <!-- CSS Files -->
+        <link id="pagestyle" href="css/argon-dashboard.css?v=2.0.2" rel="stylesheet" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta content="width=device-width, initial-scale=1.0" name="viewport">
-        <meta content="" name="keywords">
-        <meta content="" name="description">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <title>Post Detail</title>
-        <link href="img/favicon.ico" rel="icon">
-
-        <!-- Google Web Fonts -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@600&family=Lobster+Two:wght@700&display=swap" rel="stylesheet">
-
-        <!-- Icon Font Stylesheet -->
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        <!-- Libraries Stylesheet -->
-        <link href="lib/animate/animate.min.css" rel="stylesheet">
-        <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-
-        <!-- Customized Bootstrap Stylesheet -->
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-
-        <!-- Template Stylesheet -->
-        <link href="css/style.css" rel="stylesheet">
-
-        <jsp:include page="Template/DesignPublic.jsp"/>
+        
+        
         
     <style>
-          body {
-                margin: 0;
-                font-family: "Heebo",sans-serif;
-                font-size: 1rem;
-                font-weight: 400;
-                line-height: 1.5;
-                color: #74787C;
-                background-color: #FFF5F3;
-                -webkit-text-size-adjust: 100%;
-                -webkit-tap-highlight-color: rgba(0,0,0,0);
-            }
-
-            .text-primary {
-                color: #FE5D37 !important;
-            }
-
-
-            .navbar .navbar-nav .nav-link {
-                padding: 30px 15px;
-                color: #103741;
-                font-weight: 500;
-                outline: none;
-            }
+          
             .row{
                 width: 1000px;
             }
             .blog-thumb{
                 margin-bottom: 40px;
             .h2{
-                color: rgb(254,93,55);
+                color: #5E72E4;
             }
             }.sidebar-h{
                 width: 400px;
@@ -94,7 +57,7 @@
             
             .sidebar-h h5 {
                 line-height: 10px;
-                color: rgb(254,93,55);
+                color: #5E72E4;
             }.sidebar-item{
                 width: 1000px;
             }
@@ -113,7 +76,7 @@
                 font-size: 30px;
             }.blog-posts .down-content p{
                 font-size: 17px;
-                color: #393f54;
+                color: #5E72E4;
             }
             .blog-posts .down-content{
                 margin-left: 160px;
@@ -133,23 +96,32 @@
                 margin-top: 30px;
                 margin-bottom: 28px;
                 line-height: 10px;
-                color: rgb(254,93,55);
+                color: #5E72E4;
                 margin-left: 12px;
             }.blog-thumb{
                 width: 1000px;
-                height: 600px;
+                height: 450px;
+                margin-top: 150px;
             }
             .blog-thumb img{
                 width: auto;
                 height: 100%;
             }.contact-us .contact-form button{
                 width: 130px;
+                background-color: #5E72E4;
             }.col-lg-r{
                 width: 100%;
                 height: 100px;
                 margin-left: 15px;
             }
-            
+            .navbar-vertical.bg-white{
+                padding-right: 50px;
+            }.navbar .navbar-nav a.nav-link{
+                font-size: 12px;
+                font-weight: bold;
+            }.bg-primary {
+                background-color: #0d6efd;
+            }
             
                 
     </style>
@@ -166,7 +138,62 @@ https://templatemo.com/tm-551-stand-blog
   </head>
     <body>
         <!-- Navbar Start -->
-        <jsp:include page="/Template/HeadMenuPublic.jsp"/>
+        
+         <div class="min-height-300 bg-primary position-absolute w-100"></div>
+         <jsp:include page="Template/managerDashboard.jsp"/>
+        <main class="main-content position-relative border-radius-lg ">
+            <!-- Navbar -->
+            <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur" data-scroll="false">
+                <div class="container-fluid py-1 px-3">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+                            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="javascript:;">Pages</a></li>
+                            <li class="breadcrumb-item text-sm text-white active">Feedback Manager</li>
+                        </ol>
+                        <h6 class="font-weight-bolder text-white mb-0">Feedback details</h6>
+                    </nav>
+                    <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+                        <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+                            <form action="SearchSetting" method="post">
+                                <div class="input-group">
+                                    <button  class="input-group-text text-body"><i type="submit" class="fas fa-search" aria-hidden="true"></i></button>
+                                    <input name="txt" type="text" class="form-control" placeholder="Type here...">
+                                </div>
+                            </form>
+                        </div>
+                        <ul class="navbar-nav  justify-content-end">
+                            <li class="nav-item d-flex align-items-center">
+                                <a href="javascript:;" class="nav-link text-white font-weight-bold px-0">
+                                    <i class="fa fa-user me-sm-1"></i>
+                                    <span class="d-sm-inline d-none">Sign In</span>
+                                </a>
+                            </li>
+                            <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+                                <a href="javascript:;" class="nav-link text-white p-0" id="iconNavbarSidenav">
+                                    <div class="sidenav-toggler-inner">
+                                        <i class="sidenav-toggler-line bg-white"></i>
+                                        <i class="sidenav-toggler-line bg-white"></i>
+                                        <i class="sidenav-toggler-line bg-white"></i>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="nav-item px-3 d-flex align-items-center">
+                                <a href="javascript:;" class="nav-link text-white p-0">
+                                    <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item dropdown pe-2 d-flex align-items-center">
+                                <a href="javascript:;" class="nav-link text-white p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa fa-bell cursor-pointer"></i>
+                                    <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
+                                    </ul>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!-- End Navbar -->
         
     <!-- Navbar End -->
         
@@ -212,7 +239,7 @@ https://templatemo.com/tm-551-stand-blog
                                               </div>
                                               <div class="col-md-6 col-sm-12-1">
                                                   <fieldset>
-                                                      <input name="status" type="text" id="subject" value="${SliderD.status}">
+                                                      <input class="dddd" name="status" type="text" readonly id="subject" value="${SliderD.status}">
                                                   </fieldset>
                                               </div>      
 
@@ -290,58 +317,7 @@ https://templatemo.com/tm-551-stand-blog
       </div>
     </section>
         
-     <!-- Footer Start -->
-        <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
-            <div class="container py-5">
-                <div class="row g-5">
-                    <div class="col-lg-3 col-md-6">
-                        <h3 class="text-white mb-4">Get In Touch</h3>
-                        <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
-                        <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
-                        <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@example.com</p>
-                        <div class="d-flex pt-2">
-                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
-                            <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <h3 class="text-white mb-4">Quick Links</h3>
-                        <a class="btn btn-link text-white-50" href="">About Us</a>
-                        <a class="btn btn-link text-white-50" href="">Contact Us</a>
-                        <a class="btn btn-link text-white-50" href="">Our Services</a>
-                        <a class="btn btn-link text-white-50" href="">Privacy Policy</a>
-                        <a class="btn btn-link text-white-50" href="">Terms & Condition</a>
-                    </div>
-
-
-                </div>
-            </div>
-            <div class="container">
-                <div class="copyright">
-                    <div class="row">
-                        <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                            &copy; <a class="border-bottom" href="#">Your Site Name</a>, All Right Reserved. 
-
-                            <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                            Designed By <a class="border-bottom" href="https://muldtech.com">TEAM3_SE1610</a>
-                        </div>
-                        <div class="col-md-6 text-center text-md-end">
-                            <div class="footer-menu">
-                                <a href="">Home</a>
-                                <a href="">Cookies</a>
-                                <a href="">Help</a>
-                                <a href="">FQAs</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Footer End -->
-
-
+     
 
 
 
@@ -380,6 +356,15 @@ https://templatemo.com/tm-551-stand-blog
           }
       }
     </script>                                             
-                                                  
+    
+    <script src="js/core/popper.min.js"></script>
+        <script src="js/core/bootstrap.min.js"></script>
+        <script src="js/plugins/perfect-scrollbar.min.js"></script>
+        <script src="js/plugins/smooth-scrollbar.min.js"></script>
+        <script src="js/plugins/chartjs.min.js"></script>
+        <script async defer src="https://buttons.github.io/buttons.js"></script>
+        <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
+        <script src="js/argon-dashboard.min.js?v=2.0.2"></script>
+    
     </body>
 </html>
