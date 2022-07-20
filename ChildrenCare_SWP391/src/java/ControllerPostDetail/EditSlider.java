@@ -7,6 +7,7 @@ package ControllerPostDetail;
 
 import DAO.PostDetailDAO;
 import DAO.SliderDetailDAO;
+import Entity.Slider;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.regex.Pattern;
@@ -42,41 +43,44 @@ public class EditSlider extends HttpServlet {
             String backlink = request.getParameter("backlink");
             String slider_id = request.getParameter("slider_id");
             String User_id = request.getParameter("user_id");
-            
+
             int Sid = Integer.parseInt(slider_id);
             int Uid = Integer.parseInt(User_id);
-            
+
             int status = 1;
-            
+
             int choice = Integer.parseInt(choicestatus);
-            
-            if(choice == 1){
+
+            if (choice == 1) {
                 status = 1;
-            }else if(choice == 0){
+            } else if (choice == 0) {
                 status = 0;
-            }else{
+            } else {
                 status = 1;
             }
-            
+
             Pattern p = Pattern.compile("^(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]");
-            while(true){
-                if (p.matcher(backlink).find()){
-                
-                     break;
-                }
-                else{
+            while (true) {
+                if (p.matcher(backlink).find()) {
+
+                    break;
+                } else {
                     String mess = "Backlink is invalid, please enter again";
                     request.setAttribute("mess", mess);
+                    SliderDetailDAO dao = new SliderDetailDAO();
+
+                    Slider d = dao.getDetailSilder(Sid);
+
+                    request.setAttribute("SliderD", d);
                     request.getRequestDispatcher("SliderDetail.jsp").forward(request, response);
                 }
             }
-            
-            
+
             SliderDetailDAO dao = new SliderDetailDAO();
             dao.updateslider(title, backlink, Uid, image, status, Sid);
-            
+
             response.sendRedirect("SliderControl");
-            
+
         } catch (Exception e) {
         }
     }
