@@ -14,7 +14,7 @@
         <meta content="" name="keywords">
         <meta content="" name="description">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <title>The History Of Examination</title>
+        <title>Medical</title>
         <link href="img/favicon.ico" rel="icon">
 
         <!-- Google Web Fonts -->
@@ -105,12 +105,12 @@
         <jsp:include page="/Template/HeadMenuPublic.jsp"/>
         <div class="container-xxl py-5 page-header position-relative mb-5">
             <div class="container py-5">
-                <h1 class="display-2 text-white animated slideInDown mb-4">The History Of Examination</h1>
+                <h1 class="display-2 text-white animated slideInDown mb-4">Medical</h1>
                 <nav aria-label="breadcrumb animated slideInDown">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="HomeP.jsp">Home</a></li>
-                        <li class="breadcrumb-item"><a href="#">Blogs</a></li>
-                        <li class="breadcrumb-item">The History Of Examination</li>
+                        <li class="breadcrumb-item"><a href="#">Staff</a></li>
+                        <li class="breadcrumb-item">Medical</li>
                     </ol>
                 </nav>
             </div>
@@ -119,12 +119,12 @@
 
         <div>
             <div class="all">
-                <h1 style="color: #FE5D37;  text-align: center;">The History Of Examination</h1>
+                <h1 style="color: #FE5D37;  text-align: center;">Medical</h1>
                 <form action="filtermedical" method="get" >
                     <table>
                         <tr>
                             <th> <select  name="service" class="form-control">
-                                    <option value="">All</option>
+                                    <option value="">All Service</option>
                                     <c:forEach items="${requestScope.se}" var="s">
                                         <option value="${s.serviceid}">${s.servicename}</option>
                                     </c:forEach>
@@ -132,7 +132,7 @@
                             <th><input type="date" name="from" class="form-control"></th>
                             <th><input type="date" name="to" class="form-control"></th>
                             <th><select  name="medical" class="form-control">
-                                    <option value="">All</option>
+                                    <option value="">All Medical</option>
                                     <c:forEach items="${requestScope.me}" var="m">
                                         <option>${m.medicinename}</option>
                                     </c:forEach>
@@ -166,8 +166,8 @@
                     <c:forEach items="${requestScope.all}" var="a">
                         <tr>
                             <td>${a.reservations.date}</td>
-                            <td><a href="detailmedicalservlet?id=${a.reservationdetail.prescription_ID}">${a.user.fullname}</a></td>
-                            <td><a href="detailmedicalservlet?id=${a.reservationdetail.prescription_ID}">${a.reservationdetail.childrenname}</a></td>
+                            <td><a style="color: black;" href="detailmedicalservlet?id=${a.reservationdetail.prescription_ID}">${a.user.fullname}</a></td>
+                            <td><a style="color: black;" href="detailmedicalservlet?id=${a.reservationdetail.prescription_ID}">${a.reservationdetail.childrenname}</a></td>
                             <td>${a.reservationdetail.age}</td>
                             <td>${a.service.servicename}</td>
                             <td>${a.medicine.medicinename}</td>
@@ -177,7 +177,7 @@
                             <td>${a.medicine.expirydate}</td>
                             <td class="det">${a.medicine.detail}</td>
                             <td><img src="${a.medicine.image}" alt="img" width="100" height="100"></td>
-                            <td>${a.prescription.note}</td>
+                            <td class="det">${a.prescription.note}</td>
                         </tr>
                     </c:forEach>
                 </table>

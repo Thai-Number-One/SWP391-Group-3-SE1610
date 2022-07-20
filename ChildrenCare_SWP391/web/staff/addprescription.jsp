@@ -14,7 +14,7 @@
         <meta content="" name="keywords">
         <meta content="" name="description">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <title>View Prescription</title>
+        <title>Prescribing medicine</title>
         <link href="img/favicon.ico" rel="icon">
 
         <!-- Google Web Fonts -->
@@ -96,12 +96,12 @@
         <jsp:include page="/Template/HeadMenuPublic.jsp"/>
         <div class="container-xxl py-5 page-header position-relative mb-5">
             <div class="container py-5">
-                <h1 class="display-2 text-white animated slideInDown mb-4">Medical Prescription</h1>
+                <h1 class="display-2 text-white animated slideInDown mb-4">Prescribing medicine</h1>
                 <nav aria-label="breadcrumb animated slideInDown">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="HomeP.jsp">Home</a></li>
                         <li class="breadcrumb-item"><a href="#">Staff</a></li>
-                        <li class="breadcrumb-item">Medical Prescription</li>
+                        <li class="breadcrumb-item">Prescribing medicine</li>
                     </ol>
                 </nav>
             </div>
