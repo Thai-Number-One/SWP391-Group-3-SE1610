@@ -62,7 +62,7 @@
                                 <div class="col-10 col-lg-8">
                                     <h1 class="display-2 text-white animated slideInDown mb-4">How children and young people come into care</h1>
                                     <p class="fs-5 fw-medium text-white mb-4 pb-2">The Department for Child Protection has the significant responsibility of ensuring the safety of children and young people.</p>
-                                    <a href="LoadSliderDetail?Sid=1" class="btn btn-primary rounded-pill py-sm-3 px-sm-5 me-3 animated slideInLeft">Learn More</a>
+                                    <a href="#" class="btn btn-primary rounded-pill py-sm-3 px-sm-5 me-3 animated slideInLeft">Learn More</a>
                                     <a href="" class="btn btn-dark rounded-pill py-sm-3 px-sm-5 animated slideInRight">Our Classes</a>
                                     
                                 </div>
@@ -78,7 +78,7 @@
                                 <div class="col-10 col-lg-8">
                                     <h1 class="display-2 text-white animated slideInDown mb-4">Make A Brighter Future For Your Child</h1>
                                     <p class="fs-5 fw-medium text-white mb-4 pb-2">The Department for Child Protection has the significant responsibility of ensuring the safety of children and young people.</p>
-                                    <a href="LoadSliderDetail?Sid=2" class="btn btn-primary rounded-pill py-sm-3 px-sm-5 me-3 animated slideInLeft">Learn More</a>
+                                    <a href="#" class="btn btn-primary rounded-pill py-sm-3 px-sm-5 me-3 animated slideInLeft">Learn More</a>
                                     <a href="" class="btn btn-dark rounded-pill py-sm-3 px-sm-5 animated slideInRight">Our Classes</a>
                                 </div>
                             </div>
@@ -166,7 +166,7 @@
                         <p class="mb-4">Stet no et lorem dolor et diam, amet duo ut dolore vero eos. No stet est diam rebum amet diam ipsum. Clita clita labore, dolor duo nonumy clita sit at, sed sit sanctus dolor eos, ipsum labore duo duo sit no sea diam. Et dolor et kasd ea. Eirmod diam at dolor est vero nonumy magna.</p>
                         <div class="row g-4 align-items-center">
                             <div class="col-sm-6">
-                                <a class="btn btn-primary rounded-pill py-3 px-5" href="LoadPostD?Did=1">Read More</a>
+                                <a class="btn btn-primary rounded-pill py-3 px-5" href="blogdetails?postid=8">Read More</a>
                             </div>
                             <div class="col-sm-6">
                                 <div class="d-flex align-items-center">
