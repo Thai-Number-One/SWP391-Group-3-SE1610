@@ -72,8 +72,8 @@ public class checkprescription extends HttpServlet {
                 response.sendRedirect("prescription?check=1");
             }
             int count = 0;
-            for (int i = 0; i < d.allstaff().size(); i++) {
-                if (d.allstaff().get(i).getPrescription().getPrescriptionid() == Integer.parseInt(rid)) {
+            for (int i = 0; i < d.reservations_user().size(); i++) {
+                if (d.reservations_user().get(i).getRedetail().getPrescription_ID()== Integer.parseInt(rid)) {
                     count++;
                 }
             }

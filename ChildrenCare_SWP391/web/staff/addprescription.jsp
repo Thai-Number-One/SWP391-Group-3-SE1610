@@ -130,30 +130,20 @@
 
                         <tr>
                             <th>Prescription_ID</th>
-                            <th>User name</th>
-                            <th>used services</th>
-                            <th>Medicine_name</th>
-                            <th>Amount</th>
-                            <th>Price</th>
-                            <th>country</th>
-                            <th>Expiry date</th>
-                            <th>Detail</th>
-                            <th>Image</th>
-                            <th>Note</th>
+                            <th>User Name</th>
+                            <th>Children Name</th>
+                            <th>Children Age</th>
+                            <th>Service Name</th>
+
                         </tr>
                         <c:forEach items="${requestScope.all}" var="a">
                             <tr>
-                                <td>${a.prescription.prescriptionid}</td>
+                                <td>${a.redetail.prescription_ID}</td>
                                 <td>${a.user.fullname}</td>
+                                <td>${a.redetail.childrenname}</td>
+                                <td>${a.redetail.age}</td>
                                 <td>${a.service.servicename}</td>
-                                <td>${a.medicine.medicinename}</td>
-                                <td>${a.prescription.amount}</td>
-                                <td>${a.medicine.price}</td>
-                                <td>${a.medicine.country}</td>
-                                <td>${a.medicine.expirydate}</td>
-                                <td>${a.medicine.detail}</td>
-                                <td>${a.medicine.image}</td>
-                                <td>${a.prescription.note}</td>
+  
                             </tr>
                         </c:forEach>
                     </table>
