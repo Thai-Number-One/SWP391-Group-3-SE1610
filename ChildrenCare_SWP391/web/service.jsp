@@ -70,21 +70,6 @@
                                     </div>
 
                                     <div class="col-md-4">
-                                        <form action="Fillter" method="get">
-
-                                            <select name="status">
-                                                <option value="">all</option>
-                                                <option value="1">ACTIVE</option>
-                                                <option value="0">DEACTIVE</option>
-                                            </select>
-
-
-                                            <input type="submit" value="fillter">
-                                        </form>
-
-                                    </div>
-
-                                    <div class="col-md-4">
                                         <a href="Addservice.jsp" class="text-success text-secondary font-weight-bold text-sm" >Add new</a>
                                     </div>
                                 </div>

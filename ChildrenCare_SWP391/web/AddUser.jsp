@@ -63,6 +63,7 @@
                                                     <label>Full Name</label>
                                                     <input name="fullName" type="text" class="form-control" required>
                                                 </div>
+                                                <p class="text-danger" style="text-align: center;">${mess5}</p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -76,7 +77,7 @@
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail1">Email address</label>
                                                     <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                                                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                                                      <p class="text-danger" style="text-align: center;">${mess3}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -86,6 +87,8 @@
                                                     <label>User</label>
                                                     <input name="userName" type="text" class="form-control" required>
                                                 </div>
+                                                <p class="text-danger" style="text-align: center;">${mess2}</p>
+                                            <p class="text-danger" style="text-align: center;">${mess6}</p>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
@@ -101,6 +104,7 @@
                                                     <label>Date</label>
                                                     <input name="date" type="date" class="form-control" required>
                                                 </div>
+                                                <p class="text-danger" style="text-align: center;">${mess7}</p>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">

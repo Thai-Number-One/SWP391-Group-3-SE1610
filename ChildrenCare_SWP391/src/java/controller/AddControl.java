@@ -6,9 +6,11 @@
 package controller;
 
 import DAO.DashboardDAO;
+import DAO.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
+import java.util.regex.Pattern;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -49,6 +51,60 @@ public class AddControl extends HttpServlet {
         int role = Integer.parseInt(request.getParameter("role"));
         int status = Integer.parseInt(request.getParameter("status"));
         
+        request.removeAttribute("mess1");
+        request.removeAttribute("mess2");
+        request.removeAttribute("mess3");
+        request.removeAttribute("mess4");
+        request.removeAttribute("mess5");
+        request.removeAttribute("mess6");
+        request.removeAttribute("mess7");
+        
+        Pattern p3 = Pattern.compile("^[a-zA-Z]+(\\s[a-zA-Z]+)+$");
+        if(!p3.matcher(fullname).find()){
+            request.setAttribute("mess5", "Please check your name again!");
+            request.getRequestDispatcher("AddUser.jsp").forward(request, response);
+        }
+        
+//        Pattern p2 = Pattern.compile("^[0-9]{10}$");
+//        if(!p2.matcher(phone).find()){
+//            request.setAttribute("mess4", "Please check your phone number again!");
+//            request.getRequestDispatcher("register.jsp").forward(request, response);
+//        }
+//        
+//        if(!pass.equals(repass)){
+//            request.setAttribute("mess1", "Pass and ConfirmPass are not the same !");
+//            request.getRequestDispatcher("register.jsp").forward(request, response);
+//        }
+        Pattern p4 = Pattern.compile("^[a-zA-Z0-9]+$");
+        if(!p4.matcher(user).find()){
+            request.setAttribute("mess6", "Username must not have space !");
+            request.getRequestDispatcher("AddUser.jsp").forward(request, response);
+        }
+        UserDAO u = new UserDAO();
+        String account = u.CheckUserNameExists(user);
+        if(account != null){
+            
+            request.setAttribute("mess2", "User name already exists!");
+            request.getRequestDispatcher("AddUser.jsp").forward(request, response);
+        }
+        Pattern p1 = Pattern.compile("^[a-zA-Z][a-zA-Z0-9]+@[a-zA-Z]+(\\.[a-zA-Z]+)+$");
+        if(!p1.matcher(email).find()){
+            request.setAttribute("mess3", "Please check your Email again !");
+            request.getRequestDispatcher("AddUser.jsp").forward(request, response);
+        }
+//        
+        Date now = Date.valueOf(java.time.LocalDate.now());
+        if(date.compareTo(now)>=1){
+            request.setAttribute("mess7", "Please choose your date of birth !");
+            request.getRequestDispatcher("AddUser.jsp").forward(request, response);
+        }
+        else{
+            DashboardDAO dao = new DashboardDAO();
+        dao.insertProduct( fullname, address, phone, email, date, user, password, avatar, gender, role,status);
+        
+    
+        }
+        
         String subject = "Your information abount account childrencare.";
         String message = "<!DOCTYPE html>\n"
                 + "<html lang=\"en\">\n"
@@ -71,7 +127,7 @@ public class AddControl extends HttpServlet {
         
         DashboardDAO dao = new DashboardDAO();
         dao.send(email, subject, message,"leemuld10@gmail.com", "levu050721");
-        dao.insertProduct( fullname, address, phone, email, date, user, password, avatar, gender, role,status);
+        
         response.sendRedirect("manager");
     }
 
