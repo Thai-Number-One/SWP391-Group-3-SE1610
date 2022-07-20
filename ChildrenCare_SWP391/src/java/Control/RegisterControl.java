@@ -56,6 +56,7 @@ public class RegisterControl extends HttpServlet {
         request.removeAttribute("mess4");
         request.removeAttribute("mess5");
         request.removeAttribute("mess6");
+        request.removeAttribute("mess7");
         
         Pattern p3 = Pattern.compile("^[a-zA-Z]+(\\s[a-zA-Z]+)+$");
         if(!p3.matcher(fullname).find()){
@@ -88,6 +89,12 @@ public class RegisterControl extends HttpServlet {
         Pattern p1 = Pattern.compile("^[a-zA-Z][a-zA-Z0-9]+@[a-zA-Z]+(\\.[a-zA-Z]+)+$");
         if(!p1.matcher(email).find()){
             request.setAttribute("mess3", "Please check your Email again !");
+            request.getRequestDispatcher("register.jsp").forward(request, response);
+        }
+        
+        Date now = Date.valueOf(java.time.LocalDate.now());
+        if(dob.compareTo(now)>=1){
+            request.setAttribute("mess7", "Please choose your date of birth !");
             request.getRequestDispatcher("register.jsp").forward(request, response);
         }
         else{

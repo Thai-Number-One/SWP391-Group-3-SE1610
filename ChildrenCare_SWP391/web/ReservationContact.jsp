@@ -69,6 +69,8 @@
                 <td scope="row"><span>Total: 0</span></td>
                 </c:if>
             </table>
+            <p class="text-danger" style="text-align: center;">${mess1}</p>
+            <p class="text-danger" style="text-align: center;">${mess2}</p>
             <a href="ReservationDetails.jsp" class="btn btn-secondary">Change</a>
             <input type="submit" value="Submit" class="btn btn-secondary">
         </form>

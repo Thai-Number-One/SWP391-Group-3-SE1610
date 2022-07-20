@@ -20,6 +20,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -93,12 +94,24 @@ public class ReservationContactServlet extends HttpServlet {
                 List<ReservationCustomer> lst;
                 lst = (List<ReservationCustomer>) obj;
                 for (int i = 0; i < lst.size(); i++) {
-
+                    request.removeAttribute("mess1");
+                    request.removeAttribute("mess2");
                     String ChildrenName = request.getParameter("children" + lst.get(i).getId());
+                    Pattern p1 = Pattern.compile("^[a-zA-Z]+(\\s[a-zA-Z]+)+$");
+                    if (!p1.matcher(ChildrenName).find()) {
+                        request.setAttribute("mess1", "Please check your name again!");
+                        request.getRequestDispatcher("ReservationContact.jsp").forward(request, response);
+                    }
                     int Age = Integer.parseInt(request.getParameter("Age" + lst.get(i).getId()));
                     String sDate = request.getParameter("Date" + lst.get(i).getId());
+
                     int Service_ID = lst.get(i).getService_id();
                     Date date = new SimpleDateFormat("yyyy-MM-dd").parse(sDate);
+                    java.sql.Date now = java.sql.Date.valueOf(java.time.LocalDate.now());
+                    if (date.compareTo(now) >= 1) {
+                        request.setAttribute("mess2", "Please choose your free day in the future!");
+                        request.getRequestDispatcher("ReservationContact.jsp").forward(request, response);
+                    }
                     String Time = request.getParameter("Time" + lst.get(i).getId());
                     int Doctor = Integer.parseInt(request.getParameter("Doctor" + lst.get(i).getId()));
                     String Doctor_Name = uDAO.GetUserByID(Doctor).getFullName();
