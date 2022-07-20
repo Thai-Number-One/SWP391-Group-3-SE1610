@@ -106,6 +106,8 @@
                 font-weight: bold;
             }.bg-primary {
                 background-color: #0d6efd;
+            }.text-danger{
+                margin-top: 30px;
             }
                 
     </style>
@@ -235,6 +237,9 @@ https://templatemo.com/tm-551-stand-blog
                                                       <input name="title" type="text" id="subject" value="${Detail.tilte}">
                                                   </fieldset>
                                               </div>
+                                                  
+                                                  
+                                                  
                                               <div class="sidebar-h">
                                                   <h5 clas="edi">Content </h5>
                                               </div>
@@ -243,6 +248,7 @@ https://templatemo.com/tm-551-stand-blog
                                                       <textarea name="content" rows="6" id="message"  required="">${Detail.content}</textarea>
                                                   </fieldset>
                                               </div>
+                                              
                                                   
                                               <div class="sidebar-h">
                                                   <h5 clas="edi">Category: </h5>
@@ -267,7 +273,7 @@ https://templatemo.com/tm-551-stand-blog
                                                           </select>
                                               </div>     
                                                      
-                                                  
+                                              <p class="text-danger">${mess}</p>     
                                                   
                                               <div class="col-lg-12">
                                                   <fieldset>
