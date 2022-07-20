@@ -69,34 +69,7 @@
                                         <h6>Feedbacks Manager</h6>
                                     </div>
 
-                                    <div class="col-md-8">
-                                        <form action="feedbacksfilter" method="get">
-                                            <select style="margin-left: 5px; background:#0d6efd;  color: #FFF5F3;" class="btn bg-default" name="status">
-                                                <option value="">all</option>
-                                                <option value="1">view</option>
-                                                <option value="0">hide</option>
-                                            </select>
-                                            <select style="margin-left: 5px; background:#0d6efd; color: #FFF5F3;" class="btn bg-default" name="sevice">
-                                                <option value="">all</option>
-                                                <c:forEach items="${requestScope.sevices}" var="s">
-                                                    <option>${s.servicename}</option>
-                                                </c:forEach>
-                                            </select>
-                                            <select style="margin-left: 5px; background:#0d6efd; color: #FFF5F3;" class="btn bg-default" name="star">
-                                                <option value="">all</option>
-                                                <option value="0">0</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                                <option value="5">5</option>
-                                            </select>
-                                            <input style="margin-left: 5px; background:#0d6efd; color: #FFF5F3;" class="btn bg-default" type="text" name="name" placeholder="Name">
-                                            <button style="margin-left: 5px; background:#0d6efd; color: #FFF5F3;" class="btn btn-default" type="submit" >Filter</button>
-                                        </form>
-
-                                    </div>
-
+                                    
 
                                 </div>
                             </div>
@@ -140,7 +113,42 @@
                                                         <span class="text-secondary text-xs font-weight-bold">${o.feedbacks.date}</span>
                                                     </td>
                                                     <td class="align-middle text-center">
-                                                        <span class="text-secondary text-xs font-weight-bold">${o.feedbacks.star}</span>
+                                                        <c:if test="${o.feedbacks.star == 1}">
+                                                            <span class="fas fa-star" style="color: orange;"></span>
+                                                            <span class="far fa-star" style="color: orange;"></span>
+                                                            <span class="far fa-star" style="color: orange;"></span>
+                                                            <span class="far fa-star" style="color: orange;"></span>
+                                                            <span class="far fa-star" style="color: orange;"></span>
+                                                        </c:if>
+                                                        <c:if test="${o.feedbacks.star == 2}">
+                                                            <span class="fas fa-star" style="color: orange;"></span>
+                                                            <span class="fas fa-star" style="color: orange;"></span>
+                                                            <span class="far fa-star" style="color: orange;"></span>
+                                                            <span class="far fa-star" style="color: orange;"></span>
+                                                            <span class="far fa-star" style="color: orange;"></span>
+                                                        </c:if>
+                                                        <c:if test="${o.feedbacks.star == 3}">
+                                                            <span class="fas fa-star" style="color: orange;"></span>
+                                                            <span class="fas fa-star" style="color: orange;"></span>
+                                                            <span class="fas fa-star" style="color: orange;"></span>
+                                                            <span class="far fa-star" style="color: orange;"></span>
+                                                            <span class="far fa-star" style="color: orange;"></span>
+                                                        </c:if>
+                                                        <c:if test="${o.feedbacks.star == 4}">
+                                                            <span class="fas fa-star" style="color: orange;"></span>
+                                                            <span class="fas fa-star" style="color: orange;"></span>
+                                                            <span class="fas fa-star" style="color: orange;"></span>
+                                                            <span class="fas fa-star" style="color: orange;"></span>
+                                                            <span class="far fa-star" style="color: orange;"></span>
+                                                        </c:if>
+                                                        <c:if test="${o.feedbacks.star == 5}">
+                                                            <span class="fas fa-star" style="color: orange;"></span>
+                                                            <span class="fas fa-star" style="color: orange;"></span>
+                                                            <span class="fas fa-star" style="color: orange;"></span>
+                                                            <span class="fas fa-star" style="color: orange;"></span>
+                                                            <span class="fas fa-star" style="color: orange;"></span>
+                                                        </c:if>
+                                                 
                                                     </td>
                                                     <td class="align-middle text-center">
                                                         <span class="text-secondary text-xs font-weight-bold">
