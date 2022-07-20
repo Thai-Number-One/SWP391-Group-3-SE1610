@@ -52,6 +52,20 @@ public class AddSliderControl extends HttpServlet {
                     request.getRequestDispatcher("addSilder.jsp").forward(request, response);
                 }
             }
+            
+         request.removeAttribute("mess1");
+        request.removeAttribute("mess2");
+        request.removeAttribute("mess3");
+        request.removeAttribute("mess4");
+        request.removeAttribute("mess5");
+        request.removeAttribute("mess6");
+        request.removeAttribute("mess7");
+        
+        Pattern p3 = Pattern.compile("^[a-zA-Z]+(\\s[a-zA-Z]+)+$");
+        if(!p3.matcher(title).find()){
+            request.setAttribute("mess5", "Title not empty");
+            request.getRequestDispatcher("addSilder.jsp").forward(request, response);
+        }
 
         
         int status = Integer.parseInt(request.getParameter("status"));
