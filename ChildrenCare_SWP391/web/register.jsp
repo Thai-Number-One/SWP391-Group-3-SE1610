@@ -189,6 +189,7 @@
                                                 <input class="form-control" name="birthday" type="date" placeholder="Confirm password" required="" required="" />
                                                 <label for="inputBrithday">Birth day</label>
                                             </div>
+                                            <p class="text-danger" style="text-align: center;">${mess7}</p>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-floating mb-3 mb-md-0">

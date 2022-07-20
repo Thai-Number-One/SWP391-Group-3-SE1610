@@ -7,6 +7,7 @@ package ControllerPostDetail;
 
 import DAO.PostDetailDAO;
 import DAO.SliderDetailDAO;
+import Entity.Posts;
 import Entity.Slider;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -75,7 +76,29 @@ public class EditSlider extends HttpServlet {
                     request.getRequestDispatcher("SliderDetail.jsp").forward(request, response);
                 }
             }
+            
+            Pattern p2 = Pattern.compile("^[a-zA-Z0-9 ]+$");
+            while (true) {
+                if (p2.matcher(title).find()) {
 
+                    break;
+                } else if(title != null) {
+                    String messa = "Title is invalid, please enter again";
+                    request.setAttribute("messTitle", messa);
+                    
+                   SliderDetailDAO dao = new SliderDetailDAO();
+
+                    Slider d = dao.getDetailSilder(Sid);
+
+
+                    request.setAttribute("SliderD", d);
+                    request.getRequestDispatcher("SliderDetail.jsp").forward(request, response);
+                }else{
+                    break;
+                }
+            }
+            
+            
             SliderDetailDAO dao = new SliderDetailDAO();
             dao.updateslider(title, backlink, Uid, image, status, Sid);
 

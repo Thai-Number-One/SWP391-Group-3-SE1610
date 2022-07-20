@@ -92,7 +92,10 @@ public class SettingDetailsServlet extends HttpServlet {
         String description = request.getParameter("description");
         int status = Integer.parseInt(request.getParameter("status"));
         String href = request.getParameter("href");
-        
+        if("".equals(value.trim()) || "".equals(description.trim()) || "".equals(href.trim())){
+            request.setAttribute("mess", "Please input all text box!");
+            request.getRequestDispatcher("settinglist").forward(request, response);
+        }else{
         boolean index;
         if (status == 1) {
             index = true;
@@ -103,6 +106,7 @@ public class SettingDetailsServlet extends HttpServlet {
         SettingDAO dao = new SettingDAO();
         dao.UpdateSetting(s);
         response.sendRedirect("settinglist");
+        }
     }
 
     /**
