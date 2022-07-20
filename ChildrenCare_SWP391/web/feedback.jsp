@@ -69,7 +69,7 @@
                                         <h6>Feedbacks Manager</h6>
                                     </div>
 
-                                    
+                                        
 
                                 </div>
                             </div>
