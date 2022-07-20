@@ -62,7 +62,7 @@ public class ContactServlet extends HttpServlet {
         try {
             ContactDAO c = new ContactDAO();
             request.setAttribute("all", c.listContact());
-            request.getRequestDispatcher("ListContact.jsp").forward(request, response);
+            request.getRequestDispatcher("contactList.jsp").forward(request, response);
         } catch (Exception ex) {
             Logger.getLogger(ContactServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
