@@ -137,6 +137,7 @@
                                                 <input class="form-control" name="fullname" type="text" required="" />
                                                 <label for="inputFullname">Full name</label>
                                             </div>
+                                            <p class="text-danger" style="text-align: center;">${mess5}</p>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-floating">
@@ -157,6 +158,7 @@
                                                 <label >User name</label>
                                             </div>
                                             <p class="text-danger" style="text-align: center;">${mess2}</p>
+                                            <p class="text-danger" style="text-align: center;">${mess6}</p>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-floating">

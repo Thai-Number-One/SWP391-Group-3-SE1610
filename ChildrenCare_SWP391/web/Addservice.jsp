@@ -72,12 +72,14 @@
                                                     <label>Service_Name</label>
                                                     <input name="Service_Name" type="text" class="form-control" required>
                                                 </div>
+                                                <p class="text-danger" style="text-align: center;">${mess1}</p>
                                             </div>
                                             <div class="col-md-9">
                                                 <div class="form-group">
                                                     <label>Detail</label>
                                                     <input name="Detail" type="text" class="form-control" required>
                                                 </div>
+                                                <p class="text-danger" style="text-align: center;">${mess2}</p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -86,12 +88,14 @@
                                                     <label>Title</label>
                                                     <input name="Title" type="text" class="form-control" required>
                                                 </div>
+                                                <p class="text-danger" style="text-align: center;">${mess4}</p>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Type</label>
                                                     <input name="Type" type="text" class="form-control" required>
                                                 </div>
+                                                <p class="text-danger" style="text-align: center;">${mess3}</p>
                                             </div>
                                             <div class="col-md-9">
                                                 <div class="form-group">

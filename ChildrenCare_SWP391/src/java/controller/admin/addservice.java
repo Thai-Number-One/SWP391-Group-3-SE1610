@@ -10,6 +10,7 @@ import DAO.ServiceDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
+import java.util.regex.Pattern;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -48,12 +49,32 @@ public class addservice extends HttpServlet {
         float Rate = Float.parseFloat(request.getParameter("Rate"));
         int status = Integer.parseInt(request.getParameter("status"));
         
+        request.removeAttribute("mess1");
+        request.removeAttribute("mess2");
+        request.removeAttribute("mess3");
+        request.removeAttribute("mess4");
         
-
-        
-        
+        Pattern p1 = Pattern.compile("^[a-zA-Z]+(\\s[a-zA-Z]+)+$");
+        if(!p1.matcher(Service_Name).find()){
+            request.setAttribute("mess1", "Please check your Service name again!");
+            request.getRequestDispatcher("Addservice.jsp").forward(request, response);
+        }
+        if(!p1.matcher(Detail).find()){
+            request.setAttribute("mess2", "Please check your Detail again!");
+            request.getRequestDispatcher("Addservice.jsp").forward(request, response);
+        }
+        if(!p1.matcher(Type).find()){
+            request.setAttribute("mess3", "Please check your Type again!");
+            request.getRequestDispatcher("Addservice.jsp").forward(request, response);
+        }
+        if(!p1.matcher(Title).find()){
+            request.setAttribute("mess4", "Please check your Title again!");
+            request.getRequestDispatcher("Addservice.jsp").forward(request, response);
+        }
+        else{
         d.insertService(Service_ID, Service_Name, Detail, Type, "img/img_service/"+Image, Title, Price, Discount, Rate, status);
         response.sendRedirect("servicecontroller");
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
