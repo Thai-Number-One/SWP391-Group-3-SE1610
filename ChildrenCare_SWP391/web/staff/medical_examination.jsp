@@ -87,6 +87,16 @@
                 color: #fff;
                 background-color: #FE5D37;
             }
+            .det{
+                display: -webkit-box;
+                width: 200px;
+                height: 100px;
+                line-height: 30px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+            }
         </style>
     </head>
     <body>
@@ -116,7 +126,7 @@
                             <th> <select  name="service" class="form-control">
                                     <option value="">All</option>
                                     <c:forEach items="${requestScope.se}" var="s">
-                                        <option>${s.servicename}</option>
+                                        <option value="${s.serviceid}">${s.servicename}</option>
                                     </c:forEach>
                                 </select></th>
                             <th><input type="date" name="from" class="form-control"></th>
@@ -140,14 +150,14 @@
                 <table class="table_m">
                     <tr>
                         <th>Date</th>
-                        <th>customer full name</th>
+                        <th>Customer full name</th>
                         <th>Customer's child</th>
                         <th>Child's age</th>
                         <th>Used services</th>
                         <th>Medicine_name</th>
                         <th>Amount</th>
                         <th>Price</th>
-                        <th>country</th>
+                        <th>Drug-producing country</th>
                         <th>Expiry date</th>
                         <th>Detail</th>
                         <th>Image</th>
@@ -156,8 +166,8 @@
                     <c:forEach items="${requestScope.all}" var="a">
                         <tr>
                             <td>${a.reservations.date}</td>
-                            <td>${a.user.fullname}</td>
-                            <td>${a.reservationdetail.childrenname}</td>
+                            <td><a href="detailmedicalservlet?id=${a.reservationdetail.prescription_ID}">${a.user.fullname}</a></td>
+                            <td><a href="detailmedicalservlet?id=${a.reservationdetail.prescription_ID}">${a.reservationdetail.childrenname}</a></td>
                             <td>${a.reservationdetail.age}</td>
                             <td>${a.service.servicename}</td>
                             <td>${a.medicine.medicinename}</td>
@@ -165,8 +175,8 @@
                             <td>${a.medicine.price}</td>
                             <td>${a.medicine.country}</td>
                             <td>${a.medicine.expirydate}</td>
-                            <td>${a.medicine.detail}</td>
-                            <td>${a.medicine.image}</td>
+                            <td class="det">${a.medicine.detail}</td>
+                            <td><img src="${a.medicine.image}" alt="img" width="100" height="100"></td>
                             <td>${a.prescription.note}</td>
                         </tr>
                     </c:forEach>

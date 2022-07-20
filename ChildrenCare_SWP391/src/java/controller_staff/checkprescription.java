@@ -89,9 +89,9 @@ public class checkprescription extends HttpServlet {
                     ? null : Integer.parseInt(rid);
 
             List l = new ArrayList();
-            for (int i = 0; i < d.allstaff().size(); i++) {
-                if (d.allstaff().get(i).getPrescription().getPrescriptionid() == id) {
-                    l.add(d.allstaff().get(i));
+            for (int i = 0; i < d.reservations_user().size(); i++) {
+                if (d.reservations_user().get(i).getRedetail().getPrescription_ID()== id) {
+                    l.add(d.reservations_user().get(i));
                     break;
                 }
             }

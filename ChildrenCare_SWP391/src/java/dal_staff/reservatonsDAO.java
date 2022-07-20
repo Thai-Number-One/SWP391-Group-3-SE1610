@@ -118,7 +118,7 @@ public class reservatonsDAO extends BaseDAO {
         return list;
     }
 
-    public List<allstaff> filterallstaff(String names, Date from, Date to, String namem) throws Exception {
+    public List<allstaff> filterallstaff(Integer id, Date from, Date to, String namem) throws Exception {
         List<allstaff> list = new ArrayList<>();
         String sql = "select * \n"
                 + "from Reservation_detail as a inner join [User] as b on a.User_ID = b.User_ID\n"
@@ -128,8 +128,8 @@ public class reservatonsDAO extends BaseDAO {
                 + "							inner join Service as f on a.Service_ID = f.Service_ID \n"
                 + "where b.Role_ID = 4 ";
 
-        if (names != null && !names.equals("")) {
-            sql += " AND f.Service_Name like '%" + names + "%'";
+        if (id != null && !id.equals("")) {
+            sql += " AND f.Service_ID =" + id ;
         }
         if (namem != null && !namem.equals("")) {
             sql += " AND d.Medicine_name like '%" + namem + "%'";

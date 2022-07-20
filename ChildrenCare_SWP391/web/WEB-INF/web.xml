@@ -72,6 +72,10 @@
         <servlet-name>ContactServlet</servlet-name>
         <servlet-class>Control.ContactServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DetailMedicalServlet</servlet-name>
+        <servlet-class>controller_staff.DetailMedicalServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>reservation</servlet-name>
         <url-pattern>/reservation</url-pattern>
@@ -143,6 +147,10 @@
     <servlet-mapping>
         <servlet-name>ContactServlet</servlet-name>
         <url-pattern>/contactservlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DetailMedicalServlet</servlet-name>
+        <url-pattern>/detailmedicalservlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
