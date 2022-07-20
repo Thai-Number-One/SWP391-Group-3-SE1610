@@ -144,12 +144,18 @@
                                                     </td>
                                                     <td class="align-middle text-center">
                                                         <span class="text-secondary text-xs font-weight-bold">
-                                                            <c:if test="${a.feedbacks.status == 1}">
-                                                                <a class="fas fa-eye" style="font-size: 30px; color: black;" href="feedbackstatus?status=1&feedback_id=${o.feedbacks.feedbackid}"></a>
-                                                            </c:if>
-                                                            <c:if test="${a.feedbacks.status == 0}">
-                                                                <a class="fas fa-eye-slash" style="font-size: 30px; color: black;" href="feedbackstatus?status=0&feedback_id=${o.feedbacks.feedbackid}"></a>
-                                                            </c:if>
+                                                            <form action="feedbackslist" method="post">
+                                                                <c:if test="${o.feedbacks.status == 1}">
+                                                                    <input type="text" value="${o.feedbacks.feedbackid}" name="id" style="display: none;">
+                                                                    <input type="text" value="0" name="status" style="display: none;">
+                                                                    <button type="submit"><a class="fas fa-eye" style="font-size: 30px; color: black;"></a></button>
+                                                                    </c:if>
+                                                                    <c:if test="${o.feedbacks.status == 0}">
+                                                                    <input type="text" value="${o.feedbacks.feedbackid}" name="id" style="display: none;">
+                                                                    <input type="text" value="1" name="status" style="display: none;">
+                                                                    <button type="submit"><a class="fas fa-eye-slash" style="font-size: 30px; color: black;"></a></button>
+                                                                    </c:if>
+                                                            </form>
                                                         </span>
                                                     </td>
 
