@@ -69,34 +69,7 @@
                                     </div>
 
                                     <div class="col-md-4">
-                                        <form action="Fillter" method="get">
-                                            <select name="gender">
-                                                <option value="">all</option>
-                                                <option value="1">Male</option>
-                                                <option value="0">Female</option>
-                                            </select>
-
-
-
-                                            <select name="role">
-                                                <option value="">all</option>
-                                                <option value="1">Admin</option>
-                                                <option value="2">Manager</option>
-                                                <option value="5">Staff</option>
-                                                <option value="4">Customer</option>
-                                            </select>
-
-
-
-                                            <select name="status">
-                                                <option value="">all</option>
-                                                <option value="1">ACTIVE</option>
-                                                <option value="0">DEACTIVE</option>
-                                            </select>
-
-
-                                            <input type="submit" value="fillter">
-                                        </form>
+                                        
 
                                     </div>
 
