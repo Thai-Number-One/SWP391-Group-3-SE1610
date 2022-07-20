@@ -48,12 +48,14 @@
             
                 <form method="post" action="checkprescription">
                     <c:forEach items="${requestScope.add}" var="a">
-                        <h3>Prescription ID: ${a.prescription.prescriptionid}</h3>
+                        <h3>Prescription ID: ${a.redetail.prescription_ID}</h3>
                         <h3>User ID: ${a.user.userid}</h3>
                         <h3>User Name: ${a.user.fullname}</h3>
+                        <h3>Children Name: ${a.redetail.childrenname}</h3>
+                        <h3>Children Age ${a.redetail.age}</h3>
                         <h3>Service Name: ${a.service.servicename}</h3>
                         
-                        <input class="form-control"type="text" name="pid" value="${a.prescription.prescriptionid}" style="display: none;">
+                        <input class="form-control"type="text" name="pid" value="${a.redetail.prescription_ID}" style="display: none;">
                         <input class="form-control" type="text" name="uid" value="${a.user.userid}" style="display: none;" >
                     </c:forEach>
                     Medicine name<select name="mid" class="form-control">

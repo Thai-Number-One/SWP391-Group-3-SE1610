@@ -8,19 +8,21 @@ package controller_staff;
 import dal_staff.reservatonsDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model_staff.allstaff;
 
 /**
  *
  * @author dathp
  */
-public class filtermedical extends HttpServlet {
+public class DetailMedicalServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,10 +41,10 @@ public class filtermedical extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet filtermedical</title>");
+            out.println("<title>Servlet DetailMedicalServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet filtermedical at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet DetailMedicalServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -61,27 +63,18 @@ public class filtermedical extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
+            int id = Integer.parseInt(request.getParameter("id"));
+  
             reservatonsDAO d = new reservatonsDAO();
-
-            String idn = request.getParameter("service");
-            String namem = request.getParameter("medical");
-            String datefrom = request.getParameter("from");
-            String dateto = request.getParameter("to");
-
-            Integer id = (idn == null || idn.equals(""))
-                    ? null : Integer.parseInt(idn);
-            Date from = (datefrom == null || datefrom.equals(""))
-                    ? null : Date.valueOf(datefrom);
-            Date to = (dateto == null || dateto.equals(""))
-                    ? null : Date.valueOf(dateto);
-            
-            request.setAttribute("re", d.Allreservations());
-            request.setAttribute("me", d.allmedicine());
-            request.setAttribute("se", d.allservice());
-            request.setAttribute("all", d.filterallstaff(id, from, to, namem));
-            request.getRequestDispatcher("staff/medical_examination.jsp").forward(request, response);
+            List<allstaff> l = new ArrayList<>();
+            for (int i = 0; i < d.allstaff().size(); i++) {
+                if(d.allstaff().get(i).getReservationdetail().getPrescription_ID()==1)
+                    l.add(d.allstaff().get(i));
+            }
+            request.setAttribute("all", l);
+            request.getRequestDispatcher("staff/detail_medical.jsp").forward(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(filtermedical.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(medical.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -96,7 +89,7 @@ public class filtermedical extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+         
     }
 
     /**
