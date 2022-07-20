@@ -166,8 +166,8 @@ public class DashboardDAO {
     
 
     public void deleteProduct(String pid) {
-        String query = "DELETE FROM [dbo].[DataUser]\n"
-                + "where id = ?";
+        String query = "DELETE FROM [dbo].[User]\n"
+                + "where User_ID = ?";
         try {
             conn = new BaseDAO().BaseDao();//mo ket noi voi sql
             ps = conn.prepareStatement(query);
@@ -315,7 +315,7 @@ public class DashboardDAO {
 
     public int countUser() {
         String query = "select COUNT(*)\n"
-                + "FROM [TestProject4].[dbo].[User]";
+                + "FROM [TestProject4].[dbo].[User] where Role_id = 4 and [Status] = 1";
         int count = 0;
         try {
             conn = new BaseDAO().BaseDao();//mo ket noi voi sql
@@ -448,7 +448,7 @@ public class DashboardDAO {
                 + "           ,[BackLink]\n"
                 + "           ,[Status])\n"
                 + "     VALUES\n"
-                + "           (null\n"
+                + "           (1\n"
                 + "           ,?\n"
                 + "           ,?\n"
                 + "           ,?\n"

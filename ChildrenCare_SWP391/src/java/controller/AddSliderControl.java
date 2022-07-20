@@ -6,8 +6,11 @@
 package controller;
 
 import DAO.DashboardDAO;
+import DAO.SliderDetailDAO;
+import Entity.Slider;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.regex.Pattern;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -36,6 +39,21 @@ public class AddSliderControl extends HttpServlet {
        String title = request.getParameter("Tittle");
         String image = request.getParameter("Image");
         String backLink = request.getParameter("BackLink");
+        
+         Pattern p = Pattern.compile("^(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]");
+            while (true) {
+                if (p.matcher(backLink).find()) {
+
+                    break;
+                } else {
+                    String mess = "Backlink is invalid, please enter again";
+                    request.setAttribute("mess", mess);
+                    
+                    request.getRequestDispatcher("addSilder.jsp").forward(request, response);
+                }
+            }
+
+        
         int status = Integer.parseInt(request.getParameter("status"));
        
         

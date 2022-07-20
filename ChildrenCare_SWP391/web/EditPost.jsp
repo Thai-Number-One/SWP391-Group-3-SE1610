@@ -191,7 +191,7 @@ https://templatemo.com/tm-551-stand-blog
                               <div class="col-lg-8">
                                   <form action="UpdatePost" method="post">
                                   <div class="blog-thumb">
-                                      <img src="img/${Detail.image}" alt="">
+                                      <img src="img/img_post/${Detail.image}" alt="">
                                   </div>
                                   <div class="sidebar-item contact-form">
                                       <div class="sidebar-heading">

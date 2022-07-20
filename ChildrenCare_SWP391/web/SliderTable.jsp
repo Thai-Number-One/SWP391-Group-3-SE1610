@@ -11,7 +11,7 @@
         <link rel="apple-touch-icon" sizes="76x76" href="img/apple-icon.png">
         <link rel="icon" type="image/png" href="img/favicon.png">
         <title>
-            Argon Dashboard 2 by Creative Tim
+            Slider Manager
         </title>
         <!--     Fonts and icons     -->
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
@@ -69,23 +69,7 @@
                                         <h6>Post List Information</h6>
                                     </div>
 
-                                    <div class="col-md-4">
-                                        <form action="FilterSlider" method="get">
-                                           
-
-
-
-                                            <select name="status">
-                                                <option value="">all</option>
-                                                <option value="1">ACTIVE</option>
-                                                <option value="0">DEACTIVE</option>
-                                            </select>
-
-
-                                            <input type="submit" value="fillter">
-                                        </form>
-
-                                    </div>
+                                   
 
                                     <div class="col-md-4">
                                         <a href="addSilder.jsp" class="text-success text-secondary font-weight-bold text-sm" >Add new</a>
@@ -113,7 +97,7 @@
                                                 <tr>
                                                     <td class="align-middle text-center">
                                                         
-                                                         <img src="img/${o.image}" class="avatar avatar-sm me-3" alt="user1">
+                                                         <img src="img/img_slider/${o.image}" class="avatar avatar-sm me-3" alt="user1">
                                                     </td>
                                                     <td class="align-middle text-center">
                                                         <span class="text-secondary text-xs font-weight-bold">${o.slider_ID}</span>

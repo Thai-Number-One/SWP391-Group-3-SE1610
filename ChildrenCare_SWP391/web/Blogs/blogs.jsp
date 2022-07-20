@@ -152,7 +152,7 @@
 
                                 <div class="d-flex flex-start" style="padding-bottom: 20px;padding-top: 20px;">
                                     <a href="blogdetails?postid=${a.posts.post_ID}"><img class=" shadow-1-strong me-3"
-                                                                                         src="${a.posts.image}" alt="avatar" width="150"
+                                                                                         src="img/img_post/${a.posts.image}" alt="avatar" width="150"
                                                                                          height="150" /></a>
                                     <div>
                                         <h3 class="fw-bold mb-1"><a href="blogdetails?postid=${a.posts.post_ID}">${a.posts.tilte}</a></h3>
