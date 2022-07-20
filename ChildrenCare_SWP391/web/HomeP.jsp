@@ -226,7 +226,7 @@
                         </div>
                     </c:forEach>
                     <div class="col-12 mt-4 pt-2 text-center">
-                        <a href="#" class="btn btn-primary">Tìm kiếm nhiều hơn</a>
+                        <a href="listserviceservlet" class="btn btn-primary">Tìm kiếm nhiều hơn</a>
                     </div>
                 </div>
             </div>
