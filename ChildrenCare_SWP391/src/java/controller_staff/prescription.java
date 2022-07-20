@@ -65,7 +65,7 @@ public class prescription extends HttpServlet {
                 request.setAttribute("check", 1);
             }
             reservatonsDAO d = new reservatonsDAO();
-            request.setAttribute("all", d.allstaff());
+            request.setAttribute("all", d.reservations_user());
             request.getRequestDispatcher("staff/addprescription.jsp").forward(request, response);
         } catch (Exception ex) {
             Logger.getLogger(prescription.class.getName()).log(Level.SEVERE, null, ex);
