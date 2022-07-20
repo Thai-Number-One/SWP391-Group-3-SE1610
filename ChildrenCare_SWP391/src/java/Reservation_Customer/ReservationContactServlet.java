@@ -11,9 +11,7 @@ import Entity.User;
 import controller_staff.ReservationCompletion;
 import dal_staff.reservatonsDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.text.ParseException;
-import java.time.LocalDateTime;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -107,11 +105,6 @@ public class ReservationContactServlet extends HttpServlet {
 
                     int Service_ID = lst.get(i).getService_id();
                     Date date = new SimpleDateFormat("yyyy-MM-dd").parse(sDate);
-                    java.sql.Date now = java.sql.Date.valueOf(java.time.LocalDate.now());
-                    if (date.compareTo(now) >= 1) {
-                        request.setAttribute("mess2", "Please choose your free day in the future!");
-                        request.getRequestDispatcher("ReservationContact.jsp").forward(request, response);
-                    }
                     String Time = request.getParameter("Time" + lst.get(i).getId());
                     int Doctor = Integer.parseInt(request.getParameter("Doctor" + lst.get(i).getId()));
                     String Doctor_Name = uDAO.GetUserByID(Doctor).getFullName();
