@@ -29,7 +29,7 @@
     </head>
     <body class="g-sidenav-show   bg-gray-100">
         <div class="min-height-300 bg-primary position-absolute w-100"></div>
-         <jsp:include page="Template/managerDashboard.jsp"/>
+        <jsp:include page="Template/managerDashboard.jsp"/>
         <main class="main-content position-relative border-radius-lg ">
             <!-- Navbar -->
             <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur" data-scroll="false">
@@ -96,20 +96,20 @@
                                             <div class="col-md-9">
                                                 <div class="form-group">
                                                     <label>Price</label>
-                                                    <input name="Price" type="text" class="form-control" required>
+                                                    <input name="Price" type="number" min="1" class="form-control" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-9">
                                                 <div class="form-group">
                                                     <label>Discount</label>
-                                                    <input name="Discount" type="text" class="form-control" required>
+                                                    <input name="Discount" type="number" min="1" class="form-control" required>
                                                 </div>
                                             </div>
 
                                             <div class="col-md-9">
                                                 <div class="form-group">
                                                     <label>Rate</label>
-                                                    <input name="Rate" type="text" class="form-control" required>
+                                                    <input name="Rate" type="number" min="1" max="5" class="form-control" required>
                                                 </div>
                                             </div>
                                         </div>

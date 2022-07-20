@@ -166,6 +166,26 @@ public class ReservationDAO {
         return null;
     }
     
+    public String getUserID(int id){
+        
+        try {
+            String sql = "select u.[User_ID] from [User] u \n" +
+                        "join Reservation_detail rd on u.[User_ID] = rd.[User_ID]\n" +
+                        "where rd.Reservation_ID = ?";
+            conn = new BaseDAO().BaseDao();
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, id);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                return rs.getString(1);
+            }
+
+        } catch (Exception e) {
+        }
+        
+        return null;
+    }
+    
     public void updateReservation_detail(String childrenname, int age, int Doctor, String Time, int Reservation_ID){
  
         try {
@@ -207,6 +227,7 @@ public class ReservationDAO {
     public static void main(String[] args) {
         ReservationDAO dao = new ReservationDAO();
         
-       
+       User d = dao.getUser(1);
+        System.out.println(d);
     }
 }
