@@ -207,7 +207,7 @@ https://templatemo.com/tm-551-stand-blog
                               <div class="col-lg-8">
                                   <form action="EditSlider" method="post">
                                   <div class="blog-thumb">
-                                      <img src="img/${SliderD.image}" alt="">
+                                      <img src="img/img_slider/${SliderD.image}" alt="">
                                   </div>
                                   <div class="sidebar-item contact-form">
                                       <div class="sidebar-heading">
@@ -259,6 +259,9 @@ https://templatemo.com/tm-551-stand-blog
                                                       <input name="title" type="text" id="subject" value="${SliderD.title}">
                                                   </fieldset>
                                               </div>
+                                               
+                                               <p class="text-danger">${messTitle}</p>       
+                                                  
                                               <div class="sidebar-h">
                                                   <h5 clas="edi">Blacklink </h5>
                                               </div>

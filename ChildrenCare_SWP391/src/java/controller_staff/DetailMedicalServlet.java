@@ -68,7 +68,7 @@ public class DetailMedicalServlet extends HttpServlet {
             reservatonsDAO d = new reservatonsDAO();
             List<allstaff> l = new ArrayList<>();
             for (int i = 0; i < d.allstaff().size(); i++) {
-                if(d.allstaff().get(i).getReservationdetail().getPrescription_ID()==1)
+                if(d.allstaff().get(i).getReservationdetail().getPrescription_ID()==id)
                     l.add(d.allstaff().get(i));
             }
             request.setAttribute("all", l);

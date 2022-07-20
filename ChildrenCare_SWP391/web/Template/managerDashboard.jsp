@@ -24,7 +24,7 @@
        <aside class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 " id="sidenav-main">
             <div class="sidenav-header">
                 <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
-                <a href="HomeP.jsp" class="navbar-brand">
+                <a href="homeservlet" class="navbar-brand">
                 <h4 class="m-0 text-primary"><i class="fa fa-book-reader me-3"></i>ChildrenCare</h4>
             </a>
             </div>

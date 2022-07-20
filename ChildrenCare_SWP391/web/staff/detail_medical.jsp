@@ -14,7 +14,7 @@
         <meta content="" name="keywords">
         <meta content="" name="description">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <title>RESERVATION DETAILS</title>
+        <title>Medical DETAILS</title>
         <link href="img/favicon.ico" rel="icon">
 
         <!-- Google Web Fonts -->
@@ -102,13 +102,13 @@
         <jsp:include page="/Template/HeadMenuPublic.jsp"/>
         <div class="container-xxl py-5 page-header position-relative mb-5">
             <div class="container py-5">
-                <h1 class="display-2 text-white animated slideInDown mb-4">Reservations Detail</h1>
+                <h1 class="display-2 text-white animated slideInDown mb-4">Medical Detail</h1>
                 <nav aria-label="breadcrumb animated slideInDown">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="HomeP.jsp">Home</a></li>
                         <li class="breadcrumb-item"><a href="#">Staff</a></li>
-                        <li class="breadcrumb-item"><a href="reservation">Reservations</a></li>
-                        <li class="breadcrumb-item">Reservations Detail</li>
+                        <li class="breadcrumb-item"><a href="reservation">Medical</a></li>
+                        <li class="breadcrumb-item">Medical Detail</li>
 
                     </ol>
                 </nav>
@@ -120,40 +120,50 @@
             <div style="margin: auto; width: 80%;" class="row">
                 <h1 style="color: #FE5D37; text-align: center; padding-bottom: 30px;">Information</h1>
                 <div class="col-8">
-
+                    <c:set value="0" var="count" />
                     <c:forEach items="${requestScope.all}" var="a">
-
-                        <h2>Customer Full Name: <span style="color: #666666; font-size: 28px">${a.user.fullname}</span></h2>                           
-                        <h2>Reservation Date: <span style="color: #666666; font-size: 28px">${a.reservations.beginTime}</span></h2>
-                        <h2>Customer's child: <span style="color: #666666; font-size: 28px">${a.reservationdetail.childrenname}</span></h2>
-                        <h2>Child's age:<span style="color: #666666; font-size: 28px">${a.reservationdetail.age}</span></h2>
-                        <h2>Used services:<span style="color: #666666; font-size: 28px">${a.service.servicename}</span></h2>
-                        <h2>Medicine name:<span style="color: #666666; font-size: 28px">${a.medicine.medicinename}</span></h2>
-                        <h2>Amount:<span style="color: #666666; font-size: 28px">${a.prescription.amount}</span> - Price:<span style="color: #666666; font-size: 28px">${a.medicine.price}</span></h2>
-                        <h2>Drug-producing country:<span style="color: #666666; font-size: 28px">${a.medicine.country}</span></h2>
-                        <h2>Expiry date:<span style="color: #666666; font-size: 28px">${a.medicine.expirydate}</span></h2>
-                        
-                        <h2>Note:<span style="color: #666666; font-size: 28px">${a.prescription.note}</span></h2>
-
-
+                        <c:if test="${count==0}">     
+                            <h2>Customer Full Name: <span style="color: #666666; font-size: 28px">${a.user.fullname}</span></h2>        
+                            <h2>Address: <span style="color: #666666; font-size: 28px">${a.user.address}</span></h2>
+                            <h2>Mobile: <span style="color: #666666; font-size: 28px">${a.user.phone}</span></h2>
+                            <h2>Email: <span style="color: #666666; font-size: 28px">${a.user.email}</span></h2>
+                            <h2>Reservation Date: <span style="color: #666666; font-size: 28px">${a.reservations.beginTime}</span></h2>
+                            <h2>Customer's child: <span style="color: #666666; font-size: 28px">${a.reservationdetail.childrenname}</span></h2>
+                            <h2>Child's age:<span style="color: #666666; font-size: 28px">${a.reservationdetail.age}</span></h2>
+                            <h2>Used services:<span style="color: #666666; font-size: 28px">${a.service.servicename}</span></h2>
+                            <h3 style="display: none;">${count=count +1}</h3>
+                        </c:if>
                     </c:forEach>
 
                 </div>
                 <div class="col-4" >
+                    <c:set value="0" var="count" />
                     <c:forEach items="${requestScope.all}" var="a">
-
-                        <img  src="${a.user.avatar}" width="250" height="auto" style="margin-bottom: : 30px;">
-                        <h2>Image Medicine:<img src="${a.medicine.image}" alt="img" width="150" height="150"></h2>
-
+                        <c:if test="${count==0}"> 
+                            <img  src="${a.user.avatar}" width="250" height="auto" style="margin-bottom: : 30px;">                      
+                        </c:if>
+                        <h3 style="display: none;">${count=count +1}</h3>
                     </c:forEach>
                 </div>
             </div>
             <div class="row" style="margin: auto; width: 80%;">
                 <c:forEach items="${requestScope.all}" var="a">
-                    <h2>Detail:</h2>
-                    <p style="color: #666666; margin-left: 20px">
-                        ${a.medicine.detail}
-                    </p>
+                    <div class="col-8">
+                        
+                        <h2>Medicine name:<span style="color: #666666; font-size: 28px">${a.medicine.medicinename}</span></h2>
+                        <h2>Amount:<span style="color: #666666; font-size: 28px">${a.prescription.amount}</span> - Price:<span style="color: #666666; font-size: 28px">${a.medicine.price}$</span></h2>
+                        <h2>Drug-producing country:<span style="color: #666666; font-size: 28px">${a.medicine.country}</span></h2>
+                        <h2>Expiry date:<span style="color: #666666; font-size: 28px">${a.medicine.expirydate}</span></h2>
+
+                        <h2>Note:<span style="color: #666666; font-size: 28px">${a.prescription.note}</span></h2>
+                        <h2>Detail:</h2>
+                        <p style="color: #666666; margin-left: 20px">
+                            ${a.medicine.detail}
+                        </p>
+                    </div>
+                    <div class="col-4" >
+                        <h2>Image Medicine<img src="${a.medicine.image}" alt="img" width="200" height="200"></h2>
+                    </div>
                 </c:forEach>
             </div>
 

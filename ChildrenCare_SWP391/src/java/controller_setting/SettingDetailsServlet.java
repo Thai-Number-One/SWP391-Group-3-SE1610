@@ -84,13 +84,18 @@ public class SettingDetailsServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
         int id = Integer.parseInt(request.getParameter("id"));
         int type = Integer.parseInt(request.getParameter("type"));
         String value = request.getParameter("value");
         String description = request.getParameter("description");
         int status = Integer.parseInt(request.getParameter("status"));
         String href = request.getParameter("href");
-        
+        if("".equals(value.trim()) || "".equals(description.trim()) || "".equals(href.trim())){
+            request.setAttribute("mess", "Please input all text box!");
+            request.getRequestDispatcher("settinglist").forward(request, response);
+        }else{
         boolean index;
         if (status == 1) {
             index = true;
@@ -101,6 +106,7 @@ public class SettingDetailsServlet extends HttpServlet {
         SettingDAO dao = new SettingDAO();
         dao.UpdateSetting(s);
         response.sendRedirect("settinglist");
+        }
     }
 
     /**

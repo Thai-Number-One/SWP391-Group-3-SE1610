@@ -11,7 +11,7 @@
         <link rel="apple-touch-icon" sizes="76x76" href="img/apple-icon.png">
         <link rel="icon" type="image/png" href="img/favicon.png">
         <title>
-            Argon Dashboard 2 by Creative Tim
+            Post Manager
         </title>
         <!--     Fonts and icons     -->
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
@@ -68,32 +68,7 @@
                                         <h6>Post List Information</h6>
                                     </div>
 
-                                    <div class="col-md-4">
-                                        <form action="FilterPost" method="get">
-                                            <select name="category">
-                                                <option value="">all</option>
-                                                <option value="1">Suc Khoe</option>
-                                                <option value="2">Y te cong cong</option>
-                                            </select>
-
-                                            <select name="author" >
-                                                <option value="">all</option>
-                                                <c:forEach items="${listU}" var="o">
-                                                    <option value="${o.user_ID}">${o.fullName}</option>
-                                                </c:forEach>
-                                            </select>
-
-                                            <select name="status">
-                                                <option value="">all</option>
-                                                <option value="1">ACTIVE</option>
-                                                <option value="0">DEACTIVE</option>
-                                            </select>
-
-
-                                            <input type="submit" value="fillter">
-                                        </form>
-
-                                    </div>
+                                    
 
                                     <div class="col-md-4">
                                         <a href="LoadCategory" class="text-success text-secondary font-weight-bold text-sm" >Add new</a>
@@ -125,7 +100,7 @@
                                                     <td>
                                                         <div class="d-flex px-2 py-1">
                                                             <div>
-                                                                <img src="img/${o.image}" class="avatar avatar-sm me-3" alt="user1">
+                                                                <img src="img/img_post/${o.image}" class="avatar avatar-sm me-3" alt="user1">
                                                             </div>
 
                                                         </div>

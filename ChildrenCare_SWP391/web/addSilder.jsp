@@ -1,5 +1,5 @@
- <%@page contentType="text/html" pageEncoding="UTF-8"%>
-    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 
 <html lang="en">
@@ -56,7 +56,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                
+
 
 
                                                 <div class="row">
@@ -70,34 +70,35 @@
                                                 </div>
 
                                                 <div class="col-md-9">
-                                                        <div class="form-group">
-                                                            <label>BackLink</label>
-                                                            <input name="BackLink" type="text" class="form-control" required>
-                                                        </div>
+                                                    <div class="form-group">
+                                                        <label>BackLink</label>
+                                                        <input name="BackLink" type="text" class="form-control" required>
                                                     </div>
-                                                </div>
-                                            
-                                                <div class="row">
-                                                    <div class="col-md-4">
-                                                        <div class="form-group">
-                                                            <label>Status</label>
-                                                            <select name="status" style="margin-top: 26px;padding: 10px;margin-left: 10px">  
-                                                                <option value="1">Active</option>
-                                                                <option value="0">Deactive</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                
-
-                                                <div class="modal-footer">
-                                                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                                    <input type="submit" class="btn btn-success" value="Add">
                                                 </div>
                                             </div>
-                                        </form>
+
+                                            <p class="text-danger">${mess}</p>   
+
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label>Status</label>
+                                                        <select name="status" style="margin-top: 26px;padding: 10px;margin-left: 10px">  
+                                                            <option value="1">Active</option>
+                                                            <option value="0">Deactive</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+                                            <div class="modal-footer">
+                                                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                                                <input type="submit" class="btn btn-success" value="Add">
+                                            </div>
                                     </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -105,25 +106,26 @@
                 </div>
             </div>
         </div>
-    </body>
+    </div>
+</body>
 
-    <!--   Core JS Files   -->
-    <script src="assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
-    <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+<!--   Core JS Files   -->
+<script src="assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
+<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
 
-    <!--  Charts Plugin -->
-    <script src="assets/js/chartist.min.js"></script>
+<!--  Charts Plugin -->
+<script src="assets/js/chartist.min.js"></script>
 
-    <!--  Notifications Plugin    -->
-    <script src="assets/js/bootstrap-notify.js"></script>
+<!--  Notifications Plugin    -->
+<script src="assets/js/bootstrap-notify.js"></script>
 
-    <!--  Google Maps Plugin    -->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+<!--  Google Maps Plugin    -->
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
 
-    <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
-    <script src="assets/js/light-bootstrap-dashboard.js?v=1.4.0"></script>
+<!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
+<script src="assets/js/light-bootstrap-dashboard.js?v=1.4.0"></script>
 
-    <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
-    <script src="assets/js/demo.js"></script>
+<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
+<script src="assets/js/demo.js"></script>
 
 </html>
