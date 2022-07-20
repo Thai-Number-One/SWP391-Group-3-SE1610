@@ -7,14 +7,18 @@ package ReservationController;
 
 import DAO.ReservationDAO;
 import DAO.UserDAO;
+import Entity.Reservation;
 import Entity.Reservation_detail;
 import Entity.Service;
+import Entity.User;
 import dal_staff.reservatonsDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -22,6 +26,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import model_staff.reservations_user;
 
 /**
  *
@@ -47,7 +52,7 @@ public class ChangeReservation extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ChangeReservation</title>");            
+            out.println("<title>Servlet ChangeReservation</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet ChangeReservation at " + request.getContextPath() + "</h1>");
@@ -69,24 +74,21 @@ public class ChangeReservation extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
-        
+
         String id = request.getParameter("Rid");
-        
+
         int idd = Integer.parseInt(id);
-        
+
         ReservationDAO dao = new ReservationDAO();
         Reservation_detail rd = dao.getReDe(idd);
-        
+
         Service s = dao.getServiceDe(idd);
-        
-        
-        
+
         request.setAttribute("ReDetail", rd);
         request.setAttribute("SerDe", s);
-        
+
         request.getRequestDispatcher("ChangeReservationInformation.jsp").forward(request, response);
-        
-        
+
     }
 
     /**
@@ -101,13 +103,14 @@ public class ChangeReservation extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
-        
+
         try {
-            
+
             Cookie arr[] = request.getCookies();
-            
+
             if (arr != null) {
                 for (Cookie o : arr) {
+                    
                     if (o.getName().equals("Rid")) {
                         String id = o.getValue();
                         int idd = Integer.parseInt(id);
@@ -124,21 +127,44 @@ public class ChangeReservation extends HttpServlet {
                         dao.updateReservation_detail(childrenname, Age, Doctor, Time, idd);
                         dao.updateReservation(date, idd);
 
-                        response.sendRedirect("MyReservation.jsp");
-            
+                        String Uid = dao.getUserID(idd);
+                        int uid = Integer.parseInt(Uid);
+                        
+                        reservatonsDAO d = new reservatonsDAO();
+
+                        List l = new ArrayList();
+
+                        for (int i = 0; i < d.reservations_user().size(); i++) {
+                            if (d.reservations_user().get(i).getRedetail().getUserid() == uid) {
+                                l.add(d.reservations_user().get(i));
+                            }
+                        }
+
+                        Reservation ll = dao.getDetailID(idd);
+
+                        String Servicename = dao.getDetailService(idd);
+
+                        Reservation_detail rd = dao.getReDe(idd);
+
+                        Service s = dao.getServiceDe(idd);
+
+                        request.setAttribute("detailreser", ll);
+                        request.setAttribute("servicename", Servicename);
+                        request.setAttribute("ReDetail", rd);
+                        request.setAttribute("SerDe", s);
+                        request.setAttribute("all", l);
+
+                        request.getRequestDispatcher("ReservationInformation.jsp").forward(request, response);
+
                     }
                 }
-            }else{
+            } else {
                 response.sendRedirect("HomeP.jsp");
             }
-            
-        
-           
+
         } catch (Exception e) {
         }
-        
-        
-        
+
     }
 
     /**
