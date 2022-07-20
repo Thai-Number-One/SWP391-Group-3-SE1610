@@ -54,6 +54,15 @@ public class RegisterControl extends HttpServlet {
         request.removeAttribute("mess2");
         request.removeAttribute("mess3");
         request.removeAttribute("mess4");
+        request.removeAttribute("mess5");
+        request.removeAttribute("mess6");
+        
+        Pattern p3 = Pattern.compile("^[a-zA-Z]+(\\s[a-zA-Z]+)+$");
+        if(!p3.matcher(fullname).find()){
+            request.setAttribute("mess5", "Please check your name again!");
+            request.getRequestDispatcher("register.jsp").forward(request, response);
+        }
+        
         Pattern p2 = Pattern.compile("^[0-9]{10}$");
         if(!p2.matcher(phone).find()){
             request.setAttribute("mess4", "Please check your phone number again!");
@@ -64,7 +73,11 @@ public class RegisterControl extends HttpServlet {
             request.setAttribute("mess1", "Pass and ConfirmPass are not the same !");
             request.getRequestDispatcher("register.jsp").forward(request, response);
         }
-        
+        Pattern p4 = Pattern.compile("^[a-zA-Z0-9]+$");
+        if(!p4.matcher(user).find()){
+            request.setAttribute("mess6", "Username must not have space !");
+            request.getRequestDispatcher("register.jsp").forward(request, response);
+        }
         UserDAO u = new UserDAO();
         String account = u.CheckUserNameExists(user);
         if(account != null){
@@ -74,7 +87,7 @@ public class RegisterControl extends HttpServlet {
         }
         Pattern p1 = Pattern.compile("^[a-zA-Z][a-zA-Z0-9]+@[a-zA-Z]+(\\.[a-zA-Z]+)+$");
         if(!p1.matcher(email).find()){
-            request.setAttribute("mess3", "Your email is not formatted !");
+            request.setAttribute("mess3", "Please check your Email again !");
             request.getRequestDispatcher("register.jsp").forward(request, response);
         }
         else{
