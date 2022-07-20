@@ -259,6 +259,9 @@ https://templatemo.com/tm-551-stand-blog
                                                       <input name="title" type="text" id="subject" value="${SliderD.title}">
                                                   </fieldset>
                                               </div>
+                                               
+                                               <p class="text-danger">${messTitle}</p>       
+                                                  
                                               <div class="sidebar-h">
                                                   <h5 clas="edi">Blacklink </h5>
                                               </div>
