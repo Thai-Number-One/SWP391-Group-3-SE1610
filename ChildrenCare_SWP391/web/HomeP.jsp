@@ -60,9 +60,9 @@
                         <div class="container">
                             <div class="row justify-content-start">
                                 <div class="col-10 col-lg-8">
-                                    <h1 class="display-2 text-white animated slideInDown mb-4">How children and young people come into care</h1>
+                                    <h1 class="display-2 text-white animated slideInDown mb-4">Helping your child grieve the loss of a loved one</h1>
                                     <p class="fs-5 fw-medium text-white mb-4 pb-2">The Department for Child Protection has the significant responsibility of ensuring the safety of children and young people.</p>
-                                    <a href="#" class="btn btn-primary rounded-pill py-sm-3 px-sm-5 me-3 animated slideInLeft">Learn More</a>
+                                    <a href="blogdetails?postid=1" class="btn btn-primary rounded-pill py-sm-3 px-sm-5 me-3 animated slideInLeft">Learn More</a>
                                     <a href="" class="btn btn-dark rounded-pill py-sm-3 px-sm-5 animated slideInRight">Our Classes</a>
                                     
                                 </div>
@@ -76,9 +76,9 @@
                         <div class="container">
                             <div class="row justify-content-start">
                                 <div class="col-10 col-lg-8">
-                                    <h1 class="display-2 text-white animated slideInDown mb-4">Make A Brighter Future For Your Child</h1>
+                                    <h1 class="display-2 text-white animated slideInDown mb-4">How Much Sleep Does Your Child Need?</h1>
                                     <p class="fs-5 fw-medium text-white mb-4 pb-2">The Department for Child Protection has the significant responsibility of ensuring the safety of children and young people.</p>
-                                    <a href="#" class="btn btn-primary rounded-pill py-sm-3 px-sm-5 me-3 animated slideInLeft">Learn More</a>
+                                    <a href="blogdetails?postid=4" class="btn btn-primary rounded-pill py-sm-3 px-sm-5 me-3 animated slideInLeft">Learn More</a>
                                     <a href="" class="btn btn-dark rounded-pill py-sm-3 px-sm-5 animated slideInRight">Our Classes</a>
                                 </div>
                             </div>
