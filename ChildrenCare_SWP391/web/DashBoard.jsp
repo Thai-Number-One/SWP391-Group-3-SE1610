@@ -128,7 +128,6 @@
                     </div>
                 </div>
                 <img src="images/dashboards.jpg" style="height: 370px;width: 450px;">
-                <img src="images/aaa.png" style="height: 370px;width: 450px;" alt="">
             </div>
         </main>
 

@@ -40,21 +40,23 @@ public class LoginControl extends HttpServlet {
         request.removeAttribute("mess1");
         UserDAO Udao = new UserDAO();
         User u = Udao.login(username, password);
-        if(u == null){
+        if (u == null) {
             request.setAttribute("mess", "Wrong UserName or Password !");
             request.getRequestDispatcher("login.jsp").forward(request, response);
-        }else if(u != null && u.getStatus() == 0){
-        request.setAttribute("mess1", "Your account has been disabled!");
+        } else if (u.getStatus() == 0) {
+            request.setAttribute("mess1", "Your account has been disabled!");
             request.getRequestDispatcher("login.jsp").forward(request, response);
-        }
-        else
-        {
+        } else {
             HttpSession session = request.getSession();
             session.setAttribute("loginsuccess", u);
-            request.getRequestDispatcher("HomeP.jsp").forward(request, response);
+            if (u.getRole_ID() == 1) {
+                request.getRequestDispatcher("dashboard").forward(request, response);
+            } else if (u.getRole_ID() == 3) {
+                request.getRequestDispatcher("servicecontroller").forward(request, response);
+            }
+            response.sendRedirect("homeservlet");
         }
-        
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
