@@ -11,15 +11,14 @@ import Entity.User;
 import controller_staff.ReservationCompletion;
 import dal_staff.reservatonsDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.text.ParseException;
-import java.time.LocalDateTime;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -93,15 +92,25 @@ public class ReservationContactServlet extends HttpServlet {
                 List<ReservationCustomer> lst;
                 lst = (List<ReservationCustomer>) obj;
                 for (int i = 0; i < lst.size(); i++) {
-
+                    request.removeAttribute("mess1");
+                    request.removeAttribute("mess2");
                     String ChildrenName = request.getParameter("children" + lst.get(i).getId());
+                    Pattern p1 = Pattern.compile("^[a-zA-Z]+(\\s[a-zA-Z]+)+$");
+                    
                     int Age = Integer.parseInt(request.getParameter("Age" + lst.get(i).getId()));
                     String sDate = request.getParameter("Date" + lst.get(i).getId());
+
                     int Service_ID = lst.get(i).getService_id();
-                    Date date = new SimpleDateFormat("yyyy-MM-dd").parse(sDate);
+                    Date date = new SimpleDateFormat("yyyy-mm-dd").parse(sDate);
                     String Time = request.getParameter("Time" + lst.get(i).getId());
                     int Doctor = Integer.parseInt(request.getParameter("Doctor" + lst.get(i).getId()));
                     String Doctor_Name = uDAO.GetUserByID(Doctor).getFullName();
+                    
+                    if (!p1.matcher(ChildrenName).find()) {
+                        request.setAttribute("mess1", "Please check your name again!");
+                        request.getRequestDispatcher("ReservationContact.jsp").forward(request, response);
+                    }
+                    else{
                     lstC.add(new ReservationCompletion(i, Age, lst.get(i).getService_Name(), ChildrenName, Doctor_Name, Time, sDate, lst.get(i).getTotal()));
                     dao.AddNewReservation(0, date, lst.get(i).getPrice());
                     int Prescription_ID = dao.TotalReservationDetails() + 1;
@@ -110,6 +119,7 @@ public class ReservationContactServlet extends HttpServlet {
                     reservationdetail rd = new reservationdetail(Prescription_ID, Reservation_ID, Service_ID, user_id, Doctor, Age, Time, ChildrenName);
                     lstRD.add(rd);
                     dao.AddToReservationDetails(rd);
+                    }
                 }
 
             } catch (ParseException ex) {

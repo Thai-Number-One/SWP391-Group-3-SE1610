@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
 import java.util.List;
+import java.util.regex.Pattern;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -42,6 +43,20 @@ public class AddPostControl extends HttpServlet {
         int author = Integer.parseInt(request.getParameter("author"));
         int status = Integer.parseInt(request.getParameter("status"));
         int category = Integer.parseInt(request.getParameter("Category"));
+        
+        request.removeAttribute("mess1");
+        request.removeAttribute("mess2");
+        request.removeAttribute("mess3");
+        request.removeAttribute("mess4");
+        request.removeAttribute("mess5");
+        request.removeAttribute("mess6");
+        request.removeAttribute("mess7");
+        
+        Pattern p3 = Pattern.compile("^[a-zA-Z]+(\\s[a-zA-Z]+)+$");
+        if(!p3.matcher(title).find()){
+            request.setAttribute("mess5", "Title not empty!");
+            request.getRequestDispatcher("addPost.jsp").forward(request, response);
+        }
        
         
         DashboardDAO dao = new DashboardDAO();
