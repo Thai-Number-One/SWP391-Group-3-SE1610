@@ -19,7 +19,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author dathp
+ * @author vu
  */
 public class ContactDAO {
     
