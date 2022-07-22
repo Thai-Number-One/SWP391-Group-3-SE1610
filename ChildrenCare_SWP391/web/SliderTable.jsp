@@ -66,7 +66,7 @@
                             <div  class="card-header pb-0">
                                 <div  class="row">
                                     <div class="col-md-4">
-                                        <h6>Post List Information</h6>
+                                        <h6>Slider List Information</h6>
                                     </div>
 
                                    

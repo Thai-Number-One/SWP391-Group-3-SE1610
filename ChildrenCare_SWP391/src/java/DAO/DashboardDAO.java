@@ -250,7 +250,7 @@ public class DashboardDAO {
                 total += s.getTotalCost();
             }
         }
-        return total;
+        return total + dao.totalPriceMedicine();
     }
     
     
@@ -267,6 +267,29 @@ public class DashboardDAO {
         return count;
     }
     
+     public double totalPriceMedicine() {
+         
+         String query ="SELECT  Medicine.Price * Prescription.Amount\n" +
+"from Medicine inner join Prescription on Medicine.Medicine_ID = Prescription.Medicine_ID";
+        double price = 0;
+        try {
+            conn = new BaseDAO().BaseDao();//mo ket noi voi sql
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                price += rs.getInt(1);
+            }
+            return price;
+        } catch (Exception e) {
+        }
+        return price;
+    }
+    
+      public static void main(String[] args) {
+        DashboardDAO dao = new DashboardDAO();
+        
+        System.out.println(dao.totalPriceMedicine());
+    }
     
 
 
@@ -288,11 +311,7 @@ public class DashboardDAO {
         return count;
     }
     
-     public static void main(String[] args) {
-        DashboardDAO dao = new DashboardDAO();
-        
-        System.out.println(dao.AvgStar());
-    }
+    
 
     public double AvgStar() {
         String query = "SELECT SUM(Star)\n"

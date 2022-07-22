@@ -84,7 +84,7 @@
                                                 <th></th>
                                                 <th>Post ID</th>
                                                 <th>Title</th>
-                                                <th>Category</th>
+                                                
                                                 <th>Author</th>
                                                 <th>Featured</th>
                                                 <th>Status</th>
@@ -113,14 +113,7 @@
                                                     <td class="align-middle text-center">
                                                         <span class="text-secondary text-xs font-weight-bold">${o.tilte}</span>
 
-                                                    <td class="align-middle text-center">
-                                                        <span class="text-secondary text-xs font-weight-bold">
-                                                            <c:if test = "${o.category == 1}">Suc Khoe</c:if>
-                                                            <c:if test = "${o.category == 2}">Y te cong cong</c:if>
-
-                                                            </span>
-                                                        </td>
-
+                                                    
                                                         <td class="align-middle text-center">
                                                         <c:forEach items="${listU}" var="u">
                                                             <c:if test = "${o.user_ID == u.user_ID}">
