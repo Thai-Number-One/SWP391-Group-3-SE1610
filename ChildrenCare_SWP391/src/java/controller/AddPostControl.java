@@ -43,7 +43,9 @@ public class AddPostControl extends HttpServlet {
         int author = Integer.parseInt(request.getParameter("author"));
         int status = Integer.parseInt(request.getParameter("status"));
         int category = Integer.parseInt(request.getParameter("Category"));
-        
+        DashboardDAO daoo = new DashboardDAO();
+        List<User> list = daoo.getAuthorByID();    
+        request.setAttribute("list", list);
         request.removeAttribute("mess1");
         request.removeAttribute("mess2");
         request.removeAttribute("mess3");
@@ -52,16 +54,18 @@ public class AddPostControl extends HttpServlet {
         request.removeAttribute("mess6");
         request.removeAttribute("mess7");
         
-        Pattern p3 = Pattern.compile("^[a-zA-Z]+(\\s[a-zA-Z]+)+$");
+        Pattern p3 = Pattern.compile("^\\w+(\\s+\\w+)*$");
         if(!p3.matcher(title).find()){
             request.setAttribute("mess5", "Title not empty!");
             request.getRequestDispatcher("addPost.jsp").forward(request, response);
+        }else{
+              DashboardDAO dao = new DashboardDAO();
+        
+             dao.insertPost(title, content,image,author,status,category);
         }
        
         
-        DashboardDAO dao = new DashboardDAO();
-        
-        dao.insertPost(title, content,image,author,status,category);
+      
         response.sendRedirect("Post");
     }
 

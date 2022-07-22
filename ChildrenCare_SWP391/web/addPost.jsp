@@ -104,14 +104,13 @@
                                                     <div class="form-group">
                                                         <label >Category</label>
                                                         <select name="Category" style="margin-top: 26px;padding: 10px;margin-left: 10px">
-                                                            <option value="1">Suc Khoe</option>
-                                                            <option value="2">Y te cong cong</option>
+                                                            <option value="1">Family</option> 
                                                         </select>
                                                     </div>
                                                 </div>
 
                                                 <div class="modal-footer">
-                                                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                                                   <a href="Post" class="btn btn-default" data-dismiss="modal">Back to Post</a>
                                                     <input type="submit" class="btn btn-success" value="Add">
                                                 </div>
                                             </div>

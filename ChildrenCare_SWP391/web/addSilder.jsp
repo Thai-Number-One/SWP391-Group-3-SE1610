@@ -95,7 +95,7 @@
 
 
                                             <div class="modal-footer">
-                                                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                                                <a href="SliderControl" class="btn btn-default" data-dismiss="modal">Back to Slider</a>
                                                 <input type="submit" class="btn btn-success" value="Add">
                                             </div>
                                     </div>

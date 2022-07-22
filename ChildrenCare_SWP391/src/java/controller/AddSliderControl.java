@@ -61,20 +61,23 @@ public class AddSliderControl extends HttpServlet {
         request.removeAttribute("mess6");
         request.removeAttribute("mess7");
         
-        Pattern p3 = Pattern.compile("^[a-zA-Z]+(\\s[a-zA-Z]+)+$");
+        Pattern p3 = Pattern.compile("^\\w+(\\s+\\w+)*$");
         if(!p3.matcher(title).find()){
             request.setAttribute("mess5", "Title not empty");
             request.getRequestDispatcher("addSilder.jsp").forward(request, response);
-        }
-
-        
-        int status = Integer.parseInt(request.getParameter("status"));
+        }else{
+            int status = Integer.parseInt(request.getParameter("status"));
        
         
         DashboardDAO dao = new DashboardDAO();
         
         dao.insertSlider(title,image,backLink,status);
+        
+        }
         response.sendRedirect("SliderControl");
+
+        
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

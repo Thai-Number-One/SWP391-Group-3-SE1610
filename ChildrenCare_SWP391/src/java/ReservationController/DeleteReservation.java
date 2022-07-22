@@ -47,7 +47,7 @@ public class DeleteReservation extends HttpServlet {
             
             User u = dao.getUser(idd);
             
-            response.sendRedirect("HomeP.jsp");
+            response.sendRedirect("LoadMyReservation");
             
             
             

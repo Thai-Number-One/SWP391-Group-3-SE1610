@@ -134,7 +134,6 @@
                                             <%}%>
                                         </table>
                                     </div>
-
                                     <div style="margin: 20px auto; width: 500px" aria-label="...">
                                         <ul class="pagination">
                                             <c:forEach begin="1" end="${requestScope.numberPage}" var="i">
@@ -142,7 +141,7 @@
                                                 </c:forEach>
                                         </ul>
                                     </div>
-                                            <p style="color: red">${mess}</p>
+                                    <p style="color: red">${mess}</p>
                                 </div>
                             </div>
                         </div>
