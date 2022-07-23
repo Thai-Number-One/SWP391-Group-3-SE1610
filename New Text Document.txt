@@ -1,0 +1,13 @@
+Assembly trong C# (và .NET) là kết quả biên dịch code của mỗi project. Mỗi project đến lượt mình lại có thể tham chiếu (reference) tới các assembly khác để sử dụng các class (và kiểu dữ liệu khác) định nghĩa trong assembly đó. Nói cách khác, “chương trình” C# (và .NET) chính là một assembly được tạo ra bằng cách “ghép nối” nhiều assembly khác. Assembly của .NET có đuôi exe hoặc dll tương tự như các file chương trình hoặc thư viện của windows nhưng bản chất của chúng rất khác biệt.
+
+Mỗi project này đều thuộc loại Console App – loại ứng dụng tự chạy độc lập với giao diện dòng lệnh. Trong C# (và .NET) chương trình ứng dụng này được gọi là một assembly.Ngoài Console App, C# cũng có thể tạo ra nhiều loại project khác, tương ứng với các loại ứng dụng riêng. Kết quả biên dịch mọi project của C# compiler đều được gọi chung là assembly.
+
+Vai trò
+
+Thứ nhất, assembly trong .NET cho phép tái sử dụng code độc lập với ngôn ngữ lập trình.Để dễ hiểu, hãy hình dung thế này. Nếu bạn xây dựng một thư viện class qua một project trên C#. Bạn có thể sử dụng thư viện này trong project viết bằng bất kỳ ngôn ngữ .NET nào, như VB.NET, F#.
+
+Thứ hai, assembly tạo thêm một mức độ quản lý nữa đối với các kiểu dữ liệu, bên cạnh namespace.
+
+Demo:
+
+using System;namespace StandardAssembly{class Program{static void Main(string[] args){while (true){Console.Write("Enter a message: ");var message = Console.ReadLine();System.Windows.Forms.MessageBox.Show(message,"Message",System.Windows.Forms.MessageBoxButtons.OK,System.Windows.Forms.MessageBoxIcon.Information);}}}}
